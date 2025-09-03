@@ -5217,6 +5217,8 @@
             /* Disable hover zoom on touch to avoid accidental zooming */
             .img-hover-zoom:hover img { transform: none; }
             .hover-lift:hover { transform: none; box-shadow: none; }
+            /* Hide custom cursor on touch devices */
+            .custom-cursor, .cursor-dot { display: none !important; }
         }
 
         /* Make large headings and sections breathe better on small screens */
@@ -5237,6 +5239,33 @@
 
         /* Prevent images from stretching oddly in cards */
         .brand-card .brand-image { width: 100%; height: auto; object-fit: cover; }
+
+        /* Swap theme toggle and hamburger on mobile */
+        @media (max-width: 768px) {
+            .header-container { display: flex; }
+            .header-container .logo { order: 1; }
+            .header-container .header-actions { order: 2; }
+            .header-container #nav-toggle { order: 3; }
+        }
+
+        /* Subtle header chip for "vibe coded" note */
+        .vibe-chip { 
+            display: inline-flex; align-items: center; gap: 6px; 
+            padding: 6px 10px; border-radius: 999px; 
+            border: 1px solid rgba(255,255,255,.15); 
+            color: var(--darker-text); font-size: 0.8rem; opacity: .85;
+            margin-right: 10px;
+        }
+        .vibe-chip::before { content: '✦'; color: var(--accent-color); font-size: .8rem; opacity: .9; }
+
+        /* Ensure long text fits on narrow 9:16 devices */
+        h1, h2, h3, .section-title, .hero-description { overflow-wrap: anywhere; word-break: break-word; }
+        @media (max-aspect-ratio: 9/16) {
+            html { font-size: 15px; }
+            .animated-heading { font-size: clamp(1.8rem, 6vw, 2.4rem); white-space: nowrap; }
+            .hero-description { font-size: 0.95rem; line-height: 1.5; }
+            .section { padding: var(--space-lg) var(--space-sm); }
+        }
     </style>
 </head>
 <body>
@@ -5316,6 +5345,7 @@
             </nav>
             
             <div class="header-actions">
+                <span class="vibe-chip" aria-label="vibe coded">Vibe coded</span>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
                     <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                     <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -6622,7 +6652,8 @@
 
             const cursor = document.querySelector('.custom-cursor');
             const cursorDot = document.querySelector('.cursor-dot');
-            if (cursor && cursorDot) {
+            const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+            if (!isTouch && cursor && cursorDot) {
                 document.addEventListener('mousemove', e => {
                     cursor.style.left = e.clientX + 'px';
                     cursor.style.top = e.clientY + 'px';
@@ -6642,6 +6673,9 @@
                         cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
                     });
                 });
+            } else if (cursor && cursorDot) {
+                cursor.style.display = 'none';
+                cursorDot.style.display = 'none';
             }
             
             const header = document.getElementById('site-header');
@@ -6705,6 +6739,22 @@
                     });
                 });
             }
+            // Swap positions of theme toggle and hamburger on small screens by DOM order
+            (function() {
+                const isSmall = window.matchMedia('(max-width: 768px)');
+                function reorderHeader() {
+                    if (!header) return;
+                    const headerActions = header.querySelector('.header-actions');
+                    if (!headerActions) return;
+                    if (isSmall.matches) {
+                        if (themeToggle && navToggle && themeToggle.nextSibling !== navToggle) {
+                            headerActions.appendChild(navToggle);
+                        }
+                    }
+                }
+                reorderHeader();
+                isSmall.addEventListener('change', reorderHeader);
+            })();
             
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
@@ -6891,6 +6941,28 @@
                 
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
+                    const nameInput = contactForm.querySelector('#name');
+                    const emailInput = contactForm.querySelector('#email');
+                    const subjectInput = contactForm.querySelector('#subject');
+                    const messageInput = contactForm.querySelector('#message');
+                    const timelineSelect = contactForm.querySelector('#timeline');
+                    const nameVal = nameInput ? nameInput.value.trim() : '';
+                    const emailVal = emailInput ? emailInput.value.trim() : '';
+                    const subjectVal = subjectInput ? subjectInput.value.trim() : '';
+                    const messageVal = messageInput ? messageInput.value.trim() : '';
+                    const timelineVal = timelineSelect ? timelineSelect.value : '';
+                    const ownerEmail = window.PORTFOLIO_OWNER_EMAIL || '';
+                    if (ownerEmail) {
+                        const bodyParts = [
+                            nameVal ? `Name: ${nameVal}` : '',
+                            emailVal ? `Email: ${emailVal}` : '',
+                            subjectVal ? `Subject: ${subjectVal}` : '',
+                            messageVal ? `Message: ${messageVal}` : '',
+                            timelineVal ? `Timeline: ${timelineVal}` : ''
+                        ].filter(Boolean);
+                        const mailtoUrl = `mailto:${ownerEmail}?subject=${encodeURIComponent('New portfolio message from ' + (nameVal || 'visitor'))}&body=${encodeURIComponent(bodyParts.join('\n'))}`;
+                        window.location.href = mailtoUrl;
+                    }
                     formSteps.forEach(step => step.classList.remove('active'));
                     formSuccess.classList.add('active');
                 });
@@ -7244,6 +7316,7 @@
                     'Cultural Connector',
                     'Visual Artist',
                     'Podcast Host',
+                    'Vibe Coder',
                     'Strategic Thinker'
                 ];
                 let currentIndex = 0;
