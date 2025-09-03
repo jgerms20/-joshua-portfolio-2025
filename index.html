@@ -5212,6 +5212,31 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* Mobile/touch optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            /* Disable hover zoom on touch to avoid accidental zooming */
+            .img-hover-zoom:hover img { transform: none; }
+            .hover-lift:hover { transform: none; box-shadow: none; }
+        }
+
+        /* Make large headings and sections breathe better on small screens */
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .section { padding: var(--space-lg) var(--space-sm); }
+        }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+        }
+
+        /* Ensure embeds and videos are responsive */
+        .responsive-embed { position: relative; width: 100%; padding-top: 56.25%; }
+        .responsive-embed iframe, .responsive-embed video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* Prevent images from stretching oddly in cards */
+        .brand-card .brand-image { width: 100%; height: auto; object-fit: cover; }
     </style>
 </head>
 <body>
@@ -7366,6 +7391,35 @@
             });
 
         });
+    </script>
+    <script>
+        // Progressive image loading fallback for browsers without native lazy-loading
+        (function() {
+            if ('loading' in HTMLImageElement.prototype) return;
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src || img.src;
+                            obs.unobserve(img);
+                        }
+                    });
+                }, { rootMargin: '200px 0px' });
+                images.forEach(img => io.observe(img));
+            } else {
+                // Fallback: eager load
+                images.forEach(img => { img.src = img.dataset.src || img.src; });
+            }
+        })();
+
+        // Add a CSS class to the document when touch is supported
+        (function() {
+            try {
+                document.documentElement.classList.add(('ontouchstart' in window) ? 'has-touch' : 'no-touch');
+            } catch (e) {}
+        })();
     </script>
 </body>
 </html>
