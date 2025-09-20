@@ -4599,6 +4599,7 @@
         .journey-tooltip h5{margin:0 0 4px 0;font-size:14px;color:#fff}
         .journey-tooltip p{margin:0;font-size:12px;color:var(--darker-text)}
         .us-map {filter: drop-shadow(0 8px 24px rgba(0,0,0,.25));}
+        @keyframes tickerMove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* Photography Category Sections */
         .photography-category {
@@ -5487,19 +5488,16 @@
                     <span class="section-subtitle">My Journey</span>
                     <h2 class="section-title">About Me</h2>
                 </div>
-                <div class="grid col-2">
+                <div class="grid col-2" style="align-items: stretch;">
                     <div class="fade-in">
                         <p class="large-text">Born and raised in South Carolina, I’ve always been a curious cat. Whether it’s a book in my hand, a podcast in my ears, or a camera at my side, I’ve always taken joy in learning more about the world around me and what makes it go round.</p>
                         <p class="large-text">This curiosity has guided me through every stage of my life; from being an active member of the newspaper club in high school, to studying Journalism & Mass Communications at the University of South Carolina, where I minored in Information Science and served as assistant sports editor for The Daily Gamecock. It eventually led me into the world of advertising, where I’ve built a career in Strategy at some of the top agencies in the United States.</p>
                         <p class="large-text">Now, living in Los Angeles, California, my curiosity fuels each of my creative pursuits: photography, podcasting, creative writing, movies & TV and building with Artificial Intelligence. I’m drawn to authentic storytelling that captures the present moment while honoring the past and building the future.</p>
-                        <a href="#contact" class="btn btn-primary">
-                            <span>Get in Touch</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                    <div class="slide-right">
+                        
+                            </div>
+                    <div class="slide-right" style="display:flex; height: 100%;">
                         <!-- Rotating photos from Photos of Self folder (updated with new additions) -->
-                        <div class="about-photo-container">
+                        <div class="about-photo-container" style="height: 100%; min-height: 360px;">
                             <div class="about-photo-slider">
                                 <div class="about-photo-slide active"><img src="Images/Photos of Self/000070270013.JPEG" alt="Portrait of Joshua McKenzie German" loading="lazy"></div>
                                 <div class="about-photo-slide"><img src="Images/Photos of Self/000070270029.JPEG" alt="Portrait of Joshua McKenzie German" loading="lazy"></div>
@@ -5516,51 +5514,27 @@
                                 <div class="about-photo-slide"><img src="Images/Photos of Self/JoshuaG1030am(3of7).jpg" alt="Joshua studio portrait" loading="lazy"></div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Skills & Expertise (full width) -->
-                <div class="skills-expertise" style="margin-top: var(--space-lg);">
-                        <h3 class="mt-md mb-sm">Skills & Expertise</h3>
-                        <div style="background: rgba(255,255,255,0.03); border-radius: var(--radius-md); padding: var(--space-md); border-left: 2px solid var(--accent-color);">
-                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-sm); margin-bottom: var(--space-sm);">
-                                <div style="color: var(--accent-color); font-weight: 600;">Strategy</div>
-                                <div style="color: var(--accent-color); font-weight: 600;">Creative</div>
-                            </div>
-                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-sm); margin-bottom: var(--space-md);">
-                                <div style="font-size: 0.9rem; color: var(--darker-text);">
-                                    • Strategic Planning<br>
-                                    • Brand Development<br>
-                                    • Cultural Insight<br>
-                                    • Campaign Strategy
-                                </div>
-                                <div style="font-size: 0.9rem; color: var(--darker-text);">
-                                    • Storytelling<br>
-                                    • Creative Direction<br>
-                                    • Content Strategy<br>
-                                    • Photography
-                                </div>
-                            </div>
-                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-sm); margin-bottom: var(--space-sm);">
-                                <div style="color: var(--accent-color); font-weight: 600;">Digital</div>
-                                <div style="color: var(--accent-color); font-weight: 600;">Innovation</div>
-                            </div>
-                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-sm);">
-                                <div style="font-size: 0.9rem; color: var(--darker-text);">
-                                    • AI Marketing<br>
-                                    • Social Strategy<br>
-                                    • Media Planning<br>
-                                    • Analytics
-                                </div>
-                                <div style="font-size: 0.9rem; color: var(--darker-text);">
-                                    • Emerging Tech<br>
-                                    • Trend Forecasting<br>
-                                    • Innovation Strategy<br>
-                                    • Future Planning
-                                </div>
-                            </div>
                             </div>
                         </div>
+                        
+                <!-- Skills & Expertise (full width) -->
+                <div class="skills-expertise" style="margin-top: var(--space-lg);">
+                    <h3 class="mt-md mb-sm">Skills & Expertise</h3>
+                    <div class="ticker" style="position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.2);border-radius:8px;">
+                        <div class="ticker-track" style="display:flex;gap:32px;white-space:nowrap;animation: tickerMove 35s linear infinite;padding:10px 0;">
+                            <div class="tick"><span style="color:#7CFC00;">STRAT ▲</span> Strategic Planning  +2.1%</div>
+                            <div class="tick"><span style="color:#7CFC00;">CREATIVE ▲</span> Storytelling  +1.4%</div>
+                            <div class="tick"><span style="color:#7CFC00;">DIGITAL ▲</span> AI Marketing  +3.2%</div>
+                            <div class="tick"><span style="color:#FF6B6B;">MEDIA ▼</span> Media Planning  -0.4%</div>
+                            <div class="tick"><span style="color:#7CFC00;">INSIGHT ▲</span> Cultural Insight  +1.1%</div>
+                            <div class="tick"><span style="color:#7CFC00;">INNOV ▲</span> Emerging Tech  +2.7%</div>
+                            <div class="tick"><span style="color:#7CFC00;">CONTENT ▲</span> Content Strategy  +0.9%</div>
+                            <div class="tick"><span style="color:#7CFC00;">PHOTO ▲</span> Photography  +1.0%</div>
+                            <div class="tick"><span style="color:#7CFC00;">ANALYTICS ▲</span> Measurement  +1.6%</div>
+                            <div class="tick"><span style="color:#7CFC00;">BRAND ▲</span> Brand Dev  +1.2%</div>
+                            </div>
+                            </div>
+                            </div>
                         
                 <!-- Interactive Journey Map (full width) -->
                 <div class="journey-map" style="margin-top: var(--space-lg);">
@@ -5575,6 +5549,16 @@
                                 </radialGradient>
                             </defs>
                             <rect x="0" y="0" width="960" height="600" fill="url(#bgGlow)"/>
+                            <!-- Simplified state silhouettes (abstract) -->
+                            <g fill="#1b1b1b" stroke="#2a2a2a" stroke-width="1">
+                                <rect x="60" y="120" width="220" height="140" rx="6"/>
+                                <rect x="300" y="110" width="200" height="120" rx="6"/>
+                                <rect x="520" y="140" width="260" height="130" rx="6"/>
+                                <rect x="780" y="170" width="120" height="160" rx="6"/>
+                                <rect x="520" y="310" width="260" height="120" rx="6"/>
+                                <rect x="300" y="260" width="200" height="130" rx="6"/>
+                                <rect x="130" y="280" width="150" height="150" rx="6"/>
+                            </g>
                             <!-- Arrow path (approximate coords) -->
                             <path id="journeyPath" d="M785 400 L760 360 L140 200 L180 360" fill="none" stroke="var(--accent-color)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1200" stroke-dashoffset="1200">
                             </path>
@@ -5598,7 +5582,7 @@
                             <span>NC — 2020–2021</span>
                             <span>OR — 2023–2024</span>
                             <span>CA — 2024–Present</span>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
