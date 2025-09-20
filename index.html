@@ -4594,6 +4594,12 @@
             object-fit: contain;
         }
 
+        /* Journey Map UI */
+        .journey-tooltip {position:absolute;pointer-events:none;background:rgba(0,0,0,.85);border:1px solid rgba(255,255,255,.1);padding:10px 12px;border-radius:8px;backdrop-filter: blur(6px);transform:translate(-50%, -120%);min-width:220px;}
+        .journey-tooltip h5{margin:0 0 4px 0;font-size:14px;color:#fff}
+        .journey-tooltip p{margin:0;font-size:12px;color:var(--darker-text)}
+        .us-map {filter: drop-shadow(0 8px 24px rgba(0,0,0,.25));}
+
         /* Photography Category Sections */
         .photography-category {
             margin-bottom: var(--space-xl);
@@ -5486,7 +5492,35 @@
                         <p class="large-text">Born and raised in South Carolina, I’ve always been a curious cat. Whether it’s a book in my hand, a podcast in my ears, or a camera at my side, I’ve always taken joy in learning more about the world around me and what makes it go round.</p>
                         <p class="large-text">This curiosity has guided me through every stage of my life; from being an active member of the newspaper club in high school, to studying Journalism & Mass Communications at the University of South Carolina, where I minored in Information Science and served as assistant sports editor for The Daily Gamecock. It eventually led me into the world of advertising, where I’ve built a career in Strategy at some of the top agencies in the United States.</p>
                         <p class="large-text">Now, living in Los Angeles, California, my curiosity fuels each of my creative pursuits: photography, podcasting, creative writing, movies & TV and building with Artificial Intelligence. I’m drawn to authentic storytelling that captures the present moment while honoring the past and building the future.</p>
-                        
+                        <a href="#contact" class="btn btn-primary">
+                            <span>Get in Touch</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                    <div class="slide-right">
+                        <!-- Rotating photos from Photos of Self folder (updated with new additions) -->
+                        <div class="about-photo-container">
+                            <div class="about-photo-slider">
+                                <div class="about-photo-slide active"><img src="Images/Photos of Self/000070270013.JPEG" alt="Portrait of Joshua McKenzie German" loading="lazy"></div>
+                                <div class="about-photo-slide"><img src="Images/Photos of Self/000070270029.JPEG" alt="Portrait of Joshua McKenzie German" loading="lazy"></div>
+                                <div class="about-photo-slide"><img src="Images/Photos of Self/DSC01484.JPG" alt="Joshua in studio lighting" loading="lazy"></div>
+                                <div class="about-photo-slide"><img src="Images/Photos of Self/IMG_0593.PNG" alt="Joshua candid portrait" loading="lazy"></div>
+                                <div class="about-photo-slide"><img src="Images/Photos of Self/IMG_0680.JPG" alt="Joshua outdoor portrait" loading="lazy"></div>
+                                <div class="about-photo-slide"><img src="Images/Photos of Self/IMG_1912.jpg" alt="Joshua documentary still" loading="lazy"></div>
+                                <div class="about-photo-slide"><img src="Images/Photos of Self/IMG_5212.JPEG" alt="Joshua black and white portrait" loading="lazy"></div>
+                                <div class="about-photo-slide"><img src="Images/Photos of Self/DSC00827.jpg" alt="Joshua smiling portrait" loading="lazy"></div>
+                                <div class="about-photo-slide"><img src="Images/Photos of Self/JMG_7456.jpg" alt="Joshua lifestyle image" loading="lazy"></div>
+                                <div class="about-photo-slide"><img src="Images/Photos of Self/JMG_7462.jpg" alt="Joshua lifestyle image" loading="lazy"></div>
+                                <div class="about-photo-slide"><img src="Images/Photos of Self/JMG_7538.jpg" alt="Joshua lifestyle image" loading="lazy"></div>
+                                <div class="about-photo-slide"><img src="Images/Photos of Self/JMG_8976.jpg" alt="Joshua formal portrait" loading="lazy"></div>
+                                <div class="about-photo-slide"><img src="Images/Photos of Self/JoshuaG1030am(3of7).jpg" alt="Joshua studio portrait" loading="lazy"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills & Expertise (full width) -->
+                <div class="skills-expertise" style="margin-top: var(--space-lg);">
                         <h3 class="mt-md mb-sm">Skills & Expertise</h3>
                         <div style="background: rgba(255,255,255,0.03); border-radius: var(--radius-md); padding: var(--space-md); border-left: 2px solid var(--accent-color);">
                             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-sm); margin-bottom: var(--space-sm);">
@@ -5525,49 +5559,46 @@
                                     • Future Planning
                                 </div>
                             </div>
-                        </div>
-                        <a href="#contact" class="btn btn-primary">
-                            <span>Get in Touch</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                        </a>
-                    </div>
-                    <div class="slide-right">
-                        <!-- Rotating photos from Photos of Self folder (updated with new additions) -->
-                        <div class="about-photo-container">
-                            <div class="about-photo-slider">
-                                <div class="about-photo-slide active"><img src="Images/Photos of Self/000070270013.JPEG" alt="Portrait of Joshua McKenzie German" loading="lazy"></div>
-                                <div class="about-photo-slide"><img src="Images/Photos of Self/000070270029.JPEG" alt="Portrait of Joshua McKenzie German" loading="lazy"></div>
-                                <div class="about-photo-slide"><img src="Images/Photos of Self/DSC01484.JPG" alt="Joshua in studio lighting" loading="lazy"></div>
-                                <div class="about-photo-slide"><img src="Images/Photos of Self/IMG_0593.PNG" alt="Joshua candid portrait" loading="lazy"></div>
-                                <div class="about-photo-slide"><img src="Images/Photos of Self/IMG_0680.JPG" alt="Joshua outdoor portrait" loading="lazy"></div>
-                                <div class="about-photo-slide"><img src="Images/Photos of Self/IMG_1912.jpg" alt="Joshua documentary still" loading="lazy"></div>
-                                <div class="about-photo-slide"><img src="Images/Photos of Self/IMG_5212.JPEG" alt="Joshua black and white portrait" loading="lazy"></div>
-                                <div class="about-photo-slide"><img src="Images/Photos of Self/DSC00827.jpg" alt="Joshua smiling portrait" loading="lazy"></div>
-                                <div class="about-photo-slide"><img src="Images/Photos of Self/JMG_7456.jpg" alt="Joshua lifestyle image" loading="lazy"></div>
-                                <div class="about-photo-slide"><img src="Images/Photos of Self/JMG_7462.jpg" alt="Joshua lifestyle image" loading="lazy"></div>
-                                <div class="about-photo-slide"><img src="Images/Photos of Self/JMG_7538.jpg" alt="Joshua lifestyle image" loading="lazy"></div>
-                                <div class="about-photo-slide"><img src="Images/Photos of Self/JMG_8976.jpg" alt="Joshua formal portrait" loading="lazy"></div>
-                                <div class="about-photo-slide"><img src="Images/Photos of Self/JoshuaG1030am(3of7).jpg" alt="Joshua studio portrait" loading="lazy"></div>
                             </div>
                         </div>
                         
-                        <div style="border-left: 2px solid var(--accent-color); padding-left: 20px;">
-                            <div style="margin-bottom: 20px;">
-                                <div style="color: var(--accent-color);">2024-Present</div>
-                                <h4 style="line-height:1.3">Senior Connections Strategist — TBWA\\Chiat\\Day LA (Los Angeles, CA)</h4>
-                                <p>Led connections for Levi’s “Reimagined” with Beyoncé and Sephora’s seasonal launches, orchestrating TV/OLV/social/OOH rollouts. Directed planning for DIRECTV’s “Nothing On Your Roof 2.0,” and built TikTok‑first programs for Red Baron. Focus: cohesive cross‑channel systems and measurable impact.</p>
+                <!-- Interactive Journey Map (full width) -->
+                <div class="journey-map" style="margin-top: var(--space-lg);">
+                    <h3 class="mt-md mb-sm">Journey Across the Map</h3>
+                    <div class="map-wrap" style="background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); border-radius: 12px; padding: 12px;">
+                        <svg viewBox="0 0 960 600" class="us-map" role="img" aria-label="United States journey map" style="width:100%;height:auto;display:block;border-radius:8px;">
+                            <!-- Decorative silhouette -->
+                            <defs>
+                                <radialGradient id="bgGlow" cx="50%" cy="40%" r="70%">
+                                    <stop offset="0%" stop-color="rgba(255,255,255,0.06)"/>
+                                    <stop offset="100%" stop-color="rgba(255,255,255,0.01)"/>
+                                </radialGradient>
+                            </defs>
+                            <rect x="0" y="0" width="960" height="600" fill="url(#bgGlow)"/>
+                            <!-- Arrow path (approximate coords) -->
+                            <path id="journeyPath" d="M785 400 L760 360 L140 200 L180 360" fill="none" stroke="var(--accent-color)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1200" stroke-dashoffset="1200">
+                            </path>
+                            <!-- Markers -->
+                            <g class="marker" data-title="Columbia, SC" data-body="Home base. Journalism, photography roots." transform="translate(785,400)">
+                                <circle r="8" fill="var(--accent-color)"/>
+                            </g>
+                            <g class="marker" data-title="Charlotte, NC" data-body="Remote at GS&P; fashion photography" transform="translate(760,360)">
+                                <circle r="7" fill="var(--accent-color)"/>
+                            </g>
+                            <g class="marker" data-title="Portland, OR" data-body="Wieden+Kennedy — comms + media; photography" transform="translate(140,200)">
+                                <circle r="7" fill="var(--accent-color)"/>
+                            </g>
+                            <g class="marker" data-title="Los Angeles, CA" data-body="TBWA\Chiat\Day — connections strategy; current" transform="translate(180,360)">
+                                <circle r="9" fill="var(--accent-color)"/>
+                            </g>
+                        </svg>
+                        <div class="map-legend" style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;color:var(--darker-text);">
+                            <span>Timeframes:</span>
+                            <span>SC — Early years</span>
+                            <span>NC — 2020–2021</span>
+                            <span>OR — 2023–2024</span>
+                            <span>CA — 2024–Present</span>
                             </div>
-                            <div style="margin-bottom: 20px;">
-                                <div style="color: var(--accent-color);">2023-2024</div>
-                                <h4 style="line-height:1.3">Comms + Media Supervisor — Wieden+Kennedy (Portland, OR)</h4>
-                                <p>Managed DoorDash’s 2024 Super Bowl media plan and influencer/OOH components. Built integrated plans for MLB and Corona, paired with signal analyses (AdIntel, Pathmatics, NMI) and clear test‑and‑learn roadmaps. Supported new business with competitive and cultural insight.</p>
-                            </div>
-                            <div>
-                                <div style="color: var(--accent-color);">2020-2023</div>
-                                <h4 style="line-height:1.3">Jr. Communications Strategist — Goodby, Silverstein &amp; Partners (San Francisco, CA)</h4>
-                                <p>Launched a TikTok creator program and marketplace, and supported BMW “Zeus &amp; Hera” and Sam Adams “Brighter Boston.” Built cross‑channel plans for BMW, HP, Xfinity, Califia, and Sam Adams, driving notable social growth and engagement.</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -7276,7 +7307,10 @@
             // About Me Photo Rotation
             const aboutPhotoSlider = document.querySelector('.about-photo-slider');
             if (aboutPhotoSlider) {
-                const slides = aboutPhotoSlider.querySelectorAll('.about-photo-slide');
+                let slides = Array.from(aboutPhotoSlider.querySelectorAll('.about-photo-slide'));
+                // Randomize slide order on load
+                slides.sort(() => Math.random() - 0.5).forEach(s => aboutPhotoSlider.appendChild(s));
+                slides = Array.from(aboutPhotoSlider.querySelectorAll('.about-photo-slide'));
                 let currentSlide = 0;
                 
                 function showNextSlide() {
@@ -7286,6 +7320,35 @@
                 }
                 
                 setInterval(showNextSlide, 4000);
+            }
+
+            // Journey Map interactions
+            const map = document.querySelector('.us-map');
+            if (map) {
+                const svgRoot = map;
+                const path = document.getElementById('journeyPath');
+                if (path) {
+                    const length = path.getTotalLength();
+                    path.style.strokeDasharray = String(length);
+                    path.style.strokeDashoffset = String(length);
+                    setTimeout(() => { path.style.transition = 'stroke-dashoffset 2000ms ease'; path.style.strokeDashoffset = '0'; }, 300);
+                }
+                const markers = map.parentElement.querySelectorAll('.marker');
+                let tooltip = document.createElement('div');
+                tooltip.className = 'journey-tooltip';
+                tooltip.style.display = 'none';
+                document.body.appendChild(tooltip);
+                markers.forEach(m => {
+                    m.addEventListener('mousemove', (e) => {
+                        const title = m.getAttribute('data-title') || '';
+                        const body = m.getAttribute('data-body') || '';
+                        tooltip.innerHTML = `<h5>${title}</h5><p>${body}</p>`;
+                        tooltip.style.left = e.pageX + 'px';
+                        tooltip.style.top = e.pageY + 'px';
+                        tooltip.style.display = 'block';
+                    });
+                    m.addEventListener('mouseleave', () => { tooltip.style.display = 'none'; });
+                });
             }
 
             // Enhanced Photography Category Rotations with Controls
