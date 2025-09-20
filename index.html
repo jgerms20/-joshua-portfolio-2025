@@ -6304,7 +6304,7 @@
         <!-- DIRECTV Case Study (Multi-campaign like Sephora) -->
         <section id="directv" class="case-study">
             <div class="case-study-hero">
-                <div class="parallax-bg" style="background-image: url('https://images-cdn2.welcomesoftware.com/assets/Nothing+On+Your+Roof-DIRECTV.jpg/Zz0yOGU0ZmEwMjIyMTQxMWYwYWVlYWYyODRlZjQ4Mzc5OQ==?width=1536&height=860');"></div>
+                <div class="parallax-bg" style="background-image: url('Brand Imagery/Directv/directv-rebranding-bringing-flexibility-2025.webp');"></div>
                 <div class="case-study-hero-overlay"></div>
                 <div class="case-study-hero-content">
                     <div class="breadcrumb"><a href="#campaigns">Brand Work</a> <span>/</span> DIRECTV</div>
@@ -6437,13 +6437,27 @@
                                 </div>
                             </div>
                             <div class="photo-gallery-cs grid col-1 cs-section">
-                                <div class="photo-card-cs gallery-item" data-src="Brand Imagery/Directv/Emmys/1.jpg" data-title="Emmys OOH — Key Visual" data-caption="Primary creative near awards corridor.">
-                                    <img src="Brand Imagery/Directv/Emmys/1.jpg" alt="DIRECTV Emmys OOH Key Visual" loading="lazy">
+                                <div class="photo-card-cs gallery-item" data-src="Brand Imagery/Directv/OOH Hijack/LA-48_DIRECTV_9.16.2025-2.jpg" data-title="Emmys OOH — Key Visual" data-caption="Primary creative near awards corridor.">
+                                    <img src="Brand Imagery/Directv/OOH Hijack/LA-48_DIRECTV_9.16.2025-2.jpg" alt="DIRECTV Emmys OOH Key Visual" loading="lazy">
                                     <div class="photo-caption-cs"><h5>Key Visual</h5><p>High‑impact placement during the broadcast window.</p></div>
                                 </div>
-                                <div class="photo-card-cs gallery-item" data-src="Brand Imagery/Directv/Emmys/2.jpg" data-title="Emmys OOH — Variant" data-caption="Alternate cut tailored for social cross‑posting.">
-                                    <img src="Brand Imagery/Directv/Emmys/2.jpg" alt="DIRECTV Emmys OOH Variant" loading="lazy">
+                                <div class="photo-card-cs gallery-item" data-src="Brand Imagery/Directv/OOH Hijack/LA-48_DirectTV_9.16.2025-3.jpg" data-title="Emmys OOH — Variant" data-caption="Alternate cut tailored for social cross‑posting.">
+                                    <img src="Brand Imagery/Directv/OOH Hijack/LA-48_DirectTV_9.16.2025-3.jpg" alt="DIRECTV Emmys OOH Variant" loading="lazy">
                                     <div class="photo-caption-cs"><h5>Variant</h5><p>Format‑fit creative for secondary sites.</p></div>
+                                </div>
+                                <div class="photo-card-cs gallery-item" data-src="Brand Imagery/Directv/OOH Hijack/IMG_8899 2.jpg" data-title="Emmys OOH — Street View" data-caption="On‑street capture during the activation.">
+                                    <img src="Brand Imagery/Directv/OOH Hijack/IMG_8899 2.jpg" alt="DIRECTV Emmys OOH Street View" loading="lazy">
+                                    <div class="photo-caption-cs"><h5>Street View</h5><p>Real‑world context from Melrose / The Americana.</p></div>
+                                </div>
+                            </div>
+                            <div class="video-gallery grid col-1 cs-section">
+                                <div class="video-card">
+                                    <div class="video-container">
+                                        <video controls preload="metadata" style="width:100%;border-radius:12px;">
+                                            <source src="Brand Imagery/Directv/OOH Hijack/DIRECTV Emmy's OOH Hijack.MOV" type="video/quicktime">
+                                        </video>
+                                    </div>
+                                    <div class="video-caption">Emmys OOH Hijack — Recap Reel</div>
                                 </div>
                             </div>
                         </div>
@@ -7147,8 +7161,8 @@
                                 window.location.href = mailtoUrl;
                             }
                         }
-                        formSteps.forEach(step => step.classList.remove('active'));
-                        formSuccess.classList.add('active');
+                    formSteps.forEach(step => step.classList.remove('active'));
+                    formSuccess.classList.add('active');
                     } catch(err) {
                         alert('Sorry, there was a problem sending your message. Please try again later.');
                     }
@@ -7643,11 +7657,11 @@
                 const container = group.nextElementSibling;
                 const contents = container ? container.querySelectorAll('.folder-content') : [];
                 tabs.forEach(tab => {
-                    tab.addEventListener('click', () => {
-                        const targetFolder = tab.getAttribute('data-folder');
+                tab.addEventListener('click', () => {
+                    const targetFolder = tab.getAttribute('data-folder');
                         tabs.forEach(t => t.classList.remove('active'));
                         contents.forEach(c => c.classList.remove('active'));
-                        tab.classList.add('active');
+                    tab.classList.add('active');
                         const target = container ? container.querySelector(`#${targetFolder}`) : null;
                         if (target) target.classList.add('active');
                     });
