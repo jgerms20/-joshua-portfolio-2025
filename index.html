@@ -5543,103 +5543,146 @@
                         <!-- Canvas for interactive map -->
                         <div id="interactiveMap" style="width: 100%; height: 500px; position: relative; background: #0f0f0f; border-radius: 12px; overflow: hidden;">
                             <!-- SVG Map -->
-                            <svg viewBox="0 0 1000 600" style="width: 100%; height: 100%; display: block;">
+                            <svg viewBox="0 0 1200 600" style="width: 100%; height: 100%; display: block;">
                                 <defs>
                                     <!-- Glow effect for markers -->
                                     <filter id="markerGlow">
-                                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                                         <feMerge>
                                             <feMergeNode in="coloredBlur"/>
                                             <feMergeNode in="SourceGraphic"/>
                                         </feMerge>
                                     </filter>
-                                    <!-- Journey line gradient -->
-                                    <linearGradient id="journeyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color:var(--accent-color);stop-opacity:0.3" />
+                                    <!-- Animated beam gradient -->
+                                    <linearGradient id="beamGradient">
+                                        <stop offset="0%" style="stop-color:var(--accent-color);stop-opacity:0" />
                                         <stop offset="50%" style="stop-color:var(--accent-color);stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:var(--accent-color);stop-opacity:0.3" />
+                                        <stop offset="100%" style="stop-color:var(--accent-color);stop-opacity:0" />
                                     </linearGradient>
+                                    <!-- Mask for beam animation -->
+                                    <mask id="beamMask">
+                                        <rect x="0" y="0" width="100%" height="100%" fill="white"/>
+                                    </mask>
                                 </defs>
                                 
-                                <!-- Actual US Map Outline -->
-                                <path d="M 844 168 C 850 168 855 171 858 176 L 860 180 L 860 186 L 863 192 L 868 198 L 871 203 L 870 208 L 865 212 L 859 215 L 852 218 L 844 220 L 836 218 L 828 215 L 822 210 L 820 203 L 822 196 L 827 190 L 833 185 L 840 182 L 844 178 L 844 168 M 750 280 L 745 276 L 738 274 L 730 273 L 722 275 L 715 278 L 710 283 L 708 290 L 710 298 L 715 305 L 722 310 L 730 313 L 738 314 L 745 312 L 750 308 L 752 302 L 750 295 L 750 280 M 180 180 L 175 185 L 170 192 L 168 200 L 170 208 L 175 215 L 182 220 L 190 222 L 198 220 L 205 215 L 210 208 L 212 200 L 210 192 L 205 185 L 198 180 L 190 178 L 182 180 L 180 180 M 120 320 L 115 325 L 112 332 L 114 340 L 119 347 L 126 352 L 134 354 L 142 352 L 149 347 L 154 340 L 156 332 L 154 325 L 149 320 L 142 318 L 134 320 L 126 322 L 120 320" 
-                                      fill="none" 
-                                      stroke="#444" 
-                                      stroke-width="2"
-                                      style="display: none;" />
-                                
-                                <!-- Better US Map Shape -->
-                                <g id="usStates">
-                                    <!-- West Coast -->
-                                    <path d="M 80 250 L 80 180 L 100 160 L 120 150 L 140 150 L 160 160 L 180 180 L 180 220 L 160 240 L 140 260 L 120 280 L 100 300 L 80 320 L 80 250" fill="#2a2a2a" stroke="#444" stroke-width="1" opacity="0.8"/>
-                                    
-                                    <!-- Mountain States -->
-                                    <path d="M 180 180 L 200 160 L 240 150 L 280 150 L 320 160 L 340 180 L 340 220 L 320 240 L 280 260 L 240 280 L 200 300 L 180 320 L 180 250 L 180 180" fill="#2a2a2a" stroke="#444" stroke-width="1" opacity="0.8"/>
-                                    
-                                    <!-- Central -->
-                                    <path d="M 340 180 L 380 160 L 420 150 L 460 150 L 500 160 L 520 180 L 520 240 L 500 260 L 460 280 L 420 300 L 380 320 L 340 340 L 340 260 L 340 180" fill="#2a2a2a" stroke="#444" stroke-width="1" opacity="0.8"/>
-                                    
-                                    <!-- South -->
-                                    <path d="M 520 240 L 560 220 L 600 210 L 640 210 L 680 220 L 720 240 L 740 260 L 740 300 L 720 320 L 680 340 L 640 360 L 600 380 L 560 400 L 520 420 L 520 340 L 520 240" fill="#2a2a2a" stroke="#444" stroke-width="1" opacity="0.8"/>
-                                    
-                                    <!-- Southeast -->
-                                    <path d="M 740 260 L 780 240 L 820 230 L 860 240 L 880 260 L 880 300 L 860 320 L 820 340 L 780 360 L 740 380 L 740 300 L 740 260" fill="#2a2a2a" stroke="#444" stroke-width="1" opacity="0.8"/>
-                                    
-                                    <!-- Northeast -->
-                                    <path d="M 820 230 L 840 210 L 860 190 L 880 180 L 900 180 L 920 190 L 920 220 L 900 240 L 880 260 L 860 240 L 820 230" fill="#2a2a2a" stroke="#444" stroke-width="1" opacity="0.8"/>
+                                <!-- Proper US Map Shape -->
+                                <g id="usMap">
+                                    <!-- Main US Body -->
+                                    <path d="M 900 200 L 920 180 L 950 170 L 980 165 L 1020 170 L 1050 180 L 1080 190 L 1100 210 L 1100 240 L 1090 260 L 1080 280 L 1060 300 L 1040 320 L 1020 340 L 1000 350 L 980 360 L 960 365 L 940 370 L 920 375 L 900 380 L 880 385 L 860 390 L 840 395 L 820 400 L 800 405 L 780 410 L 760 415 L 740 420 L 720 425 L 700 430 L 680 435 L 660 440 L 640 445 L 620 450 L 600 455 L 580 460 L 560 465 L 540 470 L 520 475 L 500 480 L 480 485 L 460 490 L 440 495 L 420 500 L 400 495 L 380 490 L 360 485 L 340 480 L 320 475 L 300 470 L 280 465 L 260 460 L 240 455 L 220 450 L 200 445 L 180 440 L 160 435 L 140 430 L 120 425 L 100 420 L 80 410 L 60 400 L 50 380 L 50 360 L 60 340 L 70 320 L 80 300 L 90 280 L 100 260 L 110 240 L 120 220 L 130 200 L 140 180 L 150 160 L 160 140 L 180 130 L 200 120 L 220 115 L 240 110 L 260 108 L 280 106 L 300 105 L 320 104 L 340 103 L 360 102 L 380 101 L 400 100 L 420 101 L 440 102 L 460 103 L 480 104 L 500 105 L 520 106 L 540 108 L 560 110 L 580 115 L 600 120 L 620 130 L 640 140 L 660 150 L 680 160 L 700 170 L 720 180 L 740 190 L 760 200 L 780 210 L 800 220 L 820 230 L 840 235 L 860 230 L 880 220 L 900 200" 
+                                          fill="#1a1a1a" 
+                                          stroke="#333" 
+                                          stroke-width="2"/>
                                     
                                     <!-- Florida -->
-                                    <path d="M 780 360 L 800 380 L 820 400 L 820 440 L 800 460 L 780 480 L 760 460 L 760 420 L 780 360" fill="#2a2a2a" stroke="#444" stroke-width="1" opacity="0.8"/>
+                                    <path d="M 840 395 L 860 410 L 880 430 L 890 450 L 895 470 L 890 490 L 880 510 L 865 520 L 850 515 L 840 500 L 835 480 L 830 460 L 825 440 L 820 420 L 820 400 L 840 395" 
+                                          fill="#1a1a1a" 
+                                          stroke="#333" 
+                                          stroke-width="2"/>
+                                    
+                                    <!-- Texas Bump -->
+                                    <path d="M 420 500 L 420 480 L 440 460 L 460 450 L 480 445 L 500 450 L 520 460 L 540 480 L 540 500 L 520 520 L 500 530 L 480 530 L 460 520 L 440 510 L 420 500" 
+                                          fill="#1a1a1a" 
+                                          stroke="#333" 
+                                          stroke-width="2"/>
+                                    
+                                    <!-- Great Lakes cutouts -->
+                                    <path d="M 700 170 L 720 160 L 740 155 L 760 160 L 780 170 L 780 190 L 760 200 L 740 205 L 720 200 L 700 190 L 700 170" 
+                                          fill="#0f0f0f" 
+                                          stroke="#333" 
+                                          stroke-width="1"/>
                                 </g>
+                                
+                                <!-- State Boundaries (simplified) -->
+                                <g id="stateBoundaries" stroke="#2a2a2a" stroke-width="1" fill="none" opacity="0.5">
+                                    <!-- California -->
+                                    <line x1="120" y1="200" x2="120" y2="380"/>
+                                    <!-- Oregon/Washington -->
+                                    <line x1="120" y1="200" x2="200" y2="200"/>
+                                    <!-- Nevada -->
+                                    <line x1="200" y1="200" x2="200" y2="380"/>
+                                    <!-- Texas -->
+                                    <line x1="480" y1="380" x2="480" y2="480"/>
+                                    <line x1="600" y1="380" x2="600" y2="480"/>
+                                    <!-- Southeast states -->
+                                    <line x1="780" y1="300" x2="780" y2="400"/>
+                                    <line x1="840" y1="280" x2="840" y2="400"/>
+                                    <line x1="900" y1="260" x2="900" y2="380"/>
+                                </g>
+                                
+                                <!-- Journey Path (static base) -->
+                                <path id="journeyPathBase" 
+                                      d="M 900 350 L 880 320 L 860 300 L 840 280 Q 600 250 160 180 L 100 280 L 100 350" 
+                                      fill="none" 
+                                      stroke="#333" 
+                                      stroke-width="2"
+                                      opacity="0.3"/>
                                 
                                 <!-- Animated Journey Path -->
                                 <path id="journeyPath" 
-                                      d="M 780 340 Q 760 320 760 280 Q 760 260 180 200 Q 160 190 140 260" 
+                                      d="M 900 350 L 880 320 L 860 300 L 840 280 Q 600 250 160 180 L 100 280 L 100 350" 
                                       fill="none" 
                                       stroke="var(--accent-color)" 
                                       stroke-width="3" 
                                       stroke-linecap="round"
-                                      opacity="0.8"
-                                      style="stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawPath 3s ease-out forwards 0.5s;" />
+                                      opacity="0"/>
+                                
+                                <!-- Animated Beam -->
+                                <circle id="travelBeam" r="8" fill="var(--accent-color)" filter="url(#markerGlow)" opacity="0">
+                                    <animateMotion dur="6s" repeatCount="indefinite" begin="3s">
+                                        <mpath href="#journeyPath"/>
+                                    </animateMotion>
+                                    <animate attributeName="opacity" values="0;1;1;0" dur="6s" repeatCount="indefinite" begin="3s"/>
+                                    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                
+                                <!-- Trail effect -->
+                                <path id="journeyTrail" 
+                                      d="M 900 350 L 880 320 L 860 300 L 840 280 Q 600 250 160 180 L 100 280 L 100 350" 
+                                      fill="none" 
+                                      stroke="url(#beamGradient)" 
+                                      stroke-width="6" 
+                                      stroke-linecap="round"
+                                      opacity="0"
+                                      mask="url(#beamMask)"/>
                                 
                                 <!-- Location Markers -->
                                 <g id="markers">
                                     <!-- South Carolina -->
-                                    <g class="location-marker" data-location="sc" transform="translate(780, 340)">
-                                        <circle r="12" fill="var(--accent-color)" filter="url(#markerGlow)" opacity="0" style="animation: fadeIn 0.5s ease-out forwards 0.8s;">
+                                    <g class="location-marker" data-location="sc" transform="translate(900, 350)">
+                                        <circle r="12" fill="var(--accent-color)" filter="url(#markerGlow)">
                                             <animate attributeName="r" values="12;15;12" dur="2s" repeatCount="indefinite"/>
                                         </circle>
-                                        <circle r="6" fill="white" opacity="0" style="animation: fadeIn 0.5s ease-out forwards 1s;"/>
-                                        <text x="20" y="5" fill="white" font-size="14" font-weight="500" opacity="0" style="animation: fadeIn 0.5s ease-out forwards 1.2s;">Columbia, SC</text>
+                                        <circle r="6" fill="white"/>
+                                        <text x="20" y="5" fill="white" font-size="14" font-weight="600">Columbia, SC</text>
                                     </g>
                                     
                                     <!-- North Carolina -->
-                                    <g class="location-marker" data-location="nc" transform="translate(760, 280)">
-                                        <circle r="10" fill="var(--accent-color)" filter="url(#markerGlow)" opacity="0" style="animation: fadeIn 0.5s ease-out forwards 1.3s;"/>
-                                        <circle r="5" fill="white" opacity="0" style="animation: fadeIn 0.5s ease-out forwards 1.5s;"/>
-                                        <text x="20" y="5" fill="white" font-size="14" font-weight="500" opacity="0" style="animation: fadeIn 0.5s ease-out forwards 1.7s;">Charlotte, NC</text>
+                                    <g class="location-marker" data-location="nc" transform="translate(840, 280)">
+                                        <circle r="10" fill="var(--accent-color)" filter="url(#markerGlow)"/>
+                                        <circle r="5" fill="white"/>
+                                        <text x="20" y="5" fill="white" font-size="14" font-weight="600">Charlotte, NC</text>
                                     </g>
                                     
                                     <!-- Oregon -->
-                                    <g class="location-marker" data-location="or" transform="translate(180, 200)">
-                                        <circle r="10" fill="var(--accent-color)" filter="url(#markerGlow)" opacity="0" style="animation: fadeIn 0.5s ease-out forwards 1.8s;"/>
-                                        <circle r="5" fill="white" opacity="0" style="animation: fadeIn 0.5s ease-out forwards 2s;"/>
-                                        <text x="20" y="5" fill="white" font-size="14" font-weight="500" opacity="0" style="animation: fadeIn 0.5s ease-out forwards 2.2s;">Portland, OR</text>
+                                    <g class="location-marker" data-location="or" transform="translate(160, 180)">
+                                        <circle r="10" fill="var(--accent-color)" filter="url(#markerGlow)"/>
+                                        <circle r="5" fill="white"/>
+                                        <text x="20" y="5" fill="white" font-size="14" font-weight="600">Portland, OR</text>
                                     </g>
                                     
-                                    <!-- California -->
-                                    <g class="location-marker" data-location="ca" transform="translate(140, 340)">
-                                        <circle r="14" fill="var(--accent-color)" filter="url(#markerGlow)" opacity="0" style="animation: fadeIn 0.5s ease-out forwards 2.3s;">
+                                    <!-- California - LA -->
+                                    <g class="location-marker" data-location="ca" transform="translate(100, 350)">
+                                        <circle r="14" fill="var(--accent-color)" filter="url(#markerGlow)">
                                             <animate attributeName="r" values="14;17;14" dur="2s" repeatCount="indefinite"/>
                                         </circle>
-                                        <circle r="7" fill="white" opacity="0" style="animation: fadeIn 0.5s ease-out forwards 2.5s;"/>
-                                        <text x="20" y="5" fill="white" font-size="14" font-weight="500" opacity="0" style="animation: fadeIn 0.5s ease-out forwards 2.7s;">Los Angeles, CA</text>
+                                        <circle r="7" fill="white"/>
+                                        <text x="-80" y="5" fill="white" font-size="14" font-weight="600">Los Angeles, CA</text>
                                     </g>
                                     
                                     <!-- San Francisco Remote -->
-                                    <g class="location-marker" data-location="sf" transform="translate(140, 260)">
-                                        <circle r="8" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-dasharray="3,3" filter="url(#markerGlow)" opacity="0" style="animation: fadeIn 0.5s ease-out forwards 2.8s;"/>
-                                        <text x="20" y="5" fill="white" font-size="12" font-weight="500" opacity="0" style="animation: fadeIn 0.5s ease-out forwards 3s;">SF (Remote)*</text>
+                                    <g class="location-marker" data-location="sf" transform="translate(100, 280)">
+                                        <circle r="8" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-dasharray="3,3" filter="url(#markerGlow)"/>
+                                        <text x="-70" y="5" fill="white" font-size="12" font-weight="600">SF (Remote)*</text>
                                     </g>
                                 </g>
                             </svg>
