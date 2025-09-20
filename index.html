@@ -5521,17 +5521,17 @@
                 <div class="skills-expertise" style="margin-top: var(--space-lg);">
                     <h3 class="mt-md mb-sm">Skills & Expertise</h3>
                     <div class="ticker" style="position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.2);border-radius:8px;">
-                        <div class="ticker-track" style="display:flex;gap:32px;white-space:nowrap;animation: tickerMove 35s linear infinite;padding:10px 0;">
-                            <div class="tick"><span style="color:#7CFC00;">STRAT ▲</span> Strategic Planning  +2.1%</div>
-                            <div class="tick"><span style="color:#7CFC00;">CREATIVE ▲</span> Storytelling  +1.4%</div>
-                            <div class="tick"><span style="color:#7CFC00;">DIGITAL ▲</span> AI Marketing  +3.2%</div>
-                            <div class="tick"><span style="color:#FF6B6B;">MEDIA ▼</span> Media Planning  -0.4%</div>
-                            <div class="tick"><span style="color:#7CFC00;">INSIGHT ▲</span> Cultural Insight  +1.1%</div>
-                            <div class="tick"><span style="color:#7CFC00;">INNOV ▲</span> Emerging Tech  +2.7%</div>
-                            <div class="tick"><span style="color:#7CFC00;">CONTENT ▲</span> Content Strategy  +0.9%</div>
+                        <div class="ticker-track" style="display:flex;gap:32px;white-space:nowrap;animation: tickerMove 27s linear infinite;padding:10px 0;">
+                            <div class="tick"><span style="color:#7CFC00;">STRAT PLAN ▲</span> Strategic Planning  +2.1%</div>
+                            <div class="tick"><span style="color:#7CFC00;">STORYTELL ▲</span> Storytelling  +1.4%</div>
+                            <div class="tick"><span style="color:#7CFC00;">AI MKTG ▲</span> AI Marketing  +3.2%</div>
+                            <div class="tick"><span style="color:#FF6B6B;">MEDIA PLAN ▼</span> Media Planning  -0.4%</div>
+                            <div class="tick"><span style="color:#7CFC00;">CULT INSIGHT ▲</span> Cultural Insight  +1.1%</div>
+                            <div class="tick"><span style="color:#7CFC00;">EMERG TECH ▲</span> Emerging Tech  +2.7%</div>
+                            <div class="tick"><span style="color:#7CFC00;">CONTENT STRAT ▲</span> Content Strategy  +0.9%</div>
                             <div class="tick"><span style="color:#7CFC00;">PHOTO ▲</span> Photography  +1.0%</div>
-                            <div class="tick"><span style="color:#7CFC00;">ANALYTICS ▲</span> Measurement  +1.6%</div>
-                            <div class="tick"><span style="color:#7CFC00;">BRAND ▲</span> Brand Dev  +1.2%</div>
+                            <div class="tick"><span style="color:#7CFC00;">MEASURE ▲</span> Measurement  +1.6%</div>
+                            <div class="tick"><span style="color:#7CFC00;">BRAND DEV ▲</span> Brand Development  +1.2%</div>
                             </div>
                             </div>
                             </div>
@@ -5549,39 +5549,56 @@
                                 </radialGradient>
                             </defs>
                             <rect x="0" y="0" width="960" height="600" fill="url(#bgGlow)"/>
-                            <!-- Simplified state silhouettes (abstract) -->
-                            <g fill="#1b1b1b" stroke="#2a2a2a" stroke-width="1">
-                                <rect x="60" y="120" width="220" height="140" rx="6"/>
-                                <rect x="300" y="110" width="200" height="120" rx="6"/>
-                                <rect x="520" y="140" width="260" height="130" rx="6"/>
-                                <rect x="780" y="170" width="120" height="160" rx="6"/>
-                                <rect x="520" y="310" width="260" height="120" rx="6"/>
-                                <rect x="300" y="260" width="200" height="130" rx="6"/>
-                                <rect x="130" y="280" width="150" height="150" rx="6"/>
+                            <!-- Simplified US map silhouette made of state-like blocks (visible) -->
+                            <g id="usBlocks" fill="#171717" stroke="#2a2a2a" stroke-width="1.2" opacity="0.9">
+                                <!-- West -->
+                                <rect x="60" y="120" width="110" height="80" rx="6"/>
+                                <rect x="175" y="120" width="110" height="80" rx="6"/>
+                                <rect x="120" y="205" width="110" height="85" rx="6"/>
+                                <rect x="235" y="205" width="110" height="85" rx="6"/>
+                                <!-- Midwest -->
+                                <rect x="350" y="110" width="110" height="80" rx="6"/>
+                                <rect x="465" y="110" width="110" height="80" rx="6"/>
+                                <rect x="350" y="195" width="110" height="85" rx="6"/>
+                                <rect x="465" y="195" width="110" height="85" rx="6"/>
+                                <!-- South -->
+                                <rect x="580" y="210" width="110" height="85" rx="6"/>
+                                <rect x="695" y="210" width="110" height="85" rx="6"/>
+                                <rect x="580" y="300" width="110" height="85" rx="6"/>
+                                <rect x="695" y="300" width="110" height="85" rx="6"/>
+                                <!-- Northeast -->
+                                <rect x="820" y="160" width="70" height="60" rx="6"/>
+                                <rect x="820" y="225" width="70" height="60" rx="6"/>
                             </g>
                             <!-- Arrow path (approximate coords) -->
-                            <path id="journeyPath" d="M785 400 L760 360 L140 200 L180 360" fill="none" stroke="var(--accent-color)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1200" stroke-dashoffset="1200">
+                            <path id="journeyPath" d="M820 350 L800 300 L160 230 L190 360" fill="none" stroke="var(--accent-color)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1200" stroke-dashoffset="1200">
                             </path>
                             <!-- Markers -->
-                            <g class="marker" data-title="Columbia, SC" data-body="Home base. Journalism, photography roots." transform="translate(785,400)">
+                            <g class="marker" data-title="Columbia, SC" data-body="Home base. Journalism, photography roots. (–2021)" transform="translate(820,350)">
                                 <circle r="8" fill="var(--accent-color)"/>
                             </g>
-                            <g class="marker" data-title="Charlotte, NC" data-body="Remote at GS&P; fashion photography" transform="translate(760,360)">
+                            <g class="marker" data-title="Charlotte, NC" data-body="Remote at GS&P; fashion photography (2021–2023)" transform="translate(800,300)">
                                 <circle r="7" fill="var(--accent-color)"/>
                             </g>
-                            <g class="marker" data-title="Portland, OR" data-body="Wieden+Kennedy — comms + media; photography" transform="translate(140,200)">
+                            <g class="marker" data-title="Portland, OR" data-body="Wieden+Kennedy — comms + media; photography (2023–2024)" transform="translate(160,230)">
                                 <circle r="7" fill="var(--accent-color)"/>
                             </g>
-                            <g class="marker" data-title="Los Angeles, CA" data-body="TBWA\Chiat\Day — connections strategy; current" transform="translate(180,360)">
+                            <g class="marker" data-title="Los Angeles, CA" data-body="TBWA\Chiat\Day — connections strategy (2024–2025)" transform="translate(190,360)">
                                 <circle r="9" fill="var(--accent-color)"/>
+                            </g>
+                            <!-- San Francisco (remote) -->
+                            <g class="marker" data-title="San Francisco, CA*" data-body="Goodby, Silverstein & Partners — remote (2020–2023)" transform="translate(200,300)">
+                                <circle r="6" fill="transparent" stroke="var(--accent-color)" stroke-width="2"/>
+                                <text x="10" y="-10" fill="var(--darker-text)" font-size="10">*</text>
                             </g>
                         </svg>
                         <div class="map-legend" style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;color:var(--darker-text);">
                             <span>Timeframes:</span>
-                            <span>SC — Early years</span>
-                            <span>NC — 2020–2021</span>
+                            <span>SC — Early years–2021</span>
+                            <span>NC — 2021–2023</span>
                             <span>OR — 2023–2024</span>
-                            <span>CA — 2024–Present</span>
+                            <span>LA — 2024–2025</span>
+                            <span>* San Francisco — Remote 2020–2023</span>
                         </div>
                     </div>
                 </div>
