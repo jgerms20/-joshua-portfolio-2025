@@ -5542,41 +5542,9 @@
                     <div class="map-container" style="position: relative; background: #1a1a1a; border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,0.1);">
                         <!-- Canvas for interactive map -->
                         <div id="interactiveMap" style="width: 100%; height: 400px; position: relative; background: #0f0f0f; border-radius: 12px; overflow: hidden;">
-                            <!-- US Map Background -->
-                            <svg viewBox="0 0 959 593" style="position: absolute; inset: 0; width: 100%; height: 100%;">
-                                <g opacity="0.4">
-                                    <!-- Simplified US States -->
-                                    <path d="M 50 200 L 100 150 L 150 150 L 200 200 L 200 300 L 150 350 L 100 350 L 50 300 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- CA -->
-                                    <path d="M 100 150 L 150 100 L 200 100 L 250 150 L 250 200 L 200 200 L 150 150 L 100 150 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- OR -->
-                                    <path d="M 150 100 L 200 50 L 250 50 L 300 100 L 300 150 L 250 150 L 200 100 L 150 100 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- WA -->
-                                    <path d="M 200 200 L 250 150 L 300 150 L 350 200 L 350 300 L 300 350 L 250 350 L 200 300 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- NV -->
-                                    <path d="M 250 150 L 300 100 L 350 100 L 400 150 L 400 200 L 350 200 L 300 150 L 250 150 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- ID -->
-                                    <path d="M 350 200 L 400 150 L 450 150 L 500 200 L 500 300 L 450 350 L 400 350 L 350 300 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- UT -->
-                                    <path d="M 200 300 L 250 350 L 300 350 L 350 300 L 350 400 L 300 450 L 250 450 L 200 400 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- AZ -->
-                                    <path d="M 350 300 L 400 350 L 450 350 L 500 300 L 500 400 L 450 450 L 400 450 L 350 400 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- NM -->
-                                    <path d="M 500 200 L 550 150 L 600 150 L 650 200 L 650 300 L 600 350 L 550 350 L 500 300 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- CO -->
-                                    <path d="M 400 150 L 450 100 L 500 100 L 550 150 L 550 200 L 500 200 L 450 150 L 400 150 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- WY -->
-                                    <path d="M 450 100 L 500 50 L 550 50 L 600 100 L 600 150 L 550 150 L 500 100 L 450 100 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- MT -->
-                                    <path d="M 550 50 L 600 0 L 650 0 L 700 50 L 700 100 L 650 100 L 600 50 L 550 50 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- ND -->
-                                    <path d="M 550 100 L 600 150 L 650 150 L 700 100 L 700 200 L 650 200 L 600 150 L 550 100 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- SD -->
-                                    <path d="M 650 200 L 700 150 L 750 150 L 800 200 L 800 300 L 750 350 L 700 350 L 650 300 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- NE -->
-                                    <path d="M 650 300 L 700 350 L 750 350 L 800 300 L 800 400 L 750 450 L 700 450 L 650 400 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- KS -->
-                                    <path d="M 500 300 L 550 350 L 600 350 L 650 300 L 650 400 L 600 450 L 550 450 L 500 400 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- OK -->
-                                    <path d="M 350 400 L 400 450 L 550 450 L 600 400 L 600 500 L 550 550 L 400 550 L 350 500 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- TX -->
-                                    <path d="M 700 50 L 750 0 L 800 0 L 850 50 L 850 100 L 800 150 L 750 150 L 700 100 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- MN -->
-                                    <path d="M 700 150 L 750 100 L 800 100 L 850 150 L 850 200 L 800 250 L 750 250 L 700 200 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- IA -->
-                                    <path d="M 700 250 L 750 200 L 800 200 L 850 250 L 850 300 L 800 350 L 750 350 L 700 300 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- MO -->
-                                    <path d="M 650 400 L 700 450 L 750 450 L 800 400 L 800 500 L 750 500 L 700 500 L 650 450 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- AR -->
-                                    <path d="M 600 450 L 650 500 L 700 500 L 750 450 L 750 550 L 700 550 L 650 550 L 600 500 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- LA -->
-                                    <path d="M 750 500 L 800 500 L 850 550 L 850 593 L 800 593 L 750 550 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- FL -->
-                                    <path d="M 750 450 L 800 400 L 850 400 L 900 450 L 900 500 L 850 500 L 800 500 L 750 450 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- AL -->
-                                    <path d="M 800 400 L 850 350 L 900 350 L 950 400 L 950 450 L 900 450 L 850 400 L 800 400 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- GA -->
-                                    <path d="M 800 350 L 850 300 L 900 300 L 950 350 L 950 400 L 900 400 L 850 350 L 800 350 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- SC -->
-                                    <path d="M 800 300 L 850 250 L 900 250 L 950 300 L 950 350 L 900 350 L 850 300 L 800 300 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- NC -->
-                                    <path d="M 800 250 L 850 200 L 900 200 L 950 250 L 950 300 L 900 300 L 850 250 L 800 250 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- VA -->
-                                    <path d="M 850 50 L 900 0 L 950 0 L 959 50 L 959 100 L 900 150 L 850 150 L 850 50 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/> <!-- NY/New England -->
-                                </g>
-                            </svg>
+                            <!-- US Map Background Image -->
+                            <!-- Add your US map image here by replacing 'Images/us-map.png' with your actual image path -->
+                            <img src="Images/us-map.png" alt="US Map" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0.3;" onerror="this.style.display='none'">
                             
                             <!-- SVG Overlay for Journey -->
                             <svg viewBox="0 0 959 593" style="width: 100%; height: 100%; position: absolute; inset: 0;">
@@ -5590,16 +5558,16 @@
                                         </feMerge>
                                     </filter>
                                     
-                                    <!-- Animated gradient for beam effect -->
-                                    <linearGradient id="beamGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <!-- Animated gradient for beam effect - REVERSED -->
+                                    <linearGradient id="beamGradient" x1="100%" y1="0%" x2="0%" y2="0%">
                                         <stop offset="0%" style="stop-color:var(--accent-color);stop-opacity:0">
-                                            <animate attributeName="offset" values="-0.2;1.2" dur="4s" repeatCount="indefinite"/>
+                                            <animate attributeName="offset" values="-0.2;1.2" dur="5s" repeatCount="indefinite"/>
                                         </stop>
                                         <stop offset="10%" style="stop-color:var(--accent-color);stop-opacity:1">
-                                            <animate attributeName="offset" values="-0.1;1.3" dur="4s" repeatCount="indefinite"/>
+                                            <animate attributeName="offset" values="-0.1;1.3" dur="5s" repeatCount="indefinite"/>
                                         </stop>
                                         <stop offset="20%" style="stop-color:var(--accent-color);stop-opacity:0">
-                                            <animate attributeName="offset" values="0;1.4" dur="4s" repeatCount="indefinite"/>
+                                            <animate attributeName="offset" values="0;1.4" dur="5s" repeatCount="indefinite"/>
                                         </stop>
                                     </linearGradient>
                                 </defs>
@@ -5625,14 +5593,14 @@
                                         <animate attributeName="r" values="12;16;12" dur="2s" repeatCount="indefinite"/>
                                     </circle>
                                     <circle cx="875" cy="375" r="6" fill="white"/>
-                                    <text x="895" y="380" fill="white" font-size="14" font-weight="600">Columbia, SC</text>
+                                    <text x="820" y="395" fill="white" font-size="14" font-weight="600">Columbia, SC</text>
                                 </g>
                                 
                                 <!-- North Carolina (Charlotte) -->
                                 <g class="marker-group" style="cursor: pointer;">
                                     <circle cx="850" cy="325" r="10" fill="var(--accent-color)" filter="url(#glow)"/>
                                     <circle cx="850" cy="325" r="5" fill="white"/>
-                                    <text x="870" y="330" fill="white" font-size="14" font-weight="600">Charlotte, NC</text>
+                                    <text x="785" y="315" fill="white" font-size="14" font-weight="600">Charlotte, NC</text>
                                 </g>
                                 
                                 <!-- Oregon (Portland) -->
