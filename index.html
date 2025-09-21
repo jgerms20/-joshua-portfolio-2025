@@ -721,7 +721,9 @@
         .nav-list {
             display: flex;
             list-style: none;
-            gap: 35px;
+            gap: 28px;
+            flex-wrap: nowrap;
+            white-space: nowrap;
         }
 
         .nav-item {
@@ -4581,11 +4583,14 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            visibility: hidden;
+            transition: opacity 400ms ease-in-out, visibility 0ms linear 400ms;
         }
 
         .about-photo-slide.active {
             opacity: 1;
+            visibility: visible;
+            transition: opacity 400ms ease-in-out, visibility 0ms;
         }
 
         .about-photo-slide img {
@@ -6909,7 +6914,7 @@
                     <div class="contact-form-container">
                         <div class="form-card">
                             <div class="form-header"><h3>Send Me a Message</h3><p>Fill out the form below and I'll get back to you ASAP.</p></div>
-                            <form id="contact-form" class="contact-form">
+                            <form id="contact-form" class="contact-form" action="https://formspree.io/f/mgegjqqe" method="POST">
                                 <div class="form-step active" data-step="1">
                                     <div class="form-group"><label for="name">What's your name?</label><input type="text" id="name" name="name" required class="form-input" placeholder="Your name"></div>
                                     <div class="form-group"><label for="email">Where can I reach you?</label><input type="email" id="email" name="email" required class="form-input" placeholder="Your email address"></div>
@@ -7481,9 +7486,13 @@
                 let currentSlide = 0;
                 
                 function showNextSlide() {
-                    slides[currentSlide].classList.remove('active');
+                    const prev = slides[currentSlide];
+                    prev.classList.remove('active');
                     currentSlide = (currentSlide + 1) % slides.length;
-                    slides[currentSlide].classList.add('active');
+                    const next = slides[currentSlide];
+                    // Force a reflow so visibility/opacity transitions don't overlap
+                    void next.offsetWidth;
+                    next.classList.add('active');
                 }
                 
                 setInterval(showNextSlide, 4000);
