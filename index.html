@@ -5572,14 +5572,14 @@
                                 </defs>
                                 
                                 <!-- Base Journey Path -->
-                                <path d="M 875 375 L 850 325 L 175 125 L 125 275" 
+                                <path d="M 870 360 L 860 325 L 180 120 L 160 370" 
                                       fill="none" 
                                       stroke="#333" 
                                       stroke-width="2"
                                       opacity="0.5"/>
                                 
                                 <!-- Animated Beam Path -->
-                                <path d="M 875 375 L 850 325 L 175 125 L 125 275" 
+                                <path d="M 870 360 L 860 325 L 180 120 L 160 370" 
                                       fill="none" 
                                       stroke="url(#beamGradient)" 
                                       stroke-width="4"
@@ -5588,40 +5588,40 @@
                                 <!-- Location Markers -->
                                 <!-- South Carolina (Columbia) -->
                                 <g class="marker-group" style="cursor: pointer;">
-                                    <circle cx="875" cy="375" r="12" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.95">
+                                    <circle cx="870" cy="360" r="12" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.95">
                                         <animate attributeName="r" values="12;16;12" dur="2s" repeatCount="indefinite"/>
                                     </circle>
-                                    <circle cx="875" cy="375" r="6" fill="white"/>
-                                    <text x="820" y="395" fill="white" font-size="14" font-weight="600">Columbia, SC</text>
+                                    <circle cx="870" cy="360" r="6" fill="white"/>
+                                    <text x="815" y="380" fill="white" font-size="14" font-weight="600">Columbia, SC</text>
                                 </g>
                                 
                                 <!-- North Carolina (Charlotte) -->
                                 <g class="marker-group" style="cursor: pointer;">
-                                    <circle cx="850" cy="325" r="10" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.95"/>
-                                    <circle cx="850" cy="325" r="5" fill="white"/>
-                                    <text x="785" y="315" fill="white" font-size="14" font-weight="600">Charlotte, NC</text>
+                                    <circle cx="860" cy="325" r="10" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.95"/>
+                                    <circle cx="860" cy="325" r="5" fill="white"/>
+                                    <text x="795" y="315" fill="white" font-size="14" font-weight="600">Charlotte, NC</text>
                                 </g>
                                 
                                 <!-- Oregon (Portland) -->
                                 <g class="marker-group" style="cursor: pointer;">
-                                    <circle cx="175" cy="125" r="10" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.95"/>
-                                    <circle cx="175" cy="125" r="5" fill="white"/>
-                                    <text x="195" y="130" fill="white" font-size="14" font-weight="600">Portland, OR</text>
+                                    <circle cx="180" cy="120" r="10" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.95"/>
+                                    <circle cx="180" cy="120" r="5" fill="white"/>
+                                    <text x="200" y="125" fill="white" font-size="14" font-weight="600">Portland, OR</text>
                                 </g>
                                 
                                 <!-- California (Los Angeles) -->
                                 <g class="marker-group" style="cursor: pointer;">
-                                    <circle cx="125" cy="275" r="14" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.95">
+                                    <circle cx="160" cy="370" r="14" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.95">
                                         <animate attributeName="r" values="14;18;14" dur="2s" repeatCount="indefinite"/>
                                     </circle>
-                                    <circle cx="125" cy="275" r="7" fill="white"/>
-                                    <text x="20" y="280" fill="white" font-size="14" font-weight="600">Los Angeles, CA</text>
+                                    <circle cx="160" cy="370" r="7" fill="white"/>
+                                    <text x="40" y="375" fill="white" font-size="14" font-weight="600">Los Angeles, CA</text>
                                 </g>
                                 
                                 <!-- San Francisco (Remote) -->
                                 <g class="marker-group" style="cursor: pointer;">
-                                    <circle cx="100" cy="225" r="8" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-dasharray="3,3" filter="url(#glow)"/>
-                                    <text x="15" y="230" fill="white" font-size="12" font-weight="600">SF (Remote)*</text>
+                                    <circle cx="150" cy="240" r="8" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-dasharray="3,3" filter="url(#glow)"/>
+                                    <text x="95" y="245" fill="white" font-size="12" font-weight="600">SF (Remote)*</text>
                                 </g>
                             </svg>
                             
@@ -5629,8 +5629,8 @@
                             <div id="mapTooltip" style="position: absolute; background: rgba(0,0,0,0.95); border: 1px solid var(--accent-color); border-radius: 8px; padding: 12px 16px; pointer-events: none; opacity: 0; transition: opacity 0.3s; z-index: 10; max-width: 250px; display: none;">
                                 <div style="font-weight: 600; color: var(--accent-color); margin-bottom: 4px;"></div>
                                 <div style="color: white; font-size: 14px; line-height: 1.4;"></div>
-                            </div>
                         </div>
+                    </div>
                         
                         <!-- Timeline Legend -->
                         <div class="map-timeline" style="display: flex; justify-content: space-between; margin-top: 20px; padding: 16px; background: rgba(255,255,255,0.05); border-radius: 8px;">
@@ -5652,9 +5652,7 @@
                             </div>
                         </div>
                         
-                        <div style="text-align: center; margin-top: 12px; color: var(--darker-text); font-size: 13px;">
-                            * San Francisco — Remote work during pandemic (2020 – 2023)
-                        </div>
+                        
                     </div>
                     
                     <style>
