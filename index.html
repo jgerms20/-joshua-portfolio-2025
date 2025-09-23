@@ -5576,25 +5576,14 @@
                                     </linearGradient>
                                 </defs>
                                 
-                                <!-- Base Journey Path -->
-                                <path d="M 775 371 L 770 344 L 180 120 L 160 360" 
-                                      fill="none" 
-                                      stroke="#333" 
-                                      stroke-width="2"
-                                      opacity="0.5"/>
-                                
-                                <!-- Animated Beam Path -->
-                                <path d="M 775 371 L 770 344 L 180 120 L 160 360" 
-                                      fill="none" 
-                                      stroke="url(#beamGradient)" 
-                                      stroke-width="4"
-                                      stroke-linecap="round"/>
+                                <!-- Paths removed per request (dots only) -->
                                 
                                 <!-- Location Markers -->
                                 <!-- South Carolina (Columbia) -->
                                 <g class="marker-group" style="cursor: pointer;">
-                                    <circle cx="775" cy="371" r="12" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.95">
-                                        <animate attributeName="r" values="12;16;12" dur="2s" repeatCount="indefinite"/>
+                                    <circle cx="775" cy="371" r="12" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.9">
+                                        <animate attributeName="r" values="12;15;12" dur="2.4s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.7;1;0.7" dur="2.4s" repeatCount="indefinite"/>
                                     </circle>
                                     <circle cx="775" cy="371" r="6" fill="white"/>
                                     <text x="725" y="391" fill="white" font-size="14" font-weight="600">Columbia, SC</text>
@@ -5602,22 +5591,29 @@
                                 
                                 <!-- North Carolina (Charlotte) -->
                                 <g class="marker-group" style="cursor: pointer;">
-                                    <circle cx="770" cy="344" r="10" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.95"/>
+                                    <circle cx="770" cy="344" r="10" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.9">
+                                        <animate attributeName="r" values="10;12;10" dur="2.2s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.7;1;0.7" dur="2.2s" repeatCount="indefinite"/>
+                                    </circle>
                                     <circle cx="770" cy="344" r="5" fill="white"/>
                                     <text x="720" y="334" fill="white" font-size="14" font-weight="600">Charlotte, NC</text>
                                 </g>
                                 
                                 <!-- Oregon (Portland) -->
                                 <g class="marker-group" style="cursor: pointer;">
-                                    <circle cx="180" cy="120" r="10" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.95"/>
+                                    <circle cx="180" cy="120" r="10" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.9">
+                                        <animate attributeName="r" values="10;12;10" dur="2.6s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.7;1;0.7" dur="2.6s" repeatCount="indefinite"/>
+                                    </circle>
                                     <circle cx="180" cy="120" r="5" fill="white"/>
                                     <text x="200" y="125" fill="white" font-size="14" font-weight="600">Portland, OR</text>
                                 </g>
                                 
                                 <!-- California (Los Angeles) -->
                                 <g class="marker-group" style="cursor: pointer;">
-                                    <circle cx="160" cy="360" r="14" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.95">
-                                        <animate attributeName="r" values="14;18;14" dur="2s" repeatCount="indefinite"/>
+                                    <circle cx="160" cy="360" r="14" fill="var(--accent-color)" filter="url(#glow)" style="opacity:0.9">
+                                        <animate attributeName="r" values="14;17;14" dur="2.8s" repeatCount="indefinite"/>
+                                        <animate attributeName="opacity" values="0.7;1;0.7" dur="2.8s" repeatCount="indefinite"/>
                                     </circle>
                                     <circle cx="160" cy="360" r="7" fill="white"/>
                                     <text x="40" y="365" fill="white" font-size="14" font-weight="600">Los Angeles, CA</text>
@@ -5625,7 +5621,9 @@
                                 
                                 <!-- San Francisco (Remote) -->
                                 <g class="marker-group" style="cursor: pointer;">
-                                    <circle cx="120" cy="247" r="8" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-dasharray="3,3" filter="url(#glow)"/>
+                                    <circle cx="120" cy="247" r="8" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-dasharray="3,3" filter="url(#glow)">
+                                        <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="2.4s" repeatCount="indefinite"/>
+                                    </circle>
                                     <text x="70" y="252" fill="white" font-size="12" font-weight="600">SF (Remote)*</text>
                                 </g>
                             </svg>
@@ -6791,9 +6789,8 @@
                     <!-- Daily Gamecock Grid -->
                     <div class="folder-content active" id="dg" role="tabpanel">
                         <div class="grid col-3 stagger-children">
-                            <!-- Placeholder cards; replace with specific article previews -->
                             <a href="https://www.dailygamecock.com/staff/josh-german" class="card hover-lift" target="_blank" rel="noopener noreferrer" aria-label="The Daily Gamecock">
-                                <div class="card-media" style="aspect-ratio: 16/9; background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border-radius: var(--radius-md);"></div>
+                                <div class="card-media" style="aspect-ratio: 16/9; background: url('Images/Logos/daily-gamecock-logo.png') center/contain no-repeat, linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border-radius: var(--radius-md);"></div>
                                 <div class="card-body">
                                     <h3 class="card-title">Author Page</h3>
                                     <p class="card-text">Browse all articles and reporting.</p>
@@ -6820,7 +6817,7 @@
                     <!-- Substack Tab -->
                     <div class="folder-content" id="substack" role="tabpanel">
                         <div class="grid col-3">
-                            <a href="#" class="card hover-lift" target="_blank" rel="noopener noreferrer" aria-label="Substack Essays">
+                            <a href="https://substack.com/@jgerms20" class="card hover-lift" target="_blank" rel="noopener noreferrer" aria-label="Substack Essays">
                                 <div class="card-media" style="aspect-ratio: 16/9; background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border-radius: var(--radius-md);"></div>
                                 <div class="card-body">
                                     <h3 class="card-title">Substack</h3>
