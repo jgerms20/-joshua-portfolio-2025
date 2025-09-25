@@ -4716,7 +4716,10 @@
         .photo-filter-btn:hover { color: white; border-color: var(--accent-color); box-shadow: 0 8px 20px rgba(92,225,230,0.22); transform: translateY(-2px); }
         .photo-filter-btn.active { background: var(--accent-color); color: #0b0b0f; border-color: transparent; box-shadow: 0 10px 24px rgba(255,107,107,0.35); }
 
-        .photography-gallery { column-count: 3; column-gap: 16px; }
+        .photography-gallery { column-count: 3; column-gap: 16px; max-height: 1500px; overflow: hidden; transition: max-height 400ms ease; }
+        .photography-gallery.expanded { max-height: 9999px; }
+        .gallery-more { text-align: center; padding: 8px 0 24px; }
+        .gallery-more button { padding: 0.6rem 1.2rem; border-radius: var(--radius-round); border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); color: var(--darker-text); cursor:pointer; }
         .photo-tile { display: inline-block; width: 100%; margin: 0 0 16px; break-inside: avoid; border-radius: var(--radius-md); overflow: hidden; position: relative; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.03); opacity: 1; transform: translateY(0); transition: opacity 200ms ease, transform 200ms ease; }
         .photo-tile img { width: 100%; height: auto; display: block; filter: saturate(1.05) contrast(1.02); }
         .photo-tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent, rgba(0,0,0,0.22)); opacity: 0; transition: opacity 200ms ease; }
@@ -5806,7 +5809,7 @@
                 </div>
                 <div id="photoBucketDescription" class="photo-bucket-description" style="max-width: 1100px; margin: 0 auto 10px; padding: 0 24px; color: var(--darker-text); text-align:center;"></div>
 
-                <div class="photography-gallery" id="photographyGallery" style="column-gap: 16px; padding: 0 var(--space-lg) var(--space-lg);">
+                <div class="photography-gallery" id="photographyGallery" style="column-gap: 16px; padding: 0 var(--space-lg) 0;">
                     <!-- Portraits (includes Photos of Self) -->
                     <a href="#" class="photo-tile portraits" data-group="portraits"><img src="Images/Portraits/JMG_1520.jpg" alt="Portrait"></a>
                     <a href="#" class="photo-tile portraits" data-group="portraits"><img src="Images/Portraits/JMG_1430.jpg" alt="Portrait"></a>
@@ -5863,6 +5866,7 @@
                     <a href="#" class="photo-tile travel" data-group="travel"><img src="Images/Travel Photos/JMG_5784.jpg" alt="Travel"></a>
                     <a href="#" class="photo-tile travel" data-group="travel"><img src="Images/Travel Photos/JMG_6742.jpg" alt="Travel"></a>
                 </div>
+                <div class="gallery-more"><button id="galleryToggleBtn" aria-expanded="false">See more</button></div>
             </div>
         </section>
 
@@ -7493,6 +7497,27 @@
                 
                 setInterval(showNextSlide, 4000);
             }
+
+            // Photography Gallery: limit to ~3 rows by default, expandable
+            (function(){
+                const gallery = document.getElementById('photographyGallery');
+                const toggleBtn = document.getElementById('galleryToggleBtn');
+                if (!gallery || !toggleBtn) return;
+                // Randomize order on load to keep variety
+                const tiles = Array.from(gallery.querySelectorAll('.photo-tile'));
+                tiles.sort(() => Math.random() - 0.5).forEach(t => gallery.appendChild(t));
+                function setExpanded(expanded){
+                    gallery.classList.toggle('expanded', expanded);
+                    toggleBtn.textContent = expanded ? 'See less' : 'See more';
+                    toggleBtn.setAttribute('aria-expanded', String(expanded));
+                }
+                toggleBtn.addEventListener('click', () => {
+                    const expanded = !gallery.classList.contains('expanded');
+                    setExpanded(expanded);
+                });
+                // start collapsed
+                setExpanded(false);
+            })();
 
             // Journey Map interactions
             const map = document.querySelector('.us-map');
