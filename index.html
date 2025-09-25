@@ -4716,7 +4716,7 @@
         .photo-filter-btn:hover { color: white; border-color: var(--accent-color); box-shadow: 0 8px 20px rgba(92,225,230,0.22); transform: translateY(-2px); }
         .photo-filter-btn.active { background: var(--accent-color); color: #0b0b0f; border-color: transparent; box-shadow: 0 10px 24px rgba(255,107,107,0.35); }
 
-        .photography-gallery { column-count: 3; column-gap: 16px; max-height: 1500px; overflow: hidden; transition: max-height 400ms ease; }
+        .photography-gallery { column-count: 3; column-gap: 16px; max-height: 1500px; overflow: clip; transition: max-height 400ms ease; }
         .photography-gallery.expanded { max-height: 9999px; }
         .gallery-more { text-align: center; padding: 8px 0 24px; }
         .gallery-more button { padding: 0.6rem 1.2rem; border-radius: var(--radius-round); border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); color: var(--darker-text); cursor:pointer; }
@@ -6184,26 +6184,22 @@
                             <h3>Campaign Market Impact</h3>
                             <div class="section-divider"></div>
                         </div>
-                        <div class="impact-stats">
-                            <div class="stat-item">
-                                <div class="stat-number">$65M+</div>
-                                <div class="stat-label">Earned Media Value</div>
+                        <div class="impact-stats" style="display:grid; grid-template-columns: repeat(4, minmax(180px,1fr)); gap:24px; align-items:stretch;">
+                            <div class="stat-item" style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:24px; text-align:center;">
+                                <div class="stat-number" style="font-size:2.2rem; font-weight:800; color:#ff6b6b;">$65M+</div>
+                                <div class="stat-label" style="opacity:.8; letter-spacing:.4px;">Earned Media Value</div>
                             </div>
-                            <div class="stat-item">
-                                <div class="stat-number">4.3B+</div>
-                                <div class="stat-label">Impressions</div>
+                            <div class="stat-item" style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:24px; text-align:center;">
+                                <div class="stat-number" style="font-size:2.2rem; font-weight:800; color:#ff6b6b;">4.3B+</div>
+                                <div class="stat-label" style="opacity:.8; letter-spacing:.4px;">Impressions</div>
                             </div>
-                            <div class="stat-item">
-                                <div class="stat-number">8%</div>
-                                <div class="stat-label">Global Sales Increase</div>
-                            <div class="stat-item">
-                                <div class="stat-number">19.87%</div>
-                                <div class="stat-label">US Store Traffic Increase</div>
+                            <div class="stat-item" style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:24px; text-align:center;">
+                                <div class="stat-number" style="font-size:2.2rem; font-weight:800; color:#ff6b6b;">8%</div>
+                                <div class="stat-label" style="opacity:.8; letter-spacing:.4px;">Global Sales Increase</div>
                             </div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">19.87%</div>
-                                <div class="stat-label">US Store Traffic Increase</div>
+                            <div class="stat-item" style="background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:24px; text-align:center;">
+                                <div class="stat-number" style="font-size:2.2rem; font-weight:800; color:#ff6b6b;">19.87%</div>
+                                <div class="stat-label" style="opacity:.8; letter-spacing:.4px;">US Store Traffic Increase</div>
                             </div>
                         </div>
                         <p class="cs-paragraph">Through "REIIMAGINE" and our partnership with Beyoncé, one of the most influential artists of our time, Levi's is building on decades of classic iconography and celebrating what it means to lead with intent and confidence. The campaign, which reimagines iconic Levi's ads, has generated over $65 million in estimated earned media value and more than 4.3 billion impressions. This powerful collaboration has significantly impacted the brand's performance, contributing to an 8% increase in Levi's global organic sales and a notable 19.87% increase in foot traffic to Levi's stores across the United States. The campaign demonstrates that Levi's isn't just a legacy brand—it's a brand with an incredible heritage that consistently remains relevant and influential in global culture.</p>
