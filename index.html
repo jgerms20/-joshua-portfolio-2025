@@ -6504,7 +6504,13 @@
 
                         <!-- Folder Navigation -->
                         <div class="folder-navigation">
-                            <button class="folder-tab active" data-folder="baldgame">
+                            <button class="folder-tab active" data-folder="emmys">
+                                <span class="folder-icon">📁</span>
+                                <span class="folder-title">Emmys OOH Hijack</span>
+                                <span class="folder-subtitle">Awards Night Takeover</span>
+                                <div class="folder-indicator"></div>
+                            </button>
+                            <button class="folder-tab" data-folder="baldgame">
                                 <span class="folder-icon">📁</span>
                                 <span class="folder-title">Nothing On Your Roof 2.0</span>
                                 <span class="folder-subtitle">MLB Boy Band</span>
@@ -6516,18 +6522,12 @@
                                 <span class="folder-subtitle">Streaming Transformation</span>
                                 <div class="folder-indicator"></div>
                             </button>
-                            <button class="folder-tab" data-folder="emmys">
-                                <span class="folder-icon">📁</span>
-                                <span class="folder-title">Emmys OOH Hijack</span>
-                                <span class="folder-subtitle">Awards Night Takeover</span>
-                                <div class="folder-indicator"></div>
-                            </button>
                                 </div>
 
                         <!-- Folder Content -->
                         <div class="folder-content-container">
                             <!-- Folder: Nothing On Your Roof 2.0 -->
-                            <div class="folder-content active" id="baldgame">
+                            <div class="folder-content" id="baldgame">
                                 <div class="cs-section overview-section">
                                     <div class="cs-section-header">
                                         <h4>Nothing On Your Roof 2.0</h4>
@@ -6597,11 +6597,15 @@
                         </div>
 
                         <!-- Folder: Emmys OOH Hijack -->
-                        <div class="folder-content" id="emmys">
+                        <div class="folder-content active" id="emmys">
                             <div class="cs-section overview-section">
                                 <div class="cs-section-header">
                                     <h4>Emmys OOH Hijack — Awards Night Takeover</h4>
                                     <div class="section-divider"></div>
+                                </div>
+                                <!-- Hero image: Hollywood Creative, also remains in carousel below -->
+                                <div class="cs-hero" style="max-width:1200px;margin:0 auto var(--space-md);">
+                                    <img src="https://d3q27bh1u24u2o.cloudfront.net/wysiwyg/news/2025-10/DIRECTV-3.kWa9h-I6.png" alt="DIRECTV Emmys OOH — Hollywood Creative" style="width:100%;border-radius:12px;display:block;">
                                 </div>
                                 <p class="cs-paragraph">A real‑time Emmys takeover built around DIRECTV’s Universal Search tool. We placed DIRECTV’s search UI alongside award‑season IP — from Andor and Only Murders in the Building to The White Lotus, The Penguin and The Pitt — to make a simple point at a maximal moment: open DIRECTV, type what you want, and watch across partners without the hunt.</p>
                                 <p class="cs-paragraph">I led connections orchestration: mapping high‑impact sites and projection surfaces, sequencing flights directly after the Emmys broadcast, and aligning paid/organic social with our OOH creative. I authored briefs, coordinated rapid approvals, and synced Creative, PR and Media so every touchpoint reinforced the same product truth. We extended the stunt with a Rotten Tomatoes homepage takeover to capture curiosity and drive exploration.</p>
@@ -7474,6 +7478,17 @@
                 const next = container.querySelector('.pc-arrow.right');
                 if (!track) return;
                 const getStep = () => Math.max(320, Math.floor(track.clientWidth * 0.6));
+                // Make the carousel continuous by duplicating items and wrapping scroll
+                const items = Array.from(track.children);
+                items.forEach(el => track.appendChild(el.cloneNode(true)));
+                const halfWidth = () => Math.floor(track.scrollWidth / 2);
+                track.addEventListener('scroll', () => {
+                    if (track.scrollLeft >= halfWidth()) {
+                        track.scrollLeft -= halfWidth();
+                    } else if (track.scrollLeft === 0) {
+                        track.scrollLeft = halfWidth();
+                    }
+                });
                 if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -getStep(), behavior: 'smooth' }));
                 if (next) next.addEventListener('click', () => track.scrollBy({ left: getStep(), behavior: 'smooth' }));
             });
