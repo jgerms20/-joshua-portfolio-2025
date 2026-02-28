@@ -403,7 +403,24 @@
             .case-hero-visual { display: none; }
             .case-hero-text { width: 100%; }
         }
-    </style>
+            .video-placeholder {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: rgba(255,255,255,0.04);
+            border: 1px dashed rgba(255,255,255,0.12);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+</style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const quotes = document.querySelectorAll('.case-quote');
@@ -853,11 +870,17 @@
                 <h2 class="case-section-title">Campaign Spots</h2>
                 <div class="video-grid">
                     <div class="video-card">
-                        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/placeholder1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                        <div class="video-placeholder">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="rgba(255,255,255,0.25)" stroke="none"/></svg>
+                                <span>Video Coming Soon</span>
+                            </div>
                         <div class="video-label">All The Reasons Not to Quit</div>
                     </div>
                     <div class="video-card">
-                        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/placeholder2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                        <div class="video-placeholder">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="rgba(255,255,255,0.25)" stroke="none"/></svg>
+                                <span>Video Coming Soon</span>
+                            </div>
                         <div class="video-label">The Comeback</div>
                     </div>
                 </div>
