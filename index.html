@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Joshua McKenzie German — Creative Strategist, Visual Storyteller, Photographer, and Futurist. Explore my work in branding, photography, podcasting, and AI.">
-    <meta name="keywords" content="Joshua McKenzie German, creative strategist, photographer, podcaster, TBWA Chiat Day, Levi's, Beyoncé, AI">
-    <title>Joshua McKenzie German | Creative Polymath</title>
+    <meta name="description" content="Joshua McKenzie German — AI-Enhanced Creative Strategist, Visual Storyteller, Photographer, and Futurist. Strategy, branding, podcasting, photography, and AI — built for what's next.">
+    <meta name="keywords" content="Joshua McKenzie German, AI-Enhanced Creative Strategist, photographer, podcaster, TBWA Chiat Day, Levi's, Beyoncé, artificial intelligence, connections strategy">
+    <title>Joshua McKenzie German | AI-Enhanced Creative Strategist</title>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Joshua McKenzie German | AI-Enhanced Creative Strategist">
+    <meta property="og:description" content="AI-Enhanced Creative Strategist, Photographer, and Futurist. Strategy, branding, podcasting, photography, and AI — built for what's next.">
+    <meta property="og:url" content="https://jgerms20.github.io/-joshua-portfolio-2026/">
+    <meta property="og:image" content="https://jgerms20.github.io/-joshua-portfolio-2026/Images/Photos of Self/JMG_7456.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Joshua McKenzie German | AI-Enhanced Creative Strategist">
+    <meta name="twitter:description" content="AI-Enhanced Creative Strategist, Photographer, and Futurist. Strategy, branding, podcasting, photography, and AI — built for what's next.">
+    <meta name="twitter:image" content="https://jgerms20.github.io/-joshua-portfolio-2026/Images/Photos of Self/JMG_7456.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
@@ -392,6 +401,38 @@
             color: var(--neon);
             min-width: 200px;
             transition: opacity 0.3s ease;
+        }
+
+        /* Hero static descriptor */
+        .hero-descriptor {
+            font-family: var(--font-sans);
+            font-size: clamp(0.75rem, 1.5vw, 0.88rem);
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--neon);
+            margin-top: var(--space-lg);
+            opacity: 0.9;
+        }
+
+        /* Chrome GPU acceleration for animated elements */
+        .ticker-wrapper,
+        .ticker-track,
+        .stop-dot.pulse::after,
+        .jtl-dot-pulse::after {
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        /* Respect prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
         /* Photo Rotator */
@@ -1415,9 +1456,9 @@
             line-height: 1;
         }
         .brand-initials {
-            font-size: 1.15rem;
+            font-size: 0.78rem;
             font-weight: 800;
-            letter-spacing: 0.22em;
+            letter-spacing: 0.14em;
             color: var(--neon);
             text-transform: uppercase;
             font-family: var(--font-sans);
@@ -2014,8 +2055,8 @@
     <header class="top-header">
         <div class="header-left">
             <a href="#hero" class="brand-mark" aria-label="Joshua McKenzie German – Home">
-                <span class="brand-initials">JMG</span>
-                <span class="brand-tagline">Creative Strategist</span>
+                <span class="brand-initials">Joshua McKenzie German</span>
+                <span class="brand-tagline">AI-Enhanced Creative Strategist</span>
             </a>
         </div>
         <button class="mobile-menu-toggle" aria-label="Toggle menu">
@@ -2068,7 +2109,6 @@
                     <a href="https://ai.studio/apps/drive/1UpeX-jONjncy41Putdc_YGg_9qYHlQcD" target="_blank">Perfect Day Crafter</a>
                     <div class="dropdown-divider"></div>
                     <a href="#ai">View All AI Projects</a>
-                    <a href="#claude-builds" style="color: var(--neon); font-weight: 600;">⚡ Claude Code Builds</a>
                 </div>
             </div>
             
@@ -2099,7 +2139,6 @@
         <a href="#work" class="nav-link">Work</a>
         <a href="#podcasts" class="nav-link">Podcasts</a>
         <a href="#ai" class="nav-link">AI Projects</a>
-        <a href="#claude-builds" class="nav-link">Claude Builds</a>
         <a href="#photography" class="nav-link">Photography</a>
         <a href="#contact" class="nav-link">Contact</a>
     </nav>
@@ -2134,10 +2173,7 @@
                         <div class="photo-rotator-frame"></div>
                     </div>
 
-                    <div class="rotating-text-container reveal reveal-delay-2">
-                        <span class="rotating-text-prefix">I am</span>
-                        <span class="rotating-text" id="rotatingText">Curious</span>
-                    </div>
+                    <p class="hero-descriptor reveal reveal-delay-2">AI-Enhanced Creative Strategist &middot; Photographer &middot; Futurist</p>
 
                     <p class="body-large reveal reveal-delay-2" style="max-width: 550px; margin-top: var(--space-lg);">
                         A step into my world: ideas, stories, and strategies built to shape what's next.
@@ -2284,12 +2320,28 @@
                         <div class="jtl-mid">
                             <div class="jtl-dot jtl-dot-active"></div>
                         </div>
-                        <div class="jtl-empty"></div>
+                        <div class="jtl-empty">
+                        <div class="jtl-state-map" aria-hidden="true">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="state-path" d="M8,14 L80,10 L88,36 L82,58 L68,78 L48,90 L22,84 L8,60 Z"/>
+                                <circle class="state-city-ring" cx="46" cy="48" r="4"/>
+                                <circle class="state-city-dot" cx="46" cy="48" r="2.5"/>
+                            </svg>
+                        </div>
+                        </div>
                     </div>
 
                     <!-- Charlotte, NC — RIGHT -->
                     <div class="jtl-row timeline-stop expandable jtl-right" data-location="charlotte">
-                        <div class="jtl-empty"></div>
+                        <div class="jtl-empty">
+                        <div class="jtl-state-map" aria-hidden="true">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="state-path" d="M5,30 L78,10 L94,26 L90,50 L94,62 L78,68 L58,78 L38,72 L18,76 L8,62 L5,48 Z"/>
+                                <circle class="state-city-ring" cx="16" cy="52" r="4"/>
+                                <circle class="state-city-dot" cx="16" cy="52" r="2.5"/>
+                            </svg>
+                        </div>
+                        </div>
                         <div class="jtl-mid">
                             <div class="jtl-dot"></div>
                         </div>
@@ -2318,12 +2370,28 @@
                         <div class="jtl-mid">
                             <div class="jtl-dot jtl-dot-branch"></div>
                         </div>
-                        <div class="jtl-empty"></div>
+                        <div class="jtl-empty">
+                        <div class="jtl-state-map" aria-hidden="true">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="state-path" d="M34,4 L60,8 L70,20 L74,36 L70,52 L65,70 L58,84 L50,94 L36,90 L24,78 L20,62 L22,46 L28,28 L30,14 Z"/>
+                                <circle class="state-city-ring" cx="40" cy="38" r="4"/>
+                                <circle class="state-city-dot" cx="40" cy="38" r="2.5"/>
+                            </svg>
+                        </div>
+                        </div>
                     </div>
 
                     <!-- Portland, OR — RIGHT -->
                     <div class="jtl-row timeline-stop expandable jtl-right" data-location="portland">
-                        <div class="jtl-empty"></div>
+                        <div class="jtl-empty">
+                        <div class="jtl-state-map" aria-hidden="true">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="state-path" d="M8,10 L68,10 L76,22 L92,22 L92,86 L72,92 L8,92 Z"/>
+                                <circle class="state-city-ring" cx="20" cy="22" r="4"/>
+                                <circle class="state-city-dot" cx="20" cy="22" r="2.5"/>
+                            </svg>
+                        </div>
+                        </div>
                         <div class="jtl-mid">
                             <div class="jtl-dot"></div>
                         </div>
@@ -2352,7 +2420,15 @@
                         <div class="jtl-mid">
                             <div class="jtl-dot jtl-dot-current jtl-dot-pulse"></div>
                         </div>
-                        <div class="jtl-empty"></div>
+                        <div class="jtl-empty">
+                        <div class="jtl-state-map" aria-hidden="true">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="state-path" d="M34,4 L60,8 L70,20 L74,36 L70,52 L65,70 L58,84 L50,94 L36,90 L24,78 L20,62 L22,46 L28,28 L30,14 Z"/>
+                                <circle class="state-city-ring" cx="52" cy="72" r="4"/>
+                                <circle class="state-city-dot" cx="52" cy="72" r="2.5"/>
+                            </svg>
+                        </div>
+                        </div>
                     </div>
 
                 </div>
@@ -2566,6 +2642,52 @@
                         background: var(--neon);
                         border-color: var(--neon);
                         box-shadow: 0 0 14px rgba(212,255,79,0.4);
+                    }
+
+                    /* ---- STATE MAP SILHOUETTES ---- */
+                    .jtl-empty {
+                        display: flex;
+                        align-items: flex-start;
+                        padding-top: 18px;
+                    }
+                    .jtl-row.jtl-left .jtl-empty  { justify-content: flex-start; padding-left: 20px; }
+                    .jtl-row.jtl-right .jtl-empty { justify-content: flex-end;  padding-right: 20px; }
+
+                    .jtl-state-map {
+                        width: 90px;
+                        height: 90px;
+                        flex-shrink: 0;
+                        pointer-events: none;
+                        opacity: 0.9;
+                        transition: opacity 0.3s ease;
+                    }
+                    .jtl-row:hover .jtl-state-map { opacity: 1; }
+
+                    .state-path {
+                        stroke: rgba(255,255,255,0.18);
+                        stroke-width: 2;
+                        stroke-linejoin: round;
+                        fill: rgba(255,255,255,0.03);
+                    }
+                    .jtl-row:hover .state-path { stroke: rgba(255,255,255,0.3); }
+
+                    .state-city-dot {
+                        fill: #D4FF4F;
+                        filter: drop-shadow(0 0 3px rgba(212,255,79,0.9));
+                    }
+
+                    .state-city-ring {
+                        stroke: #D4FF4F;
+                        stroke-width: 1.5;
+                        fill: none;
+                        transform-box: fill-box;
+                        transform-origin: center;
+                        animation: state-city-pulse 2.5s ease-out infinite;
+                    }
+
+                    @keyframes state-city-pulse {
+                        0%   { transform: scale(1); opacity: 0.75; }
+                        100% { transform: scale(3.5); opacity: 0; }
                     }
 
                     /* ---- MOBILE ---- */
@@ -2810,7 +2932,7 @@
                 <span class="label">Superintelligence</span>
                 <h2 class="display-medium" style="margin-top: var(--space-md);">AI Projects</h2>
                 <p class="body-regular" style="max-width: 600px; margin-top: var(--space-lg);">
-                    Tools and prototypes built not just with Google Gemini, but exploring the full spectrum of AI capabilities. From creative applications to productivity tools, these experiments push the boundaries of what's possible when human creativity meets artificial intelligence.
+                    Apps, tools, and prototypes exploring the full spectrum of AI — from Google AI Studio experiments to full platforms built end-to-end with Claude Code. Each project is a real-world test of what's possible when creativity leads the build.
                 </p>
                 <a href="https://github.com/jgerms20" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; color: var(--neon); font-weight: 600; margin-top: var(--space-md); text-decoration: none; transition: all 0.3s ease;">
                     View on GitHub
@@ -2970,6 +3092,40 @@
                     </div>
                 </a>
                         </div>
+
+                        <!-- Advertising Award Platform -->
+                        <div class="carousel-slide">
+                            <div class="ai-project-card-carousel" style="cursor:default;" data-app="award-platform">
+                    <div class="bento-media" style="background: linear-gradient(135deg, #1a0533 0%, #3d1a6e 50%, #1a0533 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v2h1a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><circle cx="12" cy="14" r="2"/></svg>
+                        <span style="position: absolute; top: 16px; right: 16px; background: rgba(255,165,0,0.15); border: 1px solid rgba(255,165,0,0.4); color: #ffa500; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase;">In Progress</span>
+                        <span style="position: absolute; bottom: 12px; left: 12px; background: rgba(212,255,79,0.1); border: 1px solid rgba(212,255,79,0.25); color: var(--neon); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.08em; text-transform: uppercase;">Claude Code</span>
+                    </div>
+                    <div class="bento-body">
+                        <span class="bento-tag">Ad Tech</span>
+                        <h3 class="bento-title">Advertising Award Platform</h3>
+                        <p class="bento-desc">Full-stack platform for managing advertising award entries, submissions, and judging workflows. Multi-category submissions, judge assignments, and scoring. Built end-to-end in Claude Code.</p>
+                        <span class="bento-cta">In Development <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </div>
+                        </div>
+
+                        <!-- Portfolio Memory System -->
+                        <div class="carousel-slide">
+                            <a href="https://jgerms20.github.io/-joshua-portfolio-2026/" target="_blank" class="ai-project-card-carousel" data-app="portfolio-memory">
+                    <div class="bento-media" style="background: linear-gradient(135deg, #0a1a0a 0%, #1a3a1a 50%, #0a1a0a 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                        <span style="position: absolute; top: 16px; right: 16px; background: rgba(212,255,79,0.15); border: 1px solid rgba(212,255,79,0.4); color: var(--neon); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase;">Active</span>
+                        <span style="position: absolute; bottom: 12px; left: 12px; background: rgba(212,255,79,0.1); border: 1px solid rgba(212,255,79,0.25); color: var(--neon); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.08em; text-transform: uppercase;">Claude Code</span>
+                    </div>
+                    <div class="bento-body">
+                        <span class="bento-tag">Automation</span>
+                        <h3 class="bento-title">Portfolio Memory System</h3>
+                        <p class="bento-desc">Automated portfolio update system with persistent memory across Claude Code sessions. GitHub Actions workflow deploys updates twice weekly and generates a running summary report.</p>
+                        <span class="bento-cta">View Portfolio <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+                        </div>
                     </div>
                     
                     <!-- Carousel Controls -->
@@ -2987,72 +3143,8 @@
         </div>
     </section>
 
-    <!-- =====================================================
-         CLAUDE CODE BUILDS SECTION
-         ===================================================== -->
-    <section id="claude-builds" class="section section-gradient">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="label" style="display: inline-flex; align-items: center; gap: 8px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-                    Built with Claude Code
-                </span>
-                <h2 class="display-medium" style="margin-top: var(--space-md);">Claude Code Builds</h2>
-                <p class="body-regular" style="max-width: 600px; margin-top: var(--space-lg);">
-                    Real projects shipped from real sessions. From strategy tools to full platforms — everything here was built end-to-end with Claude Code. This section updates automatically every week.
-                </p>
-                <a href="https://github.com/jgerms20" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; color: var(--neon); font-weight: 600; margin-top: var(--space-md); text-decoration: none; transition: all 0.3s ease;">
-                    View on GitHub
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                </a>
-            </div>
 
-            <!-- CLAUDE-BUILDS-START -->
-            <div class="bento-grid reveal reveal-delay-1" style="margin-top: var(--space-2xl);" id="claude-builds-grid">
-                <div class="bento-card span-6" data-project="advertising-award-platform">
-                    <div class="bento-media" style="background: linear-gradient(135deg, #1a0533 0%, #3d1a6e 50%, #1a0533 100%); aspect-ratio: 16/9; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="position: relative; z-index: 1;"><path d="M12 2a4 4 0 0 1 4 4v2h1a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><circle cx="12" cy="14" r="2"/></svg>
-                        <div style="position: absolute; top: 0; right: 0; width: 180px; height: 180px; background: rgba(212,255,79,0.04); border-radius: 50%; transform: translate(40%, -40%);"></div>
-                        <span style="position: absolute; top: 16px; right: 16px; background: rgba(255,165,0,0.15); border: 1px solid rgba(255,165,0,0.4); color: #ffa500; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase;">In Progress</span>
-                    </div>
-                    <div class="bento-body">
-                        <span class="bento-tag">Ad Tech</span>
-                        <h3 class="bento-title">Advertising Award Submission Platform</h3>
-                        <p class="bento-desc">Full-stack platform for managing advertising award entries, submissions, and judging workflows. Handles multi-category submissions, judge assignments, and scoring. Built end-to-end in Claude Code.</p>
-                        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin: var(--space-sm) 0;">
-                        <span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.03em;">Claude Code</span>
-                        <span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.03em;">HTML</span>
-                        <span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.03em;">CSS</span>
-                        <span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.03em;">JavaScript</span>
-                        </div>
-                        <span class="bento-cta">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                </div>
-                <a href="https://jgerms20.github.io/-joshua-portfolio-2026/" target="_blank" class="bento-card span-6" data-project="portfolio-memory-system">
-                    <div class="bento-media" style="background: linear-gradient(135deg, #0a1a0a 0%, #1a3a1a 50%, #0a1a0a 100%); aspect-ratio: 16/9; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="position: relative; z-index: 1;"><path d="M12 2a4 4 0 0 1 4 4v2h1a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><circle cx="12" cy="14" r="2"/></svg>
-                        <div style="position: absolute; top: 0; right: 0; width: 180px; height: 180px; background: rgba(212,255,79,0.04); border-radius: 50%; transform: translate(40%, -40%);"></div>
-                        <span style="position: absolute; top: 16px; right: 16px; background: rgba(212,255,79,0.15); border: 1px solid rgba(212,255,79,0.4); color: var(--neon); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase;">Active</span>
-                    </div>
-                    <div class="bento-body">
-                        <span class="bento-tag">Automation</span>
-                        <h3 class="bento-title">Portfolio Continuous Memory System</h3>
-                        <p class="bento-desc">Automated weekly portfolio update system with persistent project memory across Claude Code sessions. Includes GitHub Actions cron workflow that deploys every Monday and generates a weekly summary report.</p>
-                        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin: var(--space-sm) 0;">
-                        <span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.03em;">Claude Code</span>
-                        <span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.03em;">GitHub Actions</span>
-                        <span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.03em;">Python</span>
-                        </div>
-                        <span class="bento-cta">View Portfolio <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                </a>
-
-            </div>
-            <!-- CLAUDE-BUILDS-END -->
-        </div>
-    </section>
-
-    <!-- =====================================================
+        <!-- =====================================================
          PHOTOGRAPHY SECTION
          ===================================================== -->
     <section id="photography" class="section section-dark">
@@ -4061,33 +4153,6 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-        // =====================================================
-        // TEXT ROTATION
-        // =====================================================
-        const rotatingTexts = [
-            'Curious',
-            'Creative',
-            'a Strategist',
-            'a Storyteller',
-            'a Photographer',
-            'a Podcaster',
-            'a Polymath',
-            'building the future'
-        ];
-        let textIndex = 0;
-        const rotatingTextEl = document.getElementById('rotatingText');
-
-        function rotateText() {
-            rotatingTextEl.style.opacity = '0';
-            setTimeout(() => {
-                textIndex = (textIndex + 1) % rotatingTexts.length;
-                rotatingTextEl.textContent = rotatingTexts[textIndex];
-                rotatingTextEl.style.opacity = '1';
-            }, 300);
-        }
-
-        setInterval(rotateText, 3000);
 
         // =====================================================
         // PHOTO ROTATOR

@@ -1,15 +1,17 @@
-name: Weekly Portfolio Update
+name: Twice-Weekly Portfolio Update
 
 on:
   schedule:
     # Every Monday at 9:00am PT (17:00 UTC)
     - cron: '0 17 * * 1'
+    # Every Friday at 9:00am PT (17:00 UTC)
+    - cron: '0 17 * * 5'
   workflow_dispatch:
     # Allow manual trigger from the Actions tab in GitHub
 
 jobs:
   update:
-    name: Update Claude Code Builds Section
+    name: Update AI Projects Section
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -37,7 +39,7 @@ jobs:
             echo "No changes to commit this week."
           else
             git add index.html portfolio-memory.json
-            git commit -m "Weekly portfolio update - ${WEEK}"
+            git commit -m "Portfolio update - ${WEEK} ($(date +%A))"
             git push
             echo "Pushed weekly update for ${WEEK}"
           fi
