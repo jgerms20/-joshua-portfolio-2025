@@ -1,0 +1,107 @@
+{
+  "owner": "Joshua McKenzie German",
+  "portfolio_url": "https://jgerms20.github.io/-joshua-portfolio-2026/",
+  "github": "https://github.com/jgerms20",
+  "last_updated": "2026-02-28",
+  "description": "Persistent memory file for all Claude Code sessions. Update this file to add new projects. The weekly GitHub Actions workflow reads this file and regenerates the Claude Code Builds section of the portfolio.",
+  "how_to_add_project": "Add a new object to the 'projects' array. Set category to 'claude-build' to display it in the Built with Claude section. Then run 'python scripts/update-portfolio.py' or let the weekly workflow handle it.",
+  "projects": [
+    {
+      "id": "advertising-award-platform",
+      "name": "Advertising Award Submission Platform",
+      "category": "claude-build",
+      "tag": "Ad Tech",
+      "description": "Full-stack platform for managing advertising award entries, submissions, and judging workflows. Handles multi-category submissions, judge assignments, and scoring. Built end-to-end in Claude Code.",
+      "tools": [
+        "Claude Code",
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "status": "in-progress",
+      "url": null,
+      "github": "https://github.com/jgerms20",
+      "date_started": "2026-02",
+      "week": "2026-W08",
+      "featured": true,
+      "gradient": "linear-gradient(135deg, #1a0533 0%, #3d1a6e 50%, #1a0533 100%)",
+      "icon": "award"
+    },
+    {
+      "id": "portfolio-memory-system",
+      "name": "Portfolio Continuous Memory System",
+      "category": "claude-build",
+      "tag": "Automation",
+      "description": "Automated weekly portfolio update system with persistent project memory across Claude Code sessions. Includes GitHub Actions cron workflow that deploys every Monday and generates a weekly summary report.",
+      "tools": [
+        "Claude Code",
+        "GitHub Actions",
+        "Python"
+      ],
+      "status": "active",
+      "url": "https://jgerms20.github.io/-joshua-portfolio-2026/",
+      "github": "https://github.com/jgerms20/-joshua-portfolio-2026",
+      "date_started": "2026-02",
+      "week": "2026-W09",
+      "featured": true,
+      "gradient": "linear-gradient(135deg, #0a1a0a 0%, #1a3a1a 50%, #0a1a0a 100%)",
+      "icon": "memory"
+    }
+  ],
+  "weekly_log": [
+    {
+      "week": "2026-W09",
+      "date_range": "2026-02-23 to 2026-03-01",
+      "summary": "Launched portfolio continuous memory system. Fixed broken Gatorade image reference. Added dedicated Claude Code Builds section to portfolio. Created automated weekly update workflow with GitHub Actions. Added first two Claude Code project entries: Advertising Award Submission Platform and Portfolio Memory System.",
+      "projects_touched": [
+        "advertising-award-platform",
+        "portfolio-memory-system"
+      ],
+      "session_notes": "First session establishing Claude Code as the primary development environment for the portfolio going forward."
+    }
+  ],
+  "google_ai_studio_projects": [
+    {
+      "id": "archive",
+      "name": "Archive",
+      "tag": "Digital Closet",
+      "url": "https://ai.studio/apps/drive/1C1BH5wAdVTio0MAa3mmMiH1O5elvxbth"
+    },
+    {
+      "id": "momentum",
+      "name": "Momentum",
+      "tag": "Productivity",
+      "url": "https://ai.studio/apps/drive/1EM6FwL7KX1I4fRDw-S82yLSsp8pQwRPG"
+    },
+    {
+      "id": "aetheria",
+      "name": "\u00c6theria",
+      "tag": "Sound Therapy",
+      "url": "https://ai.studio/apps/drive/1TXV9Z8tMLr0ehtWEaUbQJ5sGVjTvHarJ"
+    },
+    {
+      "id": "creator-search",
+      "name": "Creator Search",
+      "tag": "Discovery",
+      "url": "https://ai.studio/apps/drive/1SofxKk1-7GVv8tcvi7SkIRnvI5PksZcC"
+    },
+    {
+      "id": "jukeboxd",
+      "name": "Jukeboxd",
+      "tag": "Music",
+      "url": "https://ai.studio/apps/drive/1xqDWg6PA0RVMGC3LHaqbQr_VweZT_m-6"
+    },
+    {
+      "id": "veritas",
+      "name": "Veritas",
+      "tag": "Research",
+      "url": "https://ai.studio/apps/drive/1CrSc4klhhMskBGHyQv5FzLd_fwXkvOBS"
+    },
+    {
+      "id": "perfect-day-crafter",
+      "name": "Perfect Day Crafter",
+      "tag": "Wellness",
+      "url": "https://ai.studio/apps/drive/1UpeX-jONjncy41Putdc_YGg_9qYHlQcD"
+    }
+  ]
+}
