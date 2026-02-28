@@ -1406,6 +1406,30 @@
             color: var(--neon);
             white-space: nowrap;
         }
+
+        .brand-mark {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            line-height: 1;
+        }
+        .brand-initials {
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 0.22em;
+            color: var(--neon);
+            text-transform: uppercase;
+            font-family: var(--font-sans);
+        }
+        .brand-tagline {
+            font-size: 0.52rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
         
         .mobile-menu-toggle {
             display: none;
@@ -1501,7 +1525,7 @@
         .header-nav {
             display: flex;
             align-items: center;
-            gap: var(--space-xl);
+            gap: var(--space-lg);
         }
         
         .header-nav > a,
@@ -1989,7 +2013,10 @@
          ===================================================== -->
     <header class="top-header">
         <div class="header-left">
-            <span class="descriptor">Creative Strategist • Photographer • Futurist</span>
+            <a href="#hero" class="brand-mark" aria-label="Joshua McKenzie German – Home">
+                <span class="brand-initials">JMG</span>
+                <span class="brand-tagline">Creative Strategist</span>
+            </a>
         </div>
         <button class="mobile-menu-toggle" aria-label="Toggle menu">
             <span></span>
@@ -2040,7 +2067,8 @@
                     <a href="https://ai.studio/apps/drive/1CrSc4klhhMskBGHyQv5FzLd_fwXkvOBS" target="_blank">Veritas</a>
                     <a href="https://ai.studio/apps/drive/1UpeX-jONjncy41Putdc_YGg_9qYHlQcD" target="_blank">Perfect Day Crafter</a>
                     <div class="dropdown-divider"></div>
-                    <a href="#ai">View All Projects</a>
+                    <a href="#ai">View All AI Projects</a>
+                    <a href="#claude-builds" style="color: var(--neon); font-weight: 600;">⚡ Claude Code Builds</a>
                 </div>
             </div>
             
@@ -2071,6 +2099,7 @@
         <a href="#work" class="nav-link">Work</a>
         <a href="#podcasts" class="nav-link">Podcasts</a>
         <a href="#ai" class="nav-link">AI Projects</a>
+        <a href="#claude-builds" class="nav-link">Claude Builds</a>
         <a href="#photography" class="nav-link">Photography</a>
         <a href="#contact" class="nav-link">Contact</a>
     </nav>
@@ -2232,250 +2261,290 @@
 
         <div class="container" style="margin-top: var(--space-3xl);">
 
-            <!-- Journey Map - Clean Interactive Design -->
+            <!-- Journey Map - Centered Alternating Timeline -->
             <div class="journey-map reveal reveal-delay-3" style="margin-top: var(--space-3xl);">
-                <h3 style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: var(--space-xl); color: var(--text-muted);">
+                <h3 style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: var(--space-xl); color: var(--text-muted); text-align: center;">
                     MY JOURNEY
                 </h3>
                 
-                <!-- Clean Timeline -->
-                <div class="journey-timeline">
-                    
-                    <!-- Timeline Track -->
-                    <div class="timeline-track">
-                        <div class="timeline-progress"></div>
+                <!-- Centered Alternating Timeline -->
+                <div class="jtl-wrap">
+
+                    <!-- Columbia, SC — LEFT -->
+                    <div class="jtl-row timeline-stop expandable jtl-left" data-location="columbia">
+                        <div class="jtl-card">
+                            <span class="jtl-year">Origin</span>
+                            <h4 class="jtl-city">Columbia, SC</h4>
+                            <p class="jtl-agency">University of South Carolina</p>
+                            <span class="jtl-hint">↓ tap for more</span>
+                            <div class="jtl-body">
+                                Born and raised in the capital of South Carolina. Studied Journalism &amp; Mass Communications with a minor in Information Science. Served as assistant sports editor for The Daily Gamecock. This is where my curiosity for storytelling first took root.
+                            </div>
+                        </div>
+                        <div class="jtl-mid">
+                            <div class="jtl-dot jtl-dot-active"></div>
+                        </div>
+                        <div class="jtl-empty"></div>
                     </div>
-                    
-                    <!-- Timeline Stops -->
-                    <div class="timeline-stops">
-                        
-                        <!-- Columbia -->
-                        <div class="timeline-stop expandable" data-location="columbia">
-                            <div class="stop-dot active"></div>
-                            <div class="stop-content">
-                                <span class="stop-year">Origin</span>
-                                <h4 class="stop-city">Columbia, SC</h4>
-                                <p class="stop-detail">University of South Carolina</p>
-                                <div class="stop-expanded">
-                                    <p>Born and raised in the capital of South Carolina. Studied Journalism & Mass Communications with a minor in Information Science. Served as assistant sports editor for The Daily Gamecock. This is where my curiosity for storytelling first took root.</p>
-                                </div>
+
+                    <!-- Charlotte, NC — RIGHT -->
+                    <div class="jtl-row timeline-stop expandable jtl-right" data-location="charlotte">
+                        <div class="jtl-empty"></div>
+                        <div class="jtl-mid">
+                            <div class="jtl-dot"></div>
+                        </div>
+                        <div class="jtl-card">
+                            <span class="jtl-year">2021–23</span>
+                            <h4 class="jtl-city">Charlotte, NC</h4>
+                            <p class="jtl-agency">Home Base</p>
+                            <span class="jtl-hint">↓ tap for more</span>
+                            <div class="jtl-body">
+                                My physical home during the remote era. Charlotte served as my base while I worked with agencies across the country. Built a home studio, explored the city's growing food scene, and stayed close to family in South Carolina.
                             </div>
                         </div>
-                        
-                        <!-- Charlotte (Base) -->
-                        <div class="timeline-stop expandable" data-location="charlotte">
-                            <div class="stop-dot"></div>
-                            <div class="stop-content">
-                                <span class="stop-year">2021–23</span>
-                                <h4 class="stop-city">Charlotte, NC</h4>
-                                <p class="stop-detail">Home Base</p>
-                                <div class="stop-expanded">
-                                    <p>My physical home during the remote era. Charlotte served as my base while I worked with agencies across the country. Built a home studio, explored the city's growing food scene, and stayed close to family in South Carolina.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- San Francisco (Branch) -->
-                        <div class="timeline-stop branch expandable" data-location="sf">
-                            <div class="stop-dot branch-dot"></div>
-                            <div class="stop-content">
-                                <span class="stop-year">2021–23</span>
-                                <h4 class="stop-city">San Francisco</h4>
-                                <p class="stop-detail">Goodby, Silverstein & Partners</p>
-                                <div class="stop-expanded">
-                                    <p>Worked remotely with one of the most legendary agencies in advertising. Traveled to SF for extended periods, contributing to campaigns for BMW, Pepsi, and more. Learned the craft of cultural strategy from the best in the business—all while maintaining Charlotte as my home base at Goodby, Silverstein & Partners.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Portland -->
-                        <div class="timeline-stop expandable" data-location="portland">
-                            <div class="stop-dot"></div>
-                            <div class="stop-content">
-                                <span class="stop-year">2023–24</span>
-                                <h4 class="stop-city">Portland, OR</h4>
-                                <p class="stop-detail">Wieden+Kennedy</p>
-                                <div class="stop-expanded">
-                                    <p>Joined the legendary Wieden+Kennedy as Media and Communications Supervisor. Worked on the Cannes Grand Prix-winning DoorDash "All The Ads" Super Bowl campaign. Experienced the Pacific Northwest's creative energy and coffee culture.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Los Angeles -->
-                        <div class="timeline-stop current expandable" data-location="la">
-                            <div class="stop-dot pulse"></div>
-                            <div class="stop-content">
-                                <span class="stop-year">2024–Present</span>
-                                <h4 class="stop-city">Los Angeles, CA</h4>
-                                <p class="stop-detail">TBWA\Chiat\Day</p>
-                                <div class="stop-expanded">
-                                    <p>Currently serving as Senior Connections Strategist at the Disruption Company. Leading work on Levi's x Beyoncé, Sephora, and DIRECTV. Living the California dream while building the next chapter of my career in the entertainment capital of the world.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
                     </div>
-                    
+
+                    <!-- San Francisco — LEFT (branch) -->
+                    <div class="jtl-row timeline-stop expandable jtl-left jtl-branch" data-location="sf">
+                        <div class="jtl-card">
+                            <span class="jtl-year">2021–23</span>
+                            <h4 class="jtl-city">San Francisco, CA</h4>
+                            <p class="jtl-agency">Goodby, Silverstein &amp; Partners</p>
+                            <span class="jtl-hint">↓ tap for more</span>
+                            <div class="jtl-body">
+                                Worked with one of the most legendary agencies in advertising. Traveled to SF for extended periods, contributing to campaigns for BMW, Pepsi, and more. Learned the craft of cultural strategy from the best in the business—all while maintaining Charlotte as home base.
+                            </div>
+                        </div>
+                        <div class="jtl-mid">
+                            <div class="jtl-dot jtl-dot-branch"></div>
+                        </div>
+                        <div class="jtl-empty"></div>
+                    </div>
+
+                    <!-- Portland, OR — RIGHT -->
+                    <div class="jtl-row timeline-stop expandable jtl-right" data-location="portland">
+                        <div class="jtl-empty"></div>
+                        <div class="jtl-mid">
+                            <div class="jtl-dot"></div>
+                        </div>
+                        <div class="jtl-card">
+                            <span class="jtl-year">2023–24</span>
+                            <h4 class="jtl-city">Portland, OR</h4>
+                            <p class="jtl-agency">Wieden+Kennedy</p>
+                            <span class="jtl-hint">↓ tap for more</span>
+                            <div class="jtl-body">
+                                Joined the legendary Wieden+Kennedy as Media and Communications Supervisor. Worked on the Cannes Grand Prix-winning DoorDash "All The Ads" Super Bowl campaign. Experienced the Pacific Northwest's creative energy and coffee culture.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Los Angeles, CA — LEFT (current) -->
+                    <div class="jtl-row timeline-stop expandable jtl-left current" data-location="la">
+                        <div class="jtl-card jtl-card-current">
+                            <span class="jtl-year jtl-year-current">2024–Present</span>
+                            <h4 class="jtl-city">Los Angeles, CA</h4>
+                            <p class="jtl-agency">TBWA\Chiat\Day</p>
+                            <span class="jtl-hint">↓ tap for more</span>
+                            <div class="jtl-body">
+                                Currently serving as Senior Connections Strategist at the Disruption Company. Leading work on Levi's x Beyoncé, Sephora, and DIRECTV. Living the California dream while building the next chapter of my career in the entertainment capital of the world.
+                            </div>
+                        </div>
+                        <div class="jtl-mid">
+                            <div class="jtl-dot jtl-dot-current jtl-dot-pulse"></div>
+                        </div>
+                        <div class="jtl-empty"></div>
+                    </div>
+
                 </div>
                 
                 <style>
-                    .journey-timeline {
-                        display: flex;
+                    /* =============================================
+                       CENTERED ALTERNATING TIMELINE
+                       ============================================= */
+
+                    .jtl-wrap {
                         position: relative;
-                        padding: var(--space-2xl) 0;
-                        min-height: 600px;
+                        max-width: 860px;
+                        margin: 0 auto;
+                        padding: var(--space-2xl) 0 var(--space-3xl);
                     }
-                    
-                    .timeline-track {
-                        position: absolute;
-                        top: 50%;
-                        left: 0;
-                        right: 0;
-                        height: 3px;
-                        background: var(--glass-border);
-                        transform: translateY(-50%);
-                        z-index: 0;
-                        border-radius: 2px;
-                        overflow: hidden;
-                    }
-                    
-                    .timeline-progress {
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: linear-gradient(90deg, 
-                            var(--neon) 0%, 
-                            var(--cyan) 25%, 
-                            var(--purple) 50%, 
-                            var(--orange) 75%, 
-                            var(--neon) 100%);
-                        opacity: 0.8;
-                        animation: timelineFlow 3s ease-in-out infinite;
-                        background-size: 200% 100%;
-                    }
-                    
-                    @keyframes timelineFlow {
-                        0%, 100% { background-position: 0% 50%; }
-                        50% { background-position: 100% 50%; }
-                    }
-                    
-                    .timeline-stops {
-                        display: flex;
-                        flex-direction: column;
-                        gap: var(--space-xl);
-                        position: relative;
-                        z-index: 1;
-                        max-width: 50%;
-                        min-width: 300px;
-                    }
-                    
-                    .timeline-track {
-                        width: 2px;
-                        height: 100%;
-                        left: 20px;
-                        right: auto;
-                        top: 0;
-                        transform: none;
-                    }
-                    
-                    .timeline-track::before {
+
+                    /* Center vertical line */
+                    .jtl-wrap::before {
                         content: '';
                         position: absolute;
-                        left: -1px;
+                        left: 50%;
                         top: 0;
-                        width: 4px;
-                        height: 100%;
-                        background: var(--glass-border);
-                        z-index: 0;
-                    }
-                    
-                    .timeline-stop {
-                        display: flex;
-                        flex-direction: row;
-                        text-align: left;
-                        gap: var(--space-lg);
-                        cursor: pointer;
-                        transition: all 0.4s var(--ease-out-expo);
-                        position: relative;
-                        align-items: flex-start;
-                    }
-                    
-                    .timeline-stop.branch {
-                        margin-left: var(--space-xl);
-                    }
-                    
-                    .stop-dot {
-                        width: 18px;
-                        height: 18px;
-                        background: var(--surface);
-                        border: 3px solid var(--text-tertiary);
-                        border-radius: 50%;
-                        margin-bottom: 0;
-                        transition: all 0.3s ease;
-                        position: absolute;
-                        left: 11px;
-                        top: 0;
-                        flex-shrink: 0;
-                        z-index: 2;
+                        bottom: 0;
+                        width: 2px;
                         transform: translateX(-50%);
+                        background: linear-gradient(
+                            180deg,
+                            transparent 0%,
+                            rgba(212,255,79,0.5) 8%,
+                            rgba(34,211,238,0.4) 35%,
+                            rgba(168,85,247,0.4) 65%,
+                            rgba(212,255,79,0.5) 92%,
+                            transparent 100%
+                        );
                     }
-                    
-                    .timeline-stop:hover .stop-dot {
-                        transform: scale(1.5);
-                        box-shadow: 0 0 20px var(--neon);
+
+                    /* Each row */
+                    .jtl-row {
+                        display: grid;
+                        grid-template-columns: 1fr 64px 1fr;
+                        grid-template-areas: "left mid right";
+                        align-items: flex-start;
+                        margin-bottom: var(--space-3xl);
+                        cursor: pointer;
                     }
-                    
-                    .timeline-stop:hover .stop-content {
-                        transform: translateX(8px);
+
+                    .jtl-row:last-child { margin-bottom: 0; }
+
+                    /* Left-side entries: card | dot | empty */
+                    .jtl-row.jtl-left .jtl-card  { grid-area: left; text-align: right; }
+                    .jtl-row.jtl-left .jtl-mid   { grid-area: mid; }
+                    .jtl-row.jtl-left .jtl-empty { grid-area: right; }
+
+                    /* Right-side entries: empty | dot | card */
+                    .jtl-row.jtl-right .jtl-empty { grid-area: left; }
+                    .jtl-row.jtl-right .jtl-mid   { grid-area: mid; }
+                    .jtl-row.jtl-right .jtl-card  { grid-area: right; }
+
+                    /* The info card */
+                    .jtl-card {
+                        background: var(--surface);
+                        border: 1px solid var(--glass-border);
+                        border-radius: var(--radius-lg);
+                        padding: var(--space-lg) var(--space-xl);
+                        transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
                     }
-                    
-                    .timeline-stop.current .stop-dot {
+
+                    .jtl-row:hover .jtl-card {
+                        border-color: rgba(255,255,255,0.15);
+                        background: rgba(255,255,255,0.04);
+                        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+                    }
+
+                    .jtl-row.jtl-left:hover .jtl-card  { transform: translateX(-4px); }
+                    .jtl-row.jtl-right:hover .jtl-card { transform: translateX(4px); }
+
+                    .jtl-card-current {
+                        border-color: rgba(212,255,79,0.2);
+                        background: rgba(212,255,79,0.03);
+                    }
+
+                    /* Card typography */
+                    .jtl-year {
+                        font-size: 0.62rem;
+                        font-weight: 700;
+                        letter-spacing: 0.15em;
+                        color: var(--text-muted);
+                        text-transform: uppercase;
+                        display: block;
+                        margin-bottom: 8px;
+                    }
+                    .jtl-year-current { color: var(--neon); }
+
+                    .jtl-city {
+                        font-size: 1.15rem;
+                        font-weight: 700;
+                        color: var(--text-primary);
+                        margin: 0 0 4px;
+                        font-family: var(--font-sans);
+                    }
+
+                    .jtl-agency {
+                        font-size: 0.72rem;
+                        color: var(--text-tertiary);
+                        font-style: italic;
+                        margin: 0 0 6px;
+                    }
+
+                    .jtl-hint {
+                        font-size: 0.58rem;
+                        color: var(--text-muted);
+                        letter-spacing: 0.08em;
+                        display: block;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                        margin-top: 4px;
+                    }
+                    .jtl-row:hover .jtl-hint { opacity: 1; }
+                    .timeline-stop.expanded .jtl-hint { display: none; }
+
+                    /* Expandable body */
+                    .jtl-body {
+                        max-height: 0;
+                        overflow: hidden;
+                        opacity: 0;
+                        font-size: 0.83rem;
+                        color: var(--text-secondary);
+                        line-height: 1.7;
+                        transition: max-height 0.45s var(--ease-out-expo), opacity 0.35s ease, margin-top 0.3s ease, padding-top 0.3s ease;
+                    }
+                    .timeline-stop.expanded .jtl-body {
+                        max-height: 180px;
+                        opacity: 1;
+                        margin-top: 12px;
+                        padding-top: 12px;
+                        border-top: 1px solid var(--glass-border);
+                    }
+                    .timeline-stop.expanded .jtl-card {
+                        border-color: rgba(212,255,79,0.25);
+                        box-shadow: 0 0 20px rgba(212,255,79,0.06);
+                    }
+
+                    /* Branch entries */
+                    .jtl-row.jtl-branch .jtl-year,
+                    .jtl-row.jtl-branch .jtl-city { color: var(--orange); }
+
+                    /* Center dot column */
+                    .jtl-mid {
+                        display: flex;
+                        justify-content: center;
+                        align-items: flex-start;
+                        padding-top: 20px;
+                        position: relative;
+                    }
+
+                    /* The dot */
+                    .jtl-dot {
+                        width: 14px;
+                        height: 14px;
+                        border-radius: 50%;
+                        background: var(--surface);
+                        border: 2px solid rgba(255,255,255,0.2);
+                        flex-shrink: 0;
+                        position: relative;
+                        z-index: 2;
+                        transition: all 0.3s ease;
+                    }
+
+                    .jtl-row:hover .jtl-dot {
+                        border-color: rgba(255,255,255,0.5);
+                        transform: scale(1.3);
+                    }
+
+                    .jtl-dot-active {
+                        background: rgba(212,255,79,0.3);
+                        border-color: var(--neon);
+                    }
+
+                    .jtl-dot-branch {
+                        border-color: var(--orange);
+                        border-style: dashed;
+                    }
+
+                    .jtl-dot-current {
                         background: var(--neon);
                         border-color: var(--neon);
-                        width: 20px;
-                        height: 20px;
+                        width: 18px;
+                        height: 18px;
+                        box-shadow: 0 0 16px rgba(212,255,79,0.5);
                     }
-                    
-                    .timeline-stop.remote .stop-dot {
-                        border-color: var(--orange);
-                        border-style: dashed;
-                    }
-                    
-                    .timeline-stop.branch {
-                        position: relative;
-                    }
-                    
-                    .timeline-stop.branch::before {
-                        content: '';
-                        position: absolute;
-                        top: 9px;
-                        left: -var(--space-xl);
-                        width: var(--space-xl);
-                        height: 2px;
-                        background: var(--orange);
-                        transform: translateY(-50%);
-                        z-index: -1;
-                    }
-                    
-                    .timeline-stop.branch .stop-dot.branch-dot {
-                        border-color: var(--orange);
-                        border-style: dashed;
-                        background: var(--surface);
-                        left: 11px;
-                        transform: translateX(-50%);
-                    }
-                    
-                    .timeline-stop.branch .stop-year {
-                        color: var(--orange);
-                    }
-                    
-                    .timeline-stop.branch .stop-city {
-                        color: var(--orange);
-                    }
-                    
-                    .stop-dot.pulse::after {
+
+                    .jtl-dot-pulse::after {
                         content: '';
                         position: absolute;
                         top: 50%;
@@ -2485,190 +2554,38 @@
                         border: 2px solid var(--neon);
                         border-radius: 50%;
                         transform: translate(-50%, -50%);
-                        animation: pulse-ring 2s infinite;
-                    }
-                    
-                    @keyframes pulse-ring {
-                        0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-                        100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
-                    }
-                    
-                    .stop-content {
-                        transition: all 0.4s var(--ease-out-expo);
-                        margin-top: 0;
-                        margin-left: var(--space-xl);
-                        position: relative;
-                        z-index: 10;
-                        flex: 1;
-                    }
-                    
-                    .timeline-stop.branch .stop-content {
-                        margin-top: var(--space-lg);
-                    }
-                    
-                    .stop-year {
-                        font-size: 0.7rem;
-                        font-weight: 600;
-                        letter-spacing: 0.1em;
-                        color: var(--text-muted);
-                        text-transform: uppercase;
-                        display: block;
-                        margin-bottom: 8px;
-                    }
-                    
-                    .timeline-stop.current .stop-year {
-                        color: var(--neon);
-                    }
-                    
-                    .stop-city {
-                        font-family: var(--font-sans);
-                        font-size: 1.25rem;
-                        font-weight: 700;
-                        color: var(--text-primary);
-                        margin: 8px 0 6px 0;
-                        position: relative;
-                        z-index: 10;
-                    }
-                    
-                    .stop-detail {
-                        font-size: 0.75rem;
-                        color: var(--text-tertiary);
-                        margin: 0;
-                        font-style: italic;
-                    }
-                    
-                    /* Expandable Timeline */
-                    .timeline-stop.expandable {
-                        cursor: pointer;
-                    }
-                    
-                    .stop-expanded {
-                        max-width: 0;
-                        overflow: hidden;
-                        opacity: 0;
-                        margin-left: 0;
-                        transition: all 0.4s var(--ease-out-expo);
-                        position: absolute;
-                        left: 100%;
-                        top: 0;
-                        z-index: 20;
-                        white-space: nowrap;
-                    }
-                    
-                    .timeline-stop.expanded .stop-expanded {
-                        max-width: 340px;
-                        opacity: 1;
-                        margin-left: var(--space-xl);
-                        white-space: normal;
-                    }
-                    
-                    .stop-expanded p {
-                        font-size: 0.85rem;
-                        color: var(--text-secondary);
-                        line-height: 1.6;
-                        padding: 20px;
-                        background: var(--surface);
-                        border-radius: var(--radius-lg);
-                        border: 1px solid var(--glass-border);
-                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-                        width: 320px;
-                        position: relative;
-                        margin: 0;
-                    }
-                    
-                    .stop-expanded p::before {
-                        content: '';
-                        position: absolute;
-                        left: -8px;
-                        top: 24px;
-                        width: 0;
-                        height: 0;
-                        border-top: 8px solid transparent;
-                        border-bottom: 8px solid transparent;
-                        border-right: 8px solid var(--glass-border);
-                    }
-                    
-                    .stop-expanded p::after {
-                        content: '';
-                        position: absolute;
-                        left: -7px;
-                        top: 24px;
-                        width: 0;
-                        height: 0;
-                        border-top: 8px solid transparent;
-                        border-bottom: 8px solid transparent;
-                        border-right: 8px solid var(--surface);
-                    }
-                    
-                    .timeline-stop.expanded .stop-dot {
-                        background: var(--neon);
-                        border-color: var(--neon);
-                        box-shadow: 0 0 20px var(--neon-glow);
-                    }
-                    
-                    .timeline-stop.expandable .stop-content::after {
-                        content: '+ Click for more';
-                        display: block;
-                        font-size: 0.65rem;
-                        color: var(--text-muted);
-                        margin-top: 8px;
-                        opacity: 0;
-                        transition: opacity 0.3s ease;
-                    }
-                    
-                    .timeline-stop.expandable:hover .stop-content::after {
-                        opacity: 1;
-                    }
-                    
-                    .timeline-stop.expanded .stop-content::after {
-                        content: '− Click to close';
-                        opacity: 0.6;
+                        animation: jtl-pulse 2s infinite;
                     }
 
-                    @media (max-width: 900px) {
-                        .timeline-stops {
-                            flex-direction: column;
-                            gap: var(--space-xl);
-                            max-width: 100%;
+                    @keyframes jtl-pulse {
+                        0%   { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+                        100% { transform: translate(-50%, -50%) scale(2.8); opacity: 0; }
+                    }
+
+                    .timeline-stop.expanded .jtl-dot {
+                        background: var(--neon);
+                        border-color: var(--neon);
+                        box-shadow: 0 0 14px rgba(212,255,79,0.4);
+                    }
+
+                    /* ---- MOBILE ---- */
+                    @media (max-width: 768px) {
+                        .jtl-wrap::before {
+                            left: 24px;
                         }
-                        .journey-timeline {
-                            flex-direction: column;
+                        .jtl-row {
+                            grid-template-columns: 48px 1fr;
+                            grid-template-areas: "mid card";
+                            margin-bottom: var(--space-2xl);
                         }
-                        .timeline-track {
-                            width: 2px;
-                            height: 100%;
-                            left: 20px;
-                            right: auto;
-                            top: 0;
-                            transform: none;
-                        }
-                        .timeline-stop {
-                            flex-direction: row;
-                            text-align: left;
-                            gap: var(--space-lg);
-                        }
-                        .stop-dot {
-                            margin-bottom: 0;
-                        }
-                        .stop-expanded {
-                            position: static;
-                            max-width: 100%;
-                            margin-left: 0;
-                            margin-top: 16px;
-                        }
-                        .timeline-stop.expanded .stop-expanded {
-                            max-width: 100%;
-                            margin-left: 0;
-                            margin-top: 16px;
-                        }
-                        .stop-expanded p {
-                            width: 100%;
-                            max-width: 100%;
-                        }
-                        .stop-expanded p::before,
-                        .stop-expanded p::after {
-                            display: none;
-                        }
+                        .jtl-row.jtl-left .jtl-card,
+                        .jtl-row.jtl-right .jtl-card  { grid-area: card; text-align: left; }
+                        .jtl-row.jtl-left .jtl-mid,
+                        .jtl-row.jtl-right .jtl-mid   { grid-area: mid; }
+                        .jtl-empty { display: none; }
+                        .jtl-row.jtl-left:hover .jtl-card,
+                        .jtl-row.jtl-right:hover .jtl-card { transform: none; }
+                        .jtl-card { padding: var(--space-md) var(--space-lg); }
                     }
                 </style>
             </div>
@@ -2703,7 +2620,7 @@
                 <!-- Gatorade -->
                 <a href="work/work-gatorade.html" class="bento-card reveal reveal-delay-1">
                     <div class="bento-media">
-                        <img src="Brand Imagery/gatorade_q93Jogv/G-ST_KV_V2_Logos copy.tiff" alt="Gatorade Stranger Things Campaign" onerror="this.src='Brand Imagery/gatorade_q93Jogv/G-ST_KV_V2_Logos copy.tif'; this.onerror=function(){this.src='Brand Imagery/Gatorade/Brand Logo/gatorade-logo-png_seeklogo-369610.png'; this.style.background='#000'; this.style.padding='30px';};">
+                        <img src="Brand Imagery/Gatorade/Brand Logo/gatorade-logo-png_seeklogo-369610.png" alt="Gatorade Campaigns" style="max-height: 100px; width: auto; object-fit: contain; background: #000; padding: 30px;">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Connection Strategist • TBWA\Chiat\Day</span>
@@ -3067,6 +2984,71 @@
                     <div class="carousel-indicators"></div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         CLAUDE CODE BUILDS SECTION
+         ===================================================== -->
+    <section id="claude-builds" class="section section-gradient">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                    Built with Claude Code
+                </span>
+                <h2 class="display-medium" style="margin-top: var(--space-md);">Claude Code Builds</h2>
+                <p class="body-regular" style="max-width: 600px; margin-top: var(--space-lg);">
+                    Real projects shipped from real sessions. From strategy tools to full platforms — everything here was built end-to-end with Claude Code. This section updates automatically every week.
+                </p>
+                <a href="https://github.com/jgerms20" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; color: var(--neon); font-weight: 600; margin-top: var(--space-md); text-decoration: none; transition: all 0.3s ease;">
+                    View on GitHub
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+            </div>
+
+            <!-- CLAUDE-BUILDS-START -->
+            <div class="bento-grid reveal reveal-delay-1" style="margin-top: var(--space-2xl);" id="claude-builds-grid">
+                <div class="bento-card span-6" data-project="advertising-award-platform">
+                    <div class="bento-media" style="background: linear-gradient(135deg, #1a0533 0%, #3d1a6e 50%, #1a0533 100%); aspect-ratio: 16/9; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="position: relative; z-index: 1;"><path d="M12 2a4 4 0 0 1 4 4v2h1a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><circle cx="12" cy="14" r="2"/></svg>
+                        <div style="position: absolute; top: 0; right: 0; width: 180px; height: 180px; background: rgba(212,255,79,0.04); border-radius: 50%; transform: translate(40%, -40%);"></div>
+                        <span style="position: absolute; top: 16px; right: 16px; background: rgba(255,165,0,0.15); border: 1px solid rgba(255,165,0,0.4); color: #ffa500; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase;">In Progress</span>
+                    </div>
+                    <div class="bento-body">
+                        <span class="bento-tag">Ad Tech</span>
+                        <h3 class="bento-title">Advertising Award Submission Platform</h3>
+                        <p class="bento-desc">Full-stack platform for managing advertising award entries, submissions, and judging workflows. Handles multi-category submissions, judge assignments, and scoring. Built end-to-end in Claude Code.</p>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin: var(--space-sm) 0;">
+                        <span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.03em;">Claude Code</span>
+                        <span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.03em;">HTML</span>
+                        <span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.03em;">CSS</span>
+                        <span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.03em;">JavaScript</span>
+                        </div>
+                        <span class="bento-cta">View Project <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </div>
+                <a href="https://jgerms20.github.io/-joshua-portfolio-2026/" target="_blank" class="bento-card span-6" data-project="portfolio-memory-system">
+                    <div class="bento-media" style="background: linear-gradient(135deg, #0a1a0a 0%, #1a3a1a 50%, #0a1a0a 100%); aspect-ratio: 16/9; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="position: relative; z-index: 1;"><path d="M12 2a4 4 0 0 1 4 4v2h1a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><circle cx="12" cy="14" r="2"/></svg>
+                        <div style="position: absolute; top: 0; right: 0; width: 180px; height: 180px; background: rgba(212,255,79,0.04); border-radius: 50%; transform: translate(40%, -40%);"></div>
+                        <span style="position: absolute; top: 16px; right: 16px; background: rgba(212,255,79,0.15); border: 1px solid rgba(212,255,79,0.4); color: var(--neon); font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase;">Active</span>
+                    </div>
+                    <div class="bento-body">
+                        <span class="bento-tag">Automation</span>
+                        <h3 class="bento-title">Portfolio Continuous Memory System</h3>
+                        <p class="bento-desc">Automated weekly portfolio update system with persistent project memory across Claude Code sessions. Includes GitHub Actions cron workflow that deploys every Monday and generates a weekly summary report.</p>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin: var(--space-sm) 0;">
+                        <span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.03em;">Claude Code</span>
+                        <span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.03em;">GitHub Actions</span>
+                        <span style="font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); letter-spacing: 0.03em;">Python</span>
+                        </div>
+                        <span class="bento-cta">View Portfolio <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+
+            </div>
+            <!-- CLAUDE-BUILDS-END -->
         </div>
     </section>
 
