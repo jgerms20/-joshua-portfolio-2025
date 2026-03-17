@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joshua McKenzie German — Chapter One</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── CSS Custom Properties ─────────────────────────────────────── */
+    :root {
+      --color-bg:           #0d0d0d;
+      --color-text:         #F5F5F0;
+      --color-rule:         rgba(255,255,255,0.12);
+      --color-muted:        rgba(245,245,240,0.45);
+      --color-dim:          rgba(245,245,240,0.18);
+
+      /* per-chapter accents */
+      --accent-0:           #F5F5F0;
+      --accent-1:           #A0A09A;
+      --accent-2:           #9B7FD4;
+      --accent-3:           #F7D000;
+      --accent-4:           #D4FF4F;
+      --accent-5:           #4A9EFF;
+      --accent-6:           #F5F5F0;
+
+      /* chapter backgrounds */
+      --bg-0:               #0d0d0d;
+      --bg-1:               #0d0d0d;
+      --bg-2:               #0d0a14;
+      --bg-3:               #0d0b00;
+      --bg-4:               #0a0a08;
+      --bg-5:               #080a10;
+      --bg-6:               #0d0d0d;
+
+      --font-headline:      'Inter', sans-serif;
+      --font-body:          'Inter', sans-serif;
+      --max-text:           700px;
+    }
+
+    /* ─── Reset & Base ───────────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ─── Sidebar Nav Dots ───────────────────────────────────────────── */
+    #sidebar-nav {
+      position: fixed;
+      left: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      list-style: none;
+    }
+
+    #sidebar-nav li a {
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--dot-color, rgba(255,255,255,0.2));
+      border: 1px solid var(--dot-color, rgba(255,255,255,0.3));
+      transition: transform 0.25s ease, background 0.25s ease, opacity 0.25s ease;
+      opacity: 0.4;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    #sidebar-nav li a:hover,
+    #sidebar-nav li a.active {
+      opacity: 1;
+      transform: scale(1.5);
+    }
+
+    #sidebar-nav li:nth-child(1) a { --dot-color: var(--accent-0); }
+    #sidebar-nav li:nth-child(2) a { --dot-color: var(--accent-1); }
+    #sidebar-nav li:nth-child(3) a { --dot-color: var(--accent-2); }
+    #sidebar-nav li:nth-child(4) a { --dot-color: var(--accent-3); }
+    #sidebar-nav li:nth-child(5) a { --dot-color: var(--accent-4); }
+    #sidebar-nav li:nth-child(6) a { --dot-color: var(--accent-5); }
+    #sidebar-nav li:nth-child(7) a { --dot-color: var(--accent-6); }
+
+    /* ─── Chapter Base ───────────────────────────────────────────────── */
+    .chapter {
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      padding: 80px 80px 80px 80px;
+      border-top: 1px solid var(--color-rule);
+    }
+
+    .chapter:first-of-type {
+      border-top: none;
+    }
+
+    .chapter-inner {
+      max-width: var(--max-text);
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+
+    /* ─── Scroll Reveal ──────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.22s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
+    .reveal-delay-4 { transition-delay: 0.52s; }
+    .reveal-delay-5 { transition-delay: 0.68s; }
+
+    /* ─── Typewriter Chapter Label ───────────────────────────────────── */
+    .chapter-label {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: clamp(0.6rem, 1vw, 0.75rem);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--chapter-accent, var(--color-muted));
+      margin-bottom: 28px;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .chapter-label.visible {
+      width: 100%;
+    }
+
+    /* ─── Headline ───────────────────────────────────────────────────── */
+    .chapter-headline {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      line-height: 1.05;
+      color: var(--color-text);
+      margin-bottom: 32px;
+    }
+
+    /* ─── Body Text ──────────────────────────────────────────────────── */
+    .chapter-body {
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--color-text);
+      opacity: 0.85;
+      margin-bottom: 24px;
+    }
+
+    /* ─── Accent Underline ───────────────────────────────────────────── */
+    .accent-underline {
+      display: inline-block;
+      border-bottom: 2px solid var(--chapter-accent, var(--color-text));
+      padding-bottom: 4px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       CHAPTER 0 — TITLE CARD
+    ══════════════════════════════════════════════════════════════════ */
+    #chapter-0 {
+      background: var(--bg-0);
+      border-top: none;
+      align-items: center;
+      text-align: center;
+    }
+
+    #chapter-0 .title-name {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: clamp(2rem, 6.5vw, 7rem);
+      line-height: 1.0;
+      color: var(--color-text);
+      margin-bottom: 28px;
+    }
+
+    #chapter-0 .title-tagline {
+      font-weight: 300;
+      font-size: clamp(0.8rem, 1.4vw, 1.05rem);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-dim);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: pulse-down 2s ease-in-out infinite;
+    }
+
+    .scroll-indicator .arrow {
+      font-size: 1.2rem;
+      color: rgba(245,245,240,0.3);
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(6px); }
+    }
+
+    @keyframes pulse-down {
+      0%, 100% { opacity: 0.4; }
+      50%       { opacity: 0.9; }
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       CHAPTER 1 — ORIGIN
+    ══════════════════════════════════════════════════════════════════ */
+    #chapter-1 {
+      background: var(--bg-1);
+      --chapter-accent: var(--accent-1);
+    }
+
+    .sc-outline {
+      position: absolute;
+      bottom: 60px;
+      right: 60px;
+      opacity: 0.06;
+      pointer-events: none;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       CHAPTER 2 — RISING
+    ══════════════════════════════════════════════════════════════════ */
+    #chapter-2 {
+      background: var(--bg-2);
+      --chapter-accent: var(--accent-2);
+    }
+
+    .city-path-container {
+      margin: 36px 0;
+      height: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .city-path-svg {
+      width: 100%;
+      height: 60px;
+    }
+
+    .city-path-line {
+      stroke-dasharray: 320;
+      stroke-dashoffset: 320;
+      transition: stroke-dashoffset 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .city-path-line.draw {
+      stroke-dashoffset: 0;
+    }
+
+    .city-dot {
+      opacity: 0;
+      transition: opacity 0.4s ease 1.8s;
+    }
+
+    .city-dot.show {
+      opacity: 1;
+    }
+
+    .city-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      fill: var(--color-muted);
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       CHAPTER 3 — W+K
+    ══════════════════════════════════════════════════════════════════ */
+    #chapter-3 {
+      background: var(--bg-3);
+      --chapter-accent: var(--accent-3);
+    }
+
+    .cannes-badge {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--accent-3);
+      padding: 20px 32px;
+      margin: 36px 0;
+      position: relative;
+      gap: 4px;
+    }
+
+    .cannes-badge::before,
+    .cannes-badge::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--accent-3);
+    }
+
+    .cannes-badge::before {
+      top: -7px;
+      left: -7px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .cannes-badge::after {
+      bottom: -7px;
+      right: -7px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .cannes-badge .badge-eyebrow {
+      font-size: 0.55rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+      opacity: 0.7;
+    }
+
+    .cannes-badge .badge-title {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: clamp(0.9rem, 2vw, 1.4rem);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+    }
+
+    .cannes-badge .badge-sub {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+
+    .glow-gold {
+      text-shadow: 0 0 40px rgba(247, 208, 0, 0.3);
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       CHAPTER 4 — TBWA / LA
+    ══════════════════════════════════════════════════════════════════ */
+    #chapter-4 {
+      background: var(--bg-4);
+      --chapter-accent: var(--accent-4);
+    }
+
+    .campaign-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 36px 0;
+    }
+
+    .campaign-item {
+      border: 1px solid rgba(212, 255, 79, 0.15);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .campaign-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(212,255,79,0.04) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .campaign-item:hover {
+      border-color: rgba(212, 255, 79, 0.45);
+    }
+
+    .campaign-item:hover::before {
+      opacity: 1;
+    }
+
+    .campaign-client {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent-4);
+      margin-bottom: 6px;
+      opacity: 0.8;
+    }
+
+    .campaign-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--color-text);
+      line-height: 1.3;
+    }
+
+    .neon-glow {
+      text-shadow: 0 0 60px rgba(212, 255, 79, 0.25);
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       CHAPTER 5 — AI ERA
+    ══════════════════════════════════════════════════════════════════ */
+    #chapter-5 {
+      background: var(--bg-5);
+      --chapter-accent: var(--accent-5);
+    }
+
+    .ai-project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 36px 0;
+    }
+
+    .ai-project-item {
+      font-family: 'Courier New', 'Courier', monospace;
+      font-size: 0.75rem;
+      padding: 14px 16px;
+      border: 1px solid rgba(74, 158, 255, 0.2);
+      color: var(--accent-5);
+      letter-spacing: 0.05em;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .ai-project-item::before {
+      content: '> ';
+      opacity: 0.5;
+    }
+
+    .ai-project-item:hover {
+      border-color: rgba(74, 158, 255, 0.6);
+      box-shadow: 0 0 20px rgba(74, 158, 255, 0.1);
+    }
+
+    .blue-glow {
+      text-shadow: 0 0 60px rgba(74, 158, 255, 0.35);
+    }
+
+    .ai-context {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      font-family: 'Courier New', monospace;
+      color: var(--accent-5);
+      opacity: 0.6;
+      margin-bottom: 8px;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       CHAPTER 6 — EPILOGUE
+    ══════════════════════════════════════════════════════════════════ */
+    #chapter-6 {
+      background: var(--bg-6);
+      --chapter-accent: var(--accent-6);
+      text-align: center;
+      align-items: center;
+    }
+
+    #chapter-6 .chapter-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-link {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: clamp(1.2rem, 3vw, 2.2rem);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text);
+      text-decoration: none;
+      display: block;
+      margin: 16px 0;
+      transition: color 0.3s ease, letter-spacing 0.3s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--color-muted);
+      letter-spacing: 0.14em;
+    }
+
+    .the-end {
+      font-variant: small-caps;
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      color: var(--color-dim);
+      margin-top: 80px;
+      text-transform: lowercase;
+      font-style: normal;
+    }
+
+    .contact-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--color-rule);
+      margin: 20px auto;
+    }
+
+    /* ─── Shared Utility ─────────────────────────────────────────────── */
+    .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--chapter-accent, var(--color-muted));
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    .rule {
+      border: none;
+      border-top: 1px solid var(--color-rule);
+      margin: 40px 0;
+    }
+
+    /* ─── Mobile ─────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .chapter {
+        padding: 60px 28px 60px 28px;
+      }
+
+      #sidebar-nav {
+        left: auto;
+        right: 16px;
+        top: 16px;
+        transform: none;
+        flex-direction: row;
+        gap: 10px;
+      }
+
+      #sidebar-nav li a {
+        width: 6px;
+        height: 6px;
+      }
+
+      .campaign-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .city-label {
+        display: none;
+      }
+    }
+
+    /* ─── Selection ──────────────────────────────────────────────────── */
+    ::selection {
+      background: rgba(74, 158, 255, 0.35);
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Sidebar Navigation Dots ──────────────────────────────────── -->
+  <nav aria-label="Chapter navigation">
+    <ul id="sidebar-nav">
+      <li><a href="#chapter-0" aria-label="Title" title="Title"></a></li>
+      <li><a href="#chapter-1" aria-label="Chapter One — Origin" title="Origin"></a></li>
+      <li><a href="#chapter-2" aria-label="Chapter Two — Rise" title="Rise"></a></li>
+      <li><a href="#chapter-3" aria-label="Chapter Three — Portland" title="Portland"></a></li>
+      <li><a href="#chapter-4" aria-label="Chapter Four — Los Angeles" title="Los Angeles"></a></li>
+      <li><a href="#chapter-5" aria-label="Chapter Five — The Machine" title="The Machine"></a></li>
+      <li><a href="#chapter-6" aria-label="Epilogue" title="Epilogue"></a></li>
+    </ul>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       CHAPTER 0 — TITLE CARD
+  ══════════════════════════════════════════════════════════════════ -->
+  <section id="chapter-0" class="chapter">
+    <div class="chapter-inner">
+      <h1 class="title-name reveal">
+        Joshua<br />McKenzie<br />German
+      </h1>
+      <p class="title-tagline reveal reveal-delay-2">
+        AI-Enhanced Creative Strategist · Photographer · Futurist
+      </p>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <span class="arrow">↓</span>
+      <span>Scroll to Begin</span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       CHAPTER 1 — ORIGIN
+  ══════════════════════════════════════════════════════════════════ -->
+  <section id="chapter-1" class="chapter">
+    <div class="chapter-inner">
+      <div class="chapter-label reveal">Chapter One — Columbia, South Carolina</div>
+      <h2 class="chapter-headline reveal reveal-delay-1" style="font-size: clamp(2rem, 4.5vw, 4.5rem);">
+        Origin
+      </h2>
+      <p class="chapter-body reveal reveal-delay-2">
+        It started in Columbia. Before the campaigns, before the Grand Prix, before the machines — there was
+        a kid at the University of South Carolina learning that stories are the only currency that matters.
+        Journalism school taught the fundamentals: get the fact right, find the human, earn the read.
+      </p>
+      <p class="chapter-body reveal reveal-delay-3">
+        At <em>The Daily Gamecock</em>, that instinct sharpened into craft. Writing on deadline, editing for
+        clarity, chasing stories that connected to something real. The tools would change. The discipline
+        never would.
+      </p>
+      <p class="chapter-body reveal reveal-delay-4">
+        Columbia was the foundation. Everything else is built on it.
+      </p>
+    </div>
+
+    <!-- SC State SVG outline — decorative -->
+    <svg class="sc-outline" width="180" height="120" viewBox="0 0 100 100" aria-hidden="true">
+      <path
+        d="M5,14 C35,7 58,6 76,10 L84,24 C88,38 84,56 74,70 L56,80 L36,84 L16,78 C7,66 4,50 5,28 Z"
+        fill="none"
+        stroke="#F5F5F0"
+        stroke-width="1.5"
+      />
+    </svg>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       CHAPTER 2 — RISING
+  ══════════════════════════════════════════════════════════════════ -->
+  <section id="chapter-2" class="chapter">
+    <div class="chapter-inner">
+      <div class="chapter-label reveal">Chapter Two — The Rise</div>
+      <h2 class="chapter-headline reveal reveal-delay-1" style="font-size: clamp(2rem, 4.5vw, 4.5rem); color: var(--accent-2);">
+        Charlotte → SF
+      </h2>
+
+      <!-- City map trace -->
+      <div class="city-path-container reveal reveal-delay-2">
+        <svg class="city-path-svg" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="60" y1="30" x2="300" y2="30"
+            class="city-path-line"
+            stroke="rgba(155,127,212,0.5)"
+            stroke-width="1"
+            stroke-dasharray="4 4"
+          />
+          <line x1="300" y1="30" x2="540" y2="30"
+            class="city-path-line"
+            stroke="rgba(155,127,212,0.5)"
+            stroke-width="1"
+            stroke-dasharray="4 4"
+          />
+          <!-- dots -->
+          <circle cx="60" cy="30" r="4" fill="var(--accent-2)" class="city-dot" />
+          <circle cx="300" cy="30" r="4" fill="var(--accent-2)" class="city-dot" />
+          <circle cx="540" cy="30" r="4" fill="var(--accent-2)" class="city-dot" />
+          <!-- labels -->
+          <text x="60" y="50" text-anchor="middle" class="city-label">Columbia</text>
+          <text x="300" y="50" text-anchor="middle" class="city-label">Charlotte</text>
+          <text x="540" y="50" text-anchor="middle" class="city-label">San Francisco</text>
+        </svg>
+      </div>
+
+      <p class="chapter-body reveal reveal-delay-3">
+        Charlotte became home base. GSP — a creative agency punching above its weight — became the proving
+        ground. Here the journalism muscles converted into brand thinking: instead of covering stories,
+        Joshua was building them, from brief to broadcast.
+      </p>
+      <p class="chapter-body reveal reveal-delay-4">
+        The client roster sharpened instincts fast: <strong>BMW</strong> demanded precision and aspiration
+        in the same breath; <strong>Pepsi</strong> required cultural fluency at scale. The work traveled
+        from Charlotte to San Francisco, coast to coast, getting sharper with every campaign.
+        The industry was paying attention.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       CHAPTER 3 — WIEDEN+KENNEDY
+  ══════════════════════════════════════════════════════════════════ -->
+  <section id="chapter-3" class="chapter">
+    <div class="chapter-inner">
+      <div class="chapter-label reveal">Chapter Three — Portland</div>
+      <h2 class="chapter-headline reveal reveal-delay-1 glow-gold"
+          style="font-size: clamp(2rem, 4.5vw, 4.5rem);">
+        <span class="accent-underline" style="border-bottom-color: var(--accent-3);">
+          Wieden+Kennedy
+        </span>
+      </h2>
+
+      <p class="eyebrow reveal reveal-delay-2">Portland, Oregon · Global Creative</p>
+
+      <p class="chapter-body reveal reveal-delay-2">
+        The call to Portland. Wieden+Kennedy — the agency that made Nike say "Just Do It," that put Old Spice
+        on the cultural map — was where Joshua's strategic voice found its full register. Portland is where
+        good work becomes legendary work.
+      </p>
+      <p class="chapter-body reveal reveal-delay-3">
+        The DoorDash "All The Ads" Super Bowl campaign was a masterclass in structured chaos — a real-time
+        sweepstakes that gave away every product advertised during the Big Game. America noticed.
+        The industry gave it the highest honour it knows.
+      </p>
+
+      <!-- Cannes Grand Prix Badge -->
+      <div class="cannes-badge reveal reveal-delay-4" aria-label="Cannes Grand Prix Award">
+        <span class="badge-eyebrow">Cannes Lions International Festival of Creativity</span>
+        <span class="badge-title">Grand Prix</span>
+        <span class="badge-sub">DoorDash "All The Ads" — Direct</span>
+      </div>
+
+      <p class="chapter-body reveal reveal-delay-5">
+        One Grand Prix. The kind of recognition that validates not just the work, but the approach:
+        that creativity and strategy, when aligned with genuine cultural insight, can change what people
+        believe is possible in advertising.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       CHAPTER 4 — TBWA / LOS ANGELES
+  ══════════════════════════════════════════════════════════════════ -->
+  <section id="chapter-4" class="chapter">
+    <div class="chapter-inner">
+      <div class="chapter-label reveal">Chapter Four — Los Angeles</div>
+      <h2 class="chapter-headline reveal reveal-delay-1 neon-glow"
+          style="font-size: clamp(2rem, 4.5vw, 4.5rem); color: var(--accent-4);">
+        TBWA\Chiat\Day
+      </h2>
+
+      <p class="eyebrow reveal reveal-delay-2">Senior Connections Strategist · LA</p>
+
+      <p class="chapter-body reveal reveal-delay-2">
+        Los Angeles. The city of disruption, reinvention, and perpetual becoming. TBWA\Chiat\Day — the home of
+        "disruption" as a formal creative philosophy — was the natural next chapter. As Senior Connections
+        Strategist, Joshua orchestrated how brands move through culture: which channels, which moments,
+        which conversations.
+      </p>
+
+      <!-- Campaign highlights grid -->
+      <div class="campaign-grid reveal reveal-delay-3">
+        <div class="campaign-item">
+          <div class="campaign-client">Levi's</div>
+          <div class="campaign-name">Levi's × Beyoncé<br />"BEYONCÉ IS WEARING LEVI'S"</div>
+        </div>
+        <div class="campaign-item">
+          <div class="campaign-client">Sephora</div>
+          <div class="campaign-name">Inclusivity Platform<br />Brand Connections Strategy</div>
+        </div>
+        <div class="campaign-item">
+          <div class="campaign-client">DIRECTV</div>
+          <div class="campaign-name">Streaming Era<br />Audience Migration Campaign</div>
+        </div>
+        <div class="campaign-item">
+          <div class="campaign-client">Agency</div>
+          <div class="campaign-name">Disruption Thinking<br />Cross-Platform Integration</div>
+        </div>
+      </div>
+
+      <p class="chapter-body reveal reveal-delay-4">
+        The Levi's × Beyoncé collaboration wasn't a media buy — it was a cultural moment engineered
+        to feel inevitable. When Beyoncé wore Levi's, the world wanted to know why, and the strategy
+        was already there waiting. That's the job.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       CHAPTER 5 — AI ERA
+  ══════════════════════════════════════════════════════════════════ -->
+  <section id="chapter-5" class="chapter">
+    <div class="chapter-inner">
+      <div class="chapter-label reveal">Chapter Five — The Machine</div>
+      <h2 class="chapter-headline reveal reveal-delay-1 blue-glow"
+          style="font-size: clamp(2rem, 4.5vw, 4.5rem); color: var(--accent-5);">
+        AI Era
+      </h2>
+
+      <div class="ai-context reveal reveal-delay-2">// current_status: active · location: everywhere</div>
+
+      <p class="chapter-body reveal reveal-delay-2">
+        The tools changed again — faster than ever before. And instead of watching from a distance,
+        Joshua ran toward the machines. Claude Code, Google AI Studio, multimodal workflows built at
+        the intersection of creative strategy and engineering thinking.
+      </p>
+      <p class="chapter-body reveal reveal-delay-3">
+        The <em>Approachable AI</em> podcast distills this without the hype: making the technology
+        legible for the humans who need it most. Because the best AI work isn't about replacing
+        the creative instinct — it's about amplifying it.
+      </p>
+
+      <!-- AI Project Grid -->
+      <div class="ai-project-grid reveal reveal-delay-4">
+        <div class="ai-project-item">Claude Code Builds</div>
+        <div class="ai-project-item">Google AI Studio</div>
+        <div class="ai-project-item">Approachable AI Pod</div>
+        <div class="ai-project-item">Multimodal Workflows</div>
+        <div class="ai-project-item">Brand AI Tooling</div>
+        <div class="ai-project-item">Prompt Architecture</div>
+        <div class="ai-project-item">AI Creative Strategy</div>
+        <div class="ai-project-item">LLM Prototyping</div>
+        <div class="ai-project-item">Human-AI Interfaces</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       CHAPTER 6 — EPILOGUE
+  ══════════════════════════════════════════════════════════════════ -->
+  <section id="chapter-6" class="chapter">
+    <div class="chapter-inner">
+      <div class="chapter-label reveal" style="text-align:center;">Epilogue — What's Next</div>
+      <h2 class="chapter-headline reveal reveal-delay-1"
+          style="font-size: clamp(2rem, 4vw, 4rem); text-align:center; margin-bottom:48px;">
+        Let's Make<br />Something Real
+      </h2>
+
+      <a href="mailto:joshua@example.com" class="contact-link reveal reveal-delay-2">
+        joshua@example.com
+      </a>
+
+      <div class="contact-divider reveal reveal-delay-3"></div>
+
+      <a href="https://linkedin.com/in/joshuagerman" class="contact-link reveal reveal-delay-3"
+         target="_blank" rel="noopener noreferrer">
+        LinkedIn
+      </a>
+
+      <p class="the-end reveal reveal-delay-5">The End</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       JAVASCRIPT — IntersectionObserver + Nav + City Path
+  ══════════════════════════════════════════════════════════════════ -->
+  <script>
+    (function () {
+      'use strict';
+
+      // ── Scroll Reveal via IntersectionObserver ──────────────────────
+      const revealEls = document.querySelectorAll('.reveal');
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      revealEls.forEach((el) => revealObserver.observe(el));
+
+      // ── Typewriter Chapter Labels ───────────────────────────────────
+      // Chapter labels use CSS width transition; we add .visible via same
+      // IntersectionObserver logic above. The .chapter-label class
+      // already listens for .visible via CSS transition on width.
+
+      // ── City Path Draw Animation (Chapter 2) ────────────────────────
+      const cityPathSection = document.getElementById('chapter-2');
+      const cityLines = document.querySelectorAll('.city-path-line');
+      const cityDots = document.querySelectorAll('.city-dot');
+
+      const cityObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              cityLines.forEach((line) => line.classList.add('draw'));
+              cityDots.forEach((dot) => dot.classList.add('show'));
+              cityObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+
+      if (cityPathSection) cityObserver.observe(cityPathSection);
+
+      // ── Active Nav Dot Highlighting ─────────────────────────────────
+      const chapters = document.querySelectorAll('.chapter');
+      const navLinks = document.querySelectorAll('#sidebar-nav a');
+
+      const navObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              navLinks.forEach((link) => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + id) {
+                  link.classList.add('active');
+                }
+              });
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+
+      chapters.forEach((ch) => navObserver.observe(ch));
+
+      // ── Smooth scroll for nav dot clicks ────────────────────────────
+      navLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.querySelector(link.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // ── Title card initial reveal ────────────────────────────────────
+      // Force title card elements visible immediately (no threshold needed)
+      document.querySelectorAll('#chapter-0 .reveal').forEach((el) => {
+        el.classList.add('visible');
+      });
+
+    }());
+  </script>
+
+</body>
+</html>

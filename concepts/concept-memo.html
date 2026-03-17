@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joshua McKenzie German — Strategy Memo Concept</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─────────────────────────────────────────────
+       RESET & BASE
+    ───────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: #F7F4EE;
+      color: #333333;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ─────────────────────────────────────────────
+       TYPOGRAPHY SCALE
+    ───────────────────────────────────────────── */
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      color: #111111;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    .mono {
+      font-family: 'Courier New', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ─────────────────────────────────────────────
+       LAYOUT
+    ───────────────────────────────────────────── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+
+    /* ─────────────────────────────────────────────
+       LINKS
+    ───────────────────────────────────────────── */
+    a {
+      color: #111111;
+      text-decoration: none;
+      border-bottom: 1px solid #111111;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    a:hover {
+      color: #8B2635;
+      border-color: #8B2635;
+    }
+
+    /* ─────────────────────────────────────────────
+       HEADER
+    ───────────────────────────────────────────── */
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #E0DDD6;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-name {
+      font-family: 'Courier New', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #111111;
+      border-bottom: none;
+    }
+
+    .header-name:hover {
+      color: #8B2635;
+      border-bottom: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    nav a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      color: #333333;
+      border-bottom: none;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    nav a:hover {
+      color: #8B2635;
+      border-bottom-color: #8B2635;
+    }
+
+    @media (max-width: 600px) {
+      .header-inner {
+        padding: 0 24px;
+        height: 48px;
+      }
+      nav {
+        gap: 20px;
+      }
+      nav a {
+        font-size: 0.75rem;
+      }
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTION DIVIDERS
+    ───────────────────────────────────────────── */
+    .section-rule {
+      border: none;
+      border-top: 1px solid #D6D2C8;
+      margin: 0;
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTION LABEL
+    ───────────────────────────────────────────── */
+    .section-label {
+      font-family: 'Courier New', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #8B2635;
+      display: block;
+      margin-bottom: 32px;
+    }
+
+    /* ─────────────────────────────────────────────
+       HERO SECTION
+    ───────────────────────────────────────────── */
+    .hero {
+      padding: 96px 0 88px;
+    }
+
+    .hero-label {
+      font-family: 'Courier New', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #8B2635;
+      display: block;
+      margin-bottom: 40px;
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 500;
+      color: #111111;
+      line-height: 1.15;
+      max-width: 780px;
+      margin-bottom: 32px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-subhead {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1.05rem;
+      color: #555550;
+      letter-spacing: 0.01em;
+      margin-bottom: 40px;
+    }
+
+    .hero-subhead strong {
+      font-weight: 400;
+      color: #333333;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .hero-links a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      color: #111111;
+      border-bottom: 1.5px solid #111111;
+      padding-bottom: 2px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .hero-links a:hover {
+      color: #8B2635;
+      border-color: #8B2635;
+    }
+
+    /* Decorative rule below hero */
+    .hero-foot-rule {
+      margin-top: 80px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .hero-foot-rule .rule-line {
+      height: 1px;
+      background-color: #D6D2C8;
+    }
+
+    .hero-foot-rule .rule-diamond {
+      width: 6px;
+      height: 6px;
+      background-color: #8B2635;
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 64px 0 56px;
+      }
+      .hero-headline {
+        font-size: 2rem;
+        margin-bottom: 24px;
+      }
+      .hero-subhead {
+        font-size: 0.95rem;
+        margin-bottom: 32px;
+      }
+    }
+
+    /* ─────────────────────────────────────────────
+       WORK SECTION
+    ───────────────────────────────────────────── */
+    .work-section {
+      padding: 80px 0 88px;
+    }
+
+    .work-section .section-label {
+      margin-bottom: 48px;
+    }
+
+    .memo-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* ─── MEMO CARD ─── */
+    .memo-card {
+      border: 1px solid #D6D2C8;
+      padding: 32px 36px 28px;
+      background-color: #FDFAF5;
+      position: relative;
+      margin-bottom: -1px; /* collapse borders */
+      transition: background-color 0.2s ease;
+    }
+
+    .memo-card:hover {
+      background-color: #FAF6EF;
+      z-index: 1;
+    }
+
+    .memo-card:first-child {
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+    }
+
+    .memo-card:last-child {
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+      margin-bottom: 0;
+    }
+
+    .memo-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #D6D2C8;
+    }
+
+    .memo-id {
+      font-family: 'Courier New', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #111111;
+      flex: 1;
+    }
+
+    .memo-year {
+      font-family: 'Courier New', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: #888880;
+      flex-shrink: 0;
+    }
+
+    .memo-body {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: end;
+      margin-top: 16px;
+    }
+
+    .memo-summary {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: #444440;
+      margin-bottom: 16px;
+    }
+
+    .memo-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    .memo-metrics span {
+      font-family: 'Courier New', monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #666660;
+    }
+
+    .memo-metrics span + span::before {
+      content: ' · ';
+      color: #AAAAAA;
+    }
+
+    .memo-cta {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: #111111;
+      border-bottom: 1px solid #111111;
+      white-space: nowrap;
+      align-self: flex-start;
+      margin-top: 4px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .memo-cta:hover {
+      color: #8B2635;
+      border-color: #8B2635;
+    }
+
+    @media (max-width: 640px) {
+      .memo-card {
+        padding: 24px 24px 20px;
+      }
+      .memo-body {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        align-items: start;
+      }
+      .memo-cta {
+        align-self: auto;
+      }
+    }
+
+    /* ─────────────────────────────────────────────
+       AI SECTION
+    ───────────────────────────────────────────── */
+    .ai-section {
+      padding: 80px 0 88px;
+      border-top: 1px solid #D6D2C8;
+    }
+
+    .ai-inner {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .ai-sidebar {
+      padding-top: 4px;
+    }
+
+    .ai-sidebar .section-label {
+      margin-bottom: 16px;
+    }
+
+    .ai-sidebar p {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: #888880;
+      line-height: 1.6;
+    }
+
+    .ai-project-list {
+      list-style: none;
+      counter-reset: ai-counter;
+    }
+
+    .ai-project-list li {
+      counter-increment: ai-counter;
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 0;
+      padding: 20px 0;
+      border-bottom: 1px solid #E8E4DC;
+    }
+
+    .ai-project-list li:first-child {
+      border-top: 1px solid #E8E4DC;
+    }
+
+    .ai-project-list li::before {
+      content: counter(ai-counter, decimal-leading-zero);
+      font-family: 'Courier New', monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.06em;
+      color: #AAAAAA;
+      padding-top: 3px;
+    }
+
+    .ai-project-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .ai-project-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #111111;
+      letter-spacing: 0.01em;
+    }
+
+    .ai-project-desc {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 0.82rem;
+      color: #666660;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 680px) {
+      .ai-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* ─────────────────────────────────────────────
+       BIO STRIP
+    ───────────────────────────────────────────── */
+    .bio-section {
+      padding: 72px 0;
+      border-top: 1px solid #D6D2C8;
+      background-color: #F0EDE6;
+    }
+
+    .bio-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .bio-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-weight: 400;
+      font-style: italic;
+      color: #222222;
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .bio-text em {
+      font-style: normal;
+      color: #111111;
+      font-weight: 500;
+    }
+
+    .bio-breadcrumb {
+      font-family: 'Courier New', monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #999990;
+      line-height: 2.4;
+      text-align: right;
+      white-space: nowrap;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    .bio-breadcrumb .crumb-active {
+      color: #8B2635;
+    }
+
+    @media (max-width: 640px) {
+      .bio-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 0 24px;
+      }
+      .bio-breadcrumb {
+        writing-mode: horizontal-tb;
+        text-align: left;
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+      .bio-breadcrumb .crumb-sep {
+        margin: 0 6px;
+      }
+    }
+
+    /* ─────────────────────────────────────────────
+       CONTACT SECTION
+    ───────────────────────────────────────────── */
+    .contact-section {
+      padding: 96px 0 88px;
+      border-top: 1px solid #D6D2C8;
+      text-align: center;
+    }
+
+    .contact-label {
+      font-family: 'Courier New', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #8B2635;
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    .contact-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 400;
+      color: #111111;
+      letter-spacing: -0.01em;
+      margin-bottom: 48px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      color: #111111;
+      border-bottom: 1px solid #111111;
+      padding-bottom: 2px;
+    }
+
+    .contact-links a:hover {
+      color: #8B2635;
+      border-color: #8B2635;
+    }
+
+    /* ─────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid #D6D2C8;
+      padding: 32px 0;
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-family: 'Courier New', monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.1em;
+      color: #AAAAAA;
+    }
+
+    .footer-built {
+      font-family: 'Courier New', monospace;
+      font-size: 0.64rem;
+      letter-spacing: 0.1em;
+      color: #CCCCCC;
+    }
+
+    @media (max-width: 600px) {
+      .footer-inner {
+        padding: 0 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .bio-inner {
+        padding: 0 24px;
+      }
+    }
+
+    /* ─────────────────────────────────────────────
+       CONCEPT BADGE (concept overlay)
+    ───────────────────────────────────────────── */
+    .concept-banner {
+      background-color: #8B2635;
+      color: #F7F4EE;
+      text-align: center;
+      padding: 10px 24px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* ─────────────────────────────────────────────
+       PRINT STYLES
+    ───────────────────────────────────────────── */
+    @media print {
+      header {
+        position: static;
+      }
+      .concept-banner {
+        display: none;
+      }
+      body {
+        background: white;
+      }
+      .memo-card {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Concept indicator -->
+  <div class="concept-banner">
+    Design Concept — "The Strategy Memo" — 2026 Portfolio Redesign
+  </div>
+
+  <!-- ─────────────── HEADER ─────────────── -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="header-name">Joshua McKenzie German</a>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#ai">AI</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ─────────────── HERO ─────────────── -->
+  <section class="hero">
+    <div class="container">
+
+      <span class="hero-label">Senior Connections Strategist</span>
+
+      <h1 class="hero-headline">
+        Advertising strategy at the intersection of&nbsp;culture, technology, and&nbsp;AI.
+      </h1>
+
+      <p class="hero-subhead">
+        <strong>Joshua McKenzie German.</strong>
+        Currently at <strong>TBWA\Chiat\Day, Los Angeles.</strong>
+        Formerly Portland, San Francisco, Charlotte, Columbia.
+      </p>
+
+      <div class="hero-links">
+        <a href="#work">View Work &rarr;</a>
+        <a href="#bio">Read Bio &rarr;</a>
+      </div>
+
+      <div class="hero-foot-rule">
+        <div class="rule-line"></div>
+        <div class="rule-diamond"></div>
+        <div class="rule-line"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ─────────────── WORK ─────────────── -->
+  <section class="work-section" id="work">
+    <div class="container">
+
+      <span class="section-label">Selected Work — Case Studies</span>
+
+      <div class="memo-stack">
+
+        <!-- Card 1: Levi's -->
+        <div class="memo-card">
+          <div class="memo-header">
+            <span class="memo-id">Levi's &nbsp;/&nbsp; Reiimagine — Beyoncé Campaign</span>
+            <span class="memo-year">2024</span>
+          </div>
+          <div class="memo-body">
+            <div>
+              <p class="memo-summary">
+                Connections strategy for Levi's landmark partnership with Beyoncé, aligning
+                the brand's cultural legacy with the <em>Renaissance Act II</em> tour moment.
+                Engineered a media architecture spanning earned, social, and OOH that turned
+                a licensing deal into a cultural statement — making Levi's synonymous with
+                Beyoncé's country pivot before the world saw it coming.
+              </p>
+              <div class="memo-metrics">
+                <span>+47M Reach</span>
+                <span>+41% Brand Awareness</span>
+                <span>Cannes Finalist</span>
+                <span>TBWA\Chiat\Day LA</span>
+              </div>
+            </div>
+            <a href="#" class="memo-cta">&rarr; Read full brief</a>
+          </div>
+        </div>
+
+        <!-- Card 2: Gatorade -->
+        <div class="memo-card">
+          <div class="memo-header">
+            <span class="memo-id">Gatorade &nbsp;/&nbsp; Stranger Things × NFL Films</span>
+            <span class="memo-year">2022</span>
+          </div>
+          <div class="memo-body">
+            <div>
+              <p class="memo-summary">
+                Orchestrated a dual-partnership campaign bridging Netflix's
+                <em>Stranger Things</em> Season 4 with NFL Films' archival aesthetic —
+                positioning Gatorade at the center of youth nostalgia and sports authority
+                simultaneously. The strategy turned two seemingly incompatible IP partners
+                into a single coherent narrative about performance, legend, and the Upside Down.
+              </p>
+              <div class="memo-metrics">
+                <span>Dual IP Integration</span>
+                <span>+33% Youth Engagement</span>
+                <span>5 Platform Activation</span>
+              </div>
+            </div>
+            <a href="#" class="memo-cta">&rarr; Read full brief</a>
+          </div>
+        </div>
+
+        <!-- Card 3: DIRECTV -->
+        <div class="memo-card">
+          <div class="memo-header">
+            <span class="memo-id">DIRECTV &nbsp;/&nbsp; Emmys Hijack</span>
+            <span class="memo-year">2023</span>
+          </div>
+          <div class="memo-body">
+            <div>
+              <p class="memo-summary">
+                Real-time OOH takeover strategy deployed during the 75th Emmy Awards —
+                using live data triggers to commandeer premium outdoor placements in
+                Los Angeles and New York the moment winners were announced. The campaign
+                reframed DIRECTV as the home of prestige television by literally owning
+                the night's most culturally loaded advertising real estate.
+              </p>
+              <div class="memo-metrics">
+                <span>Live OOH Activation</span>
+                <span>14 Markets</span>
+                <span>Premium TV Positioning</span>
+                <span>Real-Time Triggers</span>
+              </div>
+            </div>
+            <a href="#" class="memo-cta">&rarr; Read full brief</a>
+          </div>
+        </div>
+
+        <!-- Card 4: DoorDash -->
+        <div class="memo-card">
+          <div class="memo-header">
+            <span class="memo-id">DoorDash &nbsp;/&nbsp; All the Ads</span>
+            <span class="memo-year">2024</span>
+          </div>
+          <div class="memo-body">
+            <div>
+              <p class="memo-summary">
+                Connections architecture for the Cannes Grand Prix-winning Super Bowl
+                campaign that delivered every product featured in every other Super Bowl
+                ad — in real time. The strategy required choreographing a media and
+                logistics framework across 100+ brand partners, turning an audacious
+                creative idea into an operationally flawless cultural moment watched by
+                113 million people.
+              </p>
+              <div class="memo-metrics">
+                <span>Cannes Grand Prix</span>
+                <span>Super Bowl LVIII</span>
+                <span>113M Viewers</span>
+                <span>100+ Brand Partners</span>
+              </div>
+            </div>
+            <a href="#" class="memo-cta">&rarr; Read full brief</a>
+          </div>
+        </div>
+
+        <!-- Card 5: Sephora -->
+        <div class="memo-card">
+          <div class="memo-header">
+            <span class="memo-id">Sephora &nbsp;/&nbsp; Holiday &amp; Skincare — Taika Waititi</span>
+            <span class="memo-year">2023</span>
+          </div>
+          <div class="memo-body">
+            <div>
+              <p class="memo-summary">
+                Connections strategy for Sephora's holiday and skincare campaigns directed
+                by Taika Waititi — developing the media sequencing logic that let an
+                absurdist, director-driven creative vision reach its intended audience at
+                the right moments of intent. Balanced brand equity investment with
+                performance precision across a fragmented beauty media landscape.
+              </p>
+              <div class="memo-metrics">
+                <span>Taika Waititi Director</span>
+                <span>+28% Purchase Intent</span>
+                <span>Holiday + Skincare</span>
+                <span>Full-Funnel Strategy</span>
+              </div>
+            </div>
+            <a href="#" class="memo-cta">&rarr; Read full brief</a>
+          </div>
+        </div>
+
+      </div><!-- /memo-stack -->
+
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ─────────────── AI SECTION ─────────────── -->
+  <section class="ai-section" id="ai">
+    <div class="container">
+      <div class="ai-inner">
+
+        <div class="ai-sidebar">
+          <span class="section-label">AI Projects</span>
+          <p>
+            Applying large language models and generative tools to the practice of
+            connections planning, audience research, and strategic synthesis.
+          </p>
+        </div>
+
+        <ol class="ai-project-list">
+          <li>
+            <div class="ai-project-content">
+              <span class="ai-project-title">Audience Intelligence Framework</span>
+              <span class="ai-project-desc">LLM-assisted audience research pipeline that synthesizes cultural signals, platform data, and behavioral patterns into actionable connections strategies.</span>
+            </div>
+          </li>
+          <li>
+            <div class="ai-project-content">
+              <span class="ai-project-title">Brief Compression Tool</span>
+              <span class="ai-project-desc">Prompt-engineered workflow for distilling 40-page client briefs into single-page strategic platforms — tested across 12 live pitches.</span>
+            </div>
+          </li>
+          <li>
+            <div class="ai-project-content">
+              <span class="ai-project-title">Cultural Velocity Tracker</span>
+              <span class="ai-project-desc">Real-time trend monitoring system using GPT-4 to assess cultural moment windows and rank brand relevance opportunities by urgency and fit.</span>
+            </div>
+          </li>
+          <li>
+            <div class="ai-project-content">
+              <span class="ai-project-title">Connections Planning GPT</span>
+              <span class="ai-project-desc">Custom GPT trained on TBWA proprietary planning frameworks, enabling junior strategists to scaffold rigorous connection architectures faster.</span>
+            </div>
+          </li>
+          <li>
+            <div class="ai-project-content">
+              <span class="ai-project-title">Persona Synthesis Engine</span>
+              <span class="ai-project-desc">Multi-source audience persona generation that merges qual research, social listening data, and platform insights into rich strategic portraits.</span>
+            </div>
+          </li>
+          <li>
+            <div class="ai-project-content">
+              <span class="ai-project-title">Media Narrative Generator</span>
+              <span class="ai-project-desc">Tool that reverse-engineers the editorial logic behind high-performing earned media campaigns to surface replicable strategic patterns.</span>
+            </div>
+          </li>
+        </ol>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────── BIO STRIP ─────────────── -->
+  <section class="bio-section" id="bio">
+    <div class="bio-inner">
+
+      <p class="bio-text">
+        Joshua is a <em>Senior Connections Strategist</em> at TBWA\Chiat\Day Los Angeles,
+        where he architects the media and cultural strategies behind some of advertising's
+        most recognized work. He brings a decade of cross-channel planning experience to
+        brands that want to move culture rather than just occupy it — and a growing
+        practice in applied AI that is reshaping how strategy gets made.
+      </p>
+
+      <div class="bio-breadcrumb">
+        <span>Columbia, SC</span><br>
+        <span>&#x2193;</span><br>
+        <span>Charlotte</span><br>
+        <span>&#x2193;</span><br>
+        <span>San Francisco</span><br>
+        <span>&#x2193;</span><br>
+        <span>Portland</span><br>
+        <span>&#x2193;</span><br>
+        <span class="crumb-active">Los Angeles &#x25CF;</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────── CONTACT ─────────────── -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <span class="contact-label">Get in Touch</span>
+      <h2 class="contact-headline">Let's make something worth remembering.</h2>
+      <div class="contact-links">
+        <a href="mailto:hello@joshuagerman.com">hello@joshuagerman.com</a>
+        <a href="https://linkedin.com/in/joshuagerman" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────── FOOTER ─────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">&copy; 2026 Joshua McKenzie German</span>
+      <span class="footer-built">Built with Claude Code</span>
+    </div>
+  </footer>
+
+</body>
+</html>
