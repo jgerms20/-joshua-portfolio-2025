@@ -2610,7 +2610,7 @@
                         box-shadow: 0 0 14px rgba(212,255,79,0.4);
                     }
 
-                    /* ---- STATE MAP SILHOUETTES ---- */
+                    /* ---- ACHIEVEMENT CALLOUTS ---- */
                     .jtl-empty {
                         display: flex;
                         align-items: flex-start;
@@ -2619,41 +2619,74 @@
                     .jtl-row.jtl-left .jtl-empty  { justify-content: flex-start; padding-left: 20px; }
                     .jtl-row.jtl-right .jtl-empty { justify-content: flex-end;  padding-right: 20px; }
 
-                    .jtl-state-map {
-                        width: 90px;
-                        height: 90px;
-                        flex-shrink: 0;
-                        pointer-events: none;
-                        opacity: 0.9;
-                        transition: opacity 0.3s ease;
+                    .jtl-achieve {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        max-width: 200px;
                     }
-                    .jtl-row:hover .jtl-state-map { opacity: 1; }
-
-                    .state-path {
-                        stroke: rgba(255,255,255,0.18);
-                        stroke-width: 2;
-                        stroke-linejoin: round;
-                        fill: rgba(255,255,255,0.03);
-                    }
-                    .jtl-row:hover .state-path { stroke: rgba(255,255,255,0.3); }
-
-                    .state-city-dot {
-                        fill: #D4FF4F;
-                        filter: drop-shadow(0 0 3px rgba(212,255,79,0.9));
+                    .jtl-achieve-right {
+                        align-items: flex-end;
+                        text-align: right;
                     }
 
-                    .state-city-ring {
-                        stroke: #D4FF4F;
-                        stroke-width: 1.5;
-                        fill: none;
-                        transform-box: fill-box;
-                        transform-origin: center;
-                        animation: state-city-pulse 2.5s ease-out infinite;
+                    .jtl-achieve-label {
+                        font-size: 0.58rem;
+                        font-weight: 700;
+                        letter-spacing: 0.18em;
+                        text-transform: uppercase;
+                        color: var(--text-muted);
+                        display: block;
                     }
 
-                    @keyframes state-city-pulse {
-                        0%   { transform: scale(1); opacity: 0.75; }
-                        100% { transform: scale(3.5); opacity: 0; }
+                    .jtl-chips {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 6px;
+                    }
+                    .jtl-achieve-right .jtl-chips {
+                        justify-content: flex-end;
+                    }
+
+                    .jtl-chip {
+                        display: inline-block;
+                        font-size: 0.65rem;
+                        font-weight: 600;
+                        letter-spacing: 0.03em;
+                        padding: 4px 10px;
+                        border-radius: 20px;
+                        background: rgba(255,255,255,0.04);
+                        border: 1px solid rgba(255,255,255,0.1);
+                        color: var(--text-secondary);
+                        transition: all 0.3s ease;
+                        white-space: nowrap;
+                    }
+                    .jtl-row:hover .jtl-chip {
+                        border-color: rgba(255,255,255,0.2);
+                        color: var(--text-primary);
+                    }
+
+                    .jtl-chip-gold {
+                        background: rgba(247,208,0,0.08);
+                        border-color: rgba(247,208,0,0.3);
+                        color: #F7D000;
+                    }
+                    .jtl-row:hover .jtl-chip-gold {
+                        background: rgba(247,208,0,0.12);
+                        border-color: rgba(247,208,0,0.5);
+                        color: #F7D000;
+                        box-shadow: 0 0 10px rgba(247,208,0,0.15);
+                    }
+
+                    .jtl-chip-neon {
+                        background: rgba(212,255,79,0.06);
+                        border-color: rgba(212,255,79,0.25);
+                        color: var(--neon);
+                    }
+                    .jtl-row:hover .jtl-chip-neon {
+                        background: rgba(212,255,79,0.1);
+                        border-color: rgba(212,255,79,0.45);
+                        box-shadow: 0 0 10px rgba(212,255,79,0.12);
                     }
 
                     /* ---- MOBILE ---- */
