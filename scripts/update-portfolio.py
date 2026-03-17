@@ -136,8 +136,8 @@ def update_html(html_content, new_grid_html):
     replacement = rf"\g<1>{new_grid_html}\n            \g<3>"
     new_content, subs = pattern.subn(replacement, html_content)
     if subs == 0:
-        print("ERROR: Could not find CLAUDE-BUILDS-START/END markers in index.html", file=sys.stderr)
-        sys.exit(1)
+        print("WARNING: CLAUDE-BUILDS-START/END markers not found — skipping HTML update", file=sys.stderr)
+        return html_content  # return unchanged
     return new_content
 
 

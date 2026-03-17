@@ -17,6 +17,8 @@
     <meta name="twitter:image" content="https://jgerms20.github.io/-joshua-portfolio-2026/Images/Photos of Self/JMG_7456.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+    <link rel="dns-prefetch" href="https://i.ytimg.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     
     <style>
@@ -1317,6 +1319,23 @@
             .ai-projects-grid { grid-template-columns: 1fr; }
         }
 
+        /* Small phones */
+        @media (max-width: 480px) {
+            .display-large { font-size: clamp(2.2rem, 11vw, 3.5rem); }
+            .display-medium { font-size: clamp(1.6rem, 8vw, 2.5rem); }
+            .hero-ctas { flex-direction: column; gap: var(--space-sm); }
+            .hero-ctas .btn { width: 100%; text-align: center; justify-content: center; }
+            .section-header { padding: 0; }
+        }
+
+        /* Ultra-small / older phones */
+        @media (max-width: 320px) {
+            :root { --edge: 16px; }
+            .display-large { font-size: 2rem; }
+            .bento-title { font-size: 1rem; }
+            .nav-dock { display: none; } /* hide floating nav on tiny screens */
+        }
+
         /* =====================================================
            FOOTER
            ===================================================== */
@@ -1422,7 +1441,11 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 8px;
+            padding: 12px;
+            min-width: 44px;
+            min-height: 44px;
+            align-items: center;
+            justify-content: center;
             z-index: 1003 !important;
             pointer-events: auto !important;
             position: relative;
@@ -2181,7 +2204,7 @@
             <div class="about-layout reveal reveal-delay-1">
                 <!-- Left: Headshot -->
                 <div class="about-photo-placeholder" id="aboutHeadshot">
-                    <img src="Images/Photos of Self/German_Joshua_898-0831.jpg" alt="Joshua McKenzie German" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-xl);">
+                    <img loading="lazy" src="Images/Photos of Self/German_Joshua_898-0831.jpg" alt="Joshua McKenzie German" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-xl);">
                 </div>
                 
                 <!-- Right: About Text -->
@@ -2198,43 +2221,43 @@
         <!-- Full Width Skills Ticker -->
         <div class="skills-ticker-full reveal reveal-delay-2">
             <div class="ticker-track">
-                <span class="ticker-item"><span class="up">▲</span> Strategic Planning +2.1%</span>
-                <span class="ticker-item"><span class="up">▲</span> Storytelling +1.4%</span>
-                <span class="ticker-item"><span class="up">▲</span> AI Marketing +3.2%</span>
-                <span class="ticker-item"><span class="down">▼</span> Media Planning -0.4%</span>
-                <span class="ticker-item"><span class="up">▲</span> Cultural Insight +1.1%</span>
-                <span class="ticker-item"><span class="up">▲</span> Emerging Tech +2.7%</span>
-                <span class="ticker-item"><span class="up">▲</span> Content Strategy +0.9%</span>
-                <span class="ticker-item"><span class="up">▲</span> Photography +1.8%</span>
+                <span class="ticker-item"><span class="up">▲</span> Claude Code +4.8%</span>
+                <span class="ticker-item"><span class="up">▲</span> Connections Planning +2.4%</span>
                 <span class="ticker-item"><span class="up">▲</span> Brand Strategy +1.6%</span>
-                <span class="ticker-item"><span class="up">▲</span> Creative Direction +2.3%</span>
-                <span class="ticker-item"><span class="up">▲</span> Vibe Coding +4.5%</span>
-                <span class="ticker-item"><span class="up">▲</span> Podcasting +2.0%</span>
-                <span class="ticker-item"><span class="up">▲</span> Visual Design +1.3%</span>
-                <span class="ticker-item"><span class="up">▲</span> Consumer Research +0.8%</span>
-                <span class="ticker-item"><span class="up">▲</span> Audience Insights +1.9%</span>
-                <span class="ticker-item"><span class="up">▲</span> Connection Strategy +2.4%</span>
-                <span class="ticker-item"><span class="up">▲</span> Super Bowl Campaigns +3.1%</span>
-                <span class="ticker-item"><span class="up">▲</span> Cultural Trends +1.7%</span>
+                <span class="ticker-item"><span class="up">▲</span> AI Workflow Design +5.1%</span>
+                <span class="ticker-item"><span class="up">▲</span> Cultural Insight +1.1%</span>
+                <span class="ticker-item"><span class="up">▲</span> Prompt Engineering +3.9%</span>
+                <span class="ticker-item"><span class="up">▲</span> Campaign Architecture +2.2%</span>
+                <span class="ticker-item"><span class="up">▲</span> Google AI Studio +4.2%</span>
+                <span class="ticker-item"><span class="up">▲</span> Audience Intelligence +1.9%</span>
+                <span class="ticker-item"><span class="up">▲</span> Creative Brief Writing +1.3%</span>
+                <span class="ticker-item"><span class="up">▲</span> Super Bowl Strategy +3.1%</span>
+                <span class="ticker-item"><span class="up">▲</span> Photography +1.8%</span>
+                <span class="ticker-item"><span class="up">▲</span> Storytelling +1.4%</span>
+                <span class="ticker-item"><span class="up">▲</span> Brand Positioning +2.0%</span>
+                <span class="ticker-item"><span class="up">▲</span> Media Math +0.9%</span>
+                <span class="ticker-item"><span class="up">▲</span> Podcasting +2.3%</span>
+                <span class="ticker-item"><span class="up">▲</span> Cross-Functional Leadership +1.7%</span>
+                <span class="ticker-item"><span class="up">▲</span> Cannes Grand Prix Work +3.8%</span>
                 <!-- Duplicate for seamless loop -->
-                <span class="ticker-item"><span class="up">▲</span> Strategic Planning +2.1%</span>
-                <span class="ticker-item"><span class="up">▲</span> Storytelling +1.4%</span>
-                <span class="ticker-item"><span class="up">▲</span> AI Marketing +3.2%</span>
-                <span class="ticker-item"><span class="down">▼</span> Media Planning -0.4%</span>
-                <span class="ticker-item"><span class="up">▲</span> Cultural Insight +1.1%</span>
-                <span class="ticker-item"><span class="up">▲</span> Emerging Tech +2.7%</span>
-                <span class="ticker-item"><span class="up">▲</span> Content Strategy +0.9%</span>
-                <span class="ticker-item"><span class="up">▲</span> Photography +1.8%</span>
+                <span class="ticker-item"><span class="up">▲</span> Claude Code +4.8%</span>
+                <span class="ticker-item"><span class="up">▲</span> Connections Planning +2.4%</span>
                 <span class="ticker-item"><span class="up">▲</span> Brand Strategy +1.6%</span>
-                <span class="ticker-item"><span class="up">▲</span> Creative Direction +2.3%</span>
-                <span class="ticker-item"><span class="up">▲</span> Vibe Coding +4.5%</span>
-                <span class="ticker-item"><span class="up">▲</span> Podcasting +2.0%</span>
-                <span class="ticker-item"><span class="up">▲</span> Visual Design +1.3%</span>
-                <span class="ticker-item"><span class="up">▲</span> Consumer Research +0.8%</span>
-                <span class="ticker-item"><span class="up">▲</span> Audience Insights +1.9%</span>
-                <span class="ticker-item"><span class="up">▲</span> Connection Strategy +2.4%</span>
-                <span class="ticker-item"><span class="up">▲</span> Super Bowl Campaigns +3.1%</span>
-                <span class="ticker-item"><span class="up">▲</span> Cultural Trends +1.7%</span>
+                <span class="ticker-item"><span class="up">▲</span> AI Workflow Design +5.1%</span>
+                <span class="ticker-item"><span class="up">▲</span> Cultural Insight +1.1%</span>
+                <span class="ticker-item"><span class="up">▲</span> Prompt Engineering +3.9%</span>
+                <span class="ticker-item"><span class="up">▲</span> Campaign Architecture +2.2%</span>
+                <span class="ticker-item"><span class="up">▲</span> Google AI Studio +4.2%</span>
+                <span class="ticker-item"><span class="up">▲</span> Audience Intelligence +1.9%</span>
+                <span class="ticker-item"><span class="up">▲</span> Creative Brief Writing +1.3%</span>
+                <span class="ticker-item"><span class="up">▲</span> Super Bowl Strategy +3.1%</span>
+                <span class="ticker-item"><span class="up">▲</span> Photography +1.8%</span>
+                <span class="ticker-item"><span class="up">▲</span> Storytelling +1.4%</span>
+                <span class="ticker-item"><span class="up">▲</span> Brand Positioning +2.0%</span>
+                <span class="ticker-item"><span class="up">▲</span> Media Math +0.9%</span>
+                <span class="ticker-item"><span class="up">▲</span> Podcasting +2.3%</span>
+                <span class="ticker-item"><span class="up">▲</span> Cross-Functional Leadership +1.7%</span>
+                <span class="ticker-item"><span class="up">▲</span> Cannes Grand Prix Work +3.8%</span>
             </div>
         </div>
 
@@ -2266,9 +2289,9 @@
                         <div class="jtl-empty">
                         <div class="jtl-state-map" aria-hidden="true">
                             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path class="state-path" d="M8,14 L80,10 L88,36 L82,58 L68,78 L48,90 L22,84 L8,60 Z"/>
-                                <circle class="state-city-ring" cx="46" cy="48" r="4"/>
-                                <circle class="state-city-dot" cx="46" cy="48" r="2.5"/>
+                                <path class="state-path" d="M5,14 C35,7 58,6 76,10 L84,24 C88,38 84,56 74,70 L56,80 L36,84 L16,78 C7,66 4,50 5,28 Z"/>
+                                <circle class="state-city-ring" cx="48" cy="44" r="4"/>
+                                <circle class="state-city-dot" cx="48" cy="44" r="2.5"/>
                             </svg>
                         </div>
                         </div>
@@ -2279,9 +2302,9 @@
                         <div class="jtl-empty">
                         <div class="jtl-state-map" aria-hidden="true">
                             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path class="state-path" d="M5,30 L78,10 L94,26 L90,50 L94,62 L78,68 L58,78 L38,72 L18,76 L8,62 L5,48 Z"/>
-                                <circle class="state-city-ring" cx="16" cy="52" r="4"/>
-                                <circle class="state-city-dot" cx="16" cy="52" r="2.5"/>
+                                <path class="state-path" d="M4,38 L4,28 C35,20 62,18 84,20 L96,30 L92,42 L88,50 L62,56 L28,60 L8,62 Z"/>
+                                <circle class="state-city-ring" cx="18" cy="52" r="4"/>
+                                <circle class="state-city-dot" cx="18" cy="52" r="2.5"/>
                             </svg>
                         </div>
                         </div>
@@ -2316,9 +2339,9 @@
                         <div class="jtl-empty">
                         <div class="jtl-state-map" aria-hidden="true">
                             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path class="state-path" d="M34,4 L60,8 L70,20 L74,36 L70,52 L65,70 L58,84 L50,94 L36,90 L24,78 L20,62 L22,46 L28,28 L30,14 Z"/>
-                                <circle class="state-city-ring" cx="40" cy="38" r="4"/>
-                                <circle class="state-city-dot" cx="40" cy="38" r="2.5"/>
+                                <path class="state-path" d="M30,4 L56,3 L68,12 C74,26 76,48 72,68 L64,84 L44,92 L28,86 C18,72 15,52 16,36 C18,22 22,12 30,4 Z"/>
+                                <circle class="state-city-ring" cx="22" cy="46" r="4"/>
+                                <circle class="state-city-dot" cx="22" cy="46" r="2.5"/>
                             </svg>
                         </div>
                         </div>
@@ -2329,9 +2352,9 @@
                         <div class="jtl-empty">
                         <div class="jtl-state-map" aria-hidden="true">
                             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path class="state-path" d="M8,10 L68,10 L76,22 L92,22 L92,86 L72,92 L8,92 Z"/>
-                                <circle class="state-city-ring" cx="20" cy="22" r="4"/>
-                                <circle class="state-city-dot" cx="20" cy="22" r="2.5"/>
+                                <path class="state-path" d="M5,8 C35,3 65,3 88,6 L94,14 L94,82 L90,88 L62,90 L32,90 L14,84 C6,72 4,55 5,38 Z"/>
+                                <circle class="state-city-ring" cx="22" cy="22" r="4"/>
+                                <circle class="state-city-dot" cx="22" cy="22" r="2.5"/>
                             </svg>
                         </div>
                         </div>
@@ -2366,9 +2389,9 @@
                         <div class="jtl-empty">
                         <div class="jtl-state-map" aria-hidden="true">
                             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path class="state-path" d="M34,4 L60,8 L70,20 L74,36 L70,52 L65,70 L58,84 L50,94 L36,90 L24,78 L20,62 L22,46 L28,28 L30,14 Z"/>
-                                <circle class="state-city-ring" cx="52" cy="72" r="4"/>
-                                <circle class="state-city-dot" cx="52" cy="72" r="2.5"/>
+                                <path class="state-path" d="M30,4 L56,3 L68,12 C74,26 76,48 72,68 L64,84 L44,92 L28,86 C18,72 15,52 16,36 C18,22 22,12 30,4 Z"/>
+                                <circle class="state-city-ring" cx="48" cy="78" r="4"/>
+                                <circle class="state-city-dot" cx="48" cy="78" r="2.5"/>
                             </svg>
                         </div>
                         </div>
@@ -2671,7 +2694,7 @@
                 <!-- Levi's - Featured Full Width -->
                 <a href="work/work-levis.html" class="bento-card span-12 reveal">
                     <div class="bento-media" style="aspect-ratio: 21/9;">
-                        <img src="https://www.levistrauss.com/wp-content/uploads/2024/09/240930_Blu_Hero.jpg" alt="Levi's REIIMAGINE Campaign" style="object-position: center 20%;">
+                        <img loading="lazy" src="https://www.levistrauss.com/wp-content/uploads/2024/09/240930_Blu_Hero.jpg" alt="Levi's REIIMAGINE Campaign" style="object-position: center 20%;">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Senior Connection Strategist • TBWA\Chiat\Day</span>
@@ -2683,8 +2706,10 @@
 
                 <!-- Gatorade -->
                 <a href="work/work-gatorade.html" class="bento-card reveal reveal-delay-1">
-                    <div class="bento-media">
-                        <img src="Brand Imagery/Gatorade/Brand Logo/gatorade-logo-png_seeklogo-369610.png" alt="Gatorade Campaigns" style="max-height: 100px; width: auto; object-fit: contain; background: #000; padding: 30px;">
+                    <div class="bento-media" style="background: linear-gradient(135deg, #1a0800 0%, #3d1800 45%, #0a1020 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                        <div style="position:absolute;top:-30px;right:-30px;width:160px;height:160px;background:rgba(240,130,0,0.12);border-radius:50%;"></div>
+                        <div style="position:absolute;bottom:-20px;left:-20px;width:120px;height:120px;background:rgba(240,130,0,0.07);border-radius:50%;"></div>
+                        <img loading="lazy" src="Brand Imagery/Gatorade/Brand Logo/gatorade-logo-png_seeklogo-369610.png" alt="Gatorade" style="max-height: 72px; width: auto; object-fit: contain; position: relative; z-index: 1; filter: brightness(1.15) drop-shadow(0 0 12px rgba(240,130,0,0.4));">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Connection Strategist • TBWA\Chiat\Day</span>
@@ -2697,7 +2722,7 @@
                 <!-- Sephora -->
                 <a href="work/work-sephora.html" class="bento-card reveal reveal-delay-1">
                     <div class="bento-media" style="background: #fff; display: flex; align-items: center; justify-content: center; padding: 40px;">
-                        <img src="Brand Imagery/Sephora/Brand Logo/Sephora-Emblem.png" alt="Sephora" style="max-height: 100px; width: auto; object-fit: contain;">
+                        <img loading="lazy" src="Brand Imagery/Sephora/Brand Logo/Sephora-Emblem.png" alt="Sephora" style="max-height: 100px; width: auto; object-fit: contain;">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Senior Connection Strategist • TBWA\Chiat\Day</span>
@@ -2710,7 +2735,7 @@
                 <!-- DoorDash -->
                 <a href="work/work-doordash.html" class="bento-card reveal">
                     <div class="bento-media">
-                        <img src="Brand Imagery/Doordash/Supporting Images/Hero.webp" alt="DoorDash All The Ads">
+                        <img loading="lazy" src="Brand Imagery/Doordash/Supporting Images/Hero.webp" alt="DoorDash All The Ads">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Media & Comms Supervisor • Wieden+Kennedy</span>
@@ -2723,7 +2748,7 @@
                 <!-- BMW -->
                 <a href="work/work-bmw.html" class="bento-card reveal reveal-delay-1">
                     <div class="bento-media">
-                        <img src="Brand Imagery/BMW/Supporting Images/Hero alt.jpg" alt="BMW Zeus & Hera">
+                        <img loading="lazy" src="Brand Imagery/BMW/Supporting Images/Hero alt.jpg" alt="BMW Zeus & Hera">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Communication Strategist • Goodby, Silverstein & Partners</span>
@@ -2736,7 +2761,7 @@
                 <!-- DIRECTV -->
                 <a href="work/work-directv.html" class="bento-card reveal reveal-delay-2">
                     <div class="bento-media">
-                        <img src="Brand Imagery/Directv/directv-rebranding-bringing-flexibility-2025.webp" alt="DIRECTV">
+                        <img loading="lazy" src="Brand Imagery/Directv/directv-rebranding-bringing-flexibility-2025.webp" alt="DIRECTV">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Connection Strategist • TBWA\Chiat\Day</span>
@@ -2750,7 +2775,7 @@
                 <!-- Samuel Adams -->
                 <a href="work/work-samadams.html" class="bento-card reveal">
                     <div class="bento-media">
-                        <img src="https://goodbysilverstein.com/public/upload/work/images/desktop/63e1579848ae6.jpg" alt="Samuel Adams Brighter Boston">
+                        <img loading="lazy" src="https://goodbysilverstein.com/public/upload/work/images/desktop/63e1579848ae6.jpg" alt="Samuel Adams Brighter Boston">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Communication Strategist • Goodby, Silverstein & Partners</span>
@@ -2763,7 +2788,7 @@
                 <!-- Califia Farms -->
                 <a href="work/work-califia.html" class="bento-card reveal reveal-delay-1">
                     <div class="bento-media">
-                        <img src="https://goodbysilverstein.com/public/upload/work/images/desktop/6125b3d544db1.jpg" alt="Califia Farms Calilujah">
+                        <img loading="lazy" src="https://goodbysilverstein.com/public/upload/work/images/desktop/6125b3d544db1.jpg" alt="Califia Farms Calilujah">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Communication Strategist • Goodby, Silverstein & Partners</span>
@@ -2790,7 +2815,7 @@
                 <!-- Approachable AI (First - Current) -->
                 <a href="podcasts/podcast-approachable-ai.html" class="podcast-card reveal">
                     <div class="podcast-cover">
-                        <img src="Approachable AI Logo 1.png" alt="Approachable AI" onerror="this.parentElement.style.background='linear-gradient(135deg, #4ECDC4, #2C9E8F)'; this.parentElement.innerHTML='<span style=&quot;font-size:2rem;color:white;font-weight:700;&quot;>AI</span>';">
+                        <img loading="lazy" src="Approachable AI Logo 1.png" alt="Approachable AI" onerror="this.parentElement.style.background='linear-gradient(135deg, #4ECDC4, #2C9E8F)'; this.parentElement.innerHTML='<span style=&quot;font-size:2rem;color:white;font-weight:700;&quot;>AI</span>';">
                     </div>
                     <div class="podcast-info">
                         <span class="bento-tag">2026 – Present</span>
@@ -2802,7 +2827,7 @@
                 <!-- Dominate The Decade -->
                 <a href="podcasts/podcast-dominate.html" class="podcast-card reveal reveal-delay-1">
                     <div class="podcast-cover">
-                        <img src="Dominate The Decade/Hero Image.jpeg" alt="Dominate The Decade">
+                        <img loading="lazy" src="Dominate The Decade/Hero Image.jpeg" alt="Dominate The Decade">
                     </div>
                     <div class="podcast-info">
                         <span class="bento-tag">2020 – 2023</span>
@@ -2818,7 +2843,7 @@
                         <span class="coming-soon-year">2026</span>
                     </div>
                     <div class="podcast-cover" style="filter: grayscale(0.5); opacity: 0.7;">
-                        <img src="Curious&Creative1.0.png" alt="Curious & Creative">
+                        <img loading="lazy" src="Curious&Creative1.0.png" alt="Curious & Creative">
                     </div>
                     <div class="podcast-info">
                         <span class="bento-tag" style="color: var(--text-muted);">2026 – Coming Soon</span>
@@ -2883,6 +2908,40 @@
             </div>
 
             <div class="ai-projects-grid reveal reveal-delay-1">
+
+                <!-- ── Claude Code builds first (most recent) ── -->
+                <div class="ai-grid-item">
+                    <a href="https://jgerms20.github.io/-joshua-portfolio-2026/" target="_blank" class="ai-project-card" data-app="portfolio-site">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #0a1a0a 0%, #0d2d1a 50%, #081408 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.75)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                            <span style="position:absolute;top:14px;right:14px;background:rgba(212,255,79,0.15);border:1px solid rgba(212,255,79,0.4);color:#D4FF4F;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;">Live</span>
+                            <div style="position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,rgba(212,255,79,0.07) 0%,transparent 60%);"></div>
+                        </div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Portfolio Site</span>
+                            <h3 class="bento-title">AI-Enhanced Portfolio</h3>
+                            <p class="bento-desc">This site — designed, built, and continuously evolved with Claude Code. Persistent session memory, 30+ slash commands, automated health checks, and a live GitHub Actions pipeline.</p>
+                            <div class="ai-platform-badge ai-badge-claude"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</div>
+                            <span class="bento-cta">View Site <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="ai-grid-item">
+                    <a href="https://github.com/jgerms20/-joshua-portfolio-2026/tree/main/.claude/commands" target="_blank" class="ai-project-card" data-app="slash-commands">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #0a0a1a 0%, #151530 50%, #0a0a1a 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.75)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            <span style="position:absolute;top:14px;right:14px;background:rgba(212,255,79,0.15);border:1px solid rgba(212,255,79,0.4);color:#D4FF4F;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;">Active</span>
+                            <div style="position:absolute;inset:0;background:radial-gradient(circle at 70% 60%,rgba(212,255,79,0.06) 0%,transparent 60%);"></div>
+                        </div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Developer Tools</span>
+                            <h3 class="bento-title">Slash Command System</h3>
+                            <p class="bento-desc">30+ custom /commands for portfolio management — /portfolio-audit, /think-biggest, /brand-voice, /mood-board, /video-check and more. A reusable AI workflow system any creator could adopt.</p>
+                            <div class="ai-platform-badge ai-badge-claude"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</div>
+                            <span class="bento-cta">View on GitHub <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </a>
+                </div>
 
                 <div class="ai-grid-item">
                     <a href="https://ai.studio/apps/drive/1C1BH5wAdVTio0MAa3mmMiH1O5elvxbth" target="_blank" class="ai-project-card" data-app="archive">
@@ -3021,97 +3080,101 @@
             <div style="position: relative;">
                 <div class="photo-masonry reveal reveal-delay-1" id="photoGallery">
                 <!-- Portraits -->
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1520.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1430.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1371.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8929.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8044.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_9553.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_6968.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_6994.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_0879.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1723.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_2744.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_0436.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1547.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1742.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1759.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1763.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1787.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1789.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1790.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1820.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1835.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_2914.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_5476.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8011.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8074.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8078.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8318.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8386.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8611.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8714.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8750.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1520.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1430.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1371.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8929.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8044.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_9553.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_6968.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_6994.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_0879.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1723.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_2744.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_0436.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1547.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1742.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1759.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1763.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1787.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1789.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1790.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1820.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1835.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_2914.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_5476.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8011.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8074.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8078.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8318.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8386.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8611.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8714.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8750.jpg" alt="Portrait" loading="lazy"></div>
 
                 <!-- Fashion -->
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_1601.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_4379.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_2938.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_2971-3.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_2986.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_3729.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_3641.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_3984.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_7818.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_8075.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_8083.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_8986.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_1601.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_4379.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_2938.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_2971-3.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_2986.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_3729.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_3641.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_3984.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_7818.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_8075.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_8083.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_8986.jpg" alt="Fashion" loading="lazy"></div>
 
                 <!-- Landscape -->
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_6629.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_6631.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_6632.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_6986.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/DSC00659.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_7654.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_6496.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/IMG_5646_jpg.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/DSC00317.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/DSC00488.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/DSC00543.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_5559.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_5665.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_6769.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_7083.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_7100.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_6629.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_5784.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_7943.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_6986.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/DSC00659.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_7654.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_6496.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/IMG_5646_jpg.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/DSC00317.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/DSC00488.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/DSC00543.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_5559.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_5665.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_6769.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_7083.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_7100.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_5742.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_5693.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_2990.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_8149.jpg" alt="Fashion" loading="lazy"></div>
 
                 <!-- Events -->
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_1939.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_2254.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_2854.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_7787.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/IMG_6986_jpg.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/DSC00006.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/DSC00007.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/DSC00021.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/DSC00028.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/DSC01053.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_2228.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_2437.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_2560.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_7895.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_1939.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_2254.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_2854.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_7787.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/IMG_6986_jpg.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/DSC00006.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/DSC00007.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/DSC00021.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/DSC00028.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/DSC01053.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_2228.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_2437.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_2560.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_7895.jpg" alt="Event" loading="lazy"></div>
 
                 <!-- Travel -->
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_7419.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_7445.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_7535.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_3086.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_5784.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_6742.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/DSC00870.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/DSC00873.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_5570.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_6742.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/JMG_7419.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/JMG_7445.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/JMG_7535.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/JMG_3086.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/JMG_5784.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/JMG_6742.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/DSC00870.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/DSC00873.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/JMG_5570.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_3029.jpg" alt="Fashion" loading="lazy"></div>
                 </div>
             </div>
         </div>
@@ -3147,7 +3210,7 @@
                 <!-- Goodreads -->
                 <a href="https://www.goodreads.com/user/show/95365432-joshua-german" target="_blank" class="media-link-card">
                     <div class="media-link-icon" style="background: linear-gradient(135deg, #8B6F47, #5C4A2E); width: 64px; height: 64px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-lg); color: white;">
-                        <img src="https://www.goodreads.com/favicon.ico" alt="Goodreads" style="width: 48px; height: 48px; border-radius: var(--radius-sm);" onerror="this.style.display='none'; this.parentElement.innerHTML='<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M4 19.5A2.5 2.5 0 0 1 6.5 17H20\'></path><path d=\'M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\'></path><path d=\'M8 7h8M8 11h8M8 15h4\'></path></svg>';">
+                        <img loading="lazy" src="https://www.goodreads.com/favicon.ico" alt="Goodreads" style="width: 48px; height: 48px; border-radius: var(--radius-sm);" onerror="this.style.display='none'; this.parentElement.innerHTML='<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M4 19.5A2.5 2.5 0 0 1 6.5 17H20\'></path><path d=\'M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\'></path><path d=\'M8 7h8M8 11h8M8 15h4\'></path></svg>';">
                             </div>
                     <h3 class="media-link-title" style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-sm);">Books I'm Reading</h3>
                     <p class="media-link-desc" style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-lg); line-height: 1.6;">Track my reading progress on Goodreads</p>
@@ -3728,7 +3791,7 @@
                     const filmsPreview = document.getElementById('films-preview-rss');
                     if (filmsPreview && films.length > 0) {
                         filmsPreview.innerHTML = films.slice(0, 12).map(film => 
-                            film.poster ? `<img src="${film.poster}" alt="${film.title}" loading="lazy">` : '<div style="background: var(--glass-border);"></div>'
+                            film.poster ? `<img loading="lazy" src="${film.poster}" alt="${film.title}" loading="lazy">` : '<div style="background: var(--glass-border);"></div>'
                         ).join('');
                     }
                 }
@@ -3740,7 +3803,7 @@
                     const articlesPreview = document.getElementById('articles-written-preview-rss');
                     if (articlesPreview && articles.length > 0) {
                         articlesPreview.innerHTML = articles.slice(0, 6).map(article => 
-                            article.image ? `<img src="${article.image}" alt="${article.title}" loading="lazy">` : '<div style="background: var(--glass-border);"></div>'
+                            article.image ? `<img loading="lazy" src="${article.image}" alt="${article.title}" loading="lazy">` : '<div style="background: var(--glass-border);"></div>'
                         ).join('');
                     }
                 }
@@ -3761,7 +3824,7 @@
                     ];
                     booksPreview.innerHTML = bookCovers.map((cover, idx) => {
                         const fallback = cover.replace('_SY475_', '_SX318_');
-                        return `<img src="${cover}" alt="Currently reading" loading="lazy" onerror="this.onerror=null; this.src='${fallback}'; if(!this.src) this.style.display='none';">`;
+                        return `<img loading="lazy" src="${cover}" alt="Currently reading" loading="lazy" onerror="this.onerror=null; this.src='${fallback}'; if(!this.src) this.style.display='none';">`;
                     }).join('');
                 }
                 
@@ -3982,7 +4045,7 @@
         <button class="lightbox-nav lightbox-prev">‹</button>
         <button class="lightbox-nav lightbox-next">›</button>
         <div class="lightbox-content">
-            <img id="lightboxImg" src="" alt="">
+            <img loading="lazy" id="lightboxImg" src="" alt="">
         </div>
     </div>
 
