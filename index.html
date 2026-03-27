@@ -3,11 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Joshua McKenzie German — Creative Strategist, Visual Storyteller, Photographer, and Futurist. Explore my work in branding, photography, podcasting, and AI.">
-    <meta name="keywords" content="Joshua McKenzie German, creative strategist, photographer, podcaster, TBWA Chiat Day, Levi's, Beyoncé, AI">
-    <title>Joshua McKenzie German | Creative Polymath</title>
+    <meta name="description" content="Joshua McKenzie German — AI-Enhanced Creative Strategist, Visual Storyteller, Photographer, and Futurist. Strategy, branding, podcasting, photography, and AI — built for what's next.">
+    <meta name="keywords" content="Joshua McKenzie German, AI-Enhanced Creative Strategist, photographer, podcaster, TBWA Chiat Day, Levi's, Beyoncé, artificial intelligence, connections strategy">
+    <title>Joshua McKenzie German | AI-Enhanced Creative Strategist</title>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Joshua McKenzie German | AI-Enhanced Creative Strategist">
+    <meta property="og:description" content="AI-Enhanced Creative Strategist, Photographer, and Futurist. Strategy, branding, podcasting, photography, and AI — built for what's next.">
+    <meta property="og:url" content="https://jgerms20.github.io/-joshua-portfolio-2026/">
+    <meta property="og:image" content="https://jgerms20.github.io/-joshua-portfolio-2026/Images/Photos of Self/JMG_7456.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Joshua McKenzie German | AI-Enhanced Creative Strategist">
+    <meta name="twitter:description" content="AI-Enhanced Creative Strategist, Photographer, and Futurist. Strategy, branding, podcasting, photography, and AI — built for what's next.">
+    <meta name="twitter:image" content="https://jgerms20.github.io/-joshua-portfolio-2026/Images/Photos of Self/JMG_7456.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+    <link rel="dns-prefetch" href="https://i.ytimg.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     
     <style>
@@ -392,6 +403,38 @@
             color: var(--neon);
             min-width: 200px;
             transition: opacity 0.3s ease;
+        }
+
+        /* Hero static descriptor */
+        .hero-descriptor {
+            font-family: var(--font-sans);
+            font-size: clamp(0.75rem, 1.5vw, 0.88rem);
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--neon);
+            margin-top: var(--space-lg);
+            opacity: 0.9;
+        }
+
+        /* Chrome GPU acceleration for animated elements */
+        .ticker-wrapper,
+        .ticker-track,
+        .stop-dot.pulse::after,
+        .jtl-dot-pulse::after {
+            will-change: transform;
+            transform: translateZ(0);
+        }
+
+        /* Respect prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
         /* Photo Rotator */
@@ -1200,137 +1243,97 @@
         }
         
         /* =====================================================
-           AI PROJECTS CAROUSEL
+           AI PROJECTS GRID
            ===================================================== */
-        .ai-projects-carousel {
-            margin-top: var(--space-3xl);
-            position: relative;
+        .ai-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-xl);
+            margin-top: var(--space-2xl);
         }
-        
-        .carousel-container {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
+
+        .ai-grid-item {
+            display: flex;
         }
-        
-        .carousel-track {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius-xl);
-        }
-        
-        .carousel-slide {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-        
-        .carousel-slide.active {
-            display: block;
-            opacity: 1;
-        }
-        
-        .ai-project-card-carousel {
-            display: block;
+
+        .ai-project-card {
+            display: flex;
+            flex-direction: column;
             background: var(--glass);
             border: 1px solid var(--glass-border);
             border-radius: var(--radius-xl);
             overflow: hidden;
-            transition: all 0.4s var(--ease-out-expo);
+            transition: transform 0.4s var(--ease-out-expo), border-color 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
             color: inherit;
+            width: 100%;
         }
-        
-        .ai-project-card-carousel:hover {
-            transform: translateY(-4px);
-            border-color: var(--neon);
-            box-shadow: 0 12px 40px rgba(212, 255, 79, 0.15);
+
+        .ai-project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(212,255,79,0.4);
+            box-shadow: 0 16px 48px rgba(212,255,79,0.10);
         }
-        
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            color: var(--text-primary);
-            cursor: pointer;
-            display: flex;
+
+        .ai-card-no-link {
+            cursor: default;
+        }
+
+        .ai-card-no-link:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255,165,0,0.3);
+            box-shadow: 0 12px 32px rgba(255,165,0,0.08);
+        }
+
+        .ai-platform-badge {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10;
-            backdrop-filter: blur(10px);
+            gap: 5px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 4px 9px;
+            border-radius: 5px;
+            margin-top: var(--space-sm);
+            margin-bottom: 2px;
         }
-        
-        .carousel-btn:hover {
-            background: var(--neon);
-            border-color: var(--neon);
-            color: var(--void);
-            transform: translateY(-50%) scale(1.1);
+
+        .ai-badge-google {
+            background: rgba(66,133,244,0.08);
+            border: 1px solid rgba(66,133,244,0.25);
+            color: #7EB3FF;
         }
-        
-        .carousel-prev {
-            left: -24px;
+
+        .ai-badge-claude {
+            background: rgba(212,255,79,0.08);
+            border: 1px solid rgba(212,255,79,0.25);
+            color: var(--neon);
         }
-        
-        .carousel-next {
-            right: -24px;
+
+        @media (max-width: 1100px) {
+            .ai-projects-grid { grid-template-columns: repeat(2, 1fr); }
         }
-        
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-sm);
-            margin-top: var(--space-xl);
+
+        @media (max-width: 560px) {
+            .ai-projects-grid { grid-template-columns: 1fr; }
         }
-        
-        .carousel-indicator {
-            min-width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--glass-border);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            border: 1px solid var(--glass-border);
+
+        /* Small phones */
+        @media (max-width: 480px) {
+            .display-large { font-size: clamp(2.2rem, 11vw, 3.5rem); }
+            .display-medium { font-size: clamp(1.6rem, 8vw, 2.5rem); }
+            .hero-ctas { flex-direction: column; gap: var(--space-sm); }
+            .hero-ctas .btn { width: 100%; text-align: center; justify-content: center; }
+            .section-header { padding: 0; }
         }
-        
-        .carousel-indicator:hover {
-            background: var(--glass-hover);
-            color: var(--text-primary);
-            transform: scale(1.1);
-        }
-        
-        .carousel-indicator.active {
-            background: var(--neon);
-            color: var(--void);
-            border-color: var(--neon);
-            min-width: 50px;
-            transform: scale(1.15);
-        }
-        
-        @media (max-width: 768px) {
-            .carousel-prev {
-                left: 10px;
-            }
-            
-            .carousel-next {
-                right: 10px;
-            }
-            
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-            }
+
+        /* Ultra-small / older phones */
+        @media (max-width: 320px) {
+            :root { --edge: 16px; }
+            .display-large { font-size: 2rem; }
+            .bento-title { font-size: 1rem; }
+            .nav-dock { display: none; } /* hide floating nav on tiny screens */
         }
 
         /* =====================================================
@@ -1406,6 +1409,30 @@
             color: var(--neon);
             white-space: nowrap;
         }
+
+        .brand-mark {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            line-height: 1;
+        }
+        .brand-initials {
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            color: var(--neon);
+            text-transform: uppercase;
+            font-family: var(--font-sans);
+        }
+        .brand-tagline {
+            font-size: 0.52rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
         
         .mobile-menu-toggle {
             display: none;
@@ -1414,7 +1441,11 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 8px;
+            padding: 12px;
+            min-width: 44px;
+            min-height: 44px;
+            align-items: center;
+            justify-content: center;
             z-index: 1003 !important;
             pointer-events: auto !important;
             position: relative;
@@ -1501,7 +1532,7 @@
         .header-nav {
             display: flex;
             align-items: center;
-            gap: var(--space-xl);
+            gap: var(--space-lg);
         }
         
         .header-nav > a,
@@ -1989,7 +2020,10 @@
          ===================================================== -->
     <header class="top-header">
         <div class="header-left">
-            <span class="descriptor">Creative Strategist • Photographer • Futurist</span>
+            <a href="#hero" class="brand-mark" aria-label="Joshua McKenzie German – Home">
+                <span class="brand-initials">Joshua McKenzie German</span>
+                <span class="brand-tagline">AI-Enhanced Creative Strategist</span>
+            </a>
         </div>
         <button class="mobile-menu-toggle" aria-label="Toggle menu">
             <span></span>
@@ -2011,6 +2045,10 @@
                     <a href="work/work-directv.html">DIRECTV</a>
                     <a href="work/work-samadams.html">Samuel Adams</a>
                     <a href="work/work-califia.html">Califia Farms</a>
+                    <a href="work/work-dwb.html">Driving While Black</a>
+                    <a href="work/work-mlb.html">MLB: Baseball Is Something Else</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#freelance">Freelance &amp; Consulting</a>
                     <div class="dropdown-divider"></div>
                     <a href="#work">View All Work</a>
                 </div>
@@ -2040,7 +2078,7 @@
                     <a href="https://ai.studio/apps/drive/1CrSc4klhhMskBGHyQv5FzLd_fwXkvOBS" target="_blank">Veritas</a>
                     <a href="https://ai.studio/apps/drive/1UpeX-jONjncy41Putdc_YGg_9qYHlQcD" target="_blank">Perfect Day Crafter</a>
                     <div class="dropdown-divider"></div>
-                    <a href="#ai">View All Projects</a>
+                    <a href="#ai">View All AI Projects</a>
                 </div>
             </div>
             
@@ -2105,10 +2143,7 @@
                         <div class="photo-rotator-frame"></div>
                     </div>
 
-                    <div class="rotating-text-container reveal reveal-delay-2">
-                        <span class="rotating-text-prefix">I am</span>
-                        <span class="rotating-text" id="rotatingText">Curious</span>
-                    </div>
+                    <p class="hero-descriptor reveal reveal-delay-2">AI-Enhanced Creative Strategist &middot; Photographer &middot; Futurist</p>
 
                     <p class="body-large reveal reveal-delay-2" style="max-width: 550px; margin-top: var(--space-lg);">
                         A step into my world: ideas, stories, and strategies built to shape what's next.
@@ -2173,7 +2208,7 @@
             <div class="about-layout reveal reveal-delay-1">
                 <!-- Left: Headshot -->
                 <div class="about-photo-placeholder" id="aboutHeadshot">
-                    <img src="Images/Photos of Self/German_Joshua_898-0831.jpg" alt="Joshua McKenzie German" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-xl);">
+                    <img loading="lazy" src="Images/Photos of Self/German_Joshua_898-0831.jpg" alt="Joshua McKenzie German" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-xl);">
                 </div>
                 
                 <!-- Right: About Text -->
@@ -2190,292 +2225,372 @@
         <!-- Full Width Skills Ticker -->
         <div class="skills-ticker-full reveal reveal-delay-2">
             <div class="ticker-track">
-                <span class="ticker-item"><span class="up">▲</span> Strategic Planning +2.1%</span>
-                <span class="ticker-item"><span class="up">▲</span> Storytelling +1.4%</span>
-                <span class="ticker-item"><span class="up">▲</span> AI Marketing +3.2%</span>
-                <span class="ticker-item"><span class="down">▼</span> Media Planning -0.4%</span>
-                <span class="ticker-item"><span class="up">▲</span> Cultural Insight +1.1%</span>
-                <span class="ticker-item"><span class="up">▲</span> Emerging Tech +2.7%</span>
-                <span class="ticker-item"><span class="up">▲</span> Content Strategy +0.9%</span>
-                <span class="ticker-item"><span class="up">▲</span> Photography +1.8%</span>
+                <span class="ticker-item"><span class="up">▲</span> Claude Code +4.8%</span>
+                <span class="ticker-item"><span class="up">▲</span> Connections Planning +2.4%</span>
                 <span class="ticker-item"><span class="up">▲</span> Brand Strategy +1.6%</span>
-                <span class="ticker-item"><span class="up">▲</span> Creative Direction +2.3%</span>
-                <span class="ticker-item"><span class="up">▲</span> Vibe Coding +4.5%</span>
-                <span class="ticker-item"><span class="up">▲</span> Podcasting +2.0%</span>
-                <span class="ticker-item"><span class="up">▲</span> Visual Design +1.3%</span>
-                <span class="ticker-item"><span class="up">▲</span> Consumer Research +0.8%</span>
-                <span class="ticker-item"><span class="up">▲</span> Audience Insights +1.9%</span>
-                <span class="ticker-item"><span class="up">▲</span> Connection Strategy +2.4%</span>
-                <span class="ticker-item"><span class="up">▲</span> Super Bowl Campaigns +3.1%</span>
-                <span class="ticker-item"><span class="up">▲</span> Cultural Trends +1.7%</span>
+                <span class="ticker-item"><span class="up">▲</span> AI Workflow Design +5.1%</span>
+                <span class="ticker-item"><span class="up">▲</span> Cultural Insight +1.1%</span>
+                <span class="ticker-item"><span class="up">▲</span> Prompt Engineering +3.9%</span>
+                <span class="ticker-item"><span class="up">▲</span> Campaign Architecture +2.2%</span>
+                <span class="ticker-item"><span class="up">▲</span> Google AI Studio +4.2%</span>
+                <span class="ticker-item"><span class="up">▲</span> Audience Intelligence +1.9%</span>
+                <span class="ticker-item"><span class="up">▲</span> Creative Brief Writing +1.3%</span>
+                <span class="ticker-item"><span class="up">▲</span> Super Bowl Strategy +3.1%</span>
+                <span class="ticker-item"><span class="up">▲</span> Photography +1.8%</span>
+                <span class="ticker-item"><span class="up">▲</span> Storytelling +1.4%</span>
+                <span class="ticker-item"><span class="up">▲</span> Brand Positioning +2.0%</span>
+                <span class="ticker-item"><span class="up">▲</span> Media Math +0.9%</span>
+                <span class="ticker-item"><span class="up">▲</span> Podcasting +2.3%</span>
+                <span class="ticker-item"><span class="up">▲</span> Cross-Functional Leadership +1.7%</span>
+                <span class="ticker-item"><span class="up">▲</span> Cannes Grand Prix Work +3.8%</span>
                 <!-- Duplicate for seamless loop -->
-                <span class="ticker-item"><span class="up">▲</span> Strategic Planning +2.1%</span>
-                <span class="ticker-item"><span class="up">▲</span> Storytelling +1.4%</span>
-                <span class="ticker-item"><span class="up">▲</span> AI Marketing +3.2%</span>
-                <span class="ticker-item"><span class="down">▼</span> Media Planning -0.4%</span>
-                <span class="ticker-item"><span class="up">▲</span> Cultural Insight +1.1%</span>
-                <span class="ticker-item"><span class="up">▲</span> Emerging Tech +2.7%</span>
-                <span class="ticker-item"><span class="up">▲</span> Content Strategy +0.9%</span>
-                <span class="ticker-item"><span class="up">▲</span> Photography +1.8%</span>
+                <span class="ticker-item"><span class="up">▲</span> Claude Code +4.8%</span>
+                <span class="ticker-item"><span class="up">▲</span> Connections Planning +2.4%</span>
                 <span class="ticker-item"><span class="up">▲</span> Brand Strategy +1.6%</span>
-                <span class="ticker-item"><span class="up">▲</span> Creative Direction +2.3%</span>
-                <span class="ticker-item"><span class="up">▲</span> Vibe Coding +4.5%</span>
-                <span class="ticker-item"><span class="up">▲</span> Podcasting +2.0%</span>
-                <span class="ticker-item"><span class="up">▲</span> Visual Design +1.3%</span>
-                <span class="ticker-item"><span class="up">▲</span> Consumer Research +0.8%</span>
-                <span class="ticker-item"><span class="up">▲</span> Audience Insights +1.9%</span>
-                <span class="ticker-item"><span class="up">▲</span> Connection Strategy +2.4%</span>
-                <span class="ticker-item"><span class="up">▲</span> Super Bowl Campaigns +3.1%</span>
-                <span class="ticker-item"><span class="up">▲</span> Cultural Trends +1.7%</span>
+                <span class="ticker-item"><span class="up">▲</span> AI Workflow Design +5.1%</span>
+                <span class="ticker-item"><span class="up">▲</span> Cultural Insight +1.1%</span>
+                <span class="ticker-item"><span class="up">▲</span> Prompt Engineering +3.9%</span>
+                <span class="ticker-item"><span class="up">▲</span> Campaign Architecture +2.2%</span>
+                <span class="ticker-item"><span class="up">▲</span> Google AI Studio +4.2%</span>
+                <span class="ticker-item"><span class="up">▲</span> Audience Intelligence +1.9%</span>
+                <span class="ticker-item"><span class="up">▲</span> Creative Brief Writing +1.3%</span>
+                <span class="ticker-item"><span class="up">▲</span> Super Bowl Strategy +3.1%</span>
+                <span class="ticker-item"><span class="up">▲</span> Photography +1.8%</span>
+                <span class="ticker-item"><span class="up">▲</span> Storytelling +1.4%</span>
+                <span class="ticker-item"><span class="up">▲</span> Brand Positioning +2.0%</span>
+                <span class="ticker-item"><span class="up">▲</span> Media Math +0.9%</span>
+                <span class="ticker-item"><span class="up">▲</span> Podcasting +2.3%</span>
+                <span class="ticker-item"><span class="up">▲</span> Cross-Functional Leadership +1.7%</span>
+                <span class="ticker-item"><span class="up">▲</span> Cannes Grand Prix Work +3.8%</span>
             </div>
         </div>
 
         <div class="container" style="margin-top: var(--space-3xl);">
 
-            <!-- Journey Map - Clean Interactive Design -->
+            <!-- Journey Map - Centered Alternating Timeline -->
             <div class="journey-map reveal reveal-delay-3" style="margin-top: var(--space-3xl);">
-                <h3 style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: var(--space-xl); color: var(--text-muted);">
+                <h3 style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: var(--space-xl); color: var(--text-muted); text-align: center;">
                     MY JOURNEY
                 </h3>
                 
-                <!-- Clean Timeline -->
-                <div class="journey-timeline">
-                    
-                    <!-- Timeline Track -->
-                    <div class="timeline-track">
-                        <div class="timeline-progress"></div>
+                <!-- Centered Alternating Timeline -->
+                <div class="jtl-wrap">
+
+                    <!-- Columbia, SC — LEFT -->
+                    <div class="jtl-row timeline-stop expandable jtl-left" data-location="columbia">
+                        <div class="jtl-card">
+                            <span class="jtl-year">Origin</span>
+                            <h4 class="jtl-city">Columbia, SC</h4>
+                            <p class="jtl-agency">University of South Carolina</p>
+                            <span class="jtl-hint">↓ tap for more</span>
+                            <div class="jtl-body">
+                                Born and raised in the capital of South Carolina. Studied Journalism &amp; Mass Communications with a minor in Information Science. Served as assistant sports editor for The Daily Gamecock. This is where my curiosity for storytelling first took root.
+                            </div>
+                        </div>
+                        <div class="jtl-mid">
+                            <div class="jtl-dot jtl-dot-active"></div>
+                        </div>
+                        <div class="jtl-empty">
+                        <div class="jtl-state-map" aria-hidden="true">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="state-path" d="M5,14 C35,7 58,6 76,10 L84,24 C88,38 84,56 74,70 L56,80 L36,84 L16,78 C7,66 4,50 5,28 Z"/>
+                                <circle class="state-city-ring" cx="48" cy="44" r="4"/>
+                                <circle class="state-city-dot" cx="48" cy="44" r="2.5"/>
+                            </svg>
+                        </div>
+                        </div>
                     </div>
-                    
-                    <!-- Timeline Stops -->
-                    <div class="timeline-stops">
-                        
-                        <!-- Columbia -->
-                        <div class="timeline-stop expandable" data-location="columbia">
-                            <div class="stop-dot active"></div>
-                            <div class="stop-content">
-                                <span class="stop-year">Origin</span>
-                                <h4 class="stop-city">Columbia, SC</h4>
-                                <p class="stop-detail">University of South Carolina</p>
-                                <div class="stop-expanded">
-                                    <p>Born and raised in the capital of South Carolina. Studied Journalism & Mass Communications with a minor in Information Science. Served as assistant sports editor for The Daily Gamecock. This is where my curiosity for storytelling first took root.</p>
-                                </div>
+
+                    <!-- Charlotte, NC — RIGHT -->
+                    <div class="jtl-row timeline-stop expandable jtl-right" data-location="charlotte">
+                        <div class="jtl-empty">
+                        <div class="jtl-state-map" aria-hidden="true">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="state-path" d="M4,38 L4,28 C35,20 62,18 84,20 L96,30 L92,42 L88,50 L62,56 L28,60 L8,62 Z"/>
+                                <circle class="state-city-ring" cx="18" cy="52" r="4"/>
+                                <circle class="state-city-dot" cx="18" cy="52" r="2.5"/>
+                            </svg>
+                        </div>
+                        </div>
+                        <div class="jtl-mid">
+                            <div class="jtl-dot"></div>
+                        </div>
+                        <div class="jtl-card">
+                            <span class="jtl-year">2021–23</span>
+                            <h4 class="jtl-city">Charlotte, NC</h4>
+                            <p class="jtl-agency">Home Base</p>
+                            <span class="jtl-hint">↓ tap for more</span>
+                            <div class="jtl-body">
+                                My physical home during the remote era. Charlotte served as my base while I worked with agencies across the country. Built a home studio, explored the city's growing food scene, and stayed close to family in South Carolina.
                             </div>
                         </div>
-                        
-                        <!-- Charlotte (Base) -->
-                        <div class="timeline-stop expandable" data-location="charlotte">
-                            <div class="stop-dot"></div>
-                            <div class="stop-content">
-                                <span class="stop-year">2021–23</span>
-                                <h4 class="stop-city">Charlotte, NC</h4>
-                                <p class="stop-detail">Home Base</p>
-                                <div class="stop-expanded">
-                                    <p>My physical home during the remote era. Charlotte served as my base while I worked with agencies across the country. Built a home studio, explored the city's growing food scene, and stayed close to family in South Carolina.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- San Francisco (Branch) -->
-                        <div class="timeline-stop branch expandable" data-location="sf">
-                            <div class="stop-dot branch-dot"></div>
-                            <div class="stop-content">
-                                <span class="stop-year">2021–23</span>
-                                <h4 class="stop-city">San Francisco</h4>
-                                <p class="stop-detail">Goodby, Silverstein & Partners</p>
-                                <div class="stop-expanded">
-                                    <p>Worked remotely with one of the most legendary agencies in advertising. Traveled to SF for extended periods, contributing to campaigns for BMW, Pepsi, and more. Learned the craft of cultural strategy from the best in the business—all while maintaining Charlotte as my home base at Goodby, Silverstein & Partners.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Portland -->
-                        <div class="timeline-stop expandable" data-location="portland">
-                            <div class="stop-dot"></div>
-                            <div class="stop-content">
-                                <span class="stop-year">2023–24</span>
-                                <h4 class="stop-city">Portland, OR</h4>
-                                <p class="stop-detail">Wieden+Kennedy</p>
-                                <div class="stop-expanded">
-                                    <p>Joined the legendary Wieden+Kennedy as Media and Communications Supervisor. Worked on the Cannes Grand Prix-winning DoorDash "All The Ads" Super Bowl campaign. Experienced the Pacific Northwest's creative energy and coffee culture.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Los Angeles -->
-                        <div class="timeline-stop current expandable" data-location="la">
-                            <div class="stop-dot pulse"></div>
-                            <div class="stop-content">
-                                <span class="stop-year">2024–Present</span>
-                                <h4 class="stop-city">Los Angeles, CA</h4>
-                                <p class="stop-detail">TBWA\Chiat\Day</p>
-                                <div class="stop-expanded">
-                                    <p>Currently serving as Senior Connections Strategist at the Disruption Company. Leading work on Levi's x Beyoncé, Sephora, and DIRECTV. Living the California dream while building the next chapter of my career in the entertainment capital of the world.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
                     </div>
-                    
+
+                    <!-- San Francisco — LEFT (branch) -->
+                    <div class="jtl-row timeline-stop expandable jtl-left jtl-branch" data-location="sf">
+                        <div class="jtl-card">
+                            <span class="jtl-year">2021–23</span>
+                            <h4 class="jtl-city">San Francisco, CA</h4>
+                            <p class="jtl-agency">Goodby, Silverstein &amp; Partners</p>
+                            <span class="jtl-hint">↓ tap for more</span>
+                            <div class="jtl-body">
+                                Worked with one of the most legendary agencies in advertising. Traveled to SF for extended periods, contributing to campaigns for BMW, Pepsi, and more. Learned the craft of cultural strategy from the best in the business—all while maintaining Charlotte as home base.
+                            </div>
+                        </div>
+                        <div class="jtl-mid">
+                            <div class="jtl-dot jtl-dot-branch"></div>
+                        </div>
+                        <div class="jtl-empty">
+                        <div class="jtl-state-map" aria-hidden="true">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="state-path" d="M30,4 L56,3 L68,12 C74,26 76,48 72,68 L64,84 L44,92 L28,86 C18,72 15,52 16,36 C18,22 22,12 30,4 Z"/>
+                                <circle class="state-city-ring" cx="22" cy="46" r="4"/>
+                                <circle class="state-city-dot" cx="22" cy="46" r="2.5"/>
+                            </svg>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Portland, OR — RIGHT -->
+                    <div class="jtl-row timeline-stop expandable jtl-right" data-location="portland">
+                        <div class="jtl-empty">
+                        <div class="jtl-state-map" aria-hidden="true">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="state-path" d="M5,8 C35,3 65,3 88,6 L94,14 L94,82 L90,88 L62,90 L32,90 L14,84 C6,72 4,55 5,38 Z"/>
+                                <circle class="state-city-ring" cx="22" cy="22" r="4"/>
+                                <circle class="state-city-dot" cx="22" cy="22" r="2.5"/>
+                            </svg>
+                        </div>
+                        </div>
+                        <div class="jtl-mid">
+                            <div class="jtl-dot"></div>
+                        </div>
+                        <div class="jtl-card">
+                            <span class="jtl-year">2023–24</span>
+                            <h4 class="jtl-city">Portland, OR</h4>
+                            <p class="jtl-agency">Wieden+Kennedy</p>
+                            <span class="jtl-hint">↓ tap for more</span>
+                            <div class="jtl-body">
+                                Joined the legendary Wieden+Kennedy as Media and Communications Supervisor. Worked on the Cannes Grand Prix-winning DoorDash "All The Ads" Super Bowl campaign. Experienced the Pacific Northwest's creative energy and coffee culture.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Los Angeles, CA — LEFT (current) -->
+                    <div class="jtl-row timeline-stop expandable jtl-left current" data-location="la">
+                        <div class="jtl-card jtl-card-current">
+                            <span class="jtl-year jtl-year-current">2024–Present</span>
+                            <h4 class="jtl-city">Los Angeles, CA</h4>
+                            <p class="jtl-agency">TBWA\Chiat\Day</p>
+                            <span class="jtl-hint">↓ tap for more</span>
+                            <div class="jtl-body">
+                                Currently serving as Senior Connections Strategist at the Disruption Company. Leading work on Levi's x Beyoncé, Sephora, and DIRECTV. Living the California dream while building the next chapter of my career in the entertainment capital of the world.
+                            </div>
+                        </div>
+                        <div class="jtl-mid">
+                            <div class="jtl-dot jtl-dot-current jtl-dot-pulse"></div>
+                        </div>
+                        <div class="jtl-empty">
+                        <div class="jtl-state-map" aria-hidden="true">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path class="state-path" d="M30,4 L56,3 L68,12 C74,26 76,48 72,68 L64,84 L44,92 L28,86 C18,72 15,52 16,36 C18,22 22,12 30,4 Z"/>
+                                <circle class="state-city-ring" cx="48" cy="78" r="4"/>
+                                <circle class="state-city-dot" cx="48" cy="78" r="2.5"/>
+                            </svg>
+                        </div>
+                        </div>
+                    </div>
+
                 </div>
                 
                 <style>
-                    .journey-timeline {
-                        display: flex;
+                    /* =============================================
+                       CENTERED ALTERNATING TIMELINE
+                       ============================================= */
+
+                    .jtl-wrap {
                         position: relative;
-                        padding: var(--space-2xl) 0;
-                        min-height: 600px;
+                        max-width: 860px;
+                        margin: 0 auto;
+                        padding: var(--space-2xl) 0 var(--space-3xl);
                     }
-                    
-                    .timeline-track {
-                        position: absolute;
-                        top: 50%;
-                        left: 0;
-                        right: 0;
-                        height: 3px;
-                        background: var(--glass-border);
-                        transform: translateY(-50%);
-                        z-index: 0;
-                        border-radius: 2px;
-                        overflow: hidden;
-                    }
-                    
-                    .timeline-progress {
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: linear-gradient(90deg, 
-                            var(--neon) 0%, 
-                            var(--cyan) 25%, 
-                            var(--purple) 50%, 
-                            var(--orange) 75%, 
-                            var(--neon) 100%);
-                        opacity: 0.8;
-                        animation: timelineFlow 3s ease-in-out infinite;
-                        background-size: 200% 100%;
-                    }
-                    
-                    @keyframes timelineFlow {
-                        0%, 100% { background-position: 0% 50%; }
-                        50% { background-position: 100% 50%; }
-                    }
-                    
-                    .timeline-stops {
-                        display: flex;
-                        flex-direction: column;
-                        gap: var(--space-xl);
-                        position: relative;
-                        z-index: 1;
-                        max-width: 50%;
-                        min-width: 300px;
-                    }
-                    
-                    .timeline-track {
-                        width: 2px;
-                        height: 100%;
-                        left: 20px;
-                        right: auto;
-                        top: 0;
-                        transform: none;
-                    }
-                    
-                    .timeline-track::before {
+
+                    /* Center vertical line */
+                    .jtl-wrap::before {
                         content: '';
                         position: absolute;
-                        left: -1px;
+                        left: 50%;
                         top: 0;
-                        width: 4px;
-                        height: 100%;
-                        background: var(--glass-border);
-                        z-index: 0;
-                    }
-                    
-                    .timeline-stop {
-                        display: flex;
-                        flex-direction: row;
-                        text-align: left;
-                        gap: var(--space-lg);
-                        cursor: pointer;
-                        transition: all 0.4s var(--ease-out-expo);
-                        position: relative;
-                        align-items: flex-start;
-                    }
-                    
-                    .timeline-stop.branch {
-                        margin-left: var(--space-xl);
-                    }
-                    
-                    .stop-dot {
-                        width: 18px;
-                        height: 18px;
-                        background: var(--surface);
-                        border: 3px solid var(--text-tertiary);
-                        border-radius: 50%;
-                        margin-bottom: 0;
-                        transition: all 0.3s ease;
-                        position: absolute;
-                        left: 11px;
-                        top: 0;
-                        flex-shrink: 0;
-                        z-index: 2;
+                        bottom: 0;
+                        width: 2px;
                         transform: translateX(-50%);
+                        background: linear-gradient(
+                            180deg,
+                            transparent 0%,
+                            rgba(212,255,79,0.5) 8%,
+                            rgba(34,211,238,0.4) 35%,
+                            rgba(168,85,247,0.4) 65%,
+                            rgba(212,255,79,0.5) 92%,
+                            transparent 100%
+                        );
                     }
-                    
-                    .timeline-stop:hover .stop-dot {
-                        transform: scale(1.5);
-                        box-shadow: 0 0 20px var(--neon);
+
+                    /* Each row */
+                    .jtl-row {
+                        display: grid;
+                        grid-template-columns: 1fr 64px 1fr;
+                        grid-template-areas: "left mid right";
+                        align-items: flex-start;
+                        margin-bottom: var(--space-3xl);
+                        cursor: pointer;
                     }
-                    
-                    .timeline-stop:hover .stop-content {
-                        transform: translateX(8px);
+
+                    .jtl-row:last-child { margin-bottom: 0; }
+
+                    /* Left-side entries: card | dot | empty */
+                    .jtl-row.jtl-left .jtl-card  { grid-area: left; text-align: right; }
+                    .jtl-row.jtl-left .jtl-mid   { grid-area: mid; }
+                    .jtl-row.jtl-left .jtl-empty { grid-area: right; }
+
+                    /* Right-side entries: empty | dot | card */
+                    .jtl-row.jtl-right .jtl-empty { grid-area: left; }
+                    .jtl-row.jtl-right .jtl-mid   { grid-area: mid; }
+                    .jtl-row.jtl-right .jtl-card  { grid-area: right; }
+
+                    /* The info card */
+                    .jtl-card {
+                        background: var(--surface);
+                        border: 1px solid var(--glass-border);
+                        border-radius: var(--radius-lg);
+                        padding: var(--space-lg) var(--space-xl);
+                        transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
                     }
-                    
-                    .timeline-stop.current .stop-dot {
+
+                    .jtl-row:hover .jtl-card {
+                        border-color: rgba(255,255,255,0.15);
+                        background: rgba(255,255,255,0.04);
+                        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+                    }
+
+                    .jtl-row.jtl-left:hover .jtl-card  { transform: translateX(-4px); }
+                    .jtl-row.jtl-right:hover .jtl-card { transform: translateX(4px); }
+
+                    .jtl-card-current {
+                        border-color: rgba(212,255,79,0.2);
+                        background: rgba(212,255,79,0.03);
+                    }
+
+                    /* Card typography */
+                    .jtl-year {
+                        font-size: 0.62rem;
+                        font-weight: 700;
+                        letter-spacing: 0.15em;
+                        color: var(--text-muted);
+                        text-transform: uppercase;
+                        display: block;
+                        margin-bottom: 8px;
+                    }
+                    .jtl-year-current { color: var(--neon); }
+
+                    .jtl-city {
+                        font-size: 1.15rem;
+                        font-weight: 700;
+                        color: var(--text-primary);
+                        margin: 0 0 4px;
+                        font-family: var(--font-sans);
+                    }
+
+                    .jtl-agency {
+                        font-size: 0.72rem;
+                        color: var(--text-tertiary);
+                        font-style: italic;
+                        margin: 0 0 6px;
+                    }
+
+                    .jtl-hint {
+                        font-size: 0.58rem;
+                        color: var(--text-muted);
+                        letter-spacing: 0.08em;
+                        display: block;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                        margin-top: 4px;
+                    }
+                    .jtl-row:hover .jtl-hint { opacity: 1; }
+                    .timeline-stop.expanded .jtl-hint { display: none; }
+
+                    /* Expandable body */
+                    .jtl-body {
+                        max-height: 0;
+                        overflow: hidden;
+                        opacity: 0;
+                        font-size: 0.83rem;
+                        color: var(--text-secondary);
+                        line-height: 1.7;
+                        transition: max-height 0.45s var(--ease-out-expo), opacity 0.35s ease, margin-top 0.3s ease, padding-top 0.3s ease;
+                    }
+                    .timeline-stop.expanded .jtl-body {
+                        max-height: 180px;
+                        opacity: 1;
+                        margin-top: 12px;
+                        padding-top: 12px;
+                        border-top: 1px solid var(--glass-border);
+                    }
+                    .timeline-stop.expanded .jtl-card {
+                        border-color: rgba(212,255,79,0.25);
+                        box-shadow: 0 0 20px rgba(212,255,79,0.06);
+                    }
+
+                    /* Branch entries */
+                    .jtl-row.jtl-branch .jtl-year,
+                    .jtl-row.jtl-branch .jtl-city { color: var(--orange); }
+
+                    /* Center dot column */
+                    .jtl-mid {
+                        display: flex;
+                        justify-content: center;
+                        align-items: flex-start;
+                        padding-top: 20px;
+                        position: relative;
+                    }
+
+                    /* The dot */
+                    .jtl-dot {
+                        width: 14px;
+                        height: 14px;
+                        border-radius: 50%;
+                        background: var(--surface);
+                        border: 2px solid rgba(255,255,255,0.2);
+                        flex-shrink: 0;
+                        position: relative;
+                        z-index: 2;
+                        transition: all 0.3s ease;
+                    }
+
+                    .jtl-row:hover .jtl-dot {
+                        border-color: rgba(255,255,255,0.5);
+                        transform: scale(1.3);
+                    }
+
+                    .jtl-dot-active {
+                        background: rgba(212,255,79,0.3);
+                        border-color: var(--neon);
+                    }
+
+                    .jtl-dot-branch {
+                        border-color: var(--orange);
+                        border-style: dashed;
+                    }
+
+                    .jtl-dot-current {
                         background: var(--neon);
                         border-color: var(--neon);
-                        width: 20px;
-                        height: 20px;
+                        width: 18px;
+                        height: 18px;
+                        box-shadow: 0 0 16px rgba(212,255,79,0.5);
                     }
-                    
-                    .timeline-stop.remote .stop-dot {
-                        border-color: var(--orange);
-                        border-style: dashed;
-                    }
-                    
-                    .timeline-stop.branch {
-                        position: relative;
-                    }
-                    
-                    .timeline-stop.branch::before {
-                        content: '';
-                        position: absolute;
-                        top: 9px;
-                        left: -var(--space-xl);
-                        width: var(--space-xl);
-                        height: 2px;
-                        background: var(--orange);
-                        transform: translateY(-50%);
-                        z-index: -1;
-                    }
-                    
-                    .timeline-stop.branch .stop-dot.branch-dot {
-                        border-color: var(--orange);
-                        border-style: dashed;
-                        background: var(--surface);
-                        left: 11px;
-                        transform: translateX(-50%);
-                    }
-                    
-                    .timeline-stop.branch .stop-year {
-                        color: var(--orange);
-                    }
-                    
-                    .timeline-stop.branch .stop-city {
-                        color: var(--orange);
-                    }
-                    
-                    .stop-dot.pulse::after {
+
+                    .jtl-dot-pulse::after {
                         content: '';
                         position: absolute;
                         top: 50%;
@@ -2485,194 +2600,120 @@
                         border: 2px solid var(--neon);
                         border-radius: 50%;
                         transform: translate(-50%, -50%);
-                        animation: pulse-ring 2s infinite;
-                    }
-                    
-                    @keyframes pulse-ring {
-                        0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-                        100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
-                    }
-                    
-                    .stop-content {
-                        transition: all 0.4s var(--ease-out-expo);
-                        margin-top: 0;
-                        margin-left: var(--space-xl);
-                        position: relative;
-                        z-index: 10;
-                        flex: 1;
-                    }
-                    
-                    .timeline-stop.branch .stop-content {
-                        margin-top: var(--space-lg);
-                    }
-                    
-                    .stop-year {
-                        font-size: 0.7rem;
-                        font-weight: 600;
-                        letter-spacing: 0.1em;
-                        color: var(--text-muted);
-                        text-transform: uppercase;
-                        display: block;
-                        margin-bottom: 8px;
-                    }
-                    
-                    .timeline-stop.current .stop-year {
-                        color: var(--neon);
-                    }
-                    
-                    .stop-city {
-                        font-family: var(--font-sans);
-                        font-size: 1.25rem;
-                        font-weight: 700;
-                        color: var(--text-primary);
-                        margin: 8px 0 6px 0;
-                        position: relative;
-                        z-index: 10;
-                    }
-                    
-                    .stop-detail {
-                        font-size: 0.75rem;
-                        color: var(--text-tertiary);
-                        margin: 0;
-                        font-style: italic;
-                    }
-                    
-                    /* Expandable Timeline */
-                    .timeline-stop.expandable {
-                        cursor: pointer;
-                    }
-                    
-                    .stop-expanded {
-                        max-width: 0;
-                        overflow: hidden;
-                        opacity: 0;
-                        margin-left: 0;
-                        transition: all 0.4s var(--ease-out-expo);
-                        position: absolute;
-                        left: 100%;
-                        top: 0;
-                        z-index: 20;
-                        white-space: nowrap;
-                    }
-                    
-                    .timeline-stop.expanded .stop-expanded {
-                        max-width: 340px;
-                        opacity: 1;
-                        margin-left: var(--space-xl);
-                        white-space: normal;
-                    }
-                    
-                    .stop-expanded p {
-                        font-size: 0.85rem;
-                        color: var(--text-secondary);
-                        line-height: 1.6;
-                        padding: 20px;
-                        background: var(--surface);
-                        border-radius: var(--radius-lg);
-                        border: 1px solid var(--glass-border);
-                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-                        width: 320px;
-                        position: relative;
-                        margin: 0;
-                    }
-                    
-                    .stop-expanded p::before {
-                        content: '';
-                        position: absolute;
-                        left: -8px;
-                        top: 24px;
-                        width: 0;
-                        height: 0;
-                        border-top: 8px solid transparent;
-                        border-bottom: 8px solid transparent;
-                        border-right: 8px solid var(--glass-border);
-                    }
-                    
-                    .stop-expanded p::after {
-                        content: '';
-                        position: absolute;
-                        left: -7px;
-                        top: 24px;
-                        width: 0;
-                        height: 0;
-                        border-top: 8px solid transparent;
-                        border-bottom: 8px solid transparent;
-                        border-right: 8px solid var(--surface);
-                    }
-                    
-                    .timeline-stop.expanded .stop-dot {
-                        background: var(--neon);
-                        border-color: var(--neon);
-                        box-shadow: 0 0 20px var(--neon-glow);
-                    }
-                    
-                    .timeline-stop.expandable .stop-content::after {
-                        content: '+ Click for more';
-                        display: block;
-                        font-size: 0.65rem;
-                        color: var(--text-muted);
-                        margin-top: 8px;
-                        opacity: 0;
-                        transition: opacity 0.3s ease;
-                    }
-                    
-                    .timeline-stop.expandable:hover .stop-content::after {
-                        opacity: 1;
-                    }
-                    
-                    .timeline-stop.expanded .stop-content::after {
-                        content: '− Click to close';
-                        opacity: 0.6;
+                        animation: jtl-pulse 2s infinite;
                     }
 
-                    @media (max-width: 900px) {
-                        .timeline-stops {
-                            flex-direction: column;
-                            gap: var(--space-xl);
-                            max-width: 100%;
+                    @keyframes jtl-pulse {
+                        0%   { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+                        100% { transform: translate(-50%, -50%) scale(2.8); opacity: 0; }
+                    }
+
+                    .timeline-stop.expanded .jtl-dot {
+                        background: var(--neon);
+                        border-color: var(--neon);
+                        box-shadow: 0 0 14px rgba(212,255,79,0.4);
+                    }
+
+                    /* ---- ACHIEVEMENT CALLOUTS ---- */
+                    .jtl-empty {
+                        display: flex;
+                        align-items: flex-start;
+                        padding-top: 18px;
+                    }
+                    .jtl-row.jtl-left .jtl-empty  { justify-content: flex-start; padding-left: 20px; }
+                    .jtl-row.jtl-right .jtl-empty { justify-content: flex-end;  padding-right: 20px; }
+
+                    .jtl-achieve {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        max-width: 200px;
+                    }
+                    .jtl-achieve-right {
+                        align-items: flex-end;
+                        text-align: right;
+                    }
+
+                    .jtl-achieve-label {
+                        font-size: 0.58rem;
+                        font-weight: 700;
+                        letter-spacing: 0.18em;
+                        text-transform: uppercase;
+                        color: var(--text-muted);
+                        display: block;
+                    }
+
+                    .jtl-chips {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 6px;
+                    }
+                    .jtl-achieve-right .jtl-chips {
+                        justify-content: flex-end;
+                    }
+
+                    .jtl-chip {
+                        display: inline-block;
+                        font-size: 0.65rem;
+                        font-weight: 600;
+                        letter-spacing: 0.03em;
+                        padding: 4px 10px;
+                        border-radius: 20px;
+                        background: rgba(255,255,255,0.04);
+                        border: 1px solid rgba(255,255,255,0.1);
+                        color: var(--text-secondary);
+                        transition: all 0.3s ease;
+                        white-space: nowrap;
+                    }
+                    .jtl-row:hover .jtl-chip {
+                        border-color: rgba(255,255,255,0.2);
+                        color: var(--text-primary);
+                    }
+
+                    .jtl-chip-gold {
+                        background: rgba(247,208,0,0.08);
+                        border-color: rgba(247,208,0,0.3);
+                        color: #F7D000;
+                    }
+                    .jtl-row:hover .jtl-chip-gold {
+                        background: rgba(247,208,0,0.12);
+                        border-color: rgba(247,208,0,0.5);
+                        color: #F7D000;
+                        box-shadow: 0 0 10px rgba(247,208,0,0.15);
+                    }
+
+                    .jtl-chip-neon {
+                        background: rgba(212,255,79,0.06);
+                        border-color: rgba(212,255,79,0.25);
+                        color: var(--neon);
+                    }
+                    .jtl-row:hover .jtl-chip-neon {
+                        background: rgba(212,255,79,0.1);
+                        border-color: rgba(212,255,79,0.45);
+                        box-shadow: 0 0 10px rgba(212,255,79,0.12);
+                    }
+
+                    /* ---- MOBILE ---- */
+                    @media (max-width: 768px) {
+                        .jtl-wrap::before {
+                            left: 24px;
                         }
-                        .journey-timeline {
-                            flex-direction: column;
+                        .jtl-row {
+                            grid-template-columns: 48px 1fr;
+                            grid-template-areas: "mid card";
+                            margin-bottom: var(--space-2xl);
                         }
-                        .timeline-track {
-                            width: 2px;
-                            height: 100%;
-                            left: 20px;
-                            right: auto;
-                            top: 0;
-                            transform: none;
-                        }
-                        .timeline-stop {
-                            flex-direction: row;
-                            text-align: left;
-                            gap: var(--space-lg);
-                        }
-                        .stop-dot {
-                            margin-bottom: 0;
-                        }
-                        .stop-expanded {
-                            position: static;
-                            max-width: 100%;
-                            margin-left: 0;
-                            margin-top: 16px;
-                        }
-                        .timeline-stop.expanded .stop-expanded {
-                            max-width: 100%;
-                            margin-left: 0;
-                            margin-top: 16px;
-                        }
-                        .stop-expanded p {
-                            width: 100%;
-                            max-width: 100%;
-                        }
-                        .stop-expanded p::before,
-                        .stop-expanded p::after {
-                            display: none;
-                        }
+                        .jtl-row.jtl-left .jtl-card,
+                        .jtl-row.jtl-right .jtl-card  { grid-area: card; text-align: left; }
+                        .jtl-row.jtl-left .jtl-mid,
+                        .jtl-row.jtl-right .jtl-mid   { grid-area: mid; }
+                        .jtl-empty { display: none; }
+                        .jtl-row.jtl-left:hover .jtl-card,
+                        .jtl-row.jtl-right:hover .jtl-card { transform: none; }
+                        .jtl-card { padding: var(--space-md) var(--space-lg); }
                     }
                 </style>
             </div>
-        </div>
         </div>
     </section>
 
@@ -2690,7 +2731,7 @@
                 <!-- Levi's - Featured Full Width -->
                 <a href="work/work-levis.html" class="bento-card span-12 reveal">
                     <div class="bento-media" style="aspect-ratio: 21/9;">
-                        <img src="https://www.levistrauss.com/wp-content/uploads/2024/09/240930_Blu_Hero.jpg" alt="Levi's REIIMAGINE Campaign" style="object-position: center 20%;">
+                        <img loading="lazy" src="https://www.levistrauss.com/wp-content/uploads/2024/09/240930_Blu_Hero.jpg" alt="Levi's REIIMAGINE Campaign" style="object-position: center 20%;">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Senior Connection Strategist • TBWA\Chiat\Day</span>
@@ -2702,8 +2743,10 @@
 
                 <!-- Gatorade -->
                 <a href="work/work-gatorade.html" class="bento-card reveal reveal-delay-1">
-                    <div class="bento-media">
-                        <img src="Brand Imagery/gatorade_q93Jogv/G-ST_KV_V2_Logos copy.tiff" alt="Gatorade Stranger Things Campaign" onerror="this.src='Brand Imagery/gatorade_q93Jogv/G-ST_KV_V2_Logos copy.tif'; this.onerror=function(){this.src='Brand Imagery/Gatorade/Brand Logo/gatorade-logo-png_seeklogo-369610.png'; this.style.background='#000'; this.style.padding='30px';};">
+                    <div class="bento-media" style="background: linear-gradient(135deg, #1a0800 0%, #3d1800 45%, #0a1020 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                        <div style="position:absolute;top:-30px;right:-30px;width:160px;height:160px;background:rgba(240,130,0,0.12);border-radius:50%;"></div>
+                        <div style="position:absolute;bottom:-20px;left:-20px;width:120px;height:120px;background:rgba(240,130,0,0.07);border-radius:50%;"></div>
+                        <img loading="lazy" src="Brand Imagery/Gatorade/Brand Logo/gatorade-logo-png_seeklogo-369610.png" alt="Gatorade" style="max-height: 72px; width: auto; object-fit: contain; position: relative; z-index: 1; filter: brightness(1.15) drop-shadow(0 0 12px rgba(240,130,0,0.4));">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Connection Strategist • TBWA\Chiat\Day</span>
@@ -2716,7 +2759,7 @@
                 <!-- Sephora -->
                 <a href="work/work-sephora.html" class="bento-card reveal reveal-delay-1">
                     <div class="bento-media" style="background: #fff; display: flex; align-items: center; justify-content: center; padding: 40px;">
-                        <img src="Brand Imagery/Sephora/Brand Logo/Sephora-Emblem.png" alt="Sephora" style="max-height: 100px; width: auto; object-fit: contain;">
+                        <img loading="lazy" src="Brand Imagery/Sephora/Brand Logo/Sephora-Emblem.png" alt="Sephora" style="max-height: 100px; width: auto; object-fit: contain;">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Senior Connection Strategist • TBWA\Chiat\Day</span>
@@ -2729,7 +2772,7 @@
                 <!-- DoorDash -->
                 <a href="work/work-doordash.html" class="bento-card reveal">
                     <div class="bento-media">
-                        <img src="Brand Imagery/Doordash/Supporting Images/Hero.webp" alt="DoorDash All The Ads">
+                        <img loading="lazy" src="Brand Imagery/Doordash/Supporting Images/Hero.webp" alt="DoorDash All The Ads">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Media & Comms Supervisor • Wieden+Kennedy</span>
@@ -2742,7 +2785,7 @@
                 <!-- BMW -->
                 <a href="work/work-bmw.html" class="bento-card reveal reveal-delay-1">
                     <div class="bento-media">
-                        <img src="Brand Imagery/BMW/Supporting Images/Hero alt.jpg" alt="BMW Zeus & Hera">
+                        <img loading="lazy" src="Brand Imagery/BMW/Supporting Images/Hero alt.jpg" alt="BMW Zeus & Hera">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Communication Strategist • Goodby, Silverstein & Partners</span>
@@ -2755,7 +2798,7 @@
                 <!-- DIRECTV -->
                 <a href="work/work-directv.html" class="bento-card reveal reveal-delay-2">
                     <div class="bento-media">
-                        <img src="Brand Imagery/Directv/directv-rebranding-bringing-flexibility-2025.webp" alt="DIRECTV">
+                        <img loading="lazy" src="Brand Imagery/Directv/directv-rebranding-bringing-flexibility-2025.webp" alt="DIRECTV">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Connection Strategist • TBWA\Chiat\Day</span>
@@ -2769,7 +2812,7 @@
                 <!-- Samuel Adams -->
                 <a href="work/work-samadams.html" class="bento-card reveal">
                     <div class="bento-media">
-                        <img src="https://goodbysilverstein.com/public/upload/work/images/desktop/63e1579848ae6.jpg" alt="Samuel Adams Brighter Boston">
+                        <img loading="lazy" src="https://goodbysilverstein.com/public/upload/work/images/desktop/63e1579848ae6.jpg" alt="Samuel Adams Brighter Boston">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Communication Strategist • Goodby, Silverstein & Partners</span>
@@ -2782,7 +2825,7 @@
                 <!-- Califia Farms -->
                 <a href="work/work-califia.html" class="bento-card reveal reveal-delay-1">
                     <div class="bento-media">
-                        <img src="https://goodbysilverstein.com/public/upload/work/images/desktop/6125b3d544db1.jpg" alt="Califia Farms Calilujah">
+                        <img loading="lazy" src="https://goodbysilverstein.com/public/upload/work/images/desktop/6125b3d544db1.jpg" alt="Califia Farms Calilujah">
                     </div>
                     <div class="bento-body">
                         <span class="bento-tag">Communication Strategist • Goodby, Silverstein & Partners</span>
@@ -2791,6 +2834,177 @@
                         <span class="bento-cta">View Case Study <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                     </div>
                 </a>
+
+                <!-- Driving While Black -->
+                <a href="work/work-dwb.html" class="bento-card reveal reveal-delay-1">
+                    <div class="bento-media" style="background: linear-gradient(150deg, #0a0404 0%, #1a0808 50%, #0d0404 100%); position:relative; overflow:hidden;">
+                        <img loading="lazy" src="Brand Imagery/DWB/car 5.jpg" alt="Driving While Black — DWB Concept Car" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;" onerror="this.style.display='none'; this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center';">
+                        <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);pointer-events:none;"></div>
+                        <!-- Fallback wordmark (shows if image missing) -->
+                        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:-1;">
+                            <div style="background-image:linear-gradient(rgba(229,62,62,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(229,62,62,0.05) 1px,transparent 1px);background-size:40px 40px;position:absolute;inset:0;"></div>
+                            <span style="font-family:var(--font-sans);font-size:2.2rem;font-weight:900;color:rgba(229,62,62,0.85);letter-spacing:0.06em;">DWB</span>
+                        </div>
+                    </div>
+                    <div class="bento-body">
+                        <span class="bento-tag">Communication Strategist • Goodby, Silverstein &amp; Partners</span>
+                        <h3 class="bento-title">Driving While Black</h3>
+                        <p class="bento-desc">A concept car designed to survive racial profiling. Launched at the Detroit Auto Show.</p>
+                        <div style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px;">
+                            <span style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:rgba(212,255,79,0.08);border:1px solid rgba(212,255,79,0.2);border-radius:9999px;font-size:0.72rem;font-weight:700;color:#d4ff4f;letter-spacing:0.04em;">🏆 Clio Grand — 2024</span>
+                            <span style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:rgba(212,255,79,0.08);border:1px solid rgba(212,255,79,0.2);border-radius:9999px;font-size:0.72rem;font-weight:700;color:#d4ff4f;letter-spacing:0.04em;">🏅 Shorty Award Winner</span>
+                            <span style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:rgba(212,255,79,0.08);border:1px solid rgba(212,255,79,0.2);border-radius:9999px;font-size:0.72rem;font-weight:700;color:#d4ff4f;letter-spacing:0.04em;">⭐ D&amp;AD Shortlisted</span>
+                        </div>
+                        <span class="bento-cta">View Case Study <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+
+                <!-- MLB: Baseball Is Something Else -->
+                <a href="work/work-mlb.html" class="bento-card reveal reveal-delay-2">
+                    <div class="bento-media" style="background: linear-gradient(150deg, #060408 0%, #0c0610 50%, #060406 100%); position:relative; overflow:hidden;">
+                        <img loading="lazy" src="Brand Imagery/MLB/mlb-hero.jpg" alt="MLB — Baseball Is Something Else" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none'; this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center';">
+                        <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);pointer-events:none;"></div>
+                        <!-- Fallback wordmark -->
+                        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:-1;">
+                            <div style="background-image:linear-gradient(45deg,rgba(200,16,46,0.04) 25%,transparent 25%),linear-gradient(-45deg,rgba(200,16,46,0.04) 25%,transparent 25%),linear-gradient(45deg,transparent 75%,rgba(200,16,46,0.04) 75%),linear-gradient(-45deg,transparent 75%,rgba(200,16,46,0.04) 75%);background-size:50px 50px;position:absolute;inset:0;"></div>
+                            <span style="font-family:var(--font-sans);font-size:2rem;font-weight:900;color:rgba(255,255,255,0.85);letter-spacing:0.1em;">MLB</span>
+                        </div>
+                    </div>
+                    <div class="bento-body">
+                        <span class="bento-tag">Brand Strategist • Wieden+Kennedy Portland</span>
+                        <h3 class="bento-title">MLB: Baseball Is Something Else</h3>
+                        <p class="bento-desc">MLB's first brand platform in 8 years. Gen Z favorability up 10 points. The campaign that brought a new generation to the ballpark.</p>
+                        <span class="bento-cta">View Case Study <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+
+                <!-- =====================================================
+                     INDEPENDENT PRACTICE — PASSWORD GATE
+                     Reframed as a named advisory practice, not hidden
+                     freelance. Gate signals selectivity, not secrecy.
+                     Password set in JS at bottom of file.
+                     ===================================================== -->
+
+                <!-- Gate Card — always visible, full width -->
+                <div class="bento-card span-12 reveal reveal-delay-2" id="startup-gate" onclick="openStartupGate()" style="cursor:pointer; overflow:hidden;">
+                    <div style="display:grid; grid-template-columns: 1fr auto; min-height: 280px; position:relative;">
+
+                        <!-- Left: Practice description -->
+                        <div style="padding: 48px 48px 48px 48px; display:flex; flex-direction:column; justify-content:space-between; position:relative; z-index:2;">
+                            <div>
+                                <span style="display:inline-block;font-family:var(--font-sans);font-size:0.65rem;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;color:rgba(212,255,79,0.6);margin-bottom:20px;">Independent Practice</span>
+                                <h3 style="font-family:var(--font-display,var(--font-sans));font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--text-primary);line-height:1.1;margin:0 0 16px;max-width:480px;">Early-Stage Advisory &amp; Brand Strategy</h3>
+                                <p style="font-family:var(--font-sans);font-size:0.9rem;color:var(--text-muted);line-height:1.65;max-width:460px;margin:0 0 24px;">A small number of selected engagements with early-stage companies — brand, audience, and go-to-market strategy for founders building from zero. Separate from agency work. Access restricted.</p>
+                                <!-- Client criteria chips -->
+                                <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;">
+                                    <span style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.08em;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:100px;padding:5px 12px;">Pre-launch</span>
+                                    <span style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.08em;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:100px;padding:5px 12px;">Brand Strategy</span>
+                                    <span style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.08em;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:100px;padding:5px 12px;">Go-to-Market</span>
+                                    <span style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.08em;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:100px;padding:5px 12px;">Fractional CMO</span>
+                                </div>
+                            </div>
+                            <!-- CTAs -->
+                            <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+                                <span style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:0.85rem;font-weight:700;color:#D4FF4F;letter-spacing:0.04em;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                    Enter Access Code
+                                </span>
+                                <span style="font-family:var(--font-sans);font-size:0.8rem;color:rgba(255,255,255,0.3);">or</span>
+                                <a href="#contact" onclick="event.stopPropagation()" style="font-family:var(--font-sans);font-size:0.8rem;color:rgba(255,255,255,0.45);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:1px;transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.75)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">request access →</a>
+                            </div>
+                        </div>
+
+                        <!-- Right: Visual panel -->
+                        <div style="width: clamp(180px, 28%, 320px); background: linear-gradient(160deg, #0f0f0f 0%, #141414 100%); border-left: 1px solid rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                            <!-- Geometric accent -->
+                            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                                <div style="width:180px;height:180px;border:1px solid rgba(212,255,79,0.08);border-radius:50%;position:absolute;"></div>
+                                <div style="width:130px;height:130px;border:1px solid rgba(212,255,79,0.06);border-radius:50%;position:absolute;"></div>
+                                <div style="width:80px;height:80px;border:1px solid rgba(212,255,79,0.1);border-radius:50%;position:absolute;"></div>
+                            </div>
+                            <!-- Lock -->
+                            <div style="position:relative;z-index:2;text-align:center;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.5)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                                <div style="margin-top:10px;font-family:var(--font-sans);font-size:0.55rem;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:rgba(212,255,79,0.3);">Private</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post-unlock section label — hidden until password entered -->
+                <div class="startup-locked" id="startup-label" style="grid-column:span 12; display:flex; align-items:center; gap:16px; padding: 8px 0 4px;">
+                    <div style="flex:1;height:1px;background:rgba(255,255,255,0.06);"></div>
+                    <span style="font-family:var(--font-sans);font-size:0.65rem;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.25);">Independent Practice</span>
+                    <div style="flex:1;height:1px;background:rgba(255,255,255,0.06);"></div>
+                </div>
+
+                <!-- HIIKE — hidden until unlocked -->
+                <div class="bento-card reveal startup-locked" id="startup-hiike">
+                    <!-- Visual area -->
+                    <div class="bento-media" style="background: linear-gradient(150deg, #080f08 0%, #0c1c0d 60%, #060c06 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                        <!-- Texture -->
+                        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(120,220,80,0.06) 1px,transparent 1px);background-size:20px 20px;"></div>
+                        <div style="position:absolute;top:-60px;right:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(100,200,70,0.08) 0%,transparent 70%);"></div>
+                        <!-- Wordmark -->
+                        <div style="position:relative;z-index:1;text-align:center;">
+                            <span style="display:block;font-family:var(--font-sans);font-size:3rem;font-weight:900;color:rgba(150,235,110,0.9);letter-spacing:0.14em;line-height:1;">HIIKE</span>
+                            <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:10px;">
+                                <div style="height:1px;width:20px;background:rgba(150,235,110,0.2);"></div>
+                                <span style="font-family:var(--font-sans);font-size:0.55rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:rgba(150,235,110,0.35);">Film Festival Platform</span>
+                                <div style="height:1px;width:20px;background:rgba(150,235,110,0.2);"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="bento-body">
+                        <span class="bento-tag">Advisor & Strategist • Independent</span>
+                        <h3 class="bento-title">HIIKE: Brand &amp; Go-to-Market</h3>
+                        <p class="bento-desc">Built foundational brand, audience, and GTM strategy from the ground up for a pre-launch startup.</p>
+                        <!-- Deliverables list -->
+                        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;">
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Audience Mapping</span>
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Content Swim Lanes</span>
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Posting Framework</span>
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Brand Strategy</span>
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Go-to-Market</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- U&AI — hidden until unlocked -->
+                <div class="bento-card reveal reveal-delay-1 startup-locked" id="startup-unai">
+                    <!-- Visual area -->
+                    <div class="bento-media" style="background: linear-gradient(150deg, #060810 0%, #0a0e22 60%, #050710 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                        <!-- Texture -->
+                        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(90,120,255,0.07) 1px,transparent 1px);background-size:20px 20px;"></div>
+                        <div style="position:absolute;top:-60px;right:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(80,110,255,0.1) 0%,transparent 70%);"></div>
+                        <!-- Wordmark -->
+                        <div style="position:relative;z-index:1;text-align:center;">
+                            <span style="display:block;font-family:var(--font-sans);font-size:2.8rem;font-weight:900;color:rgba(120,150,255,0.9);letter-spacing:0.06em;line-height:1;">U&amp;AI</span>
+                            <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:10px;">
+                                <div style="height:1px;width:20px;background:rgba(120,150,255,0.2);"></div>
+                                <span style="font-family:var(--font-sans);font-size:0.55rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:rgba(120,150,255,0.35);">AI Visibility Venture</span>
+                                <div style="height:1px;width:20px;background:rgba(120,150,255,0.2);"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="bento-body">
+                        <span class="bento-tag">Fractional CMO • Independent</span>
+                        <h3 class="bento-title">U&amp;AI: Chief Marketing Officer</h3>
+                        <p class="bento-desc">Serving as Fractional CMO for an AI-visibility venture — leading marketing strategy, brand direction, and go-to-market.</p>
+                        <!-- Scope list -->
+                        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;">
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Marketing Strategy</span>
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Brand Direction</span>
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Go-to-Market</span>
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Fractional CMO</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -2809,7 +3023,7 @@
                 <!-- Approachable AI (First - Current) -->
                 <a href="podcasts/podcast-approachable-ai.html" class="podcast-card reveal">
                     <div class="podcast-cover">
-                        <img src="Approachable AI Logo 1.png" alt="Approachable AI" onerror="this.parentElement.style.background='linear-gradient(135deg, #4ECDC4, #2C9E8F)'; this.parentElement.innerHTML='<span style=&quot;font-size:2rem;color:white;font-weight:700;&quot;>AI</span>';">
+                        <img loading="lazy" src="Approachable AI Logo 1.png" alt="Approachable AI" onerror="this.parentElement.style.background='linear-gradient(135deg, #4ECDC4, #2C9E8F)'; this.parentElement.innerHTML='<span style=&quot;font-size:2rem;color:white;font-weight:700;&quot;>AI</span>';">
                     </div>
                     <div class="podcast-info">
                         <span class="bento-tag">2026 – Present</span>
@@ -2821,7 +3035,7 @@
                 <!-- Dominate The Decade -->
                 <a href="podcasts/podcast-dominate.html" class="podcast-card reveal reveal-delay-1">
                     <div class="podcast-cover">
-                        <img src="Dominate The Decade/Hero Image.jpeg" alt="Dominate The Decade">
+                        <img loading="lazy" src="Dominate The Decade/Hero Image.jpeg" alt="Dominate The Decade">
                     </div>
                     <div class="podcast-info">
                         <span class="bento-tag">2020 – 2023</span>
@@ -2837,7 +3051,7 @@
                         <span class="coming-soon-year">2026</span>
                     </div>
                     <div class="podcast-cover" style="filter: grayscale(0.5); opacity: 0.7;">
-                        <img src="Curious&Creative1.0.png" alt="Curious & Creative">
+                        <img loading="lazy" src="Curious&Creative1.0.png" alt="Curious & Creative">
                     </div>
                     <div class="podcast-info">
                         <span class="bento-tag" style="color: var(--text-muted);">2026 – Coming Soon</span>
@@ -2893,7 +3107,7 @@
                 <span class="label">Superintelligence</span>
                 <h2 class="display-medium" style="margin-top: var(--space-md);">AI Projects</h2>
                 <p class="body-regular" style="max-width: 600px; margin-top: var(--space-lg);">
-                    Tools and prototypes built not just with Google Gemini, but exploring the full spectrum of AI capabilities. From creative applications to productivity tools, these experiments push the boundaries of what's possible when human creativity meets artificial intelligence.
+                    Apps, tools, and prototypes exploring the full spectrum of AI — from Google AI Studio experiments to full platforms built end-to-end with Claude Code. Each project is a real-world test of what's possible when creativity leads the build.
                 </p>
                 <a href="https://github.com/jgerms20" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; color: var(--neon); font-weight: 600; margin-top: var(--space-md); text-decoration: none; transition: all 0.3s ease;">
                     View on GitHub
@@ -2901,176 +3115,155 @@
                 </a>
             </div>
 
-            <div class="ai-projects-carousel reveal reveal-delay-1">
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                <!-- Archive - Digital Closet -->
-                        <div class="carousel-slide active">
-                            <a href="https://ai.studio/apps/drive/1C1BH5wAdVTio0MAa3mmMiH1O5elvxbth" target="_blank" class="ai-project-card-carousel" data-app="archive">
-                    <div class="bento-media" style="background: linear-gradient(135deg, #8A2BE2 0%, #4B0082 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;">
-                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 7h-4M4 7h4m0 0v13m8-13v13M8 7l4-4 4 4M8 7h8"></path>
-                            </svg>
-                        </div>
-                        <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: rgba(255,255,255,0.1); border-radius: 50%; transform: translate(30%, -30%);"></div>
-                    </div>
-                    <div class="bento-body">
-                        <span class="bento-tag">Digital Closet</span>
-                        <h3 class="bento-title">Archive</h3>
-                        <p class="bento-desc">AI-powered wardrobe organizer. Catalog, style, and manage your closet with intelligent outfit recommendations.</p>
-                        <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                </a>
+            <div class="ai-projects-grid reveal reveal-delay-1">
 
-                        </a>
+                <!-- ── Claude Code builds first (most recent) ── -->
+                <div class="ai-grid-item">
+                    <a href="https://jgerms20.github.io/-joshua-portfolio-2026/" target="_blank" class="ai-project-card" data-app="portfolio-site">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #0a1a0a 0%, #0d2d1a 50%, #081408 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.75)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                            <span style="position:absolute;top:14px;right:14px;background:rgba(212,255,79,0.15);border:1px solid rgba(212,255,79,0.4);color:#D4FF4F;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;">Live</span>
+                            <div style="position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,rgba(212,255,79,0.07) 0%,transparent 60%);"></div>
                         </div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Portfolio Site</span>
+                            <h3 class="bento-title">AI-Enhanced Portfolio</h3>
+                            <p class="bento-desc">This site — designed, built, and continuously evolved with Claude Code. Persistent session memory, 30+ slash commands, automated health checks, and a live GitHub Actions pipeline.</p>
+                            <div class="ai-platform-badge ai-badge-claude"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</div>
+                            <span class="bento-cta">View Site <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="ai-grid-item">
+                    <a href="https://github.com/jgerms20/-joshua-portfolio-2026/tree/main/.claude/commands" target="_blank" class="ai-project-card" data-app="slash-commands">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #0a0a1a 0%, #151530 50%, #0a0a1a 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.75)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            <span style="position:absolute;top:14px;right:14px;background:rgba(212,255,79,0.15);border:1px solid rgba(212,255,79,0.4);color:#D4FF4F;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;">Active</span>
+                            <div style="position:absolute;inset:0;background:radial-gradient(circle at 70% 60%,rgba(212,255,79,0.06) 0%,transparent 60%);"></div>
+                        </div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Developer Tools</span>
+                            <h3 class="bento-title">Slash Command System</h3>
+                            <p class="bento-desc">30+ custom /commands for portfolio management — /portfolio-audit, /think-biggest, /brand-voice, /mood-board, /video-check and more. A reusable AI workflow system any creator could adopt.</p>
+                            <div class="ai-platform-badge ai-badge-claude"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</div>
+                            <span class="bento-cta">View on GitHub <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </a>
+                </div>
 
-                <!-- Momentum -->
-                        <div class="carousel-slide">
-                            <a href="https://ai.studio/apps/drive/1EM6FwL7KX1I4fRDw-S82yLSsp8pQwRPG" target="_blank" class="ai-project-card-carousel" data-app="momentum">
-                    <div class="bento-media" style="background: linear-gradient(135deg, #FFB700 0%, #FF8C00 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;">
-                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-                            </svg>
+                <div class="ai-grid-item">
+                    <a href="https://ai.studio/apps/drive/1C1BH5wAdVTio0MAa3mmMiH1O5elvxbth" target="_blank" class="ai-project-card" data-app="archive">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #8A2BE2 0%, #4B0082 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-4M4 7h4m0 0v13m8-13v13M8 7l4-4 4 4M8 7h8"></path></svg></div><div style="position:absolute;top:0;right:0;width:100px;height:100px;background:rgba(255,255,255,0.08);border-radius:50%;transform:translate(30%,-30%);"></div></div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Digital Closet</span>
+                            <h3 class="bento-title">Archive</h3>
+                            <p class="bento-desc">AI-powered wardrobe organizer. Catalog, style, and manage your closet with intelligent outfit recommendations.</p>
+                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
+                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                         </div>
-                        <div style="position: absolute; bottom: 0; left: 0; width: 120px; height: 120px; background: rgba(255,255,255,0.1); border-radius: 50%; transform: translate(-30%, 30%);"></div>
-                    </div>
-                    <div class="bento-body">
-                        <span class="bento-tag">Productivity</span>
-                        <h3 class="bento-title">Momentum</h3>
-                        <p class="bento-desc">AI-powered productivity and goal tracking. Build momentum with intelligent task management and progress insights.</p>
-                        <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                </a>
-
-                            </a>
+                    </a>
+                </div>
+                <div class="ai-grid-item">
+                    <a href="https://ai.studio/apps/drive/1EM6FwL7KX1I4fRDw-S82yLSsp8pQwRPG" target="_blank" class="ai-project-card" data-app="momentum">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #FFB700 0%, #FF8C00 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg></div><div style="position:absolute;bottom:0;left:0;width:110px;height:110px;background:rgba(255,255,255,0.08);border-radius:50%;transform:translate(-30%,30%);"></div></div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Productivity</span>
+                            <h3 class="bento-title">Momentum</h3>
+                            <p class="bento-desc">AI-powered productivity and goal tracking. Build momentum with intelligent task management and progress insights.</p>
+                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
+                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                         </div>
-
-                <!-- Ætheria - Binaural Beats -->
-                        <div class="carousel-slide">
-                            <a href="https://ai.studio/apps/drive/1TXV9Z8tMLr0ehtWEaUbQJ5sGVjTvHarJ" target="_blank" class="ai-project-card-carousel" data-app="aetheria">
-                    <div class="bento-media" style="background: linear-gradient(135deg, #00CED1 0%, #191970 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;">
-                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 18V5l12-2v13M9 18c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm12-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"></path>
-                            </svg>
+                    </a>
+                </div>
+                <div class="ai-grid-item">
+                    <a href="https://ai.studio/apps/drive/1TXV9Z8tMLr0ehtWEaUbQJ5sGVjTvHarJ" target="_blank" class="ai-project-card" data-app="aetheria">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #00CED1 0%, #191970 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13M9 18c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm12-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"></path></svg></div><div style="position:absolute;top:50%;left:50%;width:140px;height:140px;background:rgba(255,255,255,0.06);border-radius:50%;transform:translate(-50%,-50%);"></div></div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Sound Therapy</span>
+                            <h3 class="bento-title">Ætheria</h3>
+                            <p class="bento-desc">AI-generated binaural beats for focus, relaxation, and meditation. Custom soundscapes tailored to your mental state.</p>
+                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
+                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                         </div>
-                        <div style="position: absolute; top: 50%; left: 50%; width: 150px; height: 150px; background: rgba(255,255,255,0.1); border-radius: 50%; transform: translate(-50%, -50%);"></div>
-                    </div>
-                    <div class="bento-body">
-                        <span class="bento-tag">Sound Therapy</span>
-                        <h3 class="bento-title">Ætheria</h3>
-                        <p class="bento-desc">AI-generated binaural beats for focus, relaxation, and meditation. Custom soundscapes tailored to your mental state.</p>
-                        <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                </a>
-
-                            </a>
+                    </a>
+                </div>
+                <div class="ai-grid-item">
+                    <a href="https://ai.studio/apps/drive/1SofxKk1-7GVv8tcvi7SkIRnvI5PksZcC" target="_blank" class="ai-project-card" data-app="creatorsearch">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #E4405F 0%, #833AB4 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg></div><div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:rgba(255,255,255,0.08);border-radius:50%;"></div></div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Creator Discovery</span>
+                            <h3 class="bento-title">Creator Search</h3>
+                            <p class="bento-desc">AI-powered influencer and creator discovery. Find the perfect creators for your brand based on audience, style, and engagement.</p>
+                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
+                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                         </div>
-
-                <!-- Creator Search -->
-                        <div class="carousel-slide">
-                            <a href="https://ai.studio/apps/drive/1SofxKk1-7GVv8tcvi7SkIRnvI5PksZcC" target="_blank" class="ai-project-card-carousel" data-app="creatorsearch">
-                    <div class="bento-media" style="background: linear-gradient(135deg, #E4405F 0%, #833AB4 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;">
-                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <path d="M21 21l-4.35-4.35"></path>
-                            </svg>
+                    </a>
+                </div>
+                <div class="ai-grid-item">
+                    <a href="https://ai.studio/apps/drive/1xqDWg6PA0RVMGC3LHaqbQr_VweZT_m-6" target="_blank" class="ai-project-card" data-app="jukeboxd">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #1DB954 0%, #191414 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13M9 18c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm12-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"></path></svg></div><div style="position:absolute;bottom:-10px;right:-10px;width:80px;height:80px;background:rgba(255,255,255,0.08);border-radius:50%;"></div></div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Music Social</span>
+                            <h3 class="bento-title">Jukeboxd</h3>
+                            <p class="bento-desc">Letterboxd for music. Track, rate, and review albums. Share your musical journey and discover new sounds.</p>
+                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
+                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                         </div>
-                        <div style="position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
-                    </div>
-                    <div class="bento-body">
-                        <span class="bento-tag">Creator Discovery</span>
-                        <h3 class="bento-title">Creator Search</h3>
-                        <p class="bento-desc">AI-powered influencer and creator discovery. Find the perfect creators for your brand based on audience, style, and engagement.</p>
-                        <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                </a>
-
-                            </a>
+                    </a>
+                </div>
+                <div class="ai-grid-item">
+                    <a href="https://ai.studio/apps/drive/1CrSc4klhhMskBGHyQv5FzLd_fwXkvOBS" target="_blank" class="ai-project-card" data-app="veritas">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div><div style="position:absolute;inset:0;background:radial-gradient(circle at center,rgba(255,255,255,0.04) 0%,transparent 70%);"></div></div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Media Intelligence</span>
+                            <h3 class="bento-title">Veritas</h3>
+                            <p class="bento-desc">AI-powered bias detection for news and media. Analyze content for perspective, compare sources, and see the full picture.</p>
+                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
+                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                         </div>
-
-                <!-- Jukeboxd -->
-                        <div class="carousel-slide">
-                            <a href="https://ai.studio/apps/drive/1xqDWg6PA0RVMGC3LHaqbQr_VweZT_m-6" target="_blank" class="ai-project-card-carousel" data-app="jukeboxd">
-                    <div class="bento-media" style="background: linear-gradient(135deg, #1DB954 0%, #191414 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;">
-                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 18V5l12-2v13M9 18c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm12-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"></path>
-                            </svg>
+                    </a>
+                </div>
+                <div class="ai-grid-item">
+                    <a href="https://ai.studio/apps/drive/1UpeX-jONjncy41Putdc_YGg_9qYHlQcD" target="_blank" class="ai-project-card" data-app="perfectday">
+                        <div class="bento-media" style="background: radial-gradient(circle at top right, #FF6B6B 0%, #FFA500 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;"><span style="font-size:3.5rem;">☀️</span></div></div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Life Design</span>
+                            <h3 class="bento-title">Perfect Day Crafter</h3>
+                            <p class="bento-desc">Design your ideal day with AI. Plan routines, optimize your schedule, and build habits that align with your goals.</p>
+                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
+                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                         </div>
-                        <div style="position: absolute; bottom: -10px; right: -10px; width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
-                    </div>
-                    <div class="bento-body">
-                        <span class="bento-tag">Music Social</span>
-                        <h3 class="bento-title">Jukeboxd</h3>
-                        <p class="bento-desc">Letterboxd for music. Track, rate, and review albums. Share your musical journey and discover new sounds.</p>
-                        <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                </a>
-
-                            </a>
-                        </div>
-
-                <!-- Veritas -->
-                        <div class="carousel-slide">
-                            <a href="https://ai.studio/apps/drive/1CrSc4klhhMskBGHyQv5FzLd_fwXkvOBS" target="_blank" class="ai-project-card-carousel" data-app="veritas">
-                    <div class="bento-media" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;">
-                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2v20M2 12h20M12 2l8 8-8 8M12 2L4 10l8 8"></path>
-                            </svg>
-                        </div>
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%);"></div>
-                    </div>
-                    <div class="bento-body">
-                        <span class="bento-tag">Media Intelligence</span>
-                        <h3 class="bento-title">Veritas</h3>
-                        <p class="bento-desc">AI-powered bias detection for news and media. Analyze content for perspective, compare sources, and see the full picture.</p>
-                        <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                </a>
-
-                            </a>
-                        </div>
-
-                <!-- Perfect Day Crafter -->
-                        <div class="carousel-slide">
-                            <a href="https://ai.studio/apps/drive/1UpeX-jONjncy41Putdc_YGg_9qYHlQcD" target="_blank" class="ai-project-card-carousel" data-app="perfectday">
-                    <div class="bento-media" style="background: radial-gradient(circle at top right, #FF6B6B 0%, #FFA500 100%), var(--obsidian); aspect-ratio: 4/3;">
-                        <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
-                            <span style="font-size: 4rem;">☀️</span>
+                    </a>
+                </div>
+                <div class="ai-grid-item">
+                    <div class="ai-project-card ai-card-no-link" data-app="award-platform">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #1a0533 0%, #3d1a6e 50%, #1a0533 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v2h1a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><circle cx="12" cy="14" r="2"/></svg><span style="position:absolute;top:14px;right:14px;background:rgba(255,165,0,0.15);border:1px solid rgba(255,165,0,0.4);color:#ffa500;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;">In Progress</span></div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Ad Tech</span>
+                            <h3 class="bento-title">Advertising Award Platform</h3>
+                            <p class="bento-desc">Full-stack platform for managing award entries, submissions, and judging workflows. Built end-to-end in Claude Code.</p>
+                            <div class="ai-platform-badge ai-badge-claude"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</div>
+                            <span class="bento-cta">In Development <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                         </div>
                     </div>
-                    <div class="bento-body">
-                        <span class="bento-tag">Life Design</span>
-                        <h3 class="bento-title">Perfect Day Crafter</h3>
-                        <p class="bento-desc">Design your ideal day with AI. Plan routines, optimize your schedule, and build habits that align with your goals.</p>
-                        <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                </a>
+                </div>
+                <div class="ai-grid-item">
+                    <a href="https://jgerms20.github.io/-joshua-portfolio-2026/" target="_blank" class="ai-project-card" data-app="portfolio-memory">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #0a1a0a 0%, #1a3a1a 50%, #0a1a0a 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg><span style="position:absolute;top:14px;right:14px;background:rgba(212,255,79,0.15);border:1px solid rgba(212,255,79,0.4);color:#D4FF4F;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;">Live</span></div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Automation</span>
+                            <h3 class="bento-title">Portfolio Memory System</h3>
+                            <p class="bento-desc">Automated portfolio update system with persistent memory across Claude Code sessions. Deploys updates twice weekly.</p>
+                            <div class="ai-platform-badge ai-badge-claude"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</div>
+                            <span class="bento-cta">View Live <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                         </div>
-                    </div>
-                    
-                    <!-- Carousel Controls -->
-                    <button class="carousel-btn carousel-prev" aria-label="Previous project">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-                    </button>
-                    <button class="carousel-btn carousel-next" aria-label="Next project">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-                    </button>
-                    
-                    <!-- Carousel Indicators -->
-                    <div class="carousel-indicators"></div>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- =====================================================
+        <!-- =====================================================
          PHOTOGRAPHY SECTION
          ===================================================== -->
     <section id="photography" class="section section-dark">
@@ -3095,97 +3288,101 @@
             <div style="position: relative;">
                 <div class="photo-masonry reveal reveal-delay-1" id="photoGallery">
                 <!-- Portraits -->
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1520.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1430.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1371.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8929.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8044.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_9553.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_6968.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_6994.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_0879.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1723.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_2744.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_0436.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1547.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1742.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1759.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1763.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1787.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1789.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1790.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1820.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_1835.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_2914.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_5476.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8011.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8074.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8078.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8318.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8386.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8611.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8714.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="photo-tile" data-category="portraits"><img src="Images/Portraits/JMG_8750.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1520.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1430.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1371.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8929.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8044.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_9553.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_6968.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_6994.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_0879.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1723.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_2744.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_0436.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1547.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1742.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1759.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1763.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1787.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1789.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1790.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1820.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_1835.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_2914.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_5476.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8011.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8074.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8078.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8318.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8386.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8611.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8714.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="photo-tile" data-category="portraits"><img loading="lazy" src="Images/Portraits/JMG_8750.jpg" alt="Portrait" loading="lazy"></div>
 
                 <!-- Fashion -->
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_1601.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_4379.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_2938.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_2971-3.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_2986.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_3729.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_3641.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_3984.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_7818.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_8075.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_8083.jpg" alt="Fashion" loading="lazy"></div>
-                <div class="photo-tile" data-category="fashion"><img src="Images/Fashion Photos/JMG_8986.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_1601.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_4379.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_2938.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_2971-3.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_2986.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_3729.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_3641.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_3984.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_7818.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_8075.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_8083.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_8986.jpg" alt="Fashion" loading="lazy"></div>
 
                 <!-- Landscape -->
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_6629.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_6631.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_6632.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_6986.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/DSC00659.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_7654.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_6496.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/IMG_5646_jpg.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/DSC00317.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/DSC00488.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/DSC00543.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_5559.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_5665.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_6769.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_7083.jpg" alt="Landscape" loading="lazy"></div>
-                <div class="photo-tile" data-category="landscape"><img src="Images/Landscape Photos/JMG_7100.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_6629.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_5784.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_7943.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_6986.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/DSC00659.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_7654.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_6496.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/IMG_5646_jpg.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/DSC00317.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/DSC00488.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/DSC00543.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_5559.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_5665.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_6769.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_7083.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_7100.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_5742.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="landscape"><img loading="lazy" src="Images/Landscape Photos/JMG_5693.jpg" alt="Landscape" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_2990.jpg" alt="Fashion" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_8149.jpg" alt="Fashion" loading="lazy"></div>
 
                 <!-- Events -->
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_1939.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_2254.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_2854.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_7787.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/IMG_6986_jpg.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/DSC00006.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/DSC00007.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/DSC00021.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/DSC00028.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/DSC01053.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_2228.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_2437.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_2560.jpg" alt="Event" loading="lazy"></div>
-                <div class="photo-tile" data-category="events"><img src="Images/Event Photo/JMG_7895.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_1939.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_2254.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_2854.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_7787.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/IMG_6986_jpg.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/DSC00006.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/DSC00007.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/DSC00021.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/DSC00028.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/DSC01053.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_2228.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_2437.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_2560.jpg" alt="Event" loading="lazy"></div>
+                <div class="photo-tile" data-category="events"><img loading="lazy" src="Images/Event Photo/JMG_7895.jpg" alt="Event" loading="lazy"></div>
 
                 <!-- Travel -->
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_7419.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_7445.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_7535.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_3086.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_5784.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_6742.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/DSC00870.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/DSC00873.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_5570.jpg" alt="Travel" loading="lazy"></div>
-                <div class="photo-tile" data-category="travel"><img src="Images/Travel Photos/JMG_6742.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/JMG_7419.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/JMG_7445.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/JMG_7535.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/JMG_3086.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/JMG_5784.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/JMG_6742.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/DSC00870.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/DSC00873.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="travel"><img loading="lazy" src="Images/Travel Photos/JMG_5570.jpg" alt="Travel" loading="lazy"></div>
+                <div class="photo-tile" data-category="fashion"><img loading="lazy" src="Images/Fashion Photos/JMG_3029.jpg" alt="Fashion" loading="lazy"></div>
                 </div>
             </div>
         </div>
@@ -3221,7 +3418,7 @@
                 <!-- Goodreads -->
                 <a href="https://www.goodreads.com/user/show/95365432-joshua-german" target="_blank" class="media-link-card">
                     <div class="media-link-icon" style="background: linear-gradient(135deg, #8B6F47, #5C4A2E); width: 64px; height: 64px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-lg); color: white;">
-                        <img src="https://www.goodreads.com/favicon.ico" alt="Goodreads" style="width: 48px; height: 48px; border-radius: var(--radius-sm);" onerror="this.style.display='none'; this.parentElement.innerHTML='<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M4 19.5A2.5 2.5 0 0 1 6.5 17H20\'></path><path d=\'M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\'></path><path d=\'M8 7h8M8 11h8M8 15h4\'></path></svg>';">
+                        <img loading="lazy" src="https://www.goodreads.com/favicon.ico" alt="Goodreads" style="width: 48px; height: 48px; border-radius: var(--radius-sm);" onerror="this.style.display='none'; this.parentElement.innerHTML='<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M4 19.5A2.5 2.5 0 0 1 6.5 17H20\'></path><path d=\'M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z\'></path><path d=\'M8 7h8M8 11h8M8 15h4\'></path></svg>';">
                             </div>
                     <h3 class="media-link-title" style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-sm);">Books I'm Reading</h3>
                     <p class="media-link-desc" style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-lg); line-height: 1.6;">Track my reading progress on Goodreads</p>
@@ -3802,7 +3999,7 @@
                     const filmsPreview = document.getElementById('films-preview-rss');
                     if (filmsPreview && films.length > 0) {
                         filmsPreview.innerHTML = films.slice(0, 12).map(film => 
-                            film.poster ? `<img src="${film.poster}" alt="${film.title}" loading="lazy">` : '<div style="background: var(--glass-border);"></div>'
+                            film.poster ? `<img loading="lazy" src="${film.poster}" alt="${film.title}" loading="lazy">` : '<div style="background: var(--glass-border);"></div>'
                         ).join('');
                     }
                 }
@@ -3814,7 +4011,7 @@
                     const articlesPreview = document.getElementById('articles-written-preview-rss');
                     if (articlesPreview && articles.length > 0) {
                         articlesPreview.innerHTML = articles.slice(0, 6).map(article => 
-                            article.image ? `<img src="${article.image}" alt="${article.title}" loading="lazy">` : '<div style="background: var(--glass-border);"></div>'
+                            article.image ? `<img loading="lazy" src="${article.image}" alt="${article.title}" loading="lazy">` : '<div style="background: var(--glass-border);"></div>'
                         ).join('');
                     }
                 }
@@ -3835,7 +4032,7 @@
                     ];
                     booksPreview.innerHTML = bookCovers.map((cover, idx) => {
                         const fallback = cover.replace('_SY475_', '_SX318_');
-                        return `<img src="${cover}" alt="Currently reading" loading="lazy" onerror="this.onerror=null; this.src='${fallback}'; if(!this.src) this.style.display='none';">`;
+                        return `<img loading="lazy" src="${cover}" alt="Currently reading" loading="lazy" onerror="this.onerror=null; this.src='${fallback}'; if(!this.src) this.style.display='none';">`;
                     }).join('');
                 }
                 
@@ -3927,8 +4124,6 @@
             }
             });
         </script>
-
-    </section>
 
     <!-- =====================================================
          CONTACT SECTION
@@ -4058,7 +4253,7 @@
         <button class="lightbox-nav lightbox-prev">‹</button>
         <button class="lightbox-nav lightbox-next">›</button>
         <div class="lightbox-content">
-            <img id="lightboxImg" src="" alt="">
+            <img loading="lazy" id="lightboxImg" src="" alt="">
         </div>
     </div>
 
@@ -4079,33 +4274,6 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-        // =====================================================
-        // TEXT ROTATION
-        // =====================================================
-        const rotatingTexts = [
-            'Curious',
-            'Creative',
-            'a Strategist',
-            'a Storyteller',
-            'a Photographer',
-            'a Podcaster',
-            'a Polymath',
-            'building the future'
-        ];
-        let textIndex = 0;
-        const rotatingTextEl = document.getElementById('rotatingText');
-
-        function rotateText() {
-            rotatingTextEl.style.opacity = '0';
-            setTimeout(() => {
-                textIndex = (textIndex + 1) % rotatingTexts.length;
-                rotatingTextEl.textContent = rotatingTexts[textIndex];
-                rotatingTextEl.style.opacity = '1';
-            }, 300);
-        }
-
-        setInterval(rotateText, 3000);
 
         // =====================================================
         // PHOTO ROTATOR
@@ -4647,6 +4815,155 @@
         
         // Merge with existing apps
         Object.assign(apps, appsExtended);
+    </script>
+
+    <!-- =====================================================
+         STARTUP WORK — PASSWORD GATE STYLES + MODAL
+         ===================================================== -->
+    <style>
+        /* Hidden until unlocked */
+        .startup-locked { display: none !important; }
+
+        /* Password modal */
+        #startup-modal {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-lg);
+        }
+        #startup-modal-inner {
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 20px;
+            padding: 48px 40px;
+            max-width: 420px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+        }
+        #startup-modal-close {
+            position: absolute; top: 16px; right: 16px;
+            background: none; border: none;
+            color: rgba(255,255,255,0.3);
+            font-size: 1.1rem; cursor: pointer; padding: 8px;
+            line-height: 1; transition: color 0.2s;
+        }
+        #startup-modal-close:hover { color: rgba(255,255,255,0.7); }
+        #startup-password-input {
+            width: 100%; box-sizing: border-box;
+            background: #1a1a1a;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            outline: none;
+            transition: border-color 0.2s;
+            margin-bottom: 10px;
+        }
+        #startup-password-input:focus { border-color: rgba(212,255,79,0.45); }
+        #startup-unlock-btn {
+            width: 100%;
+            background: #D4FF4F;
+            color: #0a0a0a;
+            border: none; border-radius: 10px;
+            padding: 14px;
+            font-family: var(--font-sans);
+            font-size: 0.9rem; font-weight: 700;
+            cursor: pointer; letter-spacing: 0.05em;
+            transition: opacity 0.2s, transform 0.1s;
+            margin-top: 4px;
+        }
+        #startup-unlock-btn:hover { opacity: 0.85; }
+        #startup-unlock-btn:active { transform: scale(0.98); }
+        #startup-error {
+            display: none;
+            color: #ff6b6b;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+    </style>
+
+    <!-- Password Modal -->
+    <div id="startup-modal" onclick="if(event.target===this)closeStartupGate()">
+        <div id="startup-modal-inner">
+            <button id="startup-modal-close" onclick="closeStartupGate()">&#x2715;</button>
+            <!-- Lock icon -->
+            <div style="text-align:center;margin-bottom:24px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+            </div>
+            <h3 style="font-family:var(--font-sans);font-size:1.15rem;font-weight:700;color:var(--text-primary);text-align:center;margin:0 0 8px;">Independent Practice</h3>
+            <p style="font-family:var(--font-sans);font-size:0.83rem;color:var(--text-muted);text-align:center;margin:0 0 28px;line-height:1.6;">Early-stage advisory work. Access is restricted — enter the code or reach out directly.</p>
+            <input type="password" id="startup-password-input" placeholder="Password" autocomplete="off" onkeydown="if(event.key==='Enter')checkStartupPassword()">
+            <p id="startup-error">Incorrect password. Try again.</p>
+            <button id="startup-unlock-btn" onclick="checkStartupPassword()">Unlock Access</button>
+        </div>
+    </div>
+
+    <script>
+        // =============================================
+        // STARTUP WORK — PASSWORD GATE
+        // To change the password: update the string inside btoa() below.
+        // Current placeholder password: STARTUP
+        // =============================================
+        (function() {
+            // !! SET YOUR PASSWORD HERE — replace 'STARTUP' with your chosen password !!
+            var _k = btoa('STARTUP');
+
+            window.openStartupGate = function() {
+                document.getElementById('startup-modal').style.display = 'flex';
+                setTimeout(function() {
+                    document.getElementById('startup-password-input').focus();
+                }, 80);
+            };
+
+            window.closeStartupGate = function() {
+                document.getElementById('startup-modal').style.display = 'none';
+                document.getElementById('startup-password-input').value = '';
+                document.getElementById('startup-error').style.display = 'none';
+            };
+
+            window.checkStartupPassword = function() {
+                var input = document.getElementById('startup-password-input').value;
+                if (btoa(input) === _k) {
+                    sessionStorage.setItem('sw_unlocked', '1');
+                    _unlock();
+                    window.closeStartupGate();
+                } else {
+                    document.getElementById('startup-error').style.display = 'block';
+                    document.getElementById('startup-password-input').value = '';
+                    document.getElementById('startup-password-input').focus();
+                }
+            };
+
+            function _unlock() {
+                var gate = document.getElementById('startup-gate');
+                if (gate) gate.style.display = 'none';
+                document.querySelectorAll('.startup-locked').forEach(function(el) {
+                    el.classList.remove('startup-locked');
+                });
+            }
+
+            // Restore unlock state within same session
+            if (sessionStorage.getItem('sw_unlocked') === '1') {
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', _unlock);
+                } else {
+                    _unlock();
+                }
+            }
+        })();
     </script>
 
 </body>

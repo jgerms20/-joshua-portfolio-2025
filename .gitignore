@@ -41,3 +41,8 @@ yarn-error.log*
 # Build outputs
 dist/
 build/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
