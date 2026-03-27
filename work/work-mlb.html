@@ -187,19 +187,15 @@
             background: linear-gradient(to top, var(--void) 0%, rgba(0,0,0,0.05) 60%, transparent 100%);
         }
 
-        /* Scoreboard-style header */
+        /* Scoreboard-style stats band — positioned below the hero */
         .hero-scoreboard {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 2;
-            padding: 18px var(--edge);
             display: flex;
             align-items: center;
             gap: 0;
-            border-bottom: 1px solid rgba(200, 16, 46, 0.12);
-            background: rgba(0,0,0,0.3);
+            padding: 20px var(--edge);
+            border-top: 1px solid rgba(200, 16, 46, 0.15);
+            border-bottom: 1px solid rgba(200, 16, 46, 0.08);
+            background: rgba(6, 4, 8, 0.95);
             backdrop-filter: blur(10px);
         }
 
@@ -555,26 +551,6 @@
             <div class="hero-bg-overlay"></div>
         </div>
 
-        <!-- Scoreboard-style stats bar -->
-        <div class="hero-scoreboard">
-            <div class="score-cell">
-                <span class="score-val">+10pts</span>
-                <span class="score-key">Gen Z Favorability</span>
-            </div>
-            <div class="score-cell">
-                <span class="score-val">+13%</span>
-                <span class="score-key">Gen Z Awareness</span>
-            </div>
-            <div class="score-cell">
-                <span class="score-val">1M+</span>
-                <span class="score-key">WBC Round 1 Attendance</span>
-            </div>
-            <div class="score-cell">
-                <span class="score-val">5.2M</span>
-                <span class="score-key">WBC US Viewership Record</span>
-            </div>
-        </div>
-
         <div class="case-hero-content">
             <span class="case-tag">MLB &nbsp;·&nbsp; Wieden+Kennedy Portland &nbsp;·&nbsp; 2023</span>
             <h1 class="case-title">
@@ -587,6 +563,26 @@
             </p>
         </div>
     </section>
+
+    <!-- Scoreboard-style stats band -->
+    <div class="hero-scoreboard">
+        <div class="score-cell">
+            <span class="score-val">+10pts</span>
+            <span class="score-key">Gen Z Favorability</span>
+        </div>
+        <div class="score-cell">
+            <span class="score-val">+13%</span>
+            <span class="score-key">Gen Z Awareness</span>
+        </div>
+        <div class="score-cell">
+            <span class="score-val">1M+</span>
+            <span class="score-key">WBC Round 1 Attendance</span>
+        </div>
+        <div class="score-cell">
+            <span class="score-val">5.2M</span>
+            <span class="score-key">WBC US Viewership Record</span>
+        </div>
+    </div>
 
     <!-- Meta bar -->
     <div class="case-meta">
