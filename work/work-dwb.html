@@ -114,16 +114,16 @@
             mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
         }
 
-        /* Hero stats ticker */
+        /* Hero stats band — below hero, not inside it */
         .hero-stat-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 2;
-            padding: 20px var(--edge);
             display: flex;
             align-items: center;
+            padding: 20px var(--edge);
+            border-top: 1px solid rgba(229, 62, 62, 0.15);
+            border-bottom: 1px solid rgba(229, 62, 62, 0.08);
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(10px);
+        }
             gap: 48px;
             border-bottom: 1px solid rgba(229, 62, 62, 0.1);
         }
@@ -545,24 +545,6 @@
             <img id="dwb-hero-img" src="../Brand Imagery/DWB/CAR 3_0.jpg" alt="DWB Concept Car — Driving While Black" onerror="this.onerror=null;this.src='../Brand Imagery/DWB/car 5.jpg';if(this.naturalWidth===0)this.style.display='none'">
         </div>
 
-        <!-- Stats bar at top -->
-        <div class="hero-stat-bar">
-            <div class="hero-stat-item">
-                <span class="hero-stat-num">3×</span>
-                <span class="hero-stat-label">more likely to be killed during a traffic stop</span>
-            </div>
-            <div class="hero-stat-divider"></div>
-            <div class="hero-stat-item">
-                <span class="hero-stat-num">20%</span>
-                <span class="hero-stat-label">more likely to be stopped &amp; searched</span>
-            </div>
-            <div class="hero-stat-divider"></div>
-            <div class="hero-stat-item">
-                <span class="hero-stat-num">7/11</span>
-                <span class="hero-stat-label">features inspired by real tragedies</span>
-            </div>
-        </div>
-
         <div class="case-hero-content">
             <span class="case-tag">CCGF &nbsp;·&nbsp; Goodby Silverstein &amp; Partners &nbsp;·&nbsp; 2023</span>
             <h1 class="case-title">
@@ -574,6 +556,24 @@
             </p>
         </div>
     </section>
+
+    <!-- Stats band — below hero, fully readable -->
+    <div class="hero-stat-bar">
+        <div class="hero-stat-item">
+            <span class="hero-stat-num">3×</span>
+            <span class="hero-stat-label">more likely to be killed during a traffic stop</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat-item">
+            <span class="hero-stat-num">20%</span>
+            <span class="hero-stat-label">more likely to be stopped &amp; searched</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat-item">
+            <span class="hero-stat-num">7/11</span>
+            <span class="hero-stat-label">features inspired by real tragedies</span>
+        </div>
+    </div>
 
     <!-- Meta bar -->
     <div class="case-meta">
