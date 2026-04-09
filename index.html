@@ -860,6 +860,52 @@
             gap: var(--space-sm);
         }
 
+        /* Campaign name pills on bento cards */
+        .bento-campaign-pill {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+        .bento-card:hover .bento-campaign-pill {
+            border-color: rgba(212,255,79,0.4);
+            color: var(--neon);
+            background: rgba(212,255,79,0.06);
+        }
+
+        /* Featured AI project card (spans 2 cols) */
+        .ai-grid-item-featured {
+            grid-column: span 2;
+            display: flex;
+        }
+        .ai-grid-item-featured .ai-project-card {
+            flex-direction: row;
+            min-height: 240px;
+        }
+        .ai-grid-item-featured .bento-media {
+            flex: 0 0 45%;
+            aspect-ratio: unset !important;
+        }
+        .ai-grid-item-featured .bento-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        @media (max-width: 900px) {
+            .ai-grid-item-featured { grid-column: span 1; }
+            .ai-grid-item-featured .ai-project-card { flex-direction: column; }
+            .ai-grid-item-featured .bento-media { flex: none; aspect-ratio: 4/3 !important; }
+        }
+
         .bento-cta svg {
             width: 16px;
             height: 16px;
@@ -2408,72 +2454,94 @@
                        CENTERED ALTERNATING TIMELINE
                        ============================================= */
 
+                    /* ---- HORIZONTAL TIMELINE WRAP ---- */
                     .jtl-wrap {
                         position: relative;
-                        max-width: 860px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: flex-start;
+                        overflow-x: auto;
+                        padding: 20px 40px 40px;
+                        gap: 0;
+                        max-width: none;
                         margin: 0 auto;
-                        padding: var(--space-2xl) 0 var(--space-3xl);
+                        scrollbar-width: thin;
+                        scrollbar-color: rgba(212,255,79,0.25) transparent;
+                        -webkit-overflow-scrolling: touch;
                     }
+                    .jtl-wrap::-webkit-scrollbar { height: 4px; }
+                    .jtl-wrap::-webkit-scrollbar-track { background: transparent; }
+                    .jtl-wrap::-webkit-scrollbar-thumb { background: rgba(212,255,79,0.25); border-radius: 2px; }
 
-                    /* Center vertical line */
+                    /* Horizontal connecting line — sits at dot level (top of mid + dot center) */
                     .jtl-wrap::before {
                         content: '';
                         position: absolute;
-                        left: 50%;
-                        top: 0;
-                        bottom: 0;
-                        width: 2px;
-                        transform: translateX(-50%);
+                        top: 50px;
+                        left: 60px;
+                        right: 60px;
+                        height: 2px;
                         background: linear-gradient(
-                            180deg,
+                            90deg,
                             transparent 0%,
-                            rgba(212,255,79,0.5) 8%,
-                            rgba(34,211,238,0.4) 35%,
+                            rgba(212,255,79,0.5) 5%,
+                            rgba(34,211,238,0.4) 30%,
                             rgba(168,85,247,0.4) 65%,
-                            rgba(212,255,79,0.5) 92%,
+                            rgba(212,255,79,0.5) 95%,
                             transparent 100%
                         );
+                        pointer-events: none;
                     }
 
-                    /* Each row */
+                    /* Each stop is a vertical flex column */
                     .jtl-row {
-                        display: grid;
-                        grid-template-columns: 1fr 64px 1fr;
-                        grid-template-areas: "left mid right";
-                        align-items: flex-start;
-                        margin-bottom: var(--space-3xl);
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        flex: 1;
+                        min-width: 170px;
+                        max-width: 220px;
+                        margin-bottom: 0;
                         cursor: pointer;
+                        position: relative;
                     }
 
                     .jtl-row:last-child { margin-bottom: 0; }
 
-                    /* Left-side entries: card | dot | empty */
-                    .jtl-row.jtl-left .jtl-card  { grid-area: left; text-align: right; }
-                    .jtl-row.jtl-left .jtl-mid   { grid-area: mid; }
-                    .jtl-row.jtl-left .jtl-empty { grid-area: right; }
-
-                    /* Right-side entries: empty | dot | card */
-                    .jtl-row.jtl-right .jtl-empty { grid-area: left; }
-                    .jtl-row.jtl-right .jtl-mid   { grid-area: mid; }
-                    .jtl-row.jtl-right .jtl-card  { grid-area: right; }
+                    /* All cards sit below the dot line — override any old grid areas */
+                    .jtl-row.jtl-left .jtl-card,
+                    .jtl-row.jtl-right .jtl-card  { grid-area: unset; text-align: center; order: 3; }
+                    .jtl-row.jtl-left .jtl-mid,
+                    .jtl-row.jtl-right .jtl-mid   { grid-area: unset; order: 1; }
+                    .jtl-row.jtl-left .jtl-empty,
+                    .jtl-row.jtl-right .jtl-empty { display: none; }
 
                     /* The info card */
                     .jtl-card {
                         background: var(--surface);
                         border: 1px solid var(--glass-border);
                         border-radius: var(--radius-lg);
-                        padding: var(--space-lg) var(--space-xl);
-                        transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+                        padding: var(--space-md) var(--space-lg);
+                        text-align: center;
+                        margin-top: 20px;
+                        width: 100%;
+                        transition: border-color 0.35s ease, background 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
                     }
 
                     .jtl-row:hover .jtl-card {
                         border-color: rgba(255,255,255,0.15);
                         background: rgba(255,255,255,0.04);
                         box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+                        transform: translateY(-4px);
                     }
 
-                    .jtl-row.jtl-left:hover .jtl-card  { transform: translateX(-4px); }
-                    .jtl-row.jtl-right:hover .jtl-card { transform: translateX(4px); }
+                    /* ILLUMINATE: expanded card glows neon */
+                    .timeline-stop.expanded .jtl-card {
+                        border-color: rgba(212,255,79,0.5) !important;
+                        box-shadow: 0 0 0 1px rgba(212,255,79,0.2), 0 0 32px rgba(212,255,79,0.18), 0 8px 40px rgba(0,0,0,0.5) !important;
+                        background: rgba(212,255,79,0.06) !important;
+                        transform: translateY(-6px);
+                    }
 
                     .jtl-card-current {
                         border-color: rgba(212,255,79,0.2);
@@ -2489,6 +2557,7 @@
                         text-transform: uppercase;
                         display: block;
                         margin-bottom: 8px;
+                        text-align: center;
                     }
                     .jtl-year-current { color: var(--neon); }
 
@@ -2515,6 +2584,7 @@
                         opacity: 0;
                         transition: opacity 0.3s ease;
                         margin-top: 4px;
+                        text-align: center;
                     }
                     .jtl-row:hover .jtl-hint { opacity: 1; }
                     .timeline-stop.expanded .jtl-hint { display: none; }
@@ -2524,34 +2594,33 @@
                         max-height: 0;
                         overflow: hidden;
                         opacity: 0;
-                        font-size: 0.83rem;
+                        font-size: 0.78rem;
                         color: var(--text-secondary);
                         line-height: 1.7;
+                        text-align: left;
                         transition: max-height 0.45s var(--ease-out-expo), opacity 0.35s ease, margin-top 0.3s ease, padding-top 0.3s ease;
                     }
                     .timeline-stop.expanded .jtl-body {
-                        max-height: 180px;
+                        max-height: 300px;
                         opacity: 1;
                         margin-top: 12px;
                         padding-top: 12px;
-                        border-top: 1px solid var(--glass-border);
-                    }
-                    .timeline-stop.expanded .jtl-card {
-                        border-color: rgba(212,255,79,0.25);
-                        box-shadow: 0 0 20px rgba(212,255,79,0.06);
+                        border-top: 1px solid rgba(212,255,79,0.15);
                     }
 
                     /* Branch entries */
                     .jtl-row.jtl-branch .jtl-year,
                     .jtl-row.jtl-branch .jtl-city { color: var(--orange); }
 
-                    /* Center dot column */
+                    /* Dot column — sits on the timeline track */
                     .jtl-mid {
                         display: flex;
                         justify-content: center;
-                        align-items: flex-start;
-                        padding-top: 20px;
+                        align-items: center;
+                        padding-top: 0;
+                        height: 40px;
                         position: relative;
+                        width: 100%;
                     }
 
                     /* The dot */
@@ -2611,17 +2680,12 @@
                     .timeline-stop.expanded .jtl-dot {
                         background: var(--neon);
                         border-color: var(--neon);
-                        box-shadow: 0 0 14px rgba(212,255,79,0.4);
+                        box-shadow: 0 0 24px rgba(212,255,79,0.7), 0 0 8px rgba(212,255,79,0.5);
+                        transform: scale(1.5);
                     }
 
-                    /* ---- ACHIEVEMENT CALLOUTS ---- */
-                    .jtl-empty {
-                        display: flex;
-                        align-items: flex-start;
-                        padding-top: 18px;
-                    }
-                    .jtl-row.jtl-left .jtl-empty  { justify-content: flex-start; padding-left: 20px; }
-                    .jtl-row.jtl-right .jtl-empty { justify-content: flex-end;  padding-right: 20px; }
+                    /* ---- ACHIEVEMENT CALLOUTS (hidden in horizontal mode) ---- */
+                    .jtl-empty { display: none; }
 
                     .jtl-achieve {
                         display: flex;
@@ -2693,24 +2757,23 @@
                         box-shadow: 0 0 10px rgba(212,255,79,0.12);
                     }
 
-                    /* ---- MOBILE ---- */
+                    /* ---- MOBILE: keep horizontal but allow scroll ---- */
                     @media (max-width: 768px) {
+                        .jtl-wrap {
+                            padding: 16px 24px 32px;
+                            gap: 0;
+                        }
                         .jtl-wrap::before {
-                            left: 24px;
+                            top: 44px;
+                            left: 44px;
+                            right: 44px;
                         }
                         .jtl-row {
-                            grid-template-columns: 48px 1fr;
-                            grid-template-areas: "mid card";
-                            margin-bottom: var(--space-2xl);
+                            min-width: 140px;
+                            max-width: 160px;
                         }
-                        .jtl-row.jtl-left .jtl-card,
-                        .jtl-row.jtl-right .jtl-card  { grid-area: card; text-align: left; }
-                        .jtl-row.jtl-left .jtl-mid,
-                        .jtl-row.jtl-right .jtl-mid   { grid-area: mid; }
-                        .jtl-empty { display: none; }
-                        .jtl-row.jtl-left:hover .jtl-card,
-                        .jtl-row.jtl-right:hover .jtl-card { transform: none; }
-                        .jtl-card { padding: var(--space-md) var(--space-lg); }
+                        .jtl-card { padding: var(--space-sm) var(--space-md); margin-top: 16px; }
+                        .jtl-city { font-size: 0.95rem; }
                     }
                 </style>
             </div>
@@ -2753,8 +2816,13 @@
                     <div class="bento-body">
                         <span class="bento-tag">Connection Strategist • TBWA\Chiat\Day</span>
                         <h3 class="bento-title">Gatorade Campaigns</h3>
-                        <p class="bento-desc">Stranger Things & NFL Films partnerships.</p>
-                        <span class="bento-cta">View Case Study <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        <p class="bento-desc">Entertainment partnerships that expanded Gatorade beyond the playing field.</p>
+                        <div class="bento-campaigns" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px;">
+                            <a href="work/work-gatorade.html#stranger-things" onclick="event.stopPropagation();" class="bento-campaign-pill">Stranger Things</a>
+                            <a href="work/work-gatorade.html#nfl" onclick="event.stopPropagation();" class="bento-campaign-pill">NFL</a>
+                            <a href="work/work-gatorade.html#lower-sugar" onclick="event.stopPropagation();" class="bento-campaign-pill">Lower Sugar</a>
+                        </div>
+                        <span class="bento-cta">View All Campaigns <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                     </div>
                 </a>
 
@@ -2766,8 +2834,12 @@
                     <div class="bento-body">
                         <span class="bento-tag">Senior Connection Strategist • TBWA\Chiat\Day</span>
                         <h3 class="bento-title">Sephora Campaigns</h3>
-                        <p class="bento-desc">Holiday & Skincare campaigns directed by Taika Waititi.</p>
-                        <span class="bento-cta">View Case Study <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        <p class="bento-desc">Two campaigns directed by Taika Waititi that made beauty gifting feel effortless.</p>
+                        <div class="bento-campaigns" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px;">
+                            <a href="work/work-sephora.html#holiday" onclick="event.stopPropagation();" class="bento-campaign-pill">Don't Overthink It</a>
+                            <a href="work/work-sephora.html#skincare" onclick="event.stopPropagation();" class="bento-campaign-pill">Skin Obsessed</a>
+                        </div>
+                        <span class="bento-cta">View All Campaigns <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                     </div>
                 </a>
 
@@ -3134,7 +3206,45 @@
 
             <div class="ai-projects-grid reveal reveal-delay-1">
 
-                <!-- ── Claude Code builds first (most recent) ── -->
+                <div class="ai-grid-item-featured">
+                    <a href="https://jgerms20.github.io/the_man_and_the_machine/" target="_blank" class="ai-project-card" data-app="man-machine">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #0A0A0F 0%, #0d1a2e 40%, #0a1505 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 240px;">
+                            <!-- Waveform visualization SVG -->
+                            <svg width="280" height="120" viewBox="0 0 280 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;opacity:0.6;">
+                                <path d="M0 60 Q20 20 40 60 Q60 100 80 60 Q100 20 120 60 Q140 100 160 60 Q180 20 200 60 Q220 100 240 60 Q260 20 280 60" stroke="rgba(212,255,79,0.5)" stroke-width="2" fill="none"/>
+                                <path d="M0 60 Q15 35 30 60 Q45 85 60 60 Q75 35 90 60 Q105 85 120 60 Q135 35 150 60 Q165 85 180 60 Q195 35 210 60 Q225 85 240 60 Q255 35 270 60 Q282 45 280 60" stroke="rgba(212,255,79,0.2)" stroke-width="1.5" fill="none"/>
+                                <!-- Fretboard dots -->
+                                <circle cx="70" cy="90" r="4" fill="rgba(212,255,79,0.7)"/>
+                                <circle cx="110" cy="90" r="4" fill="rgba(212,255,79,0.5)"/>
+                                <circle cx="155" cy="90" r="4" fill="rgba(212,255,79,0.3)"/>
+                                <circle cx="200" cy="90" r="6" fill="rgba(212,255,79,0.8)"/>
+                                <!-- Circuit lines -->
+                                <line x1="200" y1="90" x2="200" y2="60" stroke="rgba(212,255,79,0.3)" stroke-width="1"/>
+                                <line x1="200" y1="60" x2="240" y2="60" stroke="rgba(212,255,79,0.3)" stroke-width="1"/>
+                                <circle cx="240" cy="60" r="3" fill="rgba(212,255,79,0.5)"/>
+                            </svg>
+                            <!-- Ambient glow circles -->
+                            <div style="position:absolute;width:200px;height:200px;background:radial-gradient(circle,rgba(212,255,79,0.08) 0%,transparent 70%);top:50%;left:30%;transform:translate(-50%,-50%);"></div>
+                            <div style="position:absolute;width:160px;height:160px;background:radial-gradient(circle,rgba(34,211,238,0.06) 0%,transparent 70%);top:30%;left:70%;transform:translate(-50%,-50%);"></div>
+                            <!-- Man + Machine icons -->
+                            <div style="display:flex;align-items:center;gap:20px;position:relative;z-index:2;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+                                <div style="width:32px;height:2px;background:linear-gradient(90deg,rgba(212,255,79,0.8),rgba(34,211,238,0.8));border-radius:1px;"></div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(34,211,238,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M8 21h8M12 17v4"/></svg>
+                            </div>
+                            <span style="position:absolute;top:14px;right:14px;background:rgba(212,255,79,0.15);border:1px solid rgba(212,255,79,0.4);color:#D4FF4F;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;">Live</span>
+                        </div>
+                        <div class="bento-body">
+                            <span class="bento-tag">AI Music Collaboration</span>
+                            <h3 class="bento-title">The Man and the Machine</h3>
+                            <p class="bento-desc">Play bass or connect MIDI — and the AI plays back. A real-time jam session tool with 10 AI musician personalities: from Supportive to Adversary, Listen to Free. Built with React, TypeScript, Web Audio API, and Claude Code.</p>
+                            <div class="ai-platform-badge ai-badge-claude" style="margin-top:12px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</div>
+                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Portfolio Site -->
                 <div class="ai-grid-item">
                     <a href="https://jgerms20.github.io/-joshua-portfolio-2026/" target="_blank" class="ai-project-card" data-app="portfolio-site">
                         <div class="bento-media" style="background: linear-gradient(135deg, #0a1a0a 0%, #0d2d1a 50%, #081408 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
@@ -3148,71 +3258,6 @@
                             <p class="bento-desc">This site — designed, built, and continuously evolved with Claude Code. Persistent session memory, 30+ slash commands, automated health checks, and a live GitHub Actions pipeline.</p>
                             <div class="ai-platform-badge ai-badge-claude"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</div>
                             <span class="bento-cta">View Site <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </a>
-                </div>
-                <div class="ai-grid-item">
-                    <a href="https://github.com/jgerms20/-joshua-portfolio-2026/tree/main/.claude/commands" target="_blank" class="ai-project-card" data-app="slash-commands">
-                        <div class="bento-media" style="background: linear-gradient(135deg, #0a0a1a 0%, #151530 50%, #0a0a1a 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.75)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                            <span style="position:absolute;top:14px;right:14px;background:rgba(212,255,79,0.15);border:1px solid rgba(212,255,79,0.4);color:#D4FF4F;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;">Active</span>
-                            <div style="position:absolute;inset:0;background:radial-gradient(circle at 70% 60%,rgba(212,255,79,0.06) 0%,transparent 60%);"></div>
-                        </div>
-                        <div class="bento-body">
-                            <span class="bento-tag">Developer Tools</span>
-                            <h3 class="bento-title">Slash Command System</h3>
-                            <p class="bento-desc">30+ custom /commands for portfolio management — /portfolio-audit, /think-biggest, /brand-voice, /mood-board, /video-check and more. A reusable AI workflow system any creator could adopt.</p>
-                            <div class="ai-platform-badge ai-badge-claude"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</div>
-                            <span class="bento-cta">View on GitHub <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="ai-grid-item">
-                    <a href="https://ai.studio/apps/drive/1C1BH5wAdVTio0MAa3mmMiH1O5elvxbth" target="_blank" class="ai-project-card" data-app="archive">
-                        <div class="bento-media" style="background: linear-gradient(135deg, #8A2BE2 0%, #4B0082 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-4M4 7h4m0 0v13m8-13v13M8 7l4-4 4 4M8 7h8"></path></svg></div><div style="position:absolute;top:0;right:0;width:100px;height:100px;background:rgba(255,255,255,0.08);border-radius:50%;transform:translate(30%,-30%);"></div></div>
-                        <div class="bento-body">
-                            <span class="bento-tag">Digital Closet</span>
-                            <h3 class="bento-title">Archive</h3>
-                            <p class="bento-desc">AI-powered wardrobe organizer. Catalog, style, and manage your closet with intelligent outfit recommendations.</p>
-                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
-                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </a>
-                </div>
-                <div class="ai-grid-item">
-                    <a href="https://ai.studio/apps/drive/1EM6FwL7KX1I4fRDw-S82yLSsp8pQwRPG" target="_blank" class="ai-project-card" data-app="momentum">
-                        <div class="bento-media" style="background: linear-gradient(135deg, #FFB700 0%, #FF8C00 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg></div><div style="position:absolute;bottom:0;left:0;width:110px;height:110px;background:rgba(255,255,255,0.08);border-radius:50%;transform:translate(-30%,30%);"></div></div>
-                        <div class="bento-body">
-                            <span class="bento-tag">Productivity</span>
-                            <h3 class="bento-title">Momentum</h3>
-                            <p class="bento-desc">AI-powered productivity and goal tracking. Build momentum with intelligent task management and progress insights.</p>
-                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
-                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </a>
-                </div>
-                <div class="ai-grid-item">
-                    <a href="https://ai.studio/apps/drive/1TXV9Z8tMLr0ehtWEaUbQJ5sGVjTvHarJ" target="_blank" class="ai-project-card" data-app="aetheria">
-                        <div class="bento-media" style="background: linear-gradient(135deg, #00CED1 0%, #191970 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13M9 18c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm12-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"></path></svg></div><div style="position:absolute;top:50%;left:50%;width:140px;height:140px;background:rgba(255,255,255,0.06);border-radius:50%;transform:translate(-50%,-50%);"></div></div>
-                        <div class="bento-body">
-                            <span class="bento-tag">Sound Therapy</span>
-                            <h3 class="bento-title">Ætheria</h3>
-                            <p class="bento-desc">AI-generated binaural beats for focus, relaxation, and meditation. Custom soundscapes tailored to your mental state.</p>
-                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
-                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </a>
-                </div>
-                <div class="ai-grid-item">
-                    <a href="https://ai.studio/apps/drive/1SofxKk1-7GVv8tcvi7SkIRnvI5PksZcC" target="_blank" class="ai-project-card" data-app="creatorsearch">
-                        <div class="bento-media" style="background: linear-gradient(135deg, #E4405F 0%, #833AB4 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg></div><div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:rgba(255,255,255,0.08);border-radius:50%;"></div></div>
-                        <div class="bento-body">
-                            <span class="bento-tag">Creator Discovery</span>
-                            <h3 class="bento-title">Creator Search</h3>
-                            <p class="bento-desc">AI-powered influencer and creator discovery. Find the perfect creators for your brand based on audience, style, and engagement.</p>
-                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
-                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                         </div>
                     </a>
                 </div>
@@ -3241,6 +3286,54 @@
                     </a>
                 </div>
                 <div class="ai-grid-item">
+                    <a href="https://ai.studio/apps/drive/1SofxKk1-7GVv8tcvi7SkIRnvI5PksZcC" target="_blank" class="ai-project-card" data-app="creatorsearch">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #E4405F 0%, #833AB4 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg></div><div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:rgba(255,255,255,0.08);border-radius:50%;"></div></div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Creator Discovery</span>
+                            <h3 class="bento-title">Creator Search</h3>
+                            <p class="bento-desc">AI-powered influencer and creator discovery. Find the perfect creators for your brand based on audience, style, and engagement.</p>
+                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
+                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="ai-grid-item">
+                    <a href="https://ai.studio/apps/drive/1C1BH5wAdVTio0MAa3mmMiH1O5elvxbth" target="_blank" class="ai-project-card" data-app="archive">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #8A2BE2 0%, #4B0082 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-4M4 7h4m0 0v13m8-13v13M8 7l4-4 4 4M8 7h8"></path></svg></div><div style="position:absolute;top:0;right:0;width:100px;height:100px;background:rgba(255,255,255,0.08);border-radius:50%;transform:translate(30%,-30%);"></div></div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Digital Closet</span>
+                            <h3 class="bento-title">Archive</h3>
+                            <p class="bento-desc">AI-powered wardrobe organizer. Catalog, style, and manage your closet with intelligent outfit recommendations.</p>
+                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
+                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="ai-grid-item">
+                    <a href="https://ai.studio/apps/drive/1TXV9Z8tMLr0ehtWEaUbQJ5sGVjTvHarJ" target="_blank" class="ai-project-card" data-app="aetheria">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #00CED1 0%, #191970 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13M9 18c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm12-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"></path></svg></div><div style="position:absolute;top:50%;left:50%;width:140px;height:140px;background:rgba(255,255,255,0.06);border-radius:50%;transform:translate(-50%,-50%);"></div></div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Sound Therapy</span>
+                            <h3 class="bento-title">Ætheria</h3>
+                            <p class="bento-desc">AI-generated binaural beats for focus, relaxation, and meditation. Custom soundscapes tailored to your mental state.</p>
+                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
+                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="ai-grid-item">
+                    <a href="https://ai.studio/apps/drive/1EM6FwL7KX1I4fRDw-S82yLSsp8pQwRPG" target="_blank" class="ai-project-card" data-app="momentum">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #FFB700 0%, #FF8C00 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg></div><div style="position:absolute;bottom:0;left:0;width:110px;height:110px;background:rgba(255,255,255,0.08);border-radius:50%;transform:translate(-30%,30%);"></div></div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Productivity</span>
+                            <h3 class="bento-title">Momentum</h3>
+                            <p class="bento-desc">AI-powered productivity and goal tracking. Build momentum with intelligent task management and progress insights.</p>
+                            <div class="ai-platform-badge ai-badge-google"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Google AI Studio</div>
+                            <span class="bento-cta">Launch App <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="ai-grid-item">
                     <a href="https://ai.studio/apps/drive/1UpeX-jONjncy41Putdc_YGg_9qYHlQcD" target="_blank" class="ai-project-card" data-app="perfectday">
                         <div class="bento-media" style="background: radial-gradient(circle at top right, #FF6B6B 0%, #FFA500 100%); aspect-ratio: 4/3; position: relative; overflow: hidden;"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;"><span style="font-size:3.5rem;">☀️</span></div></div>
                         <div class="bento-body">
@@ -3253,16 +3346,20 @@
                     </a>
                 </div>
                 <div class="ai-grid-item">
-                    <div class="ai-project-card ai-card-no-link" data-app="award-platform">
-                        <div class="bento-media" style="background: linear-gradient(135deg, #1a0533 0%, #3d1a6e 50%, #1a0533 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v2h1a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><circle cx="12" cy="14" r="2"/></svg><span style="position:absolute;top:14px;right:14px;background:rgba(255,165,0,0.15);border:1px solid rgba(255,165,0,0.4);color:#ffa500;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;">In Progress</span></div>
-                        <div class="bento-body">
-                            <span class="bento-tag">Ad Tech</span>
-                            <h3 class="bento-title">Advertising Award Platform</h3>
-                            <p class="bento-desc">Full-stack platform for managing award entries, submissions, and judging workflows. Built end-to-end in Claude Code.</p>
-                            <div class="ai-platform-badge ai-badge-claude"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</div>
-                            <span class="bento-cta">In Development <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    <a href="https://github.com/jgerms20/-joshua-portfolio-2026/tree/main/.claude/commands" target="_blank" class="ai-project-card" data-app="slash-commands">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #0a0a1a 0%, #151530 50%, #0a0a1a 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.75)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            <span style="position:absolute;top:14px;right:14px;background:rgba(212,255,79,0.15);border:1px solid rgba(212,255,79,0.4);color:#D4FF4F;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;">Active</span>
+                            <div style="position:absolute;inset:0;background:radial-gradient(circle at 70% 60%,rgba(212,255,79,0.06) 0%,transparent 60%);"></div>
                         </div>
-                    </div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Developer Tools</span>
+                            <h3 class="bento-title">Slash Command System</h3>
+                            <p class="bento-desc">30+ custom /commands for portfolio management — /portfolio-audit, /think-biggest, /brand-voice, /mood-board, /video-check and more. A reusable AI workflow system any creator could adopt.</p>
+                            <div class="ai-platform-badge ai-badge-claude"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</div>
+                            <span class="bento-cta">View on GitHub <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </a>
                 </div>
                 <div class="ai-grid-item">
                     <a href="https://jgerms20.github.io/-joshua-portfolio-2026/" target="_blank" class="ai-project-card" data-app="portfolio-memory">
@@ -3277,6 +3374,19 @@
                     </a>
                 </div>
             </div>
+                <div class="ai-grid-item">
+                    <div class="ai-project-card ai-card-no-link" data-app="award-platform">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #1a0533 0%, #3d1a6e 50%, #1a0533 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v2h1a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/><circle cx="12" cy="14" r="2"/></svg><span style="position:absolute;top:14px;right:14px;background:rgba(255,165,0,0.15);border:1px solid rgba(255,165,0,0.4);color:#ffa500;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;">In Progress</span></div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Ad Tech</span>
+                            <h3 class="bento-title">Advertising Award Platform</h3>
+                            <p class="bento-desc">Full-stack platform for managing award entries, submissions, and judging workflows. Built end-to-end in Claude Code.</p>
+                            <div class="ai-platform-badge ai-badge-claude"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</div>
+                            <span class="bento-cta">In Development <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </div>
+                </div>
+            
         </div>
     </section>
 
