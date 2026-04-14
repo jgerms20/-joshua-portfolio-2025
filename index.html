@@ -2019,9 +2019,10 @@
             .bento-card { grid-column: span 12 !important; overflow: hidden; }
             .bento-body {
                 text-align: center;
-                align-items: stretch; /* let children fill full width */
+                align-items: stretch;
                 width: 100%;
                 min-width: 0;
+                padding: 20px;
             }
             .bento-title {
                 text-align: center;
@@ -2038,6 +2039,8 @@
                 overflow-wrap: break-word;
                 word-break: break-word;
                 white-space: normal;
+                letter-spacing: 0.05em;
+                font-size: 0.65rem;
             }
             .bento-cta { justify-content: center; }
             .bento-campaigns {
@@ -2783,7 +2786,7 @@
                 </a>
 
                 <!-- Gatorade -->
-                <a href="work/work-gatorade.html" class="bento-card reveal reveal-delay-1">
+                <div class="bento-card reveal reveal-delay-1" role="link" tabindex="0" style="cursor:pointer;" onclick="window.location='work/work-gatorade.html'" onkeydown="if(event.key==='Enter')window.location='work/work-gatorade.html'">
                     <div class="bento-media" style="background: linear-gradient(135deg, #1a0800 0%, #3d1800 45%, #0a1020 100%); position: relative; overflow: hidden; display:flex; align-items:center; justify-content:center;">
                         <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 40% 50%, rgba(240,130,0,0.12) 0%, transparent 65%);pointer-events:none;"></div>
                         <img loading="lazy" src="Brand Imagery/Gatorade/Brand Logo/gatorade-logo-png_seeklogo-369610.png" alt="Gatorade" style="max-height:72px;width:auto;object-fit:contain;filter:brightness(1.2) drop-shadow(0 0 16px rgba(240,130,0,0.5));position:relative;z-index:1;">
