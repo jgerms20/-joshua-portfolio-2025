@@ -2016,18 +2016,34 @@
             }
             
             /* Bento cards centering */
-            .bento-card { grid-column: span 12 !important; }
+            .bento-card { grid-column: span 12 !important; overflow: hidden; }
             .bento-body {
                 text-align: center;
-                align-items: center;
+                align-items: stretch; /* let children fill full width */
+                width: 100%;
+                min-width: 0;
             }
-            .bento-title { text-align: center; }
-            .bento-desc { text-align: center; }
-            .bento-tag { text-align: center; }
+            .bento-title {
+                text-align: center;
+                overflow-wrap: break-word;
+                word-break: break-word;
+            }
+            .bento-desc {
+                text-align: center;
+                overflow-wrap: break-word;
+                word-break: break-word;
+            }
+            .bento-tag {
+                text-align: center;
+                overflow-wrap: break-word;
+                word-break: break-word;
+                white-space: normal;
+            }
             .bento-cta { justify-content: center; }
             .bento-campaigns {
                 justify-content: center;
                 flex-direction: row;
+                flex-wrap: wrap;
             }
 
             /* Signal/stat panels */
