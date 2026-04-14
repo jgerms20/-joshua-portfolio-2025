@@ -2015,12 +2015,57 @@
                 border-bottom: none;
             }
             
+            /* Bento cards centering */
             .bento-card { grid-column: span 12 !important; }
-            .bento-body { text-align: center; }
+            .bento-body {
+                text-align: center;
+                align-items: center;
+            }
+            .bento-title { text-align: center; }
+            .bento-desc { text-align: center; }
+            .bento-tag { text-align: center; }
             .bento-cta { justify-content: center; }
-            .bento-campaigns { justify-content: center; }
+            .bento-campaigns {
+                justify-content: center;
+                flex-direction: row;
+            }
+
+            /* Signal/stat panels */
+            .signal-panel {
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+            .signal-panel-title { text-align: center; }
+            .signal-panel-meta { align-items: center; }
+
+            /* About section */
+            .about-content {
+                text-align: center;
+                align-items: center;
+            }
+
+            /* Testimonial cards */
+            .testimonial-card {
+                text-align: center;
+                align-items: center;
+            }
+
+            /* Grid sections */
             .photo-masonry { columns: 2; }
             .podcast-grid { grid-template-columns: 1fr; }
+            .podcast-item {
+                text-align: center;
+                align-items: center;
+            }
+
+            /* Centered text sections */
+            .section-title,
+            .section-subtitle,
+            .case-section h2 {
+                text-align: center;
+            }
             
             .nav-dock {
                 display: none; /* Hide bottom nav on mobile since top header is always visible */

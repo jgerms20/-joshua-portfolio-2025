@@ -160,13 +160,35 @@
         .next-project-link:hover { color: var(--neon); }
 
         @media (max-width: 768px) {
-            .case-meta { gap: 32px; }
+            .case-meta {
+                gap: 32px;
+                flex-direction: column;
+                text-align: center;
+            }
+            .meta-item {
+                align-items: center;
+                justify-content: center;
+            }
             .results-grid { grid-template-columns: 1fr; }
+            .result-card {
+                text-align: center;
+                align-items: center;
+            }
             .case-gallery.two-col { grid-template-columns: 1fr; }
             .video-grid { grid-template-columns: 1fr; }
+            .case-section-title { text-align: center; }
+            .case-section p { text-align: center; }
+            .case-quote { text-align: center; }
+            .case-hero-content {
+                text-align: center;
+                align-items: center;
+            }
+            .case-title { text-align: center; }
+            .case-subtitle { text-align: center; }
             .back-nav { top: 16px; left: 16px; padding: 12px 18px; }
             .campaign-toggle { flex-direction: column; width: 100%; }
             .toggle-btn { text-align: center; }
+            .next-project-link { text-align: center; }
         }
         .video-placeholder {
             position: relative;
