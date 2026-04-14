@@ -222,6 +222,34 @@
         .video-card.featured .video-wrapper { padding-bottom: 50%; }
         .video-card iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         .video-card .video-label { padding: 16px; font-size: 0.9rem; color: var(--text-secondary); }
+
+        /* Video poster — replaces iframes that can't embed */
+        .video-poster {
+            position: relative; display: block; aspect-ratio: 16/9;
+            background: #111; overflow: hidden; text-decoration: none;
+        }
+        .video-poster img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform 0.4s ease, opacity 0.3s ease;
+        }
+        .video-poster:hover img { transform: scale(1.04); opacity: 0.75; }
+        .video-poster-overlay {
+            position: absolute; inset: 0; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 12px;
+            background: rgba(0,0,0,0.35); transition: background 0.3s ease;
+        }
+        .video-poster:hover .video-poster-overlay { background: rgba(0,0,0,0.55); }
+        .video-poster-play {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: rgba(212,255,79,0.9); display: flex; align-items: center; justify-content: center;
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+        .video-poster:hover .video-poster-play { transform: scale(1.12); background: #D4FF4F; }
+        .video-poster-play svg { margin-left: 4px; }
+        .video-poster-label {
+            font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.85);
+            letter-spacing: 0.04em; text-transform: uppercase;
+        }
         .video-grid-small {
             display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
         }
@@ -871,18 +899,22 @@
                 <h2 class="case-section-title">Campaign Spots</h2>
                 <div class="video-grid">
                     <div class="video-card">
-                        <div class="video-placeholder">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="rgba(255,255,255,0.25)" stroke="none"/></svg>
-                                <span>Video Coming Soon</span>
+                        <a href="https://www.youtube.com/results?search_query=Gatorade+All+The+Reasons+Not+To+Quit+NFL+Films" target="_blank" class="video-poster" style="background: linear-gradient(135deg, #0a0f1a, #1a1025);">
+                            <div class="video-poster-overlay" style="background: rgba(0,0,0,0.6);">
+                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
+                                <span class="video-poster-label">Search on YouTube</span>
                             </div>
+                        </a>
                         <div class="video-label">All The Reasons Not to Quit</div>
                     </div>
                     <div class="video-card">
-                        <div class="video-placeholder">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="rgba(255,255,255,0.25)" stroke="none"/></svg>
-                                <span>Video Coming Soon</span>
+                        <a href="https://www.youtube.com/results?search_query=Gatorade+NFL+Films+Columbia+High+School+comeback" target="_blank" class="video-poster" style="background: linear-gradient(135deg, #0a0f1a, #1a1025);">
+                            <div class="video-poster-overlay" style="background: rgba(0,0,0,0.6);">
+                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
+                                <span class="video-poster-label">Search on YouTube</span>
                             </div>
-                        <div class="video-label">The Comeback</div>
+                        </a>
+                        <div class="video-label">The Comeback — Columbia HS</div>
                     </div>
                 </div>
             </section>

@@ -2016,6 +2016,9 @@
             }
             
             .bento-card { grid-column: span 12 !important; }
+            .bento-body { text-align: center; }
+            .bento-cta { justify-content: center; }
+            .bento-campaigns { justify-content: center; }
             .photo-masonry { columns: 2; }
             .podcast-grid { grid-template-columns: 1fr; }
             
@@ -2730,16 +2733,16 @@
                         <h3 class="bento-title">Gatorade Campaigns</h3>
                         <p class="bento-desc">Entertainment partnerships that expanded Gatorade beyond the playing field.</p>
                         <div class="bento-campaigns" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px;">
-                            <a href="work/work-gatorade.html#stranger-things" onclick="event.stopPropagation();" class="bento-campaign-pill">Stranger Things</a>
-                            <a href="work/work-gatorade.html#nfl" onclick="event.stopPropagation();" class="bento-campaign-pill">NFL</a>
-                            <a href="work/work-gatorade.html#lower-sugar" onclick="event.stopPropagation();" class="bento-campaign-pill">Lower Sugar</a>
+                            <a href="work/work-gatorade.html#stranger-things" class="bento-campaign-pill" onclick="event.stopPropagation();">Stranger Things</a>
+                            <a href="work/work-gatorade.html#nfl" class="bento-campaign-pill" onclick="event.stopPropagation();">NFL</a>
+                            <a href="work/work-gatorade.html#lower-sugar" class="bento-campaign-pill" onclick="event.stopPropagation();">Lower Sugar</a>
                         </div>
                         <span class="bento-cta">View All Campaigns <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                     </div>
-                </a>
+                </div>
 
                 <!-- Sephora -->
-                <a href="work/work-sephora.html" class="bento-card reveal reveal-delay-1">
+                <div class="bento-card reveal reveal-delay-1" role="link" tabindex="0" style="cursor:pointer;" onclick="window.location='work/work-sephora.html'" onkeydown="if(event.key==='Enter')window.location='work/work-sephora.html'">
                     <div class="bento-media" style="background: #fff; display: flex; align-items: center; justify-content: center; padding: 40px;">
                         <img loading="lazy" src="Brand Imagery/Sephora/Brand Logo/Sephora-Emblem.png" alt="Sephora" style="max-height: 100px; width: auto; object-fit: contain;">
                     </div>
@@ -2748,12 +2751,12 @@
                         <h3 class="bento-title">Sephora Campaigns</h3>
                         <p class="bento-desc">Two campaigns directed by Taika Waititi that made beauty gifting feel effortless.</p>
                         <div class="bento-campaigns" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px;">
-                            <a href="work/work-sephora.html#holiday" onclick="event.stopPropagation();" class="bento-campaign-pill">Don't Overthink It</a>
-                            <a href="work/work-sephora.html#skincare" onclick="event.stopPropagation();" class="bento-campaign-pill">Skin Obsessed</a>
+                            <a href="work/work-sephora.html#holiday" class="bento-campaign-pill" onclick="event.stopPropagation();">Don't Overthink It</a>
+                            <a href="work/work-sephora.html#skincare" class="bento-campaign-pill" onclick="event.stopPropagation();">Skin Obsessed</a>
                         </div>
                         <span class="bento-cta">View All Campaigns <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                     </div>
-                </a>
+                </div>
 
                 <!-- DoorDash -->
                 <a href="work/work-doordash.html" class="bento-card reveal">
@@ -3481,6 +3484,18 @@
                     <h3 class="media-link-title" style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-sm);">Books I'm Reading</h3>
                     <p class="media-link-desc" style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-lg); line-height: 1.6;">Track my reading progress on Goodreads</p>
                     <span class="media-link-url" style="font-size: 0.85rem; color: var(--neon); font-weight: 600; text-transform: lowercase;">goodreads.com/joshua-german</span>
+                </a>
+
+                <!-- Chess.com -->
+                <a href="https://www.chess.com/member/jgerms" target="_blank" class="media-link-card">
+                    <div class="media-link-icon" style="background: linear-gradient(135deg, #769656, #4a7c3f); width: 64px; height: 64px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-lg);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 45 45" fill="white">
+                            <path d="M22.5 9c-2.21 0-4 1.79-4 4 0 .89.29 1.71.78 2.38C17.33 16.5 16 18.59 16 21c0 2.03.94 3.84 2.41 5.03C15.41 27.09 14 29.87 14 33h17c0-3.13-1.41-5.91-3.41-6.97C29.06 24.84 30 23.03 30 21c0-2.41-1.33-4.5-3.28-5.62.49-.67.78-1.49.78-2.38 0-2.21-1.79-4-4-4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="media-link-title" style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-sm);">Chess</h3>
+                    <p class="media-link-desc" style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-lg); line-height: 1.6;">Follow my games and rating on Chess.com</p>
+                    <span class="media-link-url" style="font-size: 0.85rem; color: var(--neon); font-weight: 600; text-transform: lowercase;">chess.com/member/jgerms</span>
                 </a>
 
                 <!-- Substack -->
