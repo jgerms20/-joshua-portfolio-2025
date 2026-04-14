@@ -140,6 +140,23 @@
             .campaign-toggle { flex-direction: column; width: 100%; }
             .toggle-btn { text-align: center; }
         }
+        .video-placeholder {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: rgba(255,255,255,0.04);
+            border: 1px dashed rgba(255,255,255,0.12);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -242,15 +259,24 @@
                         <div class="video-label">Don't Overthink It - Main</div>
                     </div>
                     <div class="video-card">
-                        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/MxzWVn1rP9I" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Holiday Gift Guide"></iframe></div>
+                        <div class="video-wrapper video-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            <span>Holiday Gift Guide</span>
+                        </div>
                         <div class="video-label">Holiday Gift Guide</div>
                     </div>
                     <div class="video-card">
-                        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/8f4fZr7xGCM" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Last Minute Shopping"></iframe></div>
+                        <div class="video-wrapper video-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            <span>Last Minute Shopping</span>
+                        </div>
                         <div class="video-label">Last Minute Shopping</div>
                     </div>
                     <div class="video-card">
-                        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/7kY9E5hJvHk" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="The Perfect Gift"></iframe></div>
+                        <div class="video-wrapper video-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            <span>The Perfect Gift</span>
+                        </div>
                         <div class="video-label">The Perfect Gift</div>
                     </div>
                 </div>
