@@ -420,16 +420,51 @@
         .next-project-link:hover { color: var(--neon); }
 
         @media (max-width: 768px) {
-            .case-meta { gap: 32px; } 
+            .case-meta {
+                gap: 32px;
+                flex-direction: column;
+                text-align: center;
+            }
+            .meta-item {
+                align-items: center;
+                justify-content: center;
+            }
             .results-grid { grid-template-columns: 1fr; }
+            .result-card {
+                text-align: center;
+                align-items: center;
+            }
             .video-grid { grid-template-columns: 1fr; }
             .video-grid-small { grid-template-columns: 1fr; }
+            .case-section-title { text-align: center; }
+            .case-section p { text-align: center; }
+            .case-quote { text-align: center; }
+            .timeline-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .timeline-content {
+                padding-left: 0;
+                border-left: none;
+                border-top: 2px solid var(--glass-border);
+                padding-top: 16px;
+            }
+            .timeline-date { text-align: center; }
+            .case-hero-content {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+                align-items: center;
+            }
+            .case-title { text-align: center; }
+            .case-subtitle { text-align: center; }
+            .case-hero-visual { display: none; }
+            .case-hero-text { width: 100%; }
             .back-nav { top: 16px; left: 16px; padding: 12px 18px; }
             .campaign-toggle { flex-direction: column; width: 100%; }
             .toggle-btn { text-align: center; }
-            .case-hero-content { flex-direction: column; gap: 40px; }
-            .case-hero-visual { display: none; }
-            .case-hero-text { width: 100%; }
+            .next-project-link { text-align: center; }
         }
             .video-placeholder {
             position: relative;
