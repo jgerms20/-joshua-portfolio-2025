@@ -168,6 +168,23 @@
             .campaign-toggle { flex-direction: column; width: 100%; }
             .toggle-btn { text-align: center; }
         }
+        .video-placeholder {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: rgba(255,255,255,0.04);
+            border: 1px dashed rgba(255,255,255,0.12);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -276,34 +293,25 @@
                         <div class="video-label">Aunt Aya</div>
                     </div>
                     <div class="video-card">
-                        <a href="https://www.youtube.com/watch?v=MxzWVn1rP9I" target="_blank" class="video-poster">
-                            <img src="https://img.youtube.com/vi/MxzWVn1rP9I/hqdefault.jpg" alt="Husband Dan" loading="lazy" onerror="this.src='Brand Imagery/Sephora/Holiday Campaign 2024/hqdefault.jpg'">
-                            <div class="video-poster-overlay">
-                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
-                                <span class="video-poster-label">Watch on YouTube</span>
-                            </div>
-                        </a>
-                        <div class="video-label">Husband Dan</div>
+                        <div class="video-wrapper video-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            <span>Holiday Gift Guide</span>
+                        </div>
+                        <div class="video-label">Holiday Gift Guide</div>
                     </div>
                     <div class="video-card">
-                        <a href="https://www.youtube.com/watch?v=8f4fZr7xGCM" target="_blank" class="video-poster">
-                            <img src="https://img.youtube.com/vi/8f4fZr7xGCM/hqdefault.jpg" alt="Coworker Sandra" loading="lazy" onerror="this.src='Brand Imagery/Sephora/Holiday Campaign 2024/hqdefault.jpg'">
-                            <div class="video-poster-overlay">
-                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
-                                <span class="video-poster-label">Watch on YouTube</span>
-                            </div>
-                        </a>
-                        <div class="video-label">Coworker Sandra</div>
+                        <div class="video-wrapper video-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            <span>Last Minute Shopping</span>
+                        </div>
+                        <div class="video-label">Last Minute Shopping</div>
                     </div>
                     <div class="video-card">
-                        <a href="https://www.youtube.com/watch?v=7kY9E5hJvHk" target="_blank" class="video-poster">
-                            <img src="https://img.youtube.com/vi/7kY9E5hJvHk/hqdefault.jpg" alt="Your BFF's Kid Xander" loading="lazy" onerror="this.src='Brand Imagery/Sephora/Holiday Campaign 2024/hqdefault.jpg'">
-                            <div class="video-poster-overlay">
-                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
-                                <span class="video-poster-label">Watch on YouTube</span>
-                            </div>
-                        </a>
-                        <div class="video-label">Your BFF's Kid Xander</div>
+                        <div class="video-wrapper video-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            <span>The Perfect Gift</span>
+                        </div>
+                        <div class="video-label">The Perfect Gift</div>
                     </div>
                 </div>
             </section>
