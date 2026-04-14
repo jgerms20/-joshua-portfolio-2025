@@ -118,6 +118,34 @@
         .video-card iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         .video-card .video-label { padding: 16px; font-size: 0.9rem; color: var(--text-secondary); }
 
+        /* Video poster — replaces iframes that can't embed */
+        .video-poster {
+            position: relative; display: block; aspect-ratio: 16/9;
+            background: #111; overflow: hidden; text-decoration: none;
+        }
+        .video-poster img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform 0.4s ease, opacity 0.3s ease;
+        }
+        .video-poster:hover img { transform: scale(1.04); opacity: 0.75; }
+        .video-poster-overlay {
+            position: absolute; inset: 0; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 12px;
+            background: rgba(0,0,0,0.35); transition: background 0.3s ease;
+        }
+        .video-poster:hover .video-poster-overlay { background: rgba(0,0,0,0.55); }
+        .video-poster-play {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: rgba(212,255,79,0.9); display: flex; align-items: center; justify-content: center;
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+        .video-poster:hover .video-poster-play { transform: scale(1.12); background: #D4FF4F; }
+        .video-poster-play svg { margin-left: 4px; }
+        .video-poster-label {
+            font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.85);
+            letter-spacing: 0.04em; text-transform: uppercase;
+        }
+
         .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin: 48px auto; max-width: var(--max-width); padding: 0 var(--edge); justify-items: center; }
         .result-card {
             background: var(--surface); border: 1px solid var(--glass-border);
@@ -238,20 +266,44 @@
                 <h2 class="case-section-title">Holiday Spots</h2>
                 <div class="video-grid">
                     <div class="video-card">
-                        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/8xsxYoCI4uc" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Don't Overthink It - Main"></iframe></div>
-                        <div class="video-label">Don't Overthink It - Main</div>
+                        <a href="https://www.youtube.com/watch?v=8xsxYoCI4uc" target="_blank" class="video-poster">
+                            <img src="https://img.youtube.com/vi/8xsxYoCI4uc/hqdefault.jpg" alt="Don't Overthink It - Main" loading="lazy" onerror="this.src='Brand Imagery/Sephora/Holiday Campaign 2024/hqdefault.jpg'">
+                            <div class="video-poster-overlay">
+                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
+                                <span class="video-poster-label">Watch on YouTube</span>
+                            </div>
+                        </a>
+                        <div class="video-label">Aunt Aya</div>
                     </div>
                     <div class="video-card">
-                        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/MxzWVn1rP9I" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Holiday Gift Guide"></iframe></div>
-                        <div class="video-label">Holiday Gift Guide</div>
+                        <a href="https://www.youtube.com/watch?v=MxzWVn1rP9I" target="_blank" class="video-poster">
+                            <img src="https://img.youtube.com/vi/MxzWVn1rP9I/hqdefault.jpg" alt="Husband Dan" loading="lazy" onerror="this.src='Brand Imagery/Sephora/Holiday Campaign 2024/hqdefault.jpg'">
+                            <div class="video-poster-overlay">
+                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
+                                <span class="video-poster-label">Watch on YouTube</span>
+                            </div>
+                        </a>
+                        <div class="video-label">Husband Dan</div>
                     </div>
                     <div class="video-card">
-                        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/8f4fZr7xGCM" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Last Minute Shopping"></iframe></div>
-                        <div class="video-label">Last Minute Shopping</div>
+                        <a href="https://www.youtube.com/watch?v=8f4fZr7xGCM" target="_blank" class="video-poster">
+                            <img src="https://img.youtube.com/vi/8f4fZr7xGCM/hqdefault.jpg" alt="Coworker Sandra" loading="lazy" onerror="this.src='Brand Imagery/Sephora/Holiday Campaign 2024/hqdefault.jpg'">
+                            <div class="video-poster-overlay">
+                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
+                                <span class="video-poster-label">Watch on YouTube</span>
+                            </div>
+                        </a>
+                        <div class="video-label">Coworker Sandra</div>
                     </div>
                     <div class="video-card">
-                        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/7kY9E5hJvHk" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="The Perfect Gift"></iframe></div>
-                        <div class="video-label">The Perfect Gift</div>
+                        <a href="https://www.youtube.com/watch?v=7kY9E5hJvHk" target="_blank" class="video-poster">
+                            <img src="https://img.youtube.com/vi/7kY9E5hJvHk/hqdefault.jpg" alt="Your BFF's Kid Xander" loading="lazy" onerror="this.src='Brand Imagery/Sephora/Holiday Campaign 2024/hqdefault.jpg'">
+                            <div class="video-poster-overlay">
+                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
+                                <span class="video-poster-label">Watch on YouTube</span>
+                            </div>
+                        </a>
+                        <div class="video-label">Your BFF's Kid Xander</div>
                     </div>
                 </div>
             </section>
@@ -315,11 +367,23 @@
                 <h2 class="case-section-title">Skincare Spots</h2>
                 <div class="video-grid">
                     <div class="video-card">
-                        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/dMD94-fjyAQ" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Skin Obsessed - Security"></iframe></div>
+                        <a href="https://www.youtube.com/watch?v=dMD94-fjyAQ" target="_blank" class="video-poster">
+                            <img src="https://img.youtube.com/vi/dMD94-fjyAQ/hqdefault.jpg" alt="Skin Obsessed - Security" loading="lazy" onerror="this.src='Brand Imagery/Sephora/Skincare Campaign 2025/Sephora-Skincare.NhwUe2HM.png'">
+                            <div class="video-poster-overlay">
+                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
+                                <span class="video-poster-label">Watch on YouTube</span>
+                            </div>
+                        </a>
                         <div class="video-label">Skin Obsessed - Security</div>
                     </div>
                     <div class="video-card">
-                        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/l8RRLQiTEks" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Skin Obsessed - The Hunt"></iframe></div>
+                        <a href="https://www.youtube.com/watch?v=l8RRLQiTEks" target="_blank" class="video-poster">
+                            <img src="https://img.youtube.com/vi/l8RRLQiTEks/hqdefault.jpg" alt="Skin Obsessed - The Hunt" loading="lazy" onerror="this.src='Brand Imagery/Sephora/Skincare Campaign 2025/Sephora-Skincare.NhwUe2HM.png'">
+                            <div class="video-poster-overlay">
+                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
+                                <span class="video-poster-label">Watch on YouTube</span>
+                            </div>
+                        </a>
                         <div class="video-label">Skin Obsessed - The Hunt</div>
                     </div>
                 </div>
