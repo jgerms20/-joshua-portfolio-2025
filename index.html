@@ -9,12 +9,12 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Joshua McKenzie German | Creative Strategist">
     <meta property="og:description" content="Creative Strategist, Photographer, and Futurist. Strategy, branding, podcasting, photography, and AI — built for what's next.">
-    <meta property="og:url" content="https://jgerms20.github.io/-joshua-portfolio-2026/">
-    <meta property="og:image" content="https://jgerms20.github.io/-joshua-portfolio-2026/Images/Photos of Self/JMG_7456.jpg">
+    <meta property="og:url" content="https://joshuamgerman.com">
+    <meta property="og:image" content="https://joshuamgerman.com/Images/Photos%20of%20Self/000070270013.JPEG">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Joshua McKenzie German | Creative Strategist">
     <meta name="twitter:description" content="Creative Strategist, Photographer, and Futurist. Strategy, branding, podcasting, photography, and AI — built for what's next.">
-    <meta name="twitter:image" content="https://jgerms20.github.io/-joshua-portfolio-2026/Images/Photos of Self/JMG_7456.jpg">
+    <meta name="twitter:image" content="https://joshuamgerman.com/Images/Photos%20of%20Self/000070270013.JPEG">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.youtube.com">
@@ -2524,7 +2524,7 @@
                         width: 100%;
                         height: auto;
                         display: block;
-                        min-width: 600px;
+                        min-width: 300px;
                     }
 
                     /* Path draw animation */
@@ -2648,6 +2648,17 @@
                         }
                         .signal-panel-left { min-width: unset; }
                         .signal-panel-city { font-size: 1.1rem; }
+                        #signalSvg {
+                            min-width: unset !important;
+                            width: 100%;
+                        }
+                        .signal-canvas {
+                            overflow-x: auto;
+                            -webkit-overflow-scrolling: touch;
+                        }
+                        .journey-map {
+                            padding: 0;
+                        }
                     }
 
                     /* end signal trace styles */
@@ -4077,6 +4088,143 @@
                     height: 200px;
                 }
             }
+
+        /* ===== CONTACT REIMAGINED ===== */
+        .contact-reimagined { position: relative; }
+
+        .contact-statement { text-align: center; padding: 80px 0 60px; }
+
+        .contact-available-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 20px;
+            background: rgba(212, 255, 79, 0.08);
+            border: 1px solid rgba(212, 255, 79, 0.25);
+            border-radius: var(--radius-pill);
+            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--neon);
+            margin-bottom: 40px;
+        }
+
+        .available-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--neon);
+            box-shadow: 0 0 6px var(--neon);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.8); }
+        }
+
+        .contact-headline {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            font-weight: 400; line-height: 0.9;
+            letter-spacing: -0.03em; margin-bottom: 32px;
+        }
+        .contact-headline .accent {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--neon), #a8e063);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        .contact-subtext {
+            font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px; margin: 0 0 24px;
+        }
+
+        .contact-card {
+            display: flex; align-items: center; gap: 16px;
+            padding: 24px 22px;
+            background: var(--surface);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            text-decoration: none; color: inherit;
+            transition: all 0.35s var(--ease-out-expo);
+        }
+        .contact-card:hover {
+            border-color: var(--neon);
+            background: rgba(212, 255, 79, 0.04);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(212, 255, 79, 0.08);
+        }
+        .contact-card-primary {
+            grid-column: span 2;
+            background: linear-gradient(135deg, rgba(212, 255, 79, 0.06), rgba(212, 255, 79, 0.01));
+            border-color: rgba(212, 255, 79, 0.18);
+        }
+        .contact-card-icon {
+            width: 48px; height: 48px; border-radius: var(--radius-lg);
+            background: rgba(255,255,255,0.06);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--neon); flex-shrink: 0;
+            transition: background 0.3s ease;
+        }
+        .contact-card:hover .contact-card-icon { background: rgba(212,255,79,0.12); }
+        .contact-card-content { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+        .contact-card-label {
+            font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.1em; color: var(--text-muted);
+        }
+        .contact-card-value {
+            font-size: 1rem; font-weight: 500; color: var(--text-primary);
+        }
+        .contact-card-arrow {
+            font-size: 1.1rem; color: var(--text-muted);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .contact-card:hover .contact-card-arrow { transform: translateX(5px); color: var(--neon); }
+
+        .contact-looking-for {
+            display: flex; gap: 40px; align-items: flex-start;
+            padding: 40px 48px;
+            background: var(--surface);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            margin-bottom: 32px;
+        }
+        .looking-for-header { min-width: 160px; padding-top: 3px; }
+        .looking-for-list {
+            list-style: none;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 14px 32px;
+            flex: 1;
+        }
+        .looking-for-list li {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 0.95rem; color: var(--text-secondary);
+        }
+        .looking-for-list li::before {
+            content: ''; width: 6px; height: 6px;
+            background: var(--neon); border-radius: 50%; flex-shrink: 0;
+        }
+
+        .contact-social-strip {
+            display: flex; align-items: center; justify-content: center;
+            gap: 20px; padding-top: 32px;
+            border-top: 1px solid var(--glass-border);
+        }
+        .contact-social-link {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.85rem; font-weight: 500;
+            color: var(--text-secondary); text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact-social-link:hover { color: var(--neon); }
+        .contact-social-divider { color: var(--text-muted); }
+
+        @media (max-width: 768px) {
+            .contact-statement { padding: 48px 0 40px; }
+            .contact-cards { grid-template-columns: 1fr; }
+            .contact-card-primary { grid-column: span 1; }
+            .contact-looking-for { flex-direction: column; gap: 20px; padding: 28px 24px; }
+            .looking-for-list { grid-template-columns: 1fr; gap: 10px; }
+            .contact-social-strip { flex-wrap: wrap; gap: 12px; }
+        }
         </style>
 
         <script>
@@ -4265,84 +4413,89 @@
     <!-- =====================================================
          CONTACT SECTION
          ===================================================== -->
-    <section id="contact" class="section">
+    <section id="contact" class="section contact-reimagined">
         <div class="container">
-            <div class="section-header section-header-centered reveal">
-                <span class="label">Get In Touch</span>
-                <h2 class="display-medium" style="margin-top: var(--space-md);">Let's Connect</h2>
-                <p class="body-regular" style="max-width: 500px; margin: var(--space-lg) auto 0;">
-                    Whether you're looking to collaborate on a brand project, commission photography, or just want to chat—I'd love to hear from you.
+
+            <div class="contact-statement reveal">
+                <div class="contact-available-badge">
+                    <span class="available-dot"></span>
+                    Available for select projects
+                </div>
+                <h2 class="contact-headline">
+                    Let's build<br>
+                    <em class="accent">something</em><br>
+                    that lasts.
+                </h2>
+                <p class="contact-subtext">
+                    Strategy. Creative direction. Brand storytelling.<br>
+                    Based in Los Angeles &middot; Responds within 24 hours.
                 </p>
             </div>
 
-            <div class="contact-grid reveal reveal-delay-1" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4xl); width: 100%; margin: 0 auto; padding: var(--space-4xl) 0;">
-                <!-- Left: Actual Contacts -->
-                <div class="contact-actual" style="display: flex; flex-direction: column; gap: var(--space-md);">
-                    <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: var(--space-sm);">Quick Contact</h3>
-                    <a href="mailto:Jgerms20@gmail.com" class="contact-link">
-                        <div class="contact-link-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                        </div>
-                        <div class="contact-link-text">
-                            <span class="contact-link-label">Email</span>
-                            <span class="contact-link-value">Jgerms20@gmail.com</span>
-                        </div>
-                    </a>
-                    <a href="tel:+18033919850" class="contact-link">
-                        <div class="contact-link-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        </div>
-                        <div class="contact-link-text">
-                            <span class="contact-link-label">Phone</span>
-                            <span class="contact-link-value">+1 (803) 391-9850</span>
-                        </div>
-                    </a>
-                    <a href="https://www.linkedin.com/in/joshua-german/" target="_blank" class="contact-link">
-                        <div class="contact-link-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                        </div>
-                        <div class="contact-link-text">
-                            <span class="contact-link-label">LinkedIn</span>
-                            <span class="contact-link-value">Joshua German</span>
-                        </div>
-                    </a>
-                    <div class="contact-link" style="cursor: default;">
-                        <div class="contact-link-icon" style="background: linear-gradient(135deg, #E4405F, #1DA1F2);">
-                            <span style="font-size: 14px; font-weight: 700;">@</span>
-                        </div>
-                        <div class="contact-link-text">
-                            <span class="contact-link-label">Instagram & X</span>
-                            <div style="display: flex; gap: 12px;">
-                                <a href="https://instagram.com/jgerms20" target="_blank" style="color: var(--text-primary); font-weight: 500; transition: color 0.2s;">@jgerms20</a>
-                                <a href="https://x.com/jgerms20" target="_blank" style="color: var(--text-secondary); font-weight: 500; transition: color 0.2s;">↗</a>
-                            </div>
-                        </div>
+            <div class="contact-cards reveal reveal-delay-1">
+                <a href="mailto:Jgerms20@gmail.com" class="contact-card contact-card-primary">
+                    <div class="contact-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                     </div>
-                </div>
+                    <div class="contact-card-content">
+                        <span class="contact-card-label">Email — Primary</span>
+                        <span class="contact-card-value">Jgerms20@gmail.com</span>
+                    </div>
+                    <span class="contact-card-arrow">&#8594;</span>
+                </a>
 
-                <!-- Right: Fun Contact Options -->
-                <div class="contact-fun" style="display: flex; flex-direction: column; gap: var(--space-sm);">
-                    <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: var(--space-sm);">Or, if you prefer...</h3>
-                    <a href="https://www.linkedin.com/in/joshuamckenziegerman/" target="_blank" class="btn btn-secondary" style="width: 100%; text-align: center; padding: 14px 20px;">💼 Connect on LinkedIn</a>
-                    <a href="https://www.pigeongram.com/" target="_blank" class="btn btn-secondary" style="width: 100%; text-align: center; padding: 14px 20px;">🐦 Send Me a Carrier Pigeon</a>
-                    <div class="btn btn-secondary" style="width: 100%; text-align: center; padding: 14px 20px; cursor: default; opacity: 0.6;">
-                        📠 Fax Me <span style="font-size: 0.8em;">(Does anyone still have a fax?)</span>
+                <a href="https://www.linkedin.com/in/joshua-german/" target="_blank" rel="noopener" class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                     </div>
-                    <div class="btn btn-secondary" style="width: 100%; text-align: center; padding: 14px 20px; cursor: default; opacity: 0.6;">
-                        🕊️ Smoke Signal <span style="font-size: 0.8em;">(Weather permitting)</span>
+                    <div class="contact-card-content">
+                        <span class="contact-card-label">LinkedIn</span>
+                        <span class="contact-card-value">Joshua German</span>
                     </div>
-                    <div class="btn btn-secondary" style="width: 100%; text-align: center; padding: 14px 20px; cursor: default; opacity: 0.6;">
-                        💬 Telepathy <span style="font-size: 0.8em;">(Still in beta)</span>
+                    <span class="contact-card-arrow">&#8594;</span>
+                </a>
+
+                <a href="tel:+18033919850" class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     </div>
+                    <div class="contact-card-content">
+                        <span class="contact-card-label">Phone</span>
+                        <span class="contact-card-value">+1 (803) 391-9850</span>
+                    </div>
+                    <span class="contact-card-arrow">&#8594;</span>
+                </a>
+            </div>
+
+            <div class="contact-looking-for reveal reveal-delay-2">
+                <div class="looking-for-header">
+                    <span class="label">What I&rsquo;m Looking For</span>
                 </div>
+                <ul class="looking-for-list">
+                    <li>Brand strategy &amp; creative direction</li>
+                    <li>Connections planning &amp; media strategy</li>
+                    <li>Entertainment &amp; cultural partnerships</li>
+                    <li>Freelance or full-time opportunities</li>
+                </ul>
             </div>
-            
-            <!-- Full Width Location -->
-            <div class="reveal reveal-delay-2" style="text-align: center; margin-top: var(--space-3xl); padding-top: var(--space-2xl); border-top: 1px solid var(--glass-border);">
-                <p style="font-size: 1.25rem; color: var(--text-secondary);">
-                    📍 Based in <span style="color: var(--neon); font-weight: 600;">Los Angeles, California</span>
-                </p>
+
+            <div class="contact-social-strip reveal reveal-delay-3">
+                <a href="https://instagram.com/jgerms20" target="_blank" rel="noopener" class="contact-social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    Instagram
+                </a>
+                <span class="contact-social-divider">&middot;</span>
+                <a href="https://x.com/jgerms20" target="_blank" rel="noopener" class="contact-social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.26 5.632L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    X / Twitter
+                </a>
+                <span class="contact-social-divider">&middot;</span>
+                <a href="https://jgerms20.substack.com" target="_blank" rel="noopener" class="contact-social-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+                    Substack
+                </a>
             </div>
+
         </div>
     </section>
 
