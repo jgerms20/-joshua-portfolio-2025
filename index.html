@@ -2334,7 +2334,7 @@
                 <div class="about-content">
                     <div class="about-text body-large">
                         <p>Born and raised in South Carolina, I've always been a curious cat. Whether it's a book in my hand, a podcast in my ears, or a camera at my side, I've always taken joy in learning more about the world around me and what makes it go round.</p>
-                        <p>This curiosity has guided me through every stage of my life; from being an active member of the newspaper club in high school, to studying Journalism & Mass Communications at the University of South Carolina, where I minored in Information Science and served as assistant sports editor for The Daily Gamecock. It eventually led me into the world of advertising, where I've built a career in Strategy at some of the top agencies in the United States.</p>
+                        <p>This curiosity has guided me through every stage of my life; from being an active member of the newspaper club in high school, to studying Journalism & Mass Communications at the University of South Carolina, where I minored in Information Science and served as assistant sports editor for <a href="https://www.dailygamecock.com/staff/josh-german" target="_blank" rel="noopener" style="color: var(--neon); text-decoration: none; border-bottom: 1px solid rgba(212,255,79,0.3); transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--neon)'" onmouseout="this.style.borderColor='rgba(212,255,79,0.3)'">The Daily Gamecock</a>. It eventually led me into the world of advertising, where I've built a career in Strategy at some of the top agencies in the United States.</p>
                         <p>Now, living in Los Angeles, California, my curiosity fuels each of my creative pursuits: photography, podcasting, creative writing, movies & TV and building with Artificial Intelligence. I'm drawn to authentic storytelling that captures the present moment while honoring the past and building the future.</p>
                     </div>
                 </div>
@@ -3854,7 +3854,7 @@
                 <h2 class="display-medium" style="margin-top: var(--space-md);">My Media Consumption</h2>
             </div>
 
-            <div class="media-links-grid reveal reveal-delay-1" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-xl); margin-top: var(--space-3xl); max-width: 1200px; margin-left: auto; margin-right: auto;">
+            <div class="media-links-grid reveal reveal-delay-1" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-xl); margin-top: var(--space-3xl); max-width: 1400px; margin-left: auto; margin-right: auto;">
                 <!-- Letterboxd -->
                 <a href="https://letterboxd.com/jgerms/" target="_blank" class="media-link-card">
                     <div class="media-link-icon" style="background: linear-gradient(135deg, #00D735, #00B028); width: 64px; height: 64px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-lg); box-shadow: 0 4px 12px rgba(0, 215, 53, 0.3);">
@@ -3893,6 +3893,18 @@
                     <span class="media-link-url" style="font-size: 0.85rem; color: var(--neon); font-weight: 600; text-transform: lowercase;">chess.com/member/jgerms</span>
                 </a>
 
+                <!-- Daily Gamecock -->
+                <a href="https://www.dailygamecock.com/staff/josh-german" target="_blank" class="media-link-card">
+                    <div class="media-link-icon" style="background: linear-gradient(135deg, #73000A, #9c1220); width: 64px; height: 64px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-lg); color: white;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="media-link-title" style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-sm);">Early Writing</h3>
+                    <p class="media-link-desc" style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-lg); line-height: 1.6;">Sports journalism at USC's student paper — where it all started</p>
+                    <span class="media-link-url" style="font-size: 0.85rem; color: var(--neon); font-weight: 600; text-transform: lowercase;">dailygamecock.com</span>
+                </a>
+
                 <!-- Substack -->
                 <a href="https://jgerms20.substack.com" target="_blank" class="media-link-card">
                     <div class="media-link-icon" style="background: linear-gradient(135deg, #FF6719, #E5551A); width: 64px; height: 64px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-lg); color: white;">
@@ -3928,12 +3940,17 @@
                 box-shadow: 0 12px 40px rgba(212, 255, 79, 0.15);
             }
 
-            @media (max-width: 1024px) {
+            @media (max-width: 1200px) {
+                .media-links-grid {
+                    grid-template-columns: repeat(3, 1fr) !important;
+                }
+            }
+            @media (max-width: 768px) {
                 .media-links-grid {
                     grid-template-columns: repeat(2, 1fr) !important;
                 }
             }
-            @media (max-width: 600px) {
+            @media (max-width: 500px) {
                 .media-links-grid {
                     grid-template-columns: 1fr !important;
                 }
