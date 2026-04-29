@@ -46,3 +46,4 @@ build/
 __pycache__/
 *.py[cod]
 *.pyo
+.claude/settings.local.json
