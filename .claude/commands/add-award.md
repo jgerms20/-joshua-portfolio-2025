@@ -62,7 +62,7 @@ git push -u origin claude/test-memory-access-2Fh1b
 
 | Campaign | Awards |
 |----------|--------|
-| Levi's x Beyoncé REIIMAGINE | *(none yet — add when confirmed)* |
+| Levi's x Beyoncé REIIMAGINE | 🥈 Clio Silver — Fashion & Beauty 2026 |
 | DoorDash: All The Ads | 🏆 Cannes Titanium Grand Prix, ✏️ D&AD Yellow Pencil, 🦁 8× Cannes Lions |
 | Driving While Black | 🏆 Clio Grand, 🏅 Shorty Award Winner, ⭐ D&AD Shortlisted |
 | Samuel Adams: Brighter Boston | ⭐ Clio Shortlist |
