@@ -1043,17 +1043,40 @@
         <!-- Body of Science Campaign -->
         <div class="campaign-panel" id="body-of-science">
 
-            <!-- Campaign visual banner -->
-            <div style="background:linear-gradient(135deg,#0a0a0a 0%,#1a0800 40%,#000d00 100%);border-radius:20px;padding:60px 48px;margin-bottom:48px;display:flex;align-items:center;justify-content:space-between;gap:32px;overflow:hidden;position:relative;">
-                <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(255,107,0,0.12) 0%,transparent 60%),radial-gradient(ellipse at 80% 30%,rgba(0,177,64,0.08) 0%,transparent 50%);pointer-events:none;"></div>
+            <!-- Campaign Hero — Venus Williams -->
+            <div style="position:relative;border-radius:20px;overflow:hidden;margin-bottom:48px;" id="bos-hero-wrap">
+                <img src="https://www.datocms-assets.com/101859/1777666166-venus_bos_desktop.jpg"
+                     alt="Venus Williams — Gatorade Body of Science"
+                     id="bos-hero-img"
+                     style="width:100%;height:600px;object-fit:cover;object-position:top center;display:block;"
+                     onerror="document.getElementById('bos-hero-fallback').style.display='flex';this.parentElement.style.display='none';">
+                <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.25) 55%,rgba(3,3,4,0.92) 100%);pointer-events:none;"></div>
+                <div style="position:absolute;bottom:0;left:0;right:0;padding:40px 48px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+                    <div>
+                        <img src="https://www.datocms-assets.com/101859/1777678209-boslogo_desktopdarklogo.png"
+                             alt="Body of Science"
+                             style="height:38px;width:auto;filter:brightness(0) invert(1);display:block;margin-bottom:14px;"
+                             onerror="this.style.display='none'">
+                        <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:rgba(255,107,0,0.8);margin-bottom:6px;">MET Gala · May 4, 2026</div>
+                        <div style="font-size:0.9rem;color:rgba(255,255,255,0.5);">Venus Williams · Sydney McLaughlin-Levrone · A'ja Wilson</div>
+                    </div>
+                    <div style="text-align:right;flex-shrink:0;">
+                        <div style="font-size:clamp(3.5rem,9vw,7rem);font-weight:900;line-height:1;color:rgba(255,107,0,0.95);letter-spacing:-0.04em;">6<span style="font-size:0.45em;vertical-align:super;">%</span></div>
+                        <div style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-top:4px;">of sports science research<br>focuses on women</div>
+                    </div>
+                </div>
+            </div>
+            <!-- CSS fallback banner (shown only if image fails to load) -->
+            <div id="bos-hero-fallback" style="background:linear-gradient(135deg,#0a0a0a 0%,#1a0800 40%,#000d00 100%);border-radius:20px;padding:60px 48px;margin-bottom:48px;display:none;align-items:center;justify-content:space-between;gap:32px;overflow:hidden;position:relative;">
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(255,107,0,0.12) 0%,transparent 60%);pointer-events:none;"></div>
                 <div style="position:relative;z-index:1;">
-                    <div style="font-family:var(--font-sans);font-size:0.65rem;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,107,0,0.7);margin-bottom:16px;">MET Gala · May 4, 2026</div>
-                    <div style="font-family:var(--font-display,Georgia,serif);font-size:clamp(2.4rem,5vw,4rem);font-weight:700;color:#fff;line-height:1.05;letter-spacing:-0.02em;">Body of<br>Science</div>
-                    <div style="font-family:var(--font-sans);font-size:0.9rem;color:rgba(255,255,255,0.5);margin-top:12px;letter-spacing:0.04em;">Venus Williams · Sydney McLaughlin-Levrone · A'ja Wilson</div>
+                    <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,107,0,0.7);margin-bottom:16px;">MET Gala · May 4, 2026</div>
+                    <div style="font-size:clamp(2.4rem,5vw,4rem);font-weight:700;color:#fff;line-height:1.05;">Body of<br>Science</div>
+                    <div style="font-size:0.9rem;color:rgba(255,255,255,0.5);margin-top:12px;">Venus Williams · Sydney McLaughlin-Levrone · A'ja Wilson</div>
                 </div>
                 <div style="position:relative;z-index:1;text-align:center;flex-shrink:0;">
-                    <div style="font-family:var(--font-sans);font-size:clamp(5rem,12vw,9rem);font-weight:900;line-height:1;color:rgba(255,107,0,0.9);letter-spacing:-0.04em;">6<span style="font-size:0.45em;vertical-align:super;">%</span></div>
-                    <div style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:4px;">of sports science research<br>focuses on women</div>
+                    <div style="font-size:clamp(5rem,12vw,9rem);font-weight:900;line-height:1;color:rgba(255,107,0,0.9);">6<span style="font-size:0.45em;vertical-align:super;">%</span></div>
+                    <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:4px;">of sports science research<br>focuses on women</div>
                 </div>
             </div>
 
@@ -1073,6 +1096,60 @@
                 <p>To win with women, Gatorade couldn't just run ads at female athletes. It had to earn its way into spaces those athletes actually cared about — on their terms, in their cultural moments, with voices they trusted.</p>
                 <p>The strategy: make the 6% research gap undeniable by anchoring it to a figure who had lived it. Venus Williams — 7 Grand Slam titles, two Olympic golds, 24 years at the top of a sport where the science had never been built for her. She became Body of Science's first ambassador, not as a spokesperson, but as proof. And the MET Gala — fashion's biggest night, with 86% female viewership — was the launch platform. Not a sports event. Not a press conference. Her world.</p>
                 <p>The insight was a cultural one: if Gatorade wanted female consumers to feel seen, it had to show up where they were already paying attention, with a message rooted in something that was actually true about them.</p>
+            </section>
+
+            <section class="case-section">
+                <h2 class="case-section-title">Campaign Film</h2>
+                <div class="video-card featured">
+                    <div class="video-wrapper">
+                        <iframe
+                            src="https://www.youtube-nocookie.com/embed/ox2S_cwqQiY?rel=0&modestbranding=1"
+                            title="Gatorade Body of Science — Campaign Film"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="video-label">Body of Science — Official Campaign Film</div>
+                </div>
+            </section>
+
+            <section class="case-section">
+                <h2 class="case-section-title">The Athletes</h2>
+                <p>Three generational athletes who spent their careers performing at the highest level — in a world where the science was never built for them.</p>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0;">
+                    <div style="position:relative;overflow:hidden;border-radius:16px;aspect-ratio:2/3;">
+                        <img src="https://www.datocms-assets.com/101859/1777674380-ajay_beautyasset_safespace.jpg"
+                             alt="A'ja Wilson — Body of Science"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.4s ease;"
+                             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,0.8));pointer-events:none;">
+                            <div style="font-weight:700;font-size:0.9rem;color:#fff;">A'ja Wilson</div>
+                            <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">3× WNBA Champion</div>
+                        </div>
+                    </div>
+                    <div style="position:relative;overflow:hidden;border-radius:16px;aspect-ratio:2/3;">
+                        <img src="https://www.datocms-assets.com/101859/1777674071-liza_beautyasset.jpg"
+                             alt="Lisa Billard — Body of Science"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.4s ease;"
+                             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,0.8));pointer-events:none;">
+                            <div style="font-weight:700;font-size:0.9rem;color:#fff;">Lisa Billard</div>
+                            <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">F1 Academy Driver</div>
+                        </div>
+                    </div>
+                    <div style="position:relative;overflow:hidden;border-radius:16px;aspect-ratio:2/3;">
+                        <img src="https://www.datocms-assets.com/101859/1777854197-website_sidney_crop.jpg"
+                             alt="Sydney McLaughlin-Levrone — Body of Science"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.4s ease;"
+                             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,0.8));pointer-events:none;">
+                            <div style="font-weight:700;font-size:0.9rem;color:#fff;">Sydney McLaughlin-Levrone</div>
+                            <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">400M World Record Holder</div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="case-section">
@@ -1142,6 +1219,33 @@
                 </div>
             </div>
 
+            <section class="case-section">
+                <h2 class="case-section-title">The Science</h2>
+                <p>Body of Science wasn't just a marketing campaign — it was built on real research from Gatorade Sports Science Institute scientists who had spent careers studying what the data was missing.</p>
+                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:32px 0;">
+                    <div style="position:relative;overflow:hidden;border-radius:16px;aspect-ratio:4/3;">
+                        <img src="https://www.datocms-assets.com/101859/1777675256-lindsay_beautyasset.jpg"
+                             alt="Dr. Lindsay Baker — GSSI Director"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.4s ease;"
+                             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,0.82));pointer-events:none;">
+                            <div style="font-weight:700;font-size:0.9rem;color:#fff;">Dr. Lindsay Baker</div>
+                            <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Director, Gatorade Sports Science Institute</div>
+                        </div>
+                    </div>
+                    <div style="position:relative;overflow:hidden;border-radius:16px;aspect-ratio:4/3;">
+                        <img src="https://www.datocms-assets.com/101859/1777675275-kim_beautyasset.jpg"
+                             alt="Kim Stein — GSSI Scientist"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.4s ease;"
+                             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,0.82));pointer-events:none;">
+                            <div style="font-weight:700;font-size:0.9rem;color:#fff;">Kim Stein</div>
+                            <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Scientist, Gatorade Sports Science Institute</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </div>
 
@@ -1168,12 +1272,10 @@
             'stranger-things': '../Brand Imagery/Gatorade/Stranger Things/Gatorade Stranger Things Hero.jpg',
             'nfl': '../Brand Imagery/Gatorade/NFL Campaign Hero.jpg',
             'lower-sugar': '../Brand Imagery/Gatorade/Stranger Things/Gatorade Stranger Things Hero.jpg',
-            'body-of-science': null
+            'body-of-science': 'https://www.datocms-assets.com/101859/1777666166-venus_bos_desktop.jpg'
         };
 
-        const heroBgOverrides = {
-            'body-of-science': 'linear-gradient(135deg,#0a0800 0%,#1a0500 50%,#000a00 100%)'
-        };
+        const heroBgOverrides = {};
         
         // Set initial hero background to Stranger Things image
         if (heroBgImage) {
