@@ -2339,6 +2339,7 @@
         <a href="#podcasts" class="nav-link">Podcasts</a>
         <a href="#ai" class="nav-link">AI Projects</a>
         <a href="#photography" class="nav-link">Photography</a>
+        <a href="#collection" class="nav-link">Collection</a>
         <a href="#interviews" class="nav-link">Interviews</a>
         <a href="#contact" class="nav-link">Contact</a>
     </nav>
@@ -3965,6 +3966,276 @@
                 <div class="photo-tile" data-category="travel"><img loading="lazy" src="photos/travel/JMG_5570.jpg" alt="Travel" loading="lazy"></div>
                 <div class="photo-tile" data-category="fashion"><img loading="lazy" src="photos/fashion/JMG_3029.jpg" alt="Fashion" loading="lazy"></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         THE COLLECTION — Fine Art Print Gallery
+         ===================================================== -->
+    <style>
+        #collection {
+            --gold: #C9A84C;
+            --gold-soft: rgba(201, 168, 76, 0.6);
+            --gold-glow: rgba(201, 168, 76, 0.12);
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.05) 0%, transparent 55%),
+                linear-gradient(180deg, #060607 0%, #0a0a0c 100%);
+        }
+        #collection .collection-eyebrow {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600;
+            letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+            margin-bottom: var(--space-md);
+        }
+        #collection .collection-eyebrow::before,
+        #collection .collection-eyebrow::after {
+            content: ''; width: 28px; height: 1px; background: var(--gold-soft);
+        }
+        #collection .collection-title {
+            font-family: var(--font-display); font-weight: 500;
+            font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.02;
+            letter-spacing: -0.01em;
+        }
+        #collection .collection-title em { font-style: italic; color: var(--gold); }
+        #collection .collection-sub {
+            max-width: 620px; margin: var(--space-lg) auto 0;
+            color: var(--text-secondary); font-size: 1.02rem; line-height: 1.7;
+        }
+
+        .collection-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: clamp(20px, 3vw, 44px);
+            margin-top: var(--space-4xl);
+        }
+        @media (max-width: 900px) { .collection-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 560px) { .collection-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; } }
+
+        .art-piece { display: flex; flex-direction: column; }
+        /* Museum-style mat + frame */
+        .art-frame {
+            position: relative;
+            background: linear-gradient(145deg, #1c1c1f 0%, #121214 100%);
+            padding: clamp(14px, 1.6vw, 22px);
+            border: 1px solid rgba(201,168,76,0.18);
+            border-radius: 4px;
+            box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255,255,255,0.02);
+            overflow: hidden;
+            transition: transform 0.6s var(--ease-out-expo), box-shadow 0.6s var(--ease-out-expo), border-color 0.6s var(--ease-out-expo);
+        }
+        .art-frame::after {
+            /* inner mat bevel */
+            content: ''; position: absolute; inset: clamp(14px, 1.6vw, 22px);
+            box-shadow: inset 0 0 18px rgba(0,0,0,0.55); pointer-events: none; z-index: 3;
+        }
+        .art-piece:hover .art-frame {
+            transform: translateY(-8px);
+            border-color: rgba(201,168,76,0.5);
+            box-shadow: var(--shadow-xl), 0 0 50px var(--gold-glow);
+        }
+        .art-img-wrap { position: relative; overflow: hidden; aspect-ratio: 4/5; background: var(--obsidian); }
+        .art-img-wrap img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform 1.1s var(--ease-out-expo), filter 0.6s ease;
+            filter: saturate(0.96) contrast(1.02);
+        }
+        .art-piece:hover .art-img-wrap img { transform: scale(1.06); filter: saturate(1.06) contrast(1.05); }
+
+        /* Hover overlay with acquire CTA */
+        .art-overlay {
+            position: absolute; inset: 0; z-index: 2;
+            display: flex; align-items: flex-end; justify-content: center;
+            padding: 22px;
+            background: linear-gradient(to top, rgba(3,3,4,0.85) 0%, rgba(3,3,4,0.25) 45%, transparent 75%);
+            opacity: 0; transition: opacity 0.5s var(--ease-out-expo);
+        }
+        .art-piece:hover .art-overlay { opacity: 1; }
+        .art-acquire {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 24px; border-radius: var(--radius-pill);
+            background: var(--gold); color: #0a0a0c;
+            font-family: var(--font-sans); font-size: 0.82rem; font-weight: 700;
+            letter-spacing: 0.04em; transform: translateY(12px);
+            transition: transform 0.5s var(--ease-out-expo), background 0.3s ease;
+        }
+        .art-piece:hover .art-acquire { transform: translateY(0); }
+        .art-acquire:hover { background: #e0c068; }
+
+        /* Edition ribbon */
+        .art-edition-tag {
+            position: absolute; top: 0; left: 0; z-index: 4;
+            margin: clamp(20px, 2.2vw, 30px);
+            font-family: var(--font-sans); font-size: 0.62rem; font-weight: 700;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--gold); background: rgba(6,6,7,0.72);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(201,168,76,0.3);
+            padding: 6px 11px; border-radius: var(--radius-pill);
+        }
+
+        .art-caption { padding: var(--space-lg) 4px 0; }
+        .art-caption-row { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
+        .art-name {
+            font-family: var(--font-display); font-style: italic; font-weight: 500;
+            font-size: 1.32rem; color: var(--text-primary); line-height: 1.15;
+        }
+        .art-price {
+            font-family: var(--font-sans); font-size: 0.78rem; font-weight: 600;
+            letter-spacing: 0.05em; color: var(--gold); white-space: nowrap;
+        }
+        .art-meta {
+            margin-top: 6px; font-family: var(--font-sans);
+            font-size: 0.78rem; letter-spacing: 0.04em; color: var(--text-muted);
+        }
+
+        .collection-footnote {
+            margin-top: var(--space-4xl); text-align: center;
+            display: flex; flex-direction: column; align-items: center; gap: var(--space-lg);
+        }
+        .collection-footnote p {
+            max-width: 560px; color: var(--text-tertiary);
+            font-size: 0.92rem; line-height: 1.7;
+        }
+        .collection-inquire-all {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 15px 34px; border-radius: var(--radius-pill);
+            border: 1px solid var(--gold-soft); color: var(--gold);
+            font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600;
+            letter-spacing: 0.04em;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+        .collection-inquire-all:hover { background: var(--gold-glow); border-color: var(--gold); transform: translateY(-2px); }
+    </style>
+    <section id="collection" class="section">
+        <div class="container">
+            <div class="section-header section-header-centered reveal" style="text-align:center;">
+                <span class="collection-eyebrow">Limited Edition</span>
+                <h2 class="collection-title">The <em>Collection</em></h2>
+                <p class="collection-sub">
+                    A curated selection of signed, limited-edition fine art prints. Each piece is produced
+                    on archival museum-grade paper, numbered, and released in a strictly limited run —
+                    a single frame held still, made to live on a wall.
+                </p>
+            </div>
+
+            <div class="collection-grid reveal reveal-delay-1">
+
+                <!-- 01 -->
+                <div class="art-piece">
+                    <div class="art-frame">
+                        <div class="art-img-wrap">
+                            <span class="art-edition-tag">Ed. of 25</span>
+                            <img loading="lazy" src="photos/landscape/JMG_6629.jpg" alt="Golden Hour — fine art landscape print">
+                            <div class="art-overlay"><a href="#contact" class="art-acquire">Acquire Print →</a></div>
+                        </div>
+                    </div>
+                    <div class="art-caption">
+                        <div class="art-caption-row">
+                            <span class="art-name">Golden Hour</span>
+                            <span class="art-price">Inquire</span>
+                        </div>
+                        <div class="art-meta">Landscape · Archival Pigment Print</div>
+                    </div>
+                </div>
+
+                <!-- 02 -->
+                <div class="art-piece">
+                    <div class="art-frame">
+                        <div class="art-img-wrap">
+                            <span class="art-edition-tag">Ed. of 15</span>
+                            <img loading="lazy" src="photos/portraits/JMG_1520.jpg" alt="Presence — fine art portrait print">
+                            <div class="art-overlay"><a href="#contact" class="art-acquire">Acquire Print →</a></div>
+                        </div>
+                    </div>
+                    <div class="art-caption">
+                        <div class="art-caption-row">
+                            <span class="art-name">Presence</span>
+                            <span class="art-price">Inquire</span>
+                        </div>
+                        <div class="art-meta">Portrait · Archival Pigment Print</div>
+                    </div>
+                </div>
+
+                <!-- 03 -->
+                <div class="art-piece">
+                    <div class="art-frame">
+                        <div class="art-img-wrap">
+                            <span class="art-edition-tag">Ed. of 25</span>
+                            <img loading="lazy" src="photos/travel/JMG_7419.jpg" alt="Passage — fine art travel print">
+                            <div class="art-overlay"><a href="#contact" class="art-acquire">Acquire Print →</a></div>
+                        </div>
+                    </div>
+                    <div class="art-caption">
+                        <div class="art-caption-row">
+                            <span class="art-name">Passage</span>
+                            <span class="art-price">Inquire</span>
+                        </div>
+                        <div class="art-meta">Travel · Archival Pigment Print</div>
+                    </div>
+                </div>
+
+                <!-- 04 -->
+                <div class="art-piece">
+                    <div class="art-frame">
+                        <div class="art-img-wrap">
+                            <span class="art-edition-tag">Ed. of 10</span>
+                            <img loading="lazy" src="photos/fashion/JMG_2938.jpg" alt="Form — fine art fashion print">
+                            <div class="art-overlay"><a href="#contact" class="art-acquire">Acquire Print →</a></div>
+                        </div>
+                    </div>
+                    <div class="art-caption">
+                        <div class="art-caption-row">
+                            <span class="art-name">Form</span>
+                            <span class="art-price">Inquire</span>
+                        </div>
+                        <div class="art-meta">Fashion · Archival Pigment Print</div>
+                    </div>
+                </div>
+
+                <!-- 05 -->
+                <div class="art-piece">
+                    <div class="art-frame">
+                        <div class="art-img-wrap">
+                            <span class="art-edition-tag">Ed. of 25</span>
+                            <img loading="lazy" src="photos/landscape/JMG_7943.jpg" alt="Horizon Line — fine art landscape print">
+                            <div class="art-overlay"><a href="#contact" class="art-acquire">Acquire Print →</a></div>
+                        </div>
+                    </div>
+                    <div class="art-caption">
+                        <div class="art-caption-row">
+                            <span class="art-name">Horizon Line</span>
+                            <span class="art-price">Inquire</span>
+                        </div>
+                        <div class="art-meta">Landscape · Archival Pigment Print</div>
+                    </div>
+                </div>
+
+                <!-- 06 -->
+                <div class="art-piece">
+                    <div class="art-frame">
+                        <div class="art-img-wrap">
+                            <span class="art-edition-tag">Ed. of 15</span>
+                            <img loading="lazy" src="photos/portraits/JMG_8929.jpg" alt="Gaze — fine art portrait print">
+                            <div class="art-overlay"><a href="#contact" class="art-acquire">Acquire Print →</a></div>
+                        </div>
+                    </div>
+                    <div class="art-caption">
+                        <div class="art-caption-row">
+                            <span class="art-name">Gaze</span>
+                            <span class="art-price">Inquire</span>
+                        </div>
+                        <div class="art-meta">Portrait · Archival Pigment Print</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="collection-footnote reveal">
+                <p>
+                    Prints are made to order and shipped worldwide. Custom sizes, framing, and
+                    commission inquiries welcome. Pricing and secure checkout coming soon.
+                </p>
+                <a href="#contact" class="collection-inquire-all">Inquire About the Collection →</a>
             </div>
         </div>
     </section>
