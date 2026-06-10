@@ -1022,19 +1022,59 @@
         }
 
         .photo-tile:hover {
-            transform: scale(1.02);
-            box-shadow: var(--shadow-lg);
+            transform: scale(1.015);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
         }
+
+        .photo-tile:hover img { transform: scale(1.05); }
 
         .photo-tile img {
             width: 100%;
             height: 100%;
             display: block;
             object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
         }
+
+        .photo-tile-inner {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-tile-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%);
+            opacity: 0; transition: opacity 0.4s ease; display: flex;
+            align-items: flex-end; padding: 14px;
+        }
+        .photo-tile:hover .photo-tile-overlay { opacity: 1; }
+        .photo-tile-zoom {
+            width: 32px; height: 32px;
+            background: rgba(255,255,255,0.12); backdrop-filter: blur(6px);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin-left: auto;
+        }
+        .photo-tile-zoom svg { width: 14px; height: 14px; stroke: white; }
 
         .photo-tile.hidden {
             display: none;
+        }
+
+        .photo-stat-bar {
+            display: flex; gap: 32px; justify-content: center;
+            margin: 0 auto var(--space-2xl); max-width: 600px;
+            flex-wrap: wrap;
+        }
+        .photo-stat-item { text-align: center; }
+        .photo-stat-num {
+            font-size: 1.6rem; font-weight: 800; color: var(--text-primary);
+            font-family: var(--font-display); font-style: italic;
+            display: block; line-height: 1;
+        }
+        .photo-stat-label {
+            font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.14em; color: var(--text-muted); margin-top: 4px;
+            display: block;
         }
 
         /* =====================================================
@@ -2282,6 +2322,7 @@
                 <div class="nav-dropdown-menu">
                     <a href="podcasts/podcast-eclectic-polymath.html">The Eclectic Polymath</a>
                     <a href="podcasts/podcast-approachable-ai.html">Approachable AI</a>
+                    <a href="podcasts/podcast-curious-creative.html">Curious &amp; Creative</a>
                     <a href="podcasts/podcast-dominate.html">Dominate The Decade</a>
                     <div class="dropdown-divider"></div>
                     <a href="#podcasts">View All Podcasts</a>
@@ -2320,7 +2361,17 @@
                     <a href="#photography">View All Photos</a>
                 </div>
             </div>
-            
+
+            <!-- Art / Collection Dropdown -->
+            <div class="nav-dropdown">
+                <button class="nav-trigger">Art <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="#collection">The Collection</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#contact">Inquire About Prints</a>
+                </div>
+            </div>
+
             <a href="#interviews">Interviews</a>
 
             <a href="#contact">Contact</a>
@@ -2338,7 +2389,7 @@
         <a href="#podcasts" class="nav-link">Podcasts</a>
         <a href="#ai" class="nav-link">AI Projects</a>
         <a href="#photography" class="nav-link">Photography</a>
-        <a href="#collection" class="nav-link">Collection</a>
+        <a href="#collection" class="nav-link">Art</a>
         <a href="#interviews" class="nav-link">Interviews</a>
         <a href="#contact" class="nav-link">Contact</a>
     </nav>
@@ -3576,7 +3627,7 @@
                         </div>
                     </div>
                     <div class="podcast-info">
-                        <span class="bento-tag">2025 – Present</span>
+                        <span class="bento-tag">2025 – Present · 49 Episodes</span>
                         <h3 class="podcast-title">The Eclectic Polymath</h3>
                         <p class="podcast-desc">Everything is interesting when you dig deep enough. Dense, well-researched audio on history, geopolitics, power, culture, and human behavior. No lane. No niche. Curiosity without borders.</p>
                     </div>
@@ -3603,6 +3654,22 @@
                         <span class="bento-tag">2020 – 2023</span>
                         <h3 class="podcast-title">Dominate The Decade</h3>
                         <p class="podcast-desc">Weekly conversations about growth, culture, and building a meaningful decade. Exploring what it means to live intentionally and dominate your own path.</p>
+                    </div>
+                </a>
+
+                <!-- Curious & Creative -->
+                <a href="podcasts/podcast-curious-creative.html" class="podcast-card reveal reveal-delay-2">
+                    <div class="podcast-cover" style="background: linear-gradient(135deg, #1a0533 0%, #3b0764 40%, #0f172a 100%); display:flex; align-items:center; justify-content:center;">
+                        <div style="text-align:center; padding: 20px;">
+                            <div style="font-size:2.2rem; font-weight:900; font-family:'Playfair Display',Georgia,serif; font-style:italic; color:#fff; line-height:1.1; letter-spacing:-0.02em;">C&amp;C</div>
+                            <div style="width:40px; height:1px; background: rgba(168,85,247,0.6); margin:10px auto;"></div>
+                            <div style="font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.2em; color:rgba(168,85,247,0.8);">New Episodes</div>
+                        </div>
+                    </div>
+                    <div class="podcast-info">
+                        <span class="bento-tag" style="color: #A855F7; background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.25);">2026 – Present</span>
+                        <h3 class="podcast-title">Curious &amp; Creative</h3>
+                        <p class="podcast-desc">Where creative strategy meets real conversation. Exploring the ideas, decisions, and cultural moments that shape how we see — and sell — the world.</p>
                     </div>
                 </a>
 
@@ -3838,11 +3905,27 @@
     <section id="photography" class="section section-dark">
         <div class="container">
             <div class="section-header section-header-centered reveal">
-                <span class="label">Visual Stories</span>
+                <span class="label">Through the Lens</span>
                 <h2 class="display-medium" style="margin-top: var(--space-md);">Photography</h2>
-                <p class="body-regular" style="max-width: 600px; margin: var(--space-lg) auto 0;">
-                    I document moments in time—portraits with pulse, events with energy, and landscapes that honor Mother Earth.
+                <p class="body-regular" style="max-width: 580px; margin: var(--space-lg) auto 0; color: var(--text-secondary); line-height: 1.75;">
+                    Portraits with presence. Landscapes that breathe. Fashion as tension.
+                    Every frame is a decision — what stays in, what falls away, and what the light says when you stop moving.
                 </p>
+            </div>
+
+            <div class="photo-stat-bar reveal" style="margin-top: var(--space-2xl);">
+                <div class="photo-stat-item">
+                    <span class="photo-stat-num">90+</span>
+                    <span class="photo-stat-label">Images</span>
+                </div>
+                <div class="photo-stat-item">
+                    <span class="photo-stat-num">5</span>
+                    <span class="photo-stat-label">Categories</span>
+                </div>
+                <div class="photo-stat-item">
+                    <span class="photo-stat-num">Sony A7</span>
+                    <span class="photo-stat-label">Primary Body</span>
+                </div>
             </div>
 
             <div class="photo-filters reveal">
@@ -4105,122 +4188,115 @@
                 </p>
             </div>
 
-            <div class="collection-grid reveal reveal-delay-1">
+            <style>
+                .collection-placeholder-grid {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: clamp(20px, 3vw, 44px);
+                    margin-top: var(--space-4xl);
+                }
+                @media (max-width: 900px) { .collection-placeholder-grid { grid-template-columns: repeat(2, 1fr); } }
+                @media (max-width: 560px) { .collection-placeholder-grid { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; } }
 
-                <!-- 01 -->
-                <div class="art-piece">
-                    <div class="art-frame">
-                        <div class="art-img-wrap">
-                            <span class="art-edition-tag">Ed. of 25</span>
-                            <img loading="lazy" src="photos/landscape/JMG_6629.jpg" alt="Golden Hour — fine art landscape print">
-                            <div class="art-overlay"><a href="#contact" class="art-acquire">Acquire Print →</a></div>
-                        </div>
-                    </div>
-                    <div class="art-caption">
-                        <div class="art-caption-row">
-                            <span class="art-name">Golden Hour</span>
-                            <span class="art-price">Inquire</span>
-                        </div>
-                        <div class="art-meta">Landscape · Archival Pigment Print</div>
-                    </div>
+                .art-placeholder-frame {
+                    background: linear-gradient(145deg, #111113 0%, #0d0d0f 100%);
+                    border: 1px solid rgba(201,168,76,0.1);
+                    border-radius: 4px;
+                    padding: clamp(14px, 1.6vw, 22px);
+                    aspect-ratio: 4/5;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 16px;
+                    position: relative;
+                    overflow: hidden;
+                    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+                }
+                .art-placeholder-frame::before {
+                    content: '';
+                    position: absolute;
+                    inset: clamp(14px,1.6vw,22px);
+                    border: 1px solid rgba(201,168,76,0.06);
+                    border-radius: 2px;
+                    pointer-events: none;
+                }
+                .art-placeholder-frame:hover {
+                    border-color: rgba(201,168,76,0.22);
+                    box-shadow: 0 0 40px rgba(201,168,76,0.05);
+                }
+                .art-placeholder-icon {
+                    width: 40px; height: 40px; opacity: 0.18;
+                }
+                .art-placeholder-label {
+                    font-family: var(--font-display);
+                    font-style: italic;
+                    font-size: 1.1rem;
+                    color: rgba(201,168,76,0.3);
+                    letter-spacing: 0.02em;
+                }
+                .art-placeholder-sub {
+                    font-size: 0.72rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.18em;
+                    color: rgba(255,255,255,0.12);
+                }
+                .collection-status-note {
+                    max-width: 520px;
+                    margin: var(--space-4xl) auto 0;
+                    text-align: center;
+                    padding: 32px 36px;
+                    background: rgba(201,168,76,0.04);
+                    border: 1px solid rgba(201,168,76,0.12);
+                    border-radius: var(--radius-xl);
+                }
+                .collection-status-note p {
+                    font-size: 0.95rem;
+                    color: var(--text-secondary);
+                    line-height: 1.75;
+                    margin-bottom: 24px;
+                }
+            </style>
+
+            <div class="collection-placeholder-grid reveal reveal-delay-1">
+                <div class="art-placeholder-frame">
+                    <svg class="art-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,1)" stroke-width="1" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <span class="art-placeholder-label">Untitled I</span>
+                    <span class="art-placeholder-sub">Coming Soon</span>
                 </div>
-
-                <!-- 02 -->
-                <div class="art-piece">
-                    <div class="art-frame">
-                        <div class="art-img-wrap">
-                            <span class="art-edition-tag">Ed. of 15</span>
-                            <img loading="lazy" src="photos/portraits/JMG_1520.jpg" alt="Presence — fine art portrait print">
-                            <div class="art-overlay"><a href="#contact" class="art-acquire">Acquire Print →</a></div>
-                        </div>
-                    </div>
-                    <div class="art-caption">
-                        <div class="art-caption-row">
-                            <span class="art-name">Presence</span>
-                            <span class="art-price">Inquire</span>
-                        </div>
-                        <div class="art-meta">Portrait · Archival Pigment Print</div>
-                    </div>
+                <div class="art-placeholder-frame">
+                    <svg class="art-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,1)" stroke-width="1" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <span class="art-placeholder-label">Untitled II</span>
+                    <span class="art-placeholder-sub">Coming Soon</span>
                 </div>
-
-                <!-- 03 -->
-                <div class="art-piece">
-                    <div class="art-frame">
-                        <div class="art-img-wrap">
-                            <span class="art-edition-tag">Ed. of 25</span>
-                            <img loading="lazy" src="photos/travel/JMG_7419.jpg" alt="Passage — fine art travel print">
-                            <div class="art-overlay"><a href="#contact" class="art-acquire">Acquire Print →</a></div>
-                        </div>
-                    </div>
-                    <div class="art-caption">
-                        <div class="art-caption-row">
-                            <span class="art-name">Passage</span>
-                            <span class="art-price">Inquire</span>
-                        </div>
-                        <div class="art-meta">Travel · Archival Pigment Print</div>
-                    </div>
+                <div class="art-placeholder-frame">
+                    <svg class="art-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,1)" stroke-width="1" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <span class="art-placeholder-label">Untitled III</span>
+                    <span class="art-placeholder-sub">Coming Soon</span>
                 </div>
-
-                <!-- 04 -->
-                <div class="art-piece">
-                    <div class="art-frame">
-                        <div class="art-img-wrap">
-                            <span class="art-edition-tag">Ed. of 10</span>
-                            <img loading="lazy" src="photos/fashion/JMG_2938.jpg" alt="Form — fine art fashion print">
-                            <div class="art-overlay"><a href="#contact" class="art-acquire">Acquire Print →</a></div>
-                        </div>
-                    </div>
-                    <div class="art-caption">
-                        <div class="art-caption-row">
-                            <span class="art-name">Form</span>
-                            <span class="art-price">Inquire</span>
-                        </div>
-                        <div class="art-meta">Fashion · Archival Pigment Print</div>
-                    </div>
+                <div class="art-placeholder-frame">
+                    <svg class="art-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,1)" stroke-width="1" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <span class="art-placeholder-label">Untitled IV</span>
+                    <span class="art-placeholder-sub">Coming Soon</span>
                 </div>
-
-                <!-- 05 -->
-                <div class="art-piece">
-                    <div class="art-frame">
-                        <div class="art-img-wrap">
-                            <span class="art-edition-tag">Ed. of 25</span>
-                            <img loading="lazy" src="photos/landscape/JMG_7943.jpg" alt="Horizon Line — fine art landscape print">
-                            <div class="art-overlay"><a href="#contact" class="art-acquire">Acquire Print →</a></div>
-                        </div>
-                    </div>
-                    <div class="art-caption">
-                        <div class="art-caption-row">
-                            <span class="art-name">Horizon Line</span>
-                            <span class="art-price">Inquire</span>
-                        </div>
-                        <div class="art-meta">Landscape · Archival Pigment Print</div>
-                    </div>
+                <div class="art-placeholder-frame">
+                    <svg class="art-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,1)" stroke-width="1" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <span class="art-placeholder-label">Untitled V</span>
+                    <span class="art-placeholder-sub">Coming Soon</span>
                 </div>
-
-                <!-- 06 -->
-                <div class="art-piece">
-                    <div class="art-frame">
-                        <div class="art-img-wrap">
-                            <span class="art-edition-tag">Ed. of 15</span>
-                            <img loading="lazy" src="photos/portraits/JMG_8929.jpg" alt="Gaze — fine art portrait print">
-                            <div class="art-overlay"><a href="#contact" class="art-acquire">Acquire Print →</a></div>
-                        </div>
-                    </div>
-                    <div class="art-caption">
-                        <div class="art-caption-row">
-                            <span class="art-name">Gaze</span>
-                            <span class="art-price">Inquire</span>
-                        </div>
-                        <div class="art-meta">Portrait · Archival Pigment Print</div>
-                    </div>
+                <div class="art-placeholder-frame">
+                    <svg class="art-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,1)" stroke-width="1" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <span class="art-placeholder-label">Untitled VI</span>
+                    <span class="art-placeholder-sub">Coming Soon</span>
                 </div>
-
             </div>
 
-            <div class="collection-footnote reveal">
+            <div class="collection-status-note reveal">
                 <p>
-                    Prints are made to order and shipped worldwide. Custom sizes, framing, and
-                    commission inquiries welcome. Pricing and secure checkout coming soon.
+                    The Collection is being curated. Limited-edition fine art prints —
+                    archival museum-grade paper, numbered, signed, and released in strictly
+                    limited runs. Inquiries welcome now.
                 </p>
                 <a href="#contact" class="collection-inquire-all">Inquire About the Collection →</a>
             </div>
