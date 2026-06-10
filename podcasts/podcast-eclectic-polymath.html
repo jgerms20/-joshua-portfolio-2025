@@ -212,7 +212,7 @@
         <div class="hero-content">
 
             <div class="show-artwork">
-                <img src="https://i.scdn.co/image/ab6765630000ba8a3dlagzJ0jiWLTB9mF3y069" alt="The Eclectic Polymath Podcast"
+                <img id="show-cover-img" alt="The Eclectic Polymath Podcast"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="show-artwork-fallback" style="display:none;">EP</div>
             </div>
@@ -234,7 +234,7 @@
                     Follow on Spotify
                 </a>
                 <div class="ep-count-badge">
-                    <strong id="ep-count">42</strong>&nbsp;Episodes · Curiosity without borders
+                    <strong id="ep-count">42+</strong>&nbsp;Episodes · Curiosity without borders
                 </div>
             </div>
         </div>
@@ -242,20 +242,19 @@
 
     <!-- Episodes -->
     <section class="episodes-section">
-        <p class="section-label">All Episodes</p>
+        <p class="section-label">All Episodes · Newest First</p>
         <h2 class="section-title">Deep dives, on demand</h2>
         <div class="section-divider"></div>
+        <p style="color: var(--text-muted, rgba(255,255,255,0.4)); font-size: 0.9rem; margin: -8px 0 24px; line-height: 1.6;">
+            The full catalog, straight from Spotify — every episode appears here the moment it drops, latest at the top. Scroll inside the player to browse all of them.
+        </p>
 
-        <!-- Full show embed — always current, lists every episode -->
+        <!-- Live full-show embed: lists every episode newest-first, always current -->
         <div class="episode-item">
-            <div class="episode-header">
-                <div class="episode-number">42</div>
-                <span class="episode-label-text">Full Catalog · Always Current</span>
-            </div>
             <div class="episode-embed">
                 <iframe data-testid="embed-iframe" style="border-radius:12px"
                     src="https://open.spotify.com/embed/show/3dlagzJ0jiWLTB9mF3y069?utm_source=generator"
-                    width="100%" height="520" frameBorder="0" allowfullscreen=""
+                    width="100%" height="760" frameBorder="0" allowfullscreen=""
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                     loading="lazy"></iframe>
             </div>
@@ -391,6 +390,27 @@
             Listen on Spotify
         </a>
     </section>
+
+    <!-- Live show artwork via Spotify's public oEmbed — always shows the current cover -->
+    <script>
+        (function () {
+            const img = document.getElementById('show-cover-img');
+            if (!img) return;
+            fetch('https://open.spotify.com/oembed?url=https%3A%2F%2Fopen.spotify.com%2Fshow%2F3dlagzJ0jiWLTB9mF3y069')
+                .then(r => r.ok ? r.json() : Promise.reject())
+                .then(data => {
+                    if (data && data.thumbnail_url) {
+                        img.src = data.thumbnail_url;
+                        img.style.display = '';
+                        img.nextElementSibling.style.display = 'none';
+                    } else { throw new Error(); }
+                })
+                .catch(() => {
+                    img.style.display = 'none';
+                    img.nextElementSibling.style.display = 'flex';
+                });
+        })();
+    </script>
 
 </body>
 </html>
