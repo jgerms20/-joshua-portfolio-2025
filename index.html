@@ -2283,7 +2283,6 @@
                     <a href="podcasts/podcast-eclectic-polymath.html">The Eclectic Polymath</a>
                     <a href="podcasts/podcast-approachable-ai.html">Approachable AI</a>
                     <a href="podcasts/podcast-dominate.html">Dominate The Decade</a>
-                    <a href="podcasts/podcast-curious-creative.html">Curious & Creative</a>
                     <div class="dropdown-divider"></div>
                     <a href="#podcasts">View All Podcasts</a>
                 </div>
@@ -3566,7 +3565,7 @@
                 <!-- Eclectic Polymath — Active -->
                 <a href="podcasts/podcast-eclectic-polymath.html" class="podcast-card reveal">
                     <div class="podcast-cover ep-cover-wrap">
-                        <img loading="lazy" src="https://i.scdn.co/image/ab6765630000ba8a3dlagzJ0jiWLTB9mF3y069" alt="The Eclectic Polymath Podcast"
+                        <img loading="lazy" id="ep-show-cover" alt="The Eclectic Polymath Podcast"
                              onerror="this.style.display='none'; this.parentElement.classList.add('ep-fallback-active');">
                         <div class="ep-cover-fallback" aria-hidden="true">
                             <div class="ep-cover-rule"></div>
@@ -3607,22 +3606,6 @@
                     </div>
                 </a>
 
-                <!-- Curious & Creative - Coming Soon -->
-                <a href="podcasts/podcast-curious-creative.html" class="podcast-card reveal reveal-delay-2" style="position: relative;">
-                    <div class="coming-soon-overlay">
-                        <span class="coming-soon-badge">Coming Soon</span>
-                        <span class="coming-soon-year">2026</span>
-                    </div>
-                    <div class="podcast-cover" style="filter: grayscale(0.5); opacity: 0.7;">
-                        <img loading="lazy" src="Curious&Creative1.0.png" alt="Curious & Creative">
-                    </div>
-                    <div class="podcast-info">
-                        <span class="bento-tag" style="color: var(--text-muted);">2026 – Coming Soon</span>
-                        <h3 class="podcast-title">Curious & Creative</h3>
-                        <p class="podcast-desc">A deep dive into the minds of artists, creators, and innovators. Exploring the intersection of curiosity and creativity that drives meaningful work.</p>
-                    </div>
-                </a>
-                
                 <style>
                     .podcast-card .coming-soon-overlay {
                         pointer-events: none;
@@ -6182,6 +6165,28 @@
             card.style.transform = 'translateY(20px)';
             card.style.transition = 'opacity 0.3s var(--ease-out-expo), transform 0.3s var(--ease-out-expo)';
         });
+    </script>
+
+    <!-- Live Spotify show artwork via public oEmbed (no credentials needed).
+         Fetches the current cover at page load so it never goes stale. -->
+    <script>
+        (function () {
+            const img = document.getElementById('ep-show-cover');
+            if (!img) return;
+            fetch('https://open.spotify.com/oembed?url=https%3A%2F%2Fopen.spotify.com%2Fshow%2F3dlagzJ0jiWLTB9mF3y069')
+                .then(r => r.ok ? r.json() : Promise.reject())
+                .then(data => {
+                    if (data && data.thumbnail_url) {
+                        img.src = data.thumbnail_url;
+                        img.style.display = '';
+                        img.parentElement.classList.remove('ep-fallback-active');
+                    } else { throw new Error(); }
+                })
+                .catch(() => {
+                    img.style.display = 'none';
+                    img.parentElement.classList.add('ep-fallback-active');
+                });
+        })();
     </script>
 
 </body>
