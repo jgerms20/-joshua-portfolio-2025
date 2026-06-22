@@ -2,7 +2,7 @@
   "owner": "Joshua McKenzie German",
   "portfolio_url": "https://jgerms20.github.io/-joshua-portfolio-2026/",
   "github": "https://github.com/jgerms20",
-  "last_updated": "2026-06-19",
+  "last_updated": "2026-06-22",
   "description": "Persistent memory file for all Claude Code sessions. Update this file to add new projects. The weekly GitHub Actions workflow reads this file and regenerates the Claude Code Builds section of the portfolio.",
   "how_to_add_project": "Add a new object to the 'projects' array. Set category to 'claude-build' to display it in the Built with Claude section. Then run 'python scripts/update-portfolio.py' or let the weekly workflow handle it.",
   "projects": [
