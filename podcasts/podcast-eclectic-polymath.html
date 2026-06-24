@@ -158,27 +158,48 @@
             display: block; border: none; border-radius: 16px;
         }
 
-        /* Topics */
-        .topics-section {
-            padding: 80px var(--edge);
-            background: linear-gradient(180deg, transparent, rgba(200, 168, 75, 0.03) 50%, transparent);
+        /* Subjects — major editorial section */
+        .subjects-section {
+            padding: 100px var(--edge) 120px;
+            background: linear-gradient(180deg, rgba(200,168,75,0.02) 0%, transparent 100%);
         }
-        .topics-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-            max-width: 960px; margin: 0 auto;
+        .subjects-inner { max-width: 920px; margin: 0 auto; }
+        .subjects-header { text-align: center; margin-bottom: 72px; }
+        .subjects-header p {
+            font-family: var(--font-display); font-style: italic;
+            font-size: 1.15rem; color: var(--gold-dim); margin-top: 12px;
         }
-        @media (max-width: 900px) { .topics-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 560px) { .topics-grid { grid-template-columns: 1fr; } }
 
-        .topic-card {
-            background: rgba(255,255,255,0.025); border: 1px solid var(--glass-border);
-            border-radius: var(--radius-lg); padding: 28px 24px;
-            transition: all 0.3s var(--ease-out-expo);
+        .subject-row {
+            display: grid; grid-template-columns: 48px 1fr 1fr;
+            gap: 0 40px; align-items: baseline;
+            padding: 32px 0; border-top: 1px solid var(--glass-border);
+            transition: border-color 0.3s;
         }
-        .topic-card:hover { border-color: rgba(200, 168, 75, 0.3); transform: translateY(-4px); background: rgba(200, 168, 75, 0.04); }
-        .topic-icon { font-size: 1.8rem; margin-bottom: 14px; }
-        .topic-title { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
-        .topic-desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+        .subject-row:last-child { border-bottom: 1px solid var(--glass-border); }
+        .subject-row:hover { border-top-color: rgba(200,168,75,0.25); }
+        .subject-row:hover .subject-name { color: var(--gold); }
+
+        .subject-number {
+            font-family: var(--font-sans); font-size: 0.78rem; font-weight: 700;
+            color: var(--gold); letter-spacing: 0.12em; opacity: 0.7;
+            padding-top: 4px;
+        }
+        .subject-name {
+            font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 400; line-height: 1.15; color: var(--text-primary);
+            transition: color 0.3s;
+        }
+        .subject-desc {
+            font-size: 0.88rem; color: var(--text-muted); line-height: 1.65;
+            max-width: 380px;
+        }
+
+        @media (max-width: 700px) {
+            .subject-row { grid-template-columns: 36px 1fr; }
+            .subject-desc { display: none; }
+            .subject-name { font-size: 1.4rem; }
+        }
 
         /* Footer quote */
         .closing-section {
@@ -225,7 +246,7 @@
             <h1 class="show-title">The Eclectic <span class="accent">Polymath</span></h1>
             <p class="show-tagline">"Everything is interesting when you dig deep enough."</p>
             <p class="show-desc">
-                No lane. No niche. No guests. Rigorous, solo audio on history, geopolitics, power, religion, culture, and human behavior. Each episode drops without warning — because curiosity doesn't run on a schedule.
+                Solo, no-guest deep dives into whatever's too interesting to ignore. History, politics, power, religion, Black culture, psychology, crime, science — no filter, no niche. New episodes drop without warning, because curiosity doesn't run on a schedule.
             </p>
 
             <div class="show-actions">
@@ -260,41 +281,54 @@
         </div>
     </section>
 
-    <!-- Topics -->
-    <section class="topics-section">
-        <p class="section-label">What we cover</p>
-        <h2 class="section-title">No lane. No niche.</h2>
-        <div class="section-divider"></div>
-        <div class="topics-grid">
-            <div class="topic-card">
-                <div class="topic-icon">💀</div>
-                <h3 class="topic-title">Power & Crime</h3>
-                <p class="topic-desc">Drug cartels, criminal empires, and the brutal economics of power operating outside legitimate systems.</p>
+    <!-- Subjects — redesigned as major editorial element -->
+    <section class="subjects-section">
+        <div class="subjects-inner">
+            <div class="subjects-header">
+                <p class="section-label">Subject Matter</p>
+                <h2 class="section-title">Everything is interesting<br>when you dig deep enough.</h2>
+                <p>"No lane. No niche. Just whatever's too important to ignore."</p>
             </div>
-            <div class="topic-card">
-                <div class="topic-icon">🏛️</div>
-                <h3 class="topic-title">Ancient & Religious History</h3>
-                <p class="topic-desc">Prophecy, myth, and the belief systems that shaped civilizations — and still shape ours today.</p>
+
+            <div class="subject-row">
+                <span class="subject-number">01</span>
+                <span class="subject-name">Power &amp; Crime</span>
+                <p class="subject-desc">Drug cartels, criminal empires, and the brutal economics of power operating outside legitimate systems.</p>
             </div>
-            <div class="topic-card">
-                <div class="topic-icon">⚡</div>
-                <h3 class="topic-title">Political Dynasties</h3>
-                <p class="topic-desc">How concentrated power gets built, inherited, and eventually lost — from California to empires past.</p>
+            <div class="subject-row">
+                <span class="subject-number">02</span>
+                <span class="subject-name">Ancient &amp; Religious History</span>
+                <p class="subject-desc">Prophecy, myth, and the belief systems that shaped civilizations — and still quietly shape ours today.</p>
             </div>
-            <div class="topic-card">
-                <div class="topic-icon">🧠</div>
-                <h3 class="topic-title">Psychology & Persuasion</h3>
-                <p class="topic-desc">The psychology of advertising, influence, and why humans make the decisions we make.</p>
+            <div class="subject-row">
+                <span class="subject-number">03</span>
+                <span class="subject-name">Political Dynasties</span>
+                <p class="subject-desc">How concentrated power gets built, inherited, and eventually destroyed — from California to empires past.</p>
             </div>
-            <div class="topic-card">
-                <div class="topic-icon">🔥</div>
-                <h3 class="topic-title">Historical Revolutions</h3>
-                <p class="topic-desc">The moments when systems broke and were rebuilt — and what the people inside them actually experienced.</p>
+            <div class="subject-row">
+                <span class="subject-number">04</span>
+                <span class="subject-name">Psychology &amp; Persuasion</span>
+                <p class="subject-desc">The science of influence, the psychology of advertising, and why humans make the decisions we make.</p>
             </div>
-            <div class="topic-card">
-                <div class="topic-icon">🌍</div>
-                <h3 class="topic-title">Geopolitics & Culture</h3>
-                <p class="topic-desc">How nations, identities, and cultures collide — and what's really driving the world right now.</p>
+            <div class="subject-row">
+                <span class="subject-number">05</span>
+                <span class="subject-name">Historical Revolutions</span>
+                <p class="subject-desc">The moments when systems collapsed and were rebuilt — and what the people inside them actually experienced.</p>
+            </div>
+            <div class="subject-row">
+                <span class="subject-number">06</span>
+                <span class="subject-name">Geopolitics &amp; Culture</span>
+                <p class="subject-desc">How nations, identities, and cultures collide — and what's actually driving the world right now.</p>
+            </div>
+            <div class="subject-row">
+                <span class="subject-number">07</span>
+                <span class="subject-name">Science &amp; Human Biology</span>
+                <p class="subject-desc">What we know about ourselves — from evolutionary psychology to the science most people never got in school.</p>
+            </div>
+            <div class="subject-row">
+                <span class="subject-number">08</span>
+                <span class="subject-name">Black History &amp; Identity</span>
+                <p class="subject-desc">The stories that shaped Black culture, politics, and identity — told with the depth they've always deserved.</p>
             </div>
         </div>
     </section>
