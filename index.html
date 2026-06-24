@@ -1083,8 +1083,8 @@
         
         .podcast-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-lg);
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-md);
         }
 
         .podcast-card {
@@ -1122,7 +1122,7 @@
             position: relative;
             background: radial-gradient(ellipse at 30% 30%, #7A4A10 0%, #3D1F00 55%, #1A0A00 100%);
         }
-        .ep-cover-wrap img { position: relative; z-index: 1; }
+        .ep-cover-wrap img { position: relative; z-index: 1; object-position: center 15%; }
         .ep-cover-fallback {
             display: none;
         }
@@ -1172,19 +1172,23 @@
         }
 
         .podcast-info {
-            padding: var(--space-xl);
+            padding: 16px 18px 20px;
         }
 
         .podcast-title {
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: var(--space-sm);
+            margin-bottom: 6px;
         }
 
         .podcast-desc {
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             color: var(--text-secondary);
             line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         /* =====================================================
@@ -1938,7 +1942,7 @@
             .bento-card { grid-column: span 6; }
             .bento-card.span-8 { grid-column: span 12; }
             .photo-masonry { columns: 3; }
-            .podcast-grid { grid-template-columns: 1fr 1fr; }
+            .podcast-grid { grid-template-columns: repeat(2, 1fr); }
             .contact-grid { grid-template-columns: 1fr; }
             .header-nav { gap: var(--space-lg); }
         }
@@ -2282,7 +2286,6 @@
          ===================================================== -->
     <div class="jmg-preloader" id="preloader">
         <div class="pre-inner">
-            <span class="pre-num" id="preNum">000</span>
             <div class="pre-bar-wrap"><div class="pre-bar" id="preBar"></div></div>
             <span class="pre-name">Joshua McKenzie German</span>
         </div>
@@ -2421,7 +2424,7 @@
         <div class="hero-content">
             <div class="hero-grid">
                 <div class="hero-text">
-                    <h1 class="display-massive hero-kinetic reveal reveal-delay-1" style="font-size: clamp(5rem, 18vw, 16rem);">
+                    <h1 class="display-massive hero-kinetic reveal reveal-delay-1" style="font-size: clamp(5rem, 18vw, 16rem); letter-spacing: -0.01em; word-spacing: 0.05em;">
                         Joshua<br>McKenzie<br>
                         <span class="accent-text">German</span>
                     </h1>
@@ -3287,10 +3290,10 @@
                         <p class="bento-desc">Entertainment partnerships that expanded Gatorade beyond the playing field.</p>
                         <div class="bento-campaigns" style="display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px;">
                             <a href="work/work-gatorade.html#stranger-things" class="bento-campaign-pill" onclick="event.stopPropagation();">Stranger Things</a>
-                            <a href="work/work-gatorade.html#nfl" class="bento-campaign-pill" onclick="event.stopPropagation();">NFL</a>
+                            <a href="work/work-gatorade.html#nfl" class="bento-campaign-pill" onclick="event.stopPropagation();">All The Reasons Not To Quit</a>
                             <a href="work/work-gatorade.html#lower-sugar" class="bento-campaign-pill" onclick="event.stopPropagation();">Lower Sugar</a>
                             <a href="work/work-gatorade.html#body-of-science" class="bento-campaign-pill" onclick="event.stopPropagation();" style="border-color:rgba(255,107,0,0.35);color:rgba(255,107,0,0.9);">Body of Science</a>
-                            <a href="work/work-gatorade.html#football" class="bento-campaign-pill" onclick="event.stopPropagation();">Football</a>
+                            <a href="work/work-gatorade.html#football" class="bento-campaign-pill" onclick="event.stopPropagation();">Trust What's Inside</a>
                         </div>
                         <span class="bento-cta">View All Campaigns <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                     </div>
@@ -3595,6 +3598,15 @@
                 <h2 class="display-medium" style="margin-top: var(--space-md);">Agency & Culture Work</h2>
             </div>
 
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:var(--space-lg);padding:16px 0;border-bottom:1px solid var(--glass-border);">
+                <a href="https://github.com/jgerms20/Digital-Task-Brief" target="_blank" rel="noopener"
+                   style="display:inline-flex;align-items:center;gap:8px;font-size:0.9rem;font-weight:500;color:var(--text-secondary);transition:color 0.2s;"
+                   onmouseover="this.style.color='var(--neon)'" onmouseout="this.style.color='var(--text-secondary)'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    Digital Task Brief
+                </a>
+            </div>
+
             <div class="bento-grid">
                 <!-- Preach -->
                 <a href="work/work-preach.html" class="bento-card reveal featured-card">
@@ -3746,6 +3758,32 @@
             </div>
 
             <div class="ai-projects-grid reveal reveal-delay-1">
+
+                <!-- Grandmaster — Chess Tournament Hub -->
+                <div class="ai-grid-item">
+                    <a href="https://jgerms20.github.io/Grandmaster/" target="_blank" class="ai-project-card" data-app="grandmaster">
+                        <div class="bento-media" style="background: linear-gradient(135deg, #0a0a06 0%, #1a1a0a 40%, #0f0d00 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display:flex; align-items:center; justify-content:center;">
+                            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, rgba(201,168,76,0.12) 0%, transparent 65%);"></div>
+                            <div style="display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;z-index:2;">
+                                <span style="font-size:3.2rem;line-height:1;filter:drop-shadow(0 0 16px rgba(201,168,76,0.5));">♚</span>
+                                <div style="display:flex;gap:4px;align-items:center;">
+                                    <div style="width:8px;height:8px;background:rgba(255,255,255,0.9);border-radius:1px;"></div>
+                                    <div style="width:8px;height:8px;background:rgba(30,30,30,0.9);border:1px solid rgba(201,168,76,0.4);border-radius:1px;"></div>
+                                    <div style="width:8px;height:8px;background:rgba(255,255,255,0.9);border-radius:1px;"></div>
+                                    <div style="width:8px;height:8px;background:rgba(30,30,30,0.9);border:1px solid rgba(201,168,76,0.4);border-radius:1px;"></div>
+                                </div>
+                            </div>
+                            <span style="position:absolute;top:12px;right:12px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:#c9a84c;font-size:9px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;">Live</span>
+                        </div>
+                        <div class="bento-body">
+                            <span class="bento-tag">Chess · Real-Time</span>
+                            <h3 class="bento-title">Grandmaster</h3>
+                            <p class="bento-desc">A live, shared chess tournament hub. Think ESPN Tournament Challenge — but for your friend group. Live bracket tracking, Chess.com integration, auto-seeding by rating.</p>
+                            <div class="ai-platform-badge ai-badge-claude" style="margin-top:12px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</div>
+                            <span class="bento-cta">View Live <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                        </div>
+                    </a>
+                </div>
 
                 <!-- Life Gamified — Featured -->
                 <div class="ai-grid-item-featured">
@@ -3913,31 +3951,6 @@
                     </a>
                 </div>
 
-                <!-- Grandmaster — Chess Tournament Hub -->
-                <div class="ai-grid-item">
-                    <a href="https://jgerms20.github.io/Grandmaster/" target="_blank" class="ai-project-card" data-app="grandmaster">
-                        <div class="bento-media" style="background: linear-gradient(135deg, #0a0a06 0%, #1a1a0a 40%, #0f0d00 100%); aspect-ratio: 4/3; position: relative; overflow: hidden; display:flex; align-items:center; justify-content:center;">
-                            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, rgba(201,168,76,0.12) 0%, transparent 65%);"></div>
-                            <div style="display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;z-index:2;">
-                                <span style="font-size:3.2rem;line-height:1;filter:drop-shadow(0 0 16px rgba(201,168,76,0.5));">♚</span>
-                                <div style="display:flex;gap:4px;align-items:center;">
-                                    <div style="width:8px;height:8px;background:rgba(255,255,255,0.9);border-radius:1px;"></div>
-                                    <div style="width:8px;height:8px;background:rgba(30,30,30,0.9);border:1px solid rgba(201,168,76,0.4);border-radius:1px;"></div>
-                                    <div style="width:8px;height:8px;background:rgba(255,255,255,0.9);border-radius:1px;"></div>
-                                    <div style="width:8px;height:8px;background:rgba(30,30,30,0.9);border:1px solid rgba(201,168,76,0.4);border-radius:1px;"></div>
-                                </div>
-                            </div>
-                            <span style="position:absolute;top:12px;right:12px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:#c9a84c;font-size:9px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;">Live</span>
-                        </div>
-                        <div class="bento-body">
-                            <span class="bento-tag">Chess · Real-Time</span>
-                            <h3 class="bento-title">Grandmaster</h3>
-                            <p class="bento-desc">A live, shared chess tournament hub. Think ESPN Tournament Challenge — but for your friend group. Live bracket tracking, Chess.com integration, auto-seeding by rating.</p>
-                            <div class="ai-platform-badge ai-badge-claude" style="margin-top:12px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</div>
-                            <span class="bento-cta">View Live <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
     </section>
@@ -6487,24 +6500,21 @@
     (function() {
         /* ── PRELOADER ─────────────────────────────────────── */
         const pre = document.getElementById('preloader');
-        const num = document.getElementById('preNum');
         const bar = document.getElementById('preBar');
-        if (pre && num && bar) {
+        if (pre && bar) {
             let n = 0, done = false;
             const finish = () => {
                 if (done) return; done = true;
-                n = 100; num.textContent = '100'; bar.style.width = '100%';
+                bar.style.width = '100%';
                 setTimeout(() => { pre.classList.add('done'); setTimeout(() => { pre.style.display = 'none'; }, 700); }, 80);
             };
             const step = () => {
                 n = Math.min(n + Math.ceil(Math.random() * 18 + 10), 94);
-                num.textContent = String(n).padStart(3, '0');
                 bar.style.width = n + '%';
                 if (n < 94) setTimeout(step, 22 + Math.random() * 18);
             };
             window.addEventListener('load', finish);
             setTimeout(step, 60);
-            // Hard cap — bail after 1.5s regardless
             setTimeout(finish, 1500);
         }
 
