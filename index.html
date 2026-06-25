@@ -730,6 +730,42 @@
         .ticker-item .up { color: var(--neon); }
         .ticker-item .down { color: var(--orange); }
 
+
+        /* =====================================================
+           CONTEXTUAL SECTION-BREAK TICKERS
+           ===================================================== */
+        .ctx-ticker {
+            position: relative;
+            width: 100vw;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            overflow: hidden;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            background: transparent;
+            padding: 14px 0;
+        }
+        .ctx-ticker-track {
+            display: flex;
+            gap: var(--space-2xl);
+            will-change: transform;
+        }
+        .ctx-ticker-item {
+            flex-shrink: 0;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            white-space: nowrap;
+            font-family: var(--font-sans);
+            letter-spacing: 0.02em;
+        }
+        .ctx-ticker-item .up { color: var(--neon); }
+        .ctx-ticker-item .gold { color: #C9A84C; }
+        .ctx-ticker-item .cyan { color: var(--cyan); }
+        .ctx-ticker-item .purple { color: var(--purple); }
+
         @keyframes ticker {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -3250,9 +3286,34 @@
         </div>
     </section>
 
-    <!-- =====================================================
-         BRAND WORK SECTION
-         ===================================================== -->
+
+    <!-- ===================================================== -->
+    <!-- CAMPAIGNS BREAKER: after About, framing Brand Work -->
+    <div class="ctx-ticker" aria-hidden="true">
+        <div class="ctx-ticker-track" style="animation: ticker 26s linear infinite;">
+            <span class="ctx-ticker-item"><span class="up">▲</span> Gatorade +Trust What's Inside</span>
+            <span class="ctx-ticker-item"><span class="gold">▲</span> Sephora +Beauty Innovation</span>
+            <span class="ctx-ticker-item"><span class="up">▲</span> Sam Adams +The Beer You Need</span>
+            <span class="ctx-ticker-item"><span class="up">▲</span> Levi's +501 Day</span>
+            <span class="ctx-ticker-item"><span class="gold">▲</span> Califia Farms +Calilujah</span>
+            <span class="ctx-ticker-item"><span class="up">▲</span> Campaign Strategy +5 Years</span>
+            <span class="ctx-ticker-item"><span class="up">▲</span> Connections Planning +Now</span>
+            <span class="ctx-ticker-item"><span class="gold">▲</span> Super Bowl +Big Game</span>
+            <span class="ctx-ticker-item"><span class="up">▲</span> One Show +Awarded</span>
+            <span class="ctx-ticker-item"><span class="up">▲</span> Creative Brief +100+</span>
+            <span class="ctx-ticker-item"><span class="gold">▲</span> Gatorade +Trust What's Inside</span>
+            <span class="ctx-ticker-item"><span class="up">▲</span> Sephora +Beauty Innovation</span>
+            <span class="ctx-ticker-item"><span class="up">▲</span> Sam Adams +The Beer You Need</span>
+            <span class="ctx-ticker-item"><span class="up">▲</span> Levi's +501 Day</span>
+            <span class="ctx-ticker-item"><span class="gold">▲</span> Califia Farms +Calilujah</span>
+            <span class="ctx-ticker-item"><span class="up">▲</span> Campaign Strategy +5 Years</span>
+            <span class="ctx-ticker-item"><span class="up">▲</span> Connections Planning +Now</span>
+            <span class="ctx-ticker-item"><span class="gold">▲</span> Super Bowl +Big Game</span>
+            <span class="ctx-ticker-item"><span class="up">▲</span> One Show +Awarded</span>
+            <span class="ctx-ticker-item"><span class="up">▲</span> Creative Brief +100+</span>
+        </div>
+    </div>
+
     <section id="work" class="section">
         <div class="container" style="max-width: 1600px;">
             <div class="section-header reveal">
@@ -3461,176 +3522,34 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg);transition:transform 0.3s var(--ease-out-expo);"><path d="M18 15l-6-6-6 6"/></svg>
                     </button>
                 </div>
-
-                <!-- =====================================================
-                     INDEPENDENT PRACTICE — PASSWORD GATE
-                     Reframed as a named advisory practice, not hidden
-                     freelance. Gate signals selectivity, not secrecy.
-                     Password set in JS at bottom of file.
-                     ===================================================== -->
-
-                <!-- Gate Card — always visible, full width -->
-                <div class="bento-card span-12 reveal reveal-delay-2" id="startup-gate" onclick="openStartupGate()" style="cursor:pointer; overflow:hidden;">
-                    <div style="display:flex; flex-direction:column; align-items:center; text-align:center; padding: 56px 48px; position:relative; min-height: 280px;">
-
-                        <!-- Background rings -->
-                        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden;">
-                            <div style="width:400px;height:400px;border:1px solid rgba(212,255,79,0.04);border-radius:50%;position:absolute;"></div>
-                            <div style="width:280px;height:280px;border:1px solid rgba(212,255,79,0.05);border-radius:50%;position:absolute;"></div>
-                            <div style="width:160px;height:160px;border:1px solid rgba(212,255,79,0.07);border-radius:50%;position:absolute;"></div>
-                        </div>
-
-                        <!-- Lock icon -->
-                        <div style="position:relative;z-index:2;margin-bottom:20px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
-                        </div>
-
-                        <!-- Content -->
-                        <div style="position:relative;z-index:2;max-width:560px;">
-                            <span style="display:inline-block;font-family:var(--font-sans);font-size:0.65rem;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;color:rgba(212,255,79,0.6);margin-bottom:16px;">Independent Practice</span>
-                            <h3 style="font-family:var(--font-display,var(--font-sans));font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--text-primary);line-height:1.1;margin:0 0 14px;">Early-Stage Advisory &amp; Brand Strategy</h3>
-                            <p style="font-family:var(--font-sans);font-size:0.9rem;color:var(--text-muted);line-height:1.65;margin:0 0 24px;">A small number of selected engagements with early-stage companies — brand, audience, and go-to-market strategy for founders building from zero. Separate from agency work. Access restricted.</p>
-                            <!-- Client criteria chips -->
-                            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;justify-content:center;">
-                                <span style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.08em;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:100px;padding:5px 12px;">Pre-launch</span>
-                                <span style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.08em;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:100px;padding:5px 12px;">Brand Strategy</span>
-                                <span style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.08em;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:100px;padding:5px 12px;">Go-to-Market</span>
-                                <span style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.08em;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:100px;padding:5px 12px;">Fractional CMO</span>
-                            </div>
-                        </div>
-                        <!-- CTAs -->
-                        <div style="position:relative;z-index:2;display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center;">
-                            <span style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:0.85rem;font-weight:700;color:#D4FF4F;letter-spacing:0.04em;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                                Enter Access Code
-                            </span>
-                            <span style="font-family:var(--font-sans);font-size:0.8rem;color:rgba(255,255,255,0.3);">or</span>
-                            <a href="#contact" onclick="event.stopPropagation()" style="font-family:var(--font-sans);font-size:0.8rem;color:rgba(255,255,255,0.45);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:1px;transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.75)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">request access →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Post-unlock section label — hidden until password entered -->
-                <div class="startup-locked" id="startup-label" style="grid-column:span 12; display:flex; align-items:center; gap:16px; padding: 8px 0 4px;">
-                    <div style="flex:1;height:1px;background:rgba(255,255,255,0.06);"></div>
-                    <span style="font-family:var(--font-sans);font-size:0.65rem;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.25);">Independent Practice</span>
-                    <div style="flex:1;height:1px;background:rgba(255,255,255,0.06);"></div>
-                </div>
-
-                <!-- HIIKE — hidden until unlocked -->
-                <div class="bento-card reveal startup-locked" id="startup-hiike">
-                    <!-- Visual area -->
-                    <div class="bento-media" style="background: linear-gradient(150deg, #080f08 0%, #0c1c0d 60%, #060c06 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
-                        <!-- Texture -->
-                        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(120,220,80,0.06) 1px,transparent 1px);background-size:20px 20px;"></div>
-                        <div style="position:absolute;top:-60px;right:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(100,200,70,0.08) 0%,transparent 70%);"></div>
-                        <!-- Wordmark -->
-                        <div style="position:relative;z-index:1;text-align:center;">
-                            <span style="display:block;font-family:var(--font-sans);font-size:3rem;font-weight:900;color:rgba(150,235,110,0.9);letter-spacing:0.14em;line-height:1;">HIIKE</span>
-                            <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:10px;">
-                                <div style="height:1px;width:20px;background:rgba(150,235,110,0.2);"></div>
-                                <span style="font-family:var(--font-sans);font-size:0.55rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:rgba(150,235,110,0.35);">Film Festival Platform</span>
-                                <div style="height:1px;width:20px;background:rgba(150,235,110,0.2);"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Content -->
-                    <div class="bento-body">
-                        <span class="bento-tag">Advisor & Strategist • Independent</span>
-                        <h3 class="bento-title">HIIKE: Brand &amp; Go-to-Market</h3>
-                        <p class="bento-desc">Built foundational brand, audience, and GTM strategy from the ground up for a pre-launch startup.</p>
-                        <!-- Deliverables list -->
-                        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;">
-                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Audience Mapping</span>
-                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Content Swim Lanes</span>
-                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Posting Framework</span>
-                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Brand Strategy</span>
-                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Go-to-Market</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- U&AI — hidden until unlocked -->
-                <div class="bento-card reveal reveal-delay-1 startup-locked" id="startup-unai">
-                    <!-- Visual area -->
-                    <div class="bento-media" style="background: linear-gradient(150deg, #060810 0%, #0a0e22 60%, #050710 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
-                        <!-- Texture -->
-                        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(90,120,255,0.07) 1px,transparent 1px);background-size:20px 20px;"></div>
-                        <div style="position:absolute;top:-60px;right:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(80,110,255,0.1) 0%,transparent 70%);"></div>
-                        <!-- Wordmark -->
-                        <div style="position:relative;z-index:1;text-align:center;">
-                            <span style="display:block;font-family:var(--font-sans);font-size:2.8rem;font-weight:900;color:rgba(120,150,255,0.9);letter-spacing:0.06em;line-height:1;">U&amp;AI</span>
-                            <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:10px;">
-                                <div style="height:1px;width:20px;background:rgba(120,150,255,0.2);"></div>
-                                <span style="font-family:var(--font-sans);font-size:0.55rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:rgba(120,150,255,0.35);">AI Visibility Venture</span>
-                                <div style="height:1px;width:20px;background:rgba(120,150,255,0.2);"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Content -->
-                    <div class="bento-body">
-                        <span class="bento-tag">Fractional CMO • Independent</span>
-                        <h3 class="bento-title">U&amp;AI: Chief Marketing Officer</h3>
-                        <p class="bento-desc">Serving as Fractional CMO for an AI-visibility venture — leading marketing strategy, brand direction, and go-to-market.</p>
-                        <!-- Scope list -->
-                        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;">
-                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Marketing Strategy</span>
-                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Brand Direction</span>
-                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Go-to-Market</span>
-                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Fractional CMO</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
-
-    <!-- =====================================================
-         PROJECTS SECTION
-         ===================================================== -->
-    <section id="projects" class="section">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="label">Culture</span>
-                <h2 class="display-medium" style="margin-top: var(--space-md);">Agency & Culture Work</h2>
-            </div>
-
-            <div style="display:flex;align-items:center;gap:16px;margin-bottom:var(--space-lg);padding:16px 0;border-bottom:1px solid var(--glass-border);">
-                <a href="https://github.com/jgerms20/Digital-Task-Brief" target="_blank" rel="noopener"
-                   style="display:inline-flex;align-items:center;gap:8px;font-size:0.9rem;font-weight:500;color:var(--text-secondary);transition:color 0.2s;"
-                   onmouseover="this.style.color='var(--neon)'" onmouseout="this.style.color='var(--text-secondary)'">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    Digital Task Brief
-                </a>
-            </div>
-
-            <div class="bento-grid">
-                <!-- Preach -->
-                <a href="work/work-preach.html" class="bento-card reveal featured-card">
-                    <div class="bento-media" style="background: linear-gradient(150deg, #0d0a18 0%, #120c1e 50%, #140c08 100%); position:relative; overflow:hidden;">
-                        <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);pointer-events:none;"></div>
-                        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:-1;">
-                            <div style="background-image:radial-gradient(circle at 30% 50%, rgba(107,70,193,0.12) 0%, transparent 50%), radial-gradient(circle at 70% 30%, rgba(201,168,76,0.08) 0%, transparent 50%);position:absolute;inset:0;"></div>
-                            <span style="font-family:var(--font-sans);font-size:2.4rem;font-weight:900;color:rgba(201,168,76,0.85);letter-spacing:0.04em;font-style:italic;">Preach.</span>
-                        </div>
-                    </div>
-                    <div class="bento-body">
-                        <span class="bento-tag">Junior Communication Strategist &amp; Co-Creator • Goodby, Silverstein &amp; Partners</span>
-                        <h3 class="bento-title">Preach</h3>
-                        <p class="bento-desc">An Instagram game that opened a window into the real Black experience. Built by GS&amp;P BLK for Black History Month 2021.</p>
-                        <span class="bento-cta">View Case Study <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                    </div>
-                </a>
-            </div>
+    <!-- ===================================================== -->
+    <div class="ctx-ticker" aria-hidden="true">
+        <div class="ctx-ticker-track" style="animation: ticker 24s linear infinite;">
+                <span class="ctx-ticker-item"><span class="up">▲</span> The Eclectic Polymath +56 Eps</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Approachable AI +2026</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Solo Audio +4 Shows</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Deep Dives +Weekly</span>
+                <span class="ctx-ticker-item"><span class="purple">▲</span> Curious & Creative +Now</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Dominate The Decade +3 Seasons</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Curiosity Without Borders</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Podcasting +8 Topics</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> No Niche +No Limits</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> 52K+ Downloads +Growing</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> The Eclectic Polymath +56 Eps</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Approachable AI +2026</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Solo Audio +4 Shows</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Deep Dives +Weekly</span>
+                <span class="ctx-ticker-item"><span class="purple">▲</span> Curious & Creative +Now</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Dominate The Decade +3 Seasons</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Curiosity Without Borders</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Podcasting +8 Topics</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> No Niche +No Limits</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> 52K+ Downloads +Growing</span>
         </div>
-    </section>
-
-    <!-- =====================================================
-         PODCASTS SECTION
-         ===================================================== -->
+    </div>
     <section id="podcasts" class="section">
         <div class="container">
             <div class="section-header reveal">
@@ -3733,16 +3652,32 @@
         </div>
     </section>
 
-    <!-- Editorial marquee separator -->
-    <div class="jmg-marquee" aria-hidden="true">
-        <div class="jmg-marquee-track">
-            <span>Creative Strategy</span><span class="outline">Photography</span><span>One Show</span><span class="outline">Podcasts</span><span>AI Builder</span><span class="outline">Los Angeles</span><span>TBWA\Chiat\Day</span><span class="outline">Wieden+Kennedy</span><span>Creative Strategy</span><span class="outline">Photography</span><span>One Show</span><span class="outline">Podcasts</span><span>AI Builder</span><span class="outline">Los Angeles</span><span>TBWA\Chiat\Day</span><span class="outline">Wieden+Kennedy</span>
+    <!-- ===================================================== -->
+    <div class="ctx-ticker" aria-hidden="true">
+        <div class="ctx-ticker-track" style="animation: ticker 20s linear infinite;">
+                <span class="ctx-ticker-item"><span class="up">▲</span> Claude Code +4.8</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Grandmaster +Live</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Life Gamified +Quest Active</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> The Man & Machine +Real-Time</span>
+                <span class="ctx-ticker-item"><span class="cyan">▲</span> Google AI Studio +7 Apps</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> React + TypeScript +Built</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Chess.com API +Integrated</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> AI Builder +2026</span>
+                <span class="ctx-ticker-item"><span class="cyan">▲</span> Web Audio API +Live</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> GitHub jgerms20 +Active</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Claude Code +4.8</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Grandmaster +Live</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Life Gamified +Quest Active</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> The Man & Machine +Real-Time</span>
+                <span class="ctx-ticker-item"><span class="cyan">▲</span> Google AI Studio +7 Apps</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> React + TypeScript +Built</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Chess.com API +Integrated</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> AI Builder +2026</span>
+                <span class="ctx-ticker-item"><span class="cyan">▲</span> Web Audio API +Live</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> GitHub jgerms20 +Active</span>
         </div>
     </div>
 
-    <!-- =====================================================
-         AI PROJECTS SECTION (Moved Before Photography)
-         ===================================================== -->
     <section id="ai" class="section section-gradient">
         <div class="container">
             <div class="section-header reveal">
@@ -3955,16 +3890,221 @@
         </div>
     </section>
 
-    <!-- Editorial marquee separator (reverse direction) -->
-    <div class="jmg-marquee jmg-marquee-reverse" aria-hidden="true">
-        <div class="jmg-marquee-track">
-            <span class="outline">Portraits</span><span>Landscape</span><span class="outline">Fashion</span><span>Events</span><span class="outline">Travel</span><span>Sony A7</span><span class="outline">Fine Art</span><span>Limited Editions</span><span class="outline">Portraits</span><span>Landscape</span><span class="outline">Fashion</span><span>Events</span><span class="outline">Travel</span><span>Sony A7</span><span class="outline">Fine Art</span><span>Limited Editions</span>
+    <!-- ===================================================== -->
+    <div class="ctx-ticker" aria-hidden="true">
+        <div class="ctx-ticker-track" style="animation: ticker 22s linear infinite;">
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Preach +GS&P BLK</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Black History Month +2021</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Agency Life +3 Years</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Independent Practice +Selective</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> HIIKE +Film Festival</span>
+                <span class="ctx-ticker-item"><span class="cyan">▲</span> U&AI +Fractional CMO</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Co-Creator +GS&P</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Digital Task Brief +Open Source</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Early-Stage Advisory +Now</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Culture Work +Always</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Preach +GS&P BLK</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Black History Month +2021</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Agency Life +3 Years</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Independent Practice +Selective</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> HIIKE +Film Festival</span>
+                <span class="ctx-ticker-item"><span class="cyan">▲</span> U&AI +Fractional CMO</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Co-Creator +GS&P</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Digital Task Brief +Open Source</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Early-Stage Advisory +Now</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Culture Work +Always</span>
         </div>
     </div>
 
-        <!-- =====================================================
-         PHOTOGRAPHY SECTION
+    <!-- =====================================================
+         INDEPENDENT PRACTICE + AGENCY & CULTURE WORK (Merged)
          ===================================================== -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">Culture & Practice</span>
+                <h2 class="display-medium" style="margin-top: var(--space-md);">Agency, Culture & Independent Work</h2>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:var(--space-lg);padding:16px 0;border-bottom:1px solid var(--glass-border);">
+                <a href="https://github.com/jgerms20/Digital-Task-Brief" target="_blank" rel="noopener"
+                   style="display:inline-flex;align-items:center;gap:8px;font-size:0.9rem;font-weight:500;color:var(--text-secondary);transition:color 0.2s;"
+                   onmouseover="this.style.color='var(--neon)'" onmouseout="this.style.color='var(--text-secondary)'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    Digital Task Brief
+                </a>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Preach -->
+                <a href="work/work-preach.html" class="bento-card reveal featured-card">
+                    <div class="bento-media" style="background: linear-gradient(150deg, #0d0a18 0%, #120c1e 50%, #140c08 100%); position:relative; overflow:hidden;">
+                        <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);pointer-events:none;"></div>
+                        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:-1;">
+                            <div style="background-image:radial-gradient(circle at 30% 50%, rgba(107,70,193,0.12) 0%, transparent 50%), radial-gradient(circle at 70% 30%, rgba(201,168,76,0.08) 0%, transparent 50%);position:absolute;inset:0;"></div>
+                            <span style="font-family:var(--font-sans);font-size:2.4rem;font-weight:900;color:rgba(201,168,76,0.85);letter-spacing:0.04em;font-style:italic;">Preach.</span>
+                        </div>
+                    </div>
+                    <div class="bento-body">
+                        <span class="bento-tag">Junior Communication Strategist &amp; Co-Creator • Goodby, Silverstein &amp; Partners</span>
+                        <h3 class="bento-title">Preach</h3>
+                        <p class="bento-desc">An Instagram game that opened a window into the real Black experience. Built by GS&amp;P BLK for Black History Month 2021.</p>
+                        <span class="bento-cta">View Case Study <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </div>
+                </a>
+
+                     INDEPENDENT PRACTICE — PASSWORD GATE
+                     Reframed as a named advisory practice, not hidden
+                     freelance. Gate signals selectivity, not secrecy.
+                     Password set in JS at bottom of file.
+                     ===================================================== -->
+
+                <!-- Gate Card — always visible, full width -->
+                <div class="bento-card span-12 reveal reveal-delay-2" id="startup-gate" onclick="openStartupGate()" style="cursor:pointer; overflow:hidden;">
+                    <div style="display:flex; flex-direction:column; align-items:center; text-align:center; padding: 56px 48px; position:relative; min-height: 280px;">
+
+                        <!-- Background rings -->
+                        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;overflow:hidden;">
+                            <div style="width:400px;height:400px;border:1px solid rgba(212,255,79,0.04);border-radius:50%;position:absolute;"></div>
+                            <div style="width:280px;height:280px;border:1px solid rgba(212,255,79,0.05);border-radius:50%;position:absolute;"></div>
+                            <div style="width:160px;height:160px;border:1px solid rgba(212,255,79,0.07);border-radius:50%;position:absolute;"></div>
+                        </div>
+
+                        <!-- Lock icon -->
+                        <div style="position:relative;z-index:2;margin-bottom:20px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(212,255,79,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+
+                        <!-- Content -->
+                        <div style="position:relative;z-index:2;max-width:560px;">
+                            <span style="display:inline-block;font-family:var(--font-sans);font-size:0.65rem;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;color:rgba(212,255,79,0.6);margin-bottom:16px;">Independent Practice</span>
+                            <h3 style="font-family:var(--font-display,var(--font-sans));font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--text-primary);line-height:1.1;margin:0 0 14px;">Early-Stage Advisory &amp; Brand Strategy</h3>
+                            <p style="font-family:var(--font-sans);font-size:0.9rem;color:var(--text-muted);line-height:1.65;margin:0 0 24px;">A small number of selected engagements with early-stage companies — brand, audience, and go-to-market strategy for founders building from zero. Separate from agency work. Access restricted.</p>
+                            <!-- Client criteria chips -->
+                            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;justify-content:center;">
+                                <span style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.08em;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:100px;padding:5px 12px;">Pre-launch</span>
+                                <span style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.08em;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:100px;padding:5px 12px;">Brand Strategy</span>
+                                <span style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.08em;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:100px;padding:5px 12px;">Go-to-Market</span>
+                                <span style="font-family:var(--font-sans);font-size:0.7rem;font-weight:600;letter-spacing:0.08em;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:100px;padding:5px 12px;">Fractional CMO</span>
+                            </div>
+                        </div>
+                        <!-- CTAs -->
+                        <div style="position:relative;z-index:2;display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center;">
+                            <span style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:0.85rem;font-weight:700;color:#D4FF4F;letter-spacing:0.04em;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                Enter Access Code
+                            </span>
+                            <span style="font-family:var(--font-sans);font-size:0.8rem;color:rgba(255,255,255,0.3);">or</span>
+                            <a href="#contact" onclick="event.stopPropagation()" style="font-family:var(--font-sans);font-size:0.8rem;color:rgba(255,255,255,0.45);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:1px;transition:color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.75)'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">request access →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post-unlock section label — hidden until password entered -->
+                <div class="startup-locked" id="startup-label" style="grid-column:span 12; display:flex; align-items:center; gap:16px; padding: 8px 0 4px;">
+                    <div style="flex:1;height:1px;background:rgba(255,255,255,0.06);"></div>
+                    <span style="font-family:var(--font-sans);font-size:0.65rem;font-weight:700;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.25);">Independent Practice</span>
+                    <div style="flex:1;height:1px;background:rgba(255,255,255,0.06);"></div>
+                </div>
+
+                <!-- HIIKE — hidden until unlocked -->
+                <div class="bento-card reveal startup-locked" id="startup-hiike">
+                    <!-- Visual area -->
+                    <div class="bento-media" style="background: linear-gradient(150deg, #080f08 0%, #0c1c0d 60%, #060c06 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                        <!-- Texture -->
+                        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(120,220,80,0.06) 1px,transparent 1px);background-size:20px 20px;"></div>
+                        <div style="position:absolute;top:-60px;right:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(100,200,70,0.08) 0%,transparent 70%);"></div>
+                        <!-- Wordmark -->
+                        <div style="position:relative;z-index:1;text-align:center;">
+                            <span style="display:block;font-family:var(--font-sans);font-size:3rem;font-weight:900;color:rgba(150,235,110,0.9);letter-spacing:0.14em;line-height:1;">HIIKE</span>
+                            <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:10px;">
+                                <div style="height:1px;width:20px;background:rgba(150,235,110,0.2);"></div>
+                                <span style="font-family:var(--font-sans);font-size:0.55rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:rgba(150,235,110,0.35);">Film Festival Platform</span>
+                                <div style="height:1px;width:20px;background:rgba(150,235,110,0.2);"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="bento-body">
+                        <span class="bento-tag">Advisor & Strategist • Independent</span>
+                        <h3 class="bento-title">HIIKE: Brand &amp; Go-to-Market</h3>
+                        <p class="bento-desc">Built foundational brand, audience, and GTM strategy from the ground up for a pre-launch startup.</p>
+                        <!-- Deliverables list -->
+                        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;">
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Audience Mapping</span>
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Content Swim Lanes</span>
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Posting Framework</span>
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Brand Strategy</span>
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Go-to-Market</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- U&AI — hidden until unlocked -->
+                <div class="bento-card reveal reveal-delay-1 startup-locked" id="startup-unai">
+                    <!-- Visual area -->
+                    <div class="bento-media" style="background: linear-gradient(150deg, #060810 0%, #0a0e22 60%, #050710 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                        <!-- Texture -->
+                        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(90,120,255,0.07) 1px,transparent 1px);background-size:20px 20px;"></div>
+                        <div style="position:absolute;top:-60px;right:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(80,110,255,0.1) 0%,transparent 70%);"></div>
+                        <!-- Wordmark -->
+                        <div style="position:relative;z-index:1;text-align:center;">
+                            <span style="display:block;font-family:var(--font-sans);font-size:2.8rem;font-weight:900;color:rgba(120,150,255,0.9);letter-spacing:0.06em;line-height:1;">U&amp;AI</span>
+                            <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:10px;">
+                                <div style="height:1px;width:20px;background:rgba(120,150,255,0.2);"></div>
+                                <span style="font-family:var(--font-sans);font-size:0.55rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:rgba(120,150,255,0.35);">AI Visibility Venture</span>
+                                <div style="height:1px;width:20px;background:rgba(120,150,255,0.2);"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="bento-body">
+                        <span class="bento-tag">Fractional CMO • Independent</span>
+                        <h3 class="bento-title">U&amp;AI: Chief Marketing Officer</h3>
+                        <p class="bento-desc">Serving as Fractional CMO for an AI-visibility venture — leading marketing strategy, brand direction, and go-to-market.</p>
+                        <!-- Scope list -->
+                        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;">
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Marketing Strategy</span>
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Brand Direction</span>
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Go-to-Market</span>
+                            <span style="font-family:var(--font-sans);font-size:0.68rem;color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05);border-radius:4px;padding:3px 8px;">Fractional CMO</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <div class="ctx-ticker" aria-hidden="true">
+        <div class="ctx-ticker-track" style="animation: ticker 26s linear infinite;">
+                <span class="ctx-ticker-item"><span class="up">▲</span> Photography +Sony A7IV</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Portraits +Published</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Landscape +Limited Editions</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Fine Art +Events</span>
+                <span class="ctx-ticker-item"><span class="purple">▲</span> Fashion +Editorial</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Every Frame +A Decision</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> 35mm Film +Kodak</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Los Angeles +New York</span>
+                <span class="ctx-ticker-item"><span class="cyan">▲</span> Light +Always Moving</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Through the Lens +Always</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Photography +Sony A7IV</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Portraits +Published</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Landscape +Limited Editions</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Fine Art +Events</span>
+                <span class="ctx-ticker-item"><span class="purple">▲</span> Fashion +Editorial</span>
+                <span class="ctx-ticker-item"><span class="gold">▲</span> Every Frame +A Decision</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> 35mm Film +Kodak</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Los Angeles +New York</span>
+                <span class="ctx-ticker-item"><span class="cyan">▲</span> Light +Always Moving</span>
+                <span class="ctx-ticker-item"><span class="up">▲</span> Through the Lens +Always</span>
+        </div>
+    </div>
+
     <section id="photography" class="section section-dark">
         <div class="container">
             <div class="section-header section-header-centered reveal">
