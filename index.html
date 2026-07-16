@@ -416,7 +416,7 @@
         }
         .brk-track {
             display: flex; gap: 0; width: max-content;
-            animation: brkSlide 30s linear infinite;
+            animation: brkSlide 54s linear infinite;
             will-change: transform;
         }
         .brk:hover .brk-track { animation-play-state: paused; }
@@ -424,18 +424,22 @@
             font-family: var(--mono); font-size: 0.66rem; font-weight: 700;
             letter-spacing: 0.2em; text-transform: uppercase;
             color: var(--ink-mid); white-space: nowrap;
-            display: inline-flex; align-items: center;
+            display: inline-flex; align-items: center; gap: 8px;
         }
-        .brk-item::after { content: '✳'; color: var(--blue); margin: 0 26px; font-size: 0.72rem; }
+        .brk-item::after { content: '|'; font-weight: 400; color: var(--rule); margin: 0 22px; font-size: 0.8rem; }
         .brk-item .hi { color: var(--ink); }
+        .brk-item .up { color: var(--leaf); font-weight: 700; }
+        .brk-item .down { color: var(--vermilion); font-weight: 700; }
         .brk-blue { background: var(--blue); border-color: var(--blue); }
         .brk-blue .brk-item { color: rgba(245,241,232,0.75); }
         .brk-blue .brk-item .hi { color: #fff; }
-        .brk-blue .brk-item::after { color: rgba(245,241,232,0.9); }
+        .brk-blue .brk-item::after { color: rgba(245,241,232,0.35); }
+        .brk-blue .brk-item .up { color: #8FE39A; }
         .brk-ink { background: var(--dark); border-color: var(--dark); }
         .brk-ink .brk-item { color: var(--paper-on-dark-mid); }
         .brk-ink .brk-item .hi { color: var(--paper-on-dark); }
-        .brk-ink .brk-item::after { color: var(--vermilion); }
+        .brk-ink .brk-item::after { color: var(--dark-rule); }
+        .brk-ink .brk-item .up { color: #7DC982; }
         @keyframes brkSlide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
         @media (prefers-reduced-motion: reduce) {
@@ -616,8 +620,17 @@
         /* =====================================================
            WORK — campaign plates
            ===================================================== */
+        .camp-filters { display: flex; flex-wrap: wrap; gap: 10px; margin: calc(-1 * var(--s4)) 0 var(--s5); }
+        .camp-filter {
+            font-family: var(--mono); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+            padding: 10px 20px; border-radius: 999px;
+            border: 1px solid var(--rule); color: var(--ink-mid);
+            transition: all 0.3s var(--exp);
+        }
+        .camp-filter:hover { color: var(--ink); border-color: var(--ink-faint); }
+        .camp-filter.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
         .plates { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(18px, 2.6vw, 36px); }
-        .plate { grid-column: span 6; display: block; position: relative; }
+        .plate { grid-column: span 6; display: block; position: relative; transition: opacity 0.3s var(--exp); }
         .plate-wide { grid-column: span 12; }
         .plate-media {
             position: relative; overflow: hidden;
@@ -1189,16 +1202,17 @@
                                 <img loading="lazy" src="photos/self/JMG_7538.jpg" alt="Joshua McKenzie German" class="rot-slide" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1s var(--exp);">
                             </div>
                             <figcaption style="position:absolute; bottom:14px; left:16px; right:16px; display:flex; justify-content:space-between;" class="t-mono-sm">
-                                <span style="color:var(--ink-mid);">Self — LA</span>
-                                <span style="color:var(--ink-mid);">'26</span>
+                                <span id="heroCapLeft" style="color:var(--ink-mid);">35mm Film</span>
+                                <span id="heroCapRight" style="color:var(--ink-mid);">Lab Scan</span>
                             </figcaption>
                         </div>
                     </div>
                 </div>
                 <div class="hero-roles rv rv-d2">
                     <span class="hero-role">Creative Strategist</span>
+                    <span class="hero-role">AI Builder &amp; Creator</span>
                     <span class="hero-role">Photographer</span>
-                    <span class="hero-role">Futurist</span>
+                    <span class="hero-role">Podcaster</span>
                 </div>
             </div>
             <div class="hero-bottom rv rv-d3">
@@ -1223,48 +1237,47 @@
                 </div>
             </div>
         </div>
-        <div class="hero-scroll"><span>Scroll</span><div class="line"></div></div>
     </section>
 
     <!-- Breaker: skills index -->
     <div class="brk" aria-hidden="true">
         <div class="brk-track">
-            <span class="brk-item"><span class="hi">Claude Code</span>&nbsp;+4.8%</span>
-            <span class="brk-item"><span class="hi">Connections Planning</span>&nbsp;+2.4%</span>
-            <span class="brk-item"><span class="hi">Brand Strategy</span>&nbsp;+1.6%</span>
-            <span class="brk-item"><span class="hi">AI Workflow Design</span>&nbsp;+5.1%</span>
-            <span class="brk-item"><span class="hi">Cultural Insight</span>&nbsp;+1.1%</span>
-            <span class="brk-item"><span class="hi">Prompt Engineering</span>&nbsp;+3.9%</span>
-            <span class="brk-item"><span class="hi">Campaign Architecture</span>&nbsp;+2.2%</span>
-            <span class="brk-item"><span class="hi">Google AI Studio</span>&nbsp;+4.2%</span>
-            <span class="brk-item"><span class="hi">Audience Intelligence</span>&nbsp;+1.9%</span>
-            <span class="brk-item"><span class="hi">Creative Brief Writing</span>&nbsp;+1.3%</span>
-            <span class="brk-item"><span class="hi">Super Bowl Strategy</span>&nbsp;+3.1%</span>
-            <span class="brk-item"><span class="hi">Photography</span>&nbsp;+1.8%</span>
-            <span class="brk-item"><span class="hi">Storytelling</span>&nbsp;+1.4%</span>
-            <span class="brk-item"><span class="hi">Brand Positioning</span>&nbsp;+2.0%</span>
-            <span class="brk-item"><span class="hi">Media Math</span>&nbsp;+0.9%</span>
-            <span class="brk-item"><span class="hi">Podcasting</span>&nbsp;+2.3%</span>
-            <span class="brk-item"><span class="hi">Cross-Functional Leadership</span>&nbsp;+1.7%</span>
-            <span class="brk-item"><span class="hi">Cannes Grand Prix Work</span>&nbsp;+3.8%</span>
-            <span class="brk-item"><span class="hi">Claude Code</span>&nbsp;+4.8%</span>
-            <span class="brk-item"><span class="hi">Connections Planning</span>&nbsp;+2.4%</span>
-            <span class="brk-item"><span class="hi">Brand Strategy</span>&nbsp;+1.6%</span>
-            <span class="brk-item"><span class="hi">AI Workflow Design</span>&nbsp;+5.1%</span>
-            <span class="brk-item"><span class="hi">Cultural Insight</span>&nbsp;+1.1%</span>
-            <span class="brk-item"><span class="hi">Prompt Engineering</span>&nbsp;+3.9%</span>
-            <span class="brk-item"><span class="hi">Campaign Architecture</span>&nbsp;+2.2%</span>
-            <span class="brk-item"><span class="hi">Google AI Studio</span>&nbsp;+4.2%</span>
-            <span class="brk-item"><span class="hi">Audience Intelligence</span>&nbsp;+1.9%</span>
-            <span class="brk-item"><span class="hi">Creative Brief Writing</span>&nbsp;+1.3%</span>
-            <span class="brk-item"><span class="hi">Super Bowl Strategy</span>&nbsp;+3.1%</span>
-            <span class="brk-item"><span class="hi">Photography</span>&nbsp;+1.8%</span>
-            <span class="brk-item"><span class="hi">Storytelling</span>&nbsp;+1.4%</span>
-            <span class="brk-item"><span class="hi">Brand Positioning</span>&nbsp;+2.0%</span>
-            <span class="brk-item"><span class="hi">Media Math</span>&nbsp;+0.9%</span>
-            <span class="brk-item"><span class="hi">Podcasting</span>&nbsp;+2.3%</span>
-            <span class="brk-item"><span class="hi">Cross-Functional Leadership</span>&nbsp;+1.7%</span>
-            <span class="brk-item"><span class="hi">Cannes Grand Prix Work</span>&nbsp;+3.8%</span>
+            <span class="brk-item"><span class="hi">Claude Code</span> <span class="up">▲</span> +4.8%</span>
+            <span class="brk-item"><span class="hi">Connections Planning</span> <span class="up">▲</span> +2.4%</span>
+            <span class="brk-item"><span class="hi">Brand Strategy</span> <span class="up">▲</span> +1.6%</span>
+            <span class="brk-item"><span class="hi">AI Workflow Design</span> <span class="up">▲</span> +5.1%</span>
+            <span class="brk-item"><span class="hi">Cultural Insight</span> <span class="up">▲</span> +1.1%</span>
+            <span class="brk-item"><span class="hi">Prompt Engineering</span> <span class="up">▲</span> +3.9%</span>
+            <span class="brk-item"><span class="hi">Campaign Architecture</span> <span class="up">▲</span> +2.2%</span>
+            <span class="brk-item"><span class="hi">Google AI Studio</span> <span class="up">▲</span> +4.2%</span>
+            <span class="brk-item"><span class="hi">Audience Intelligence</span> <span class="up">▲</span> +1.9%</span>
+            <span class="brk-item"><span class="hi">Creative Brief Writing</span> <span class="up">▲</span> +1.3%</span>
+            <span class="brk-item"><span class="hi">Super Bowl Strategy</span> <span class="up">▲</span> +3.1%</span>
+            <span class="brk-item"><span class="hi">Photography</span> <span class="up">▲</span> +1.8%</span>
+            <span class="brk-item"><span class="hi">Storytelling</span> <span class="up">▲</span> +1.4%</span>
+            <span class="brk-item"><span class="hi">Brand Positioning</span> <span class="up">▲</span> +2.0%</span>
+            <span class="brk-item"><span class="hi">Curiosity</span> <span class="up">▲</span> +∞</span>
+            <span class="brk-item"><span class="hi">Sleep</span> <span class="down">▼</span> -2.1%</span>
+            <span class="brk-item"><span class="hi">Podcasting</span> <span class="up">▲</span> +2.3%</span>
+            <span class="brk-item"><span class="hi">Cannes Grand Prix Work</span> <span class="up">▲</span> +3.8%</span>
+            <span class="brk-item"><span class="hi">Claude Code</span> <span class="up">▲</span> +4.8%</span>
+            <span class="brk-item"><span class="hi">Connections Planning</span> <span class="up">▲</span> +2.4%</span>
+            <span class="brk-item"><span class="hi">Brand Strategy</span> <span class="up">▲</span> +1.6%</span>
+            <span class="brk-item"><span class="hi">AI Workflow Design</span> <span class="up">▲</span> +5.1%</span>
+            <span class="brk-item"><span class="hi">Cultural Insight</span> <span class="up">▲</span> +1.1%</span>
+            <span class="brk-item"><span class="hi">Prompt Engineering</span> <span class="up">▲</span> +3.9%</span>
+            <span class="brk-item"><span class="hi">Campaign Architecture</span> <span class="up">▲</span> +2.2%</span>
+            <span class="brk-item"><span class="hi">Google AI Studio</span> <span class="up">▲</span> +4.2%</span>
+            <span class="brk-item"><span class="hi">Audience Intelligence</span> <span class="up">▲</span> +1.9%</span>
+            <span class="brk-item"><span class="hi">Creative Brief Writing</span> <span class="up">▲</span> +1.3%</span>
+            <span class="brk-item"><span class="hi">Super Bowl Strategy</span> <span class="up">▲</span> +3.1%</span>
+            <span class="brk-item"><span class="hi">Photography</span> <span class="up">▲</span> +1.8%</span>
+            <span class="brk-item"><span class="hi">Storytelling</span> <span class="up">▲</span> +1.4%</span>
+            <span class="brk-item"><span class="hi">Brand Positioning</span> <span class="up">▲</span> +2.0%</span>
+            <span class="brk-item"><span class="hi">Curiosity</span> <span class="up">▲</span> +∞</span>
+            <span class="brk-item"><span class="hi">Sleep</span> <span class="down">▼</span> -2.1%</span>
+            <span class="brk-item"><span class="hi">Podcasting</span> <span class="up">▲</span> +2.3%</span>
+            <span class="brk-item"><span class="hi">Cannes Grand Prix Work</span> <span class="up">▲</span> +3.8%</span>
         </div>
     </div>
 
@@ -1276,7 +1289,7 @@
             <div class="ch-head rv">
                 <div class="ch-head-left">
                     <span class="ch-num">CH. 01</span>
-                    <h2 class="ch-title">About <span class="it">the Strategist</span></h2>
+                    <h2 class="ch-title">About <span class="it">Joshua</span></h2>
                 </div>
                 <div class="ch-meta">My Journey<br>Columbia, SC → Los Angeles, CA</div>
             </div>
@@ -1303,11 +1316,11 @@
                 <div class="about-right rv rv-d2">
                     <p class="t-lede about-lede">Curiosity has always been my <span class="accent-word">operating system</span> — storytelling, systems, and what makes people pay attention.</p>
                     <div class="about-body">
-                        <p>Born and raised in South Carolina, curiosity has always been my operating system. From the school newspaper in high school to studying Journalism &amp; Mass Communications at the University of South Carolina — where I minored in Information Science and cut my teeth as assistant sports editor at the Daily Gamecock — I was drawn early to storytelling, systems, and what makes people pay attention.</p>
-                        <p>That foundation carried me into advertising, where I've spent the better part of a decade building strategy at some of the most respected agencies in the country. From <strong>Goodby Silverstein &amp; Partners</strong> and <strong>Wieden+Kennedy</strong> to <strong>TBWA\Chiat\Day</strong>, I've worked across some of the most culturally significant brands in the world — developing connections strategies, campaign architecture, and brand positioning that has placed work on the largest stages in advertising, including the Super Bowl.</p>
-                        <p>Now based in Los Angeles, I'm fully in my element. LA is where culture, entertainment, technology, and ambition converge — and that collision runs through everything I do. It's the city that sharpened my eye for what's next, deepened my creative instincts, and put me at the center of the conversations that shape how brands show up in culture.</p>
-                        <p>Outside of agency life, I channel that same energy into photography, podcasting, and writing. Whether I'm behind the lens or in the recording booth with The Eclectic Polymath — exploring history, geopolitics, culture, and human behavior — every pursuit feeds the same hunger: to understand the world more deeply and tell better stories about it.</p>
-                        <p>For the past several years, I've been building seriously with <strong>Artificial Intelligence</strong> — not just as a user, but as a creator and systems thinker. I've designed and shipped AI-powered tools using Claude, Gemini, and the full stack of frontier models: audience intelligence systems, creative strategy applications, and original interactive experiences. I approach AI the way I approach strategy — as a way to find signal in noise, unlock new creative territory, and build things that didn't exist before. It's the most exciting frontier I've worked on, and I'm treating it like a craft.</p>
+                        <p>Born and raised in South Carolina, curiosity has always been my operating system. I studied Journalism &amp; Mass Communications at the University of South Carolina, minored in Information Science, and cut my teeth as assistant sports editor at the Daily Gamecock — drawn early to storytelling, systems, and what makes people pay attention.</p>
+                        <p>For the past several years, I've been building seriously with <strong>Artificial Intelligence</strong> — as a creator and systems thinker, not just a user. I design and ship AI-powered tools with Codex, Claude, Gemini, and the full stack of frontier models: audience intelligence systems, creative strategy applications, original interactive experiences. I treat it like a craft, the most exciting frontier I've worked on.</p>
+                        <p>That foundation carried me into advertising, where I've spent the better part of a decade building strategy at some of the industry's most respected agencies. From <strong>Goodby Silverstein &amp; Partners</strong> and <strong>Wieden+Kennedy</strong> to <strong>TBWA\Chiat\Day</strong>, I've developed connections strategies, campaign architecture, and brand positioning that's landed on the biggest stages in advertising, including the Super Bowl.</p>
+                        <p>Now based in Los Angeles, I'm fully in my element. LA is where culture, entertainment, technology, and ambition converge, and that collision runs through everything I do. It's the city that's sharpening my eye for what's next, deepening my creative instincts, and keeping me close to the conversations that shape how brands show up in culture.</p>
+                        <p>Outside of agency life, I channel that same energy into photography, podcasting, and writing. Whether I'm behind the lens or behind the mic, exploring history, culture, and human behavior, every pursuit feeds the same hunger: to understand the world more deeply and tell better stories about it.</p>
                     </div>
                 </div>
             </div>
@@ -1356,26 +1369,30 @@
     <!-- Breaker: campaigns -->
     <div class="brk" aria-hidden="true">
         <div class="brk-track">
-            <span class="brk-item"><span class="hi">Gatorade</span>&nbsp;— Trust What's Inside</span>
-            <span class="brk-item"><span class="hi">Levi's</span>&nbsp;× Beyoncé</span>
-            <span class="brk-item"><span class="hi">DoorDash</span>&nbsp;— Cannes Grand Prix</span>
-            <span class="brk-item"><span class="hi">Sephora</span>&nbsp;— Don't Overthink It</span>
-            <span class="brk-item"><span class="hi">Sam Adams</span>&nbsp;— Super Bowl LVII</span>
-            <span class="brk-item"><span class="hi">Super Bowl</span>&nbsp;— Big Game</span>
-            <span class="brk-item"><span class="hi">One Show</span>&nbsp;— Awarded</span>
-            <span class="brk-item"><span class="hi">Connections Planning</span>&nbsp;— Now</span>
-            <span class="brk-item"><span class="hi">Campaign Strategy</span>&nbsp;— 5 Years</span>
-            <span class="brk-item"><span class="hi">Creative Brief</span>&nbsp;— 100+</span>
-            <span class="brk-item"><span class="hi">Gatorade</span>&nbsp;— Trust What's Inside</span>
-            <span class="brk-item"><span class="hi">Levi's</span>&nbsp;× Beyoncé</span>
-            <span class="brk-item"><span class="hi">DoorDash</span>&nbsp;— Cannes Grand Prix</span>
-            <span class="brk-item"><span class="hi">Sephora</span>&nbsp;— Don't Overthink It</span>
-            <span class="brk-item"><span class="hi">Sam Adams</span>&nbsp;— Super Bowl LVII</span>
-            <span class="brk-item"><span class="hi">Super Bowl</span>&nbsp;— Big Game</span>
-            <span class="brk-item"><span class="hi">One Show</span>&nbsp;— Awarded</span>
-            <span class="brk-item"><span class="hi">Connections Planning</span>&nbsp;— Now</span>
-            <span class="brk-item"><span class="hi">Campaign Strategy</span>&nbsp;— 5 Years</span>
-            <span class="brk-item"><span class="hi">Creative Brief</span>&nbsp;— 100+</span>
+            <span class="brk-item"><span class="hi">GATORADE</span> <span class="up">▲</span> +4.8%</span>
+            <span class="brk-item"><span class="hi">LEVI'S × BEYONCÉ</span> <span class="up">▲</span> +6.1%</span>
+            <span class="brk-item"><span class="hi">DOORDASH</span> <span class="up">▲</span> +8.4%</span>
+            <span class="brk-item"><span class="hi">SUPER BOWL</span> <span class="up">▲</span> +3.1%</span>
+            <span class="brk-item"><span class="hi">SEPHORA</span> <span class="up">▲</span> +2.4%</span>
+            <span class="brk-item"><span class="hi">THE CRAFT</span> <span class="up">▲</span> +5.0%</span>
+            <span class="brk-item"><span class="hi">ONE SHOW</span> <span class="up">▲</span> +3.8%</span>
+            <span class="brk-item"><span class="hi">DOUBT</span> <span class="down">▼</span> -4.0%</span>
+            <span class="brk-item"><span class="hi">CONNECTIONS PLANNING</span> <span class="up">▲</span> +2.2%</span>
+            <span class="brk-item"><span class="hi">CANNES</span> <span class="up">▲</span> +7.0%</span>
+            <span class="brk-item"><span class="hi">DRIVING WHILE BLACK</span> <span class="up">▲</span> +4.4%</span>
+            <span class="brk-item"><span class="hi">THE BRIEF</span> <span class="up">▲</span> +1.9%</span>
+            <span class="brk-item"><span class="hi">GATORADE</span> <span class="up">▲</span> +4.8%</span>
+            <span class="brk-item"><span class="hi">LEVI'S × BEYONCÉ</span> <span class="up">▲</span> +6.1%</span>
+            <span class="brk-item"><span class="hi">DOORDASH</span> <span class="up">▲</span> +8.4%</span>
+            <span class="brk-item"><span class="hi">SUPER BOWL</span> <span class="up">▲</span> +3.1%</span>
+            <span class="brk-item"><span class="hi">SEPHORA</span> <span class="up">▲</span> +2.4%</span>
+            <span class="brk-item"><span class="hi">THE CRAFT</span> <span class="up">▲</span> +5.0%</span>
+            <span class="brk-item"><span class="hi">ONE SHOW</span> <span class="up">▲</span> +3.8%</span>
+            <span class="brk-item"><span class="hi">DOUBT</span> <span class="down">▼</span> -4.0%</span>
+            <span class="brk-item"><span class="hi">CONNECTIONS PLANNING</span> <span class="up">▲</span> +2.2%</span>
+            <span class="brk-item"><span class="hi">CANNES</span> <span class="up">▲</span> +7.0%</span>
+            <span class="brk-item"><span class="hi">DRIVING WHILE BLACK</span> <span class="up">▲</span> +4.4%</span>
+            <span class="brk-item"><span class="hi">THE BRIEF</span> <span class="up">▲</span> +1.9%</span>
         </div>
     </div>
 
@@ -1392,8 +1409,15 @@
                 <div class="ch-meta">Brand Work<br>TBWA · W+K · GS&amp;P</div>
             </div>
 
+            <div class="camp-filters rv" id="campFilters">
+                <button class="camp-filter active" data-agency="all">All</button>
+                <button class="camp-filter" data-agency="tbwa">TBWA\Chiat\Day</button>
+                <button class="camp-filter" data-agency="wk">Wieden+Kennedy</button>
+                <button class="camp-filter" data-agency="gsp">GS&amp;P</button>
+            </div>
+
             <div class="plates">
-                <a href="work/work-levis.html" class="plate rv plate-wide">
+                <a href="work/work-levis.html" class="plate rv plate-wide" data-agency="tbwa">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 01</span>
                         <img loading="lazy" src="https://www.levistrauss.com/wp-content/uploads/2024/09/240930_Blu_Hero.jpg" alt="Levi's REIIMAGINE Campaign" style="object-position: center 20%;">
@@ -1408,7 +1432,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="work/work-gatorade.html#stranger-things" class="plate rv">
+                <a href="work/work-gatorade-stranger-things.html" class="plate rv" data-agency="tbwa">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 02</span>
                         <img loading="lazy" src="https://digitalassets.pepsico.com/transform/4ef9a524-7317-45ff-98a3-b9a321351eeb/G-ST_KV_V2_Logos?w=1920&amp;q=75" alt="Gatorade × Stranger Things">
@@ -1419,7 +1443,7 @@
                         <p class="plate-desc">An entertainment partnership that took Gatorade into the Upside Down for the final season of a cultural phenomenon.</p>
                     </div>
                 </a>
-                <a href="work/work-doordash.html" class="plate rv rv-d1">
+                <a href="work/work-doordash.html" class="plate rv rv-d1" data-agency="wk">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 03</span>
                         <img loading="lazy" src="brand/doordash/supporting/Hero.webp" alt="DoorDash All The Ads">
@@ -1437,7 +1461,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="work/work-dwb.html" class="plate rv">
+                <a href="work/work-dwb.html" class="plate rv" data-agency="gsp">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 04</span>
                         <img loading="lazy" src="brand/dwb/car 5.jpg" alt="Driving While Black — DWB Concept Car" style="object-position: center 40%;">
@@ -1454,7 +1478,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="work/work-gatorade.html#nfl" class="plate rv rv-d1">
+                <a href="work/work-gatorade-reasons-not-to-quit.html" class="plate rv rv-d1" data-agency="tbwa">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 05</span>
                         <div class="plate-media-brand" style="background: linear-gradient(140deg, #04220f 0%, #0a3d1e 55%, #04220f 100%);"><div style="text-align:center;"><span style="display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.9rem;color:#F5F1E8;line-height:1.2;">All The Reasons<br>Not To Quit</span><span style="display:block;margin-top:10px;font-family:var(--mono);font-size:0.56rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(150,235,110,0.6);">Gatorade × NFL</span></div></div>
@@ -1465,7 +1489,7 @@
                         <p class="plate-desc">An NFL season platform built on every reason athletes have to quit — and why they don&rsquo;t.</p>
                     </div>
                 </a>
-                <a href="work/work-samadams.html" class="plate rv">
+                <a href="work/work-samadams.html" class="plate rv" data-agency="gsp">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 06</span>
                         <img loading="lazy" src="https://goodbysilverstein.com/public/upload/work/images/desktop/63e1579848ae6.jpg" alt="Samuel Adams Brighter Boston">
@@ -1479,7 +1503,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="work/work-sephora.html#holiday" class="plate rv rv-d1">
+                <a href="work/work-sephora-dont-overthink-it.html" class="plate rv rv-d1" data-agency="tbwa">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 07</span>
                         <img loading="lazy" src="brand/sephora/holiday-2024/hqdefault.jpg" alt="Sephora Don't Overthink It">
@@ -1490,7 +1514,7 @@
                         <p class="plate-desc">Holiday gifting made effortless — directed by Taika Waititi.</p>
                     </div>
                 </a>
-                <a href="work/work-xfinity.html" class="plate rv">
+                <a href="work/work-xfinity.html" class="plate rv" data-agency="gsp">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 08</span>
                         <div class="plate-media-brand" style="background: linear-gradient(135deg, #10101c 0%, #1c1c3a 100%);"><div style="text-align:center;"><span style="display:block; font-family:var(--sans); font-weight:700; font-size:2.6rem; color:#F5F1E8; letter-spacing:-0.02em;">Xfinity</span><span style="display:block; margin-top:8px; font-family:var(--mono); font-size:0.6rem; letter-spacing:0.3em; text-transform:uppercase; color:rgba(245,241,232,0.55);">The Greatest Gift</span></div></div>
@@ -1504,7 +1528,18 @@
                         </div>
                     </div>
                 </a>
-                <a href="work/work-gatorade.html#football" class="plate rv hidden-card">
+                <a href="work/work-preach.html" class="plate rv" data-agency="gsp">
+                    <div class="plate-media">
+                        <span class="plate-index">PLATE 19</span>
+                        <img loading="lazy" src="https://img.youtube.com/vi/HkPDeyQ3lHY/maxresdefault.jpg" alt="Preach — Instagram Game" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/HkPDeyQ3lHY/hqdefault.jpg';">
+                    </div>
+                    <div class="plate-body">
+                        <span class="plate-tag">Built In-House — Not a Client Brief • Co-Creator, GS&amp;P BLK</span>
+                        <h3 class="plate-title">Preach <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></h3>
+                        <p class="plate-desc">An Instagram game that opened a window into the real Black experience. Something we built, not something we were briefed on — created by GS&amp;P BLK for Black History Month 2021.</p>
+                    </div>
+                </a>
+                <a href="work/work-gatorade-trust-whats-inside.html" class="plate rv hidden-card" data-agency="tbwa">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 09</span>
                         <img loading="lazy" src="https://digitalassets.pepsico.com/transform/f4614c66-fc71-4228-a376-ab0eb41d0467/gatorade-global-football-campaign-header?w=1920&amp;q=75" alt="Gatorade Trust What's Inside">
@@ -1515,7 +1550,7 @@
                         <p class="plate-desc">Gatorade&rsquo;s global football platform — fuel and belief, built from the inside out.</p>
                     </div>
                 </a>
-                <a href="work/work-gatorade.html#lower-sugar" class="plate rv rv-d1 hidden-card">
+                <a href="work/work-gatorade-lower-sugar.html" class="plate rv rv-d1 hidden-card" data-agency="tbwa">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 10</span>
                         <img loading="lazy" src="https://digitalassets.pepsico.com/transform/2e4e68a6-7edf-45d3-9211-5af269317d69/gatorade-lower-sugar-hero?w=1920&amp;q=75" alt="Gatorade Lower Sugar">
@@ -1526,7 +1561,7 @@
                         <p class="plate-desc">Introducing Gatorade Lower Sugar — all the fuel, less of the sugar.</p>
                     </div>
                 </a>
-                <a href="work/work-gatorade.html#body-of-science" class="plate rv hidden-card">
+                <a href="work/work-gatorade-body-of-science.html" class="plate rv hidden-card" data-agency="tbwa">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 11</span>
                         <img loading="lazy" src="https://www.datocms-assets.com/101859/1777666166-venus_bos_desktop.jpg" alt="Gatorade Body of Science">
@@ -1537,7 +1572,7 @@
                         <p class="plate-desc">Gatorade&rsquo;s sports-science story, told through the athletes who live it.</p>
                     </div>
                 </a>
-                <a href="work/work-sephora.html#skincare" class="plate rv rv-d1 hidden-card">
+                <a href="work/work-sephora-skin-obsessed.html" class="plate rv rv-d1 hidden-card" data-agency="tbwa">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 12</span>
                         <img loading="lazy" src="brand/sephora/skincare-2025/Sephora-Skincare.NhwUe2HM.png" alt="Sephora Skin Obsessed">
@@ -1548,7 +1583,7 @@
                         <p class="plate-desc">Sephora&rsquo;s skincare platform, built for the skin-obsessed.</p>
                     </div>
                 </a>
-                <a href="work/work-directv.html#emmys-hijack" class="plate rv hidden-card">
+                <a href="work/work-directv-emmys-hijack.html" class="plate rv hidden-card" data-agency="tbwa">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 13</span>
                         <img loading="lazy" src="brand/directv/ooh-hijack/LA-48_DIRECTV_9.16.2025-2.jpg" alt="DIRECTV Emmys Hijack">
@@ -1559,7 +1594,7 @@
                         <p class="plate-desc">An OOH hijack of TV&rsquo;s biggest night — DIRECTV showing up where the Emmys were already looking.</p>
                     </div>
                 </a>
-                <a href="work/work-directv.html#like-never-seen" class="plate rv rv-d1 hidden-card">
+                <a href="work/work-directv-like-never-seen.html" class="plate rv rv-d1 hidden-card" data-agency="tbwa">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 14</span>
                         <img loading="lazy" src="brand/directv/directv-rebranding-bringing-flexibility-2025.webp" alt="DIRECTV Like Never Seen">
@@ -1570,7 +1605,7 @@
                         <p class="plate-desc">The rebrand platform — DIRECTV like you&rsquo;ve never seen it.</p>
                     </div>
                 </a>
-                <a href="work/work-directv.html#nothing-on-roof" class="plate rv hidden-card">
+                <a href="work/work-directv-nothing-on-roof.html" class="plate rv hidden-card" data-agency="tbwa">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 15</span>
                         <div class="plate-media-brand" style="background: linear-gradient(135deg, #0a0e1c 0%, #12203c 100%);"><div style="text-align:center;"><span style="display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.9rem;color:#F5F1E8;line-height:1.2;">Nothing On<br>Your Roof</span><span style="display:block;margin-top:10px;font-family:var(--mono);font-size:0.56rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(120,150,255,0.6);">DIRECTV</span></div></div>
@@ -1581,7 +1616,7 @@
                         <p class="plate-desc">No dish. No clutter. The satellite company, minus the satellite.</p>
                     </div>
                 </a>
-                <a href="work/work-mlb.html" class="plate rv rv-d1 hidden-card">
+                <a href="work/work-mlb.html" class="plate rv rv-d1 hidden-card" data-agency="wk">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 16</span>
                         <img loading="lazy" src="brand/mlb/mlb-hero.jpg" alt="MLB — Baseball Is Something Else">
@@ -1592,7 +1627,7 @@
                         <p class="plate-desc">MLB&rsquo;s first brand platform in 8 years. Gen Z favorability up 10 points. The campaign that brought a new generation to the ballpark.</p>
                     </div>
                 </a>
-                <a href="work/work-bmw.html" class="plate rv hidden-card">
+                <a href="work/work-bmw.html" class="plate rv hidden-card" data-agency="gsp">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 17</span>
                         <img loading="lazy" src="brand/bmw/supporting/Hero alt.jpg" alt="BMW Zeus &amp; Hera">
@@ -1603,7 +1638,7 @@
                         <p class="plate-desc">Arnold &amp; Salma. The ultimate electric driving machine.</p>
                     </div>
                 </a>
-                <a href="work/work-califia.html" class="plate rv rv-d1 hidden-card">
+                <a href="work/work-califia.html" class="plate rv rv-d1 hidden-card" data-agency="gsp">
                     <div class="plate-media">
                         <span class="plate-index">PLATE 18</span>
                         <img loading="lazy" src="https://goodbysilverstein.com/public/upload/work/images/desktop/6125b3d544db1.jpg" alt="Califia Farms Calilujah">
@@ -1628,22 +1663,28 @@
     <!-- Breaker: podcasts (blue) -->
     <div class="brk brk-blue" aria-hidden="true">
         <div class="brk-track">
-            <span class="brk-item"><span class="hi">The Eclectic Polymath</span>&nbsp;— 56 Episodes</span>
-            <span class="brk-item"><span class="hi">Approachable AI</span>&nbsp;— 2026</span>
-            <span class="brk-item"><span class="hi">Solo Audio</span>&nbsp;— 4 Shows</span>
-            <span class="brk-item"><span class="hi">Deep Dives</span>&nbsp;— Weekly</span>
-            <span class="brk-item"><span class="hi">Curious &amp; Creative</span>&nbsp;— Now</span>
-            <span class="brk-item"><span class="hi">Dominate The Decade</span>&nbsp;— 3 Seasons</span>
-            <span class="brk-item"><span class="hi">Curiosity Without Borders</span></span>
-            <span class="brk-item"><span class="hi">No Niche</span>&nbsp;— No Limits</span>
-            <span class="brk-item"><span class="hi">The Eclectic Polymath</span>&nbsp;— 56 Episodes</span>
-            <span class="brk-item"><span class="hi">Approachable AI</span>&nbsp;— 2026</span>
-            <span class="brk-item"><span class="hi">Solo Audio</span>&nbsp;— 4 Shows</span>
-            <span class="brk-item"><span class="hi">Deep Dives</span>&nbsp;— Weekly</span>
-            <span class="brk-item"><span class="hi">Curious &amp; Creative</span>&nbsp;— Now</span>
-            <span class="brk-item"><span class="hi">Dominate The Decade</span>&nbsp;— 3 Seasons</span>
-            <span class="brk-item"><span class="hi">Curiosity Without Borders</span></span>
-            <span class="brk-item"><span class="hi">No Niche</span>&nbsp;— No Limits</span>
+            <span class="brk-item"><span class="hi">THE ECLECTIC POLYMATH</span> <span class="up">▲</span> +5.6%</span>
+            <span class="brk-item"><span class="hi">CURIOSITY</span> <span class="up">▲</span> +∞</span>
+            <span class="brk-item"><span class="hi">APPROACHABLE AI</span> <span class="up">▲</span> +4.2%</span>
+            <span class="brk-item"><span class="hi">DEEP DIVES</span> <span class="up">▲</span> +3.3%</span>
+            <span class="brk-item"><span class="hi">NO NICHE</span> <span class="up">▲</span> +2.7%</span>
+            <span class="brk-item"><span class="hi">CURIOUS & CREATIVE</span> <span class="up">▲</span> +2.6%</span>
+            <span class="brk-item"><span class="hi">THE ARCHIVE</span> <span class="up">▲</span> +1.4%</span>
+            <span class="brk-item"><span class="hi">SMALL TALK</span> <span class="down">▼</span> -3.2%</span>
+            <span class="brk-item"><span class="hi">56 EPISODES</span> <span class="up">▲</span> +5.6%</span>
+            <span class="brk-item"><span class="hi">POWER & CULTURE</span> <span class="up">▲</span> +4.0%</span>
+            <span class="brk-item"><span class="hi">HISTORY</span> <span class="up">▲</span> +3.9%</span>
+            <span class="brk-item"><span class="hi">THE ECLECTIC POLYMATH</span> <span class="up">▲</span> +5.6%</span>
+            <span class="brk-item"><span class="hi">CURIOSITY</span> <span class="up">▲</span> +∞</span>
+            <span class="brk-item"><span class="hi">APPROACHABLE AI</span> <span class="up">▲</span> +4.2%</span>
+            <span class="brk-item"><span class="hi">DEEP DIVES</span> <span class="up">▲</span> +3.3%</span>
+            <span class="brk-item"><span class="hi">NO NICHE</span> <span class="up">▲</span> +2.7%</span>
+            <span class="brk-item"><span class="hi">CURIOUS & CREATIVE</span> <span class="up">▲</span> +2.6%</span>
+            <span class="brk-item"><span class="hi">THE ARCHIVE</span> <span class="up">▲</span> +1.4%</span>
+            <span class="brk-item"><span class="hi">SMALL TALK</span> <span class="down">▼</span> -3.2%</span>
+            <span class="brk-item"><span class="hi">56 EPISODES</span> <span class="up">▲</span> +5.6%</span>
+            <span class="brk-item"><span class="hi">POWER & CULTURE</span> <span class="up">▲</span> +4.0%</span>
+            <span class="brk-item"><span class="hi">HISTORY</span> <span class="up">▲</span> +3.9%</span>
         </div>
     </div>
 
@@ -1724,26 +1765,30 @@
     <!-- Breaker: AI (ink) -->
     <div class="brk brk-ink" aria-hidden="true">
         <div class="brk-track">
-            <span class="brk-item"><span class="hi">Claude Code</span>&nbsp;— Daily Driver</span>
-            <span class="brk-item"><span class="hi">Grandmaster</span>&nbsp;— Live</span>
-            <span class="brk-item"><span class="hi">Life Gamified</span>&nbsp;— Quest Active</span>
-            <span class="brk-item"><span class="hi">The Man &amp; The Machine</span>&nbsp;— Real-Time</span>
-            <span class="brk-item"><span class="hi">Google AI Studio</span>&nbsp;— 7 Apps</span>
-            <span class="brk-item"><span class="hi">React + TypeScript</span>&nbsp;— Built</span>
-            <span class="brk-item"><span class="hi">Chess.com API</span>&nbsp;— Integrated</span>
-            <span class="brk-item"><span class="hi">AI Builder</span>&nbsp;— 2026</span>
-            <span class="brk-item"><span class="hi">Web Audio API</span>&nbsp;— Live</span>
-            <span class="brk-item"><span class="hi">github.com/jgerms20</span>&nbsp;— Active</span>
-            <span class="brk-item"><span class="hi">Claude Code</span>&nbsp;— Daily Driver</span>
-            <span class="brk-item"><span class="hi">Grandmaster</span>&nbsp;— Live</span>
-            <span class="brk-item"><span class="hi">Life Gamified</span>&nbsp;— Quest Active</span>
-            <span class="brk-item"><span class="hi">The Man &amp; The Machine</span>&nbsp;— Real-Time</span>
-            <span class="brk-item"><span class="hi">Google AI Studio</span>&nbsp;— 7 Apps</span>
-            <span class="brk-item"><span class="hi">React + TypeScript</span>&nbsp;— Built</span>
-            <span class="brk-item"><span class="hi">Chess.com API</span>&nbsp;— Integrated</span>
-            <span class="brk-item"><span class="hi">AI Builder</span>&nbsp;— 2026</span>
-            <span class="brk-item"><span class="hi">Web Audio API</span>&nbsp;— Live</span>
-            <span class="brk-item"><span class="hi">github.com/jgerms20</span>&nbsp;— Active</span>
+            <span class="brk-item"><span class="hi">CLAUDE CODE</span> <span class="up">▲</span> +9.4%</span>
+            <span class="brk-item"><span class="hi">CODEX</span> <span class="up">▲</span> +6.8%</span>
+            <span class="brk-item"><span class="hi">GEMINI</span> <span class="up">▲</span> +5.2%</span>
+            <span class="brk-item"><span class="hi">THE FUTURE</span> <span class="up">▲</span> +8.0%</span>
+            <span class="brk-item"><span class="hi">GRANDMASTER</span> <span class="up">▲</span> +4.1%</span>
+            <span class="brk-item"><span class="hi">LIFE GAMIFIED</span> <span class="up">▲</span> +3.7%</span>
+            <span class="brk-item"><span class="hi">AI BUILDER</span> <span class="up">▲</span> +7.7%</span>
+            <span class="brk-item"><span class="hi">BUSYWORK</span> <span class="down">▼</span> -6.0%</span>
+            <span class="brk-item"><span class="hi">FRONTIER MODELS</span> <span class="up">▲</span> +6.6%</span>
+            <span class="brk-item"><span class="hi">SHIPPING</span> <span class="up">▲</span> +5.5%</span>
+            <span class="brk-item"><span class="hi">THE MACHINE</span> <span class="up">▲</span> +4.9%</span>
+            <span class="brk-item"><span class="hi">REACT + TS</span> <span class="up">▲</span> +2.8%</span>
+            <span class="brk-item"><span class="hi">CLAUDE CODE</span> <span class="up">▲</span> +9.4%</span>
+            <span class="brk-item"><span class="hi">CODEX</span> <span class="up">▲</span> +6.8%</span>
+            <span class="brk-item"><span class="hi">GEMINI</span> <span class="up">▲</span> +5.2%</span>
+            <span class="brk-item"><span class="hi">THE FUTURE</span> <span class="up">▲</span> +8.0%</span>
+            <span class="brk-item"><span class="hi">GRANDMASTER</span> <span class="up">▲</span> +4.1%</span>
+            <span class="brk-item"><span class="hi">LIFE GAMIFIED</span> <span class="up">▲</span> +3.7%</span>
+            <span class="brk-item"><span class="hi">AI BUILDER</span> <span class="up">▲</span> +7.7%</span>
+            <span class="brk-item"><span class="hi">BUSYWORK</span> <span class="down">▼</span> -6.0%</span>
+            <span class="brk-item"><span class="hi">FRONTIER MODELS</span> <span class="up">▲</span> +6.6%</span>
+            <span class="brk-item"><span class="hi">SHIPPING</span> <span class="up">▲</span> +5.5%</span>
+            <span class="brk-item"><span class="hi">THE MACHINE</span> <span class="up">▲</span> +4.9%</span>
+            <span class="brk-item"><span class="hi">REACT + TS</span> <span class="up">▲</span> +2.8%</span>
         </div>
     </div>
 
@@ -1966,24 +2011,28 @@
     <!-- Breaker: culture -->
     <div class="brk" aria-hidden="true">
         <div class="brk-track">
-            <span class="brk-item"><span class="hi">Preach</span>&nbsp;— GS&amp;P BLK</span>
-            <span class="brk-item"><span class="hi">Black History Month</span>&nbsp;— 2021</span>
-            <span class="brk-item"><span class="hi">Agency Life</span>&nbsp;— 3 Cities</span>
-            <span class="brk-item"><span class="hi">Independent Practice</span>&nbsp;— Selective</span>
-            <span class="brk-item"><span class="hi">HIIKE</span>&nbsp;— Film Festival</span>
-            <span class="brk-item"><span class="hi">U&amp;AI</span>&nbsp;— Fractional CMO</span>
-            <span class="brk-item"><span class="hi">Digital Task Brief</span>&nbsp;— Open Source</span>
-            <span class="brk-item"><span class="hi">Early-Stage Advisory</span>&nbsp;— Now</span>
-            <span class="brk-item"><span class="hi">Culture Work</span>&nbsp;— Always</span>
-            <span class="brk-item"><span class="hi">Preach</span>&nbsp;— GS&amp;P BLK</span>
-            <span class="brk-item"><span class="hi">Black History Month</span>&nbsp;— 2021</span>
-            <span class="brk-item"><span class="hi">Agency Life</span>&nbsp;— 3 Cities</span>
-            <span class="brk-item"><span class="hi">Independent Practice</span>&nbsp;— Selective</span>
-            <span class="brk-item"><span class="hi">HIIKE</span>&nbsp;— Film Festival</span>
-            <span class="brk-item"><span class="hi">U&amp;AI</span>&nbsp;— Fractional CMO</span>
-            <span class="brk-item"><span class="hi">Digital Task Brief</span>&nbsp;— Open Source</span>
-            <span class="brk-item"><span class="hi">Early-Stage Advisory</span>&nbsp;— Now</span>
-            <span class="brk-item"><span class="hi">Culture Work</span>&nbsp;— Always</span>
+            <span class="brk-item"><span class="hi">PREACH</span> <span class="up">▲</span> +5.0%</span>
+            <span class="brk-item"><span class="hi">GS&P BLK</span> <span class="up">▲</span> +4.2%</span>
+            <span class="brk-item"><span class="hi">BUILT NOT BRIEFED</span> <span class="up">▲</span> +6.0%</span>
+            <span class="brk-item"><span class="hi">CULTURE</span> <span class="up">▲</span> +4.8%</span>
+            <span class="brk-item"><span class="hi">INDEPENDENT PRACTICE</span> <span class="up">▲</span> +3.4%</span>
+            <span class="brk-item"><span class="hi">HIIKE</span> <span class="up">▲</span> +2.9%</span>
+            <span class="brk-item"><span class="hi">U&AI</span> <span class="up">▲</span> +3.1%</span>
+            <span class="brk-item"><span class="hi">THE GATEKEEPER</span> <span class="down">▼</span> -2.0%</span>
+            <span class="brk-item"><span class="hi">EARLY-STAGE ADVISORY</span> <span class="up">▲</span> +3.6%</span>
+            <span class="brk-item"><span class="hi">DIGITAL TASK BRIEF</span> <span class="up">▲</span> +2.2%</span>
+            <span class="brk-item"><span class="hi">CO-CREATION</span> <span class="up">▲</span> +4.4%</span>
+            <span class="brk-item"><span class="hi">PREACH</span> <span class="up">▲</span> +5.0%</span>
+            <span class="brk-item"><span class="hi">GS&P BLK</span> <span class="up">▲</span> +4.2%</span>
+            <span class="brk-item"><span class="hi">BUILT NOT BRIEFED</span> <span class="up">▲</span> +6.0%</span>
+            <span class="brk-item"><span class="hi">CULTURE</span> <span class="up">▲</span> +4.8%</span>
+            <span class="brk-item"><span class="hi">INDEPENDENT PRACTICE</span> <span class="up">▲</span> +3.4%</span>
+            <span class="brk-item"><span class="hi">HIIKE</span> <span class="up">▲</span> +2.9%</span>
+            <span class="brk-item"><span class="hi">U&AI</span> <span class="up">▲</span> +3.1%</span>
+            <span class="brk-item"><span class="hi">THE GATEKEEPER</span> <span class="down">▼</span> -2.0%</span>
+            <span class="brk-item"><span class="hi">EARLY-STAGE ADVISORY</span> <span class="up">▲</span> +3.6%</span>
+            <span class="brk-item"><span class="hi">DIGITAL TASK BRIEF</span> <span class="up">▲</span> +2.2%</span>
+            <span class="brk-item"><span class="hi">CO-CREATION</span> <span class="up">▲</span> +4.4%</span>
         </div>
     </div>
 
@@ -2000,7 +2049,7 @@
                 <div class="ch-meta">Agency, Culture &amp;<br>Independent Work</div>
             </div>
 
-            <p class="ch-intro rv">Not client briefs — things I built. A selective independent advisory practice, plus culture projects co-created inside agency walls on our own time.</p>
+            <p class="ch-intro rv">Not client briefs — a selective independent advisory practice, plus the open-source Digital Task Brief.</p>
             <div class="rv" style="margin: calc(-1 * var(--s5)) 0 var(--s5);">
                 <a href="https://github.com/jgerms20/Digital-Task-Brief" target="_blank" rel="noopener" class="rule-link">Digital Task Brief <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
             </div>
@@ -2090,44 +2139,34 @@
                 </div>
             </div>
         </div>
-
-<!-- Preach -->
-                <a href="work/work-preach.html" class="plate rv" style="grid-column: span 12;">
-                    <div class="plate-media">
-                        <span class="plate-index">BUILT 01</span>
-                        <div class="plate-media-brand" style="aspect-ratio: 21/9; background: linear-gradient(150deg, #0d0a18 0%, #120c1e 50%, #140c08 100%); position:relative;">
-                            <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 30% 50%, rgba(107,70,193,0.14) 0%, transparent 50%), radial-gradient(circle at 70% 30%, rgba(201,168,76,0.1) 0%, transparent 50%);"></div>
-                            <span style="font-family:var(--serif);font-size:clamp(2.4rem,6vw,4.5rem);font-weight:500;color:rgba(201,168,76,0.9);letter-spacing:0.02em;font-style:italic;position:relative;">Preach.</span>
-                        </div>
-                    </div>
-                    <div class="plate-body">
-                        <span class="plate-tag">Built In-House — Not a Client Brief • Co-Creator, GS&amp;P BLK</span>
-                        <h3 class="plate-title">Preach <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></h3>
-                        <p class="plate-desc">An Instagram game that opened a window into the real Black experience. Something we built, not something we were briefed on — created by GS&amp;P BLK for Black History Month 2021.</p>
-                    </div>
-                </a>
-            </section>
+    </section>
 
 
     <!-- Breaker: darkroom (ink) -->
     <div class="brk brk-ink" aria-hidden="true">
         <div class="brk-track">
-            <span class="brk-item"><span class="hi">Photography</span>&nbsp;— Sony A7</span>
-            <span class="brk-item"><span class="hi">Portraits</span>&nbsp;— With Presence</span>
-            <span class="brk-item"><span class="hi">Landscape</span>&nbsp;— That Breathes</span>
-            <span class="brk-item"><span class="hi">Fashion</span>&nbsp;— As Tension</span>
-            <span class="brk-item"><span class="hi">Events</span>&nbsp;— In Motion</span>
-            <span class="brk-item"><span class="hi">Travel</span>&nbsp;— On the Road</span>
-            <span class="brk-item"><span class="hi">Every Frame</span>&nbsp;— A Decision</span>
-            <span class="brk-item"><span class="hi">90+ Images</span>&nbsp;— 5 Categories</span>
-            <span class="brk-item"><span class="hi">Photography</span>&nbsp;— Sony A7</span>
-            <span class="brk-item"><span class="hi">Portraits</span>&nbsp;— With Presence</span>
-            <span class="brk-item"><span class="hi">Landscape</span>&nbsp;— That Breathes</span>
-            <span class="brk-item"><span class="hi">Fashion</span>&nbsp;— As Tension</span>
-            <span class="brk-item"><span class="hi">Events</span>&nbsp;— In Motion</span>
-            <span class="brk-item"><span class="hi">Travel</span>&nbsp;— On the Road</span>
-            <span class="brk-item"><span class="hi">Every Frame</span>&nbsp;— A Decision</span>
-            <span class="brk-item"><span class="hi">90+ Images</span>&nbsp;— 5 Categories</span>
+            <span class="brk-item"><span class="hi">PHOTOGRAPHY</span> <span class="up">▲</span> +4.6%</span>
+            <span class="brk-item"><span class="hi">THE LIGHT</span> <span class="up">▲</span> +5.1%</span>
+            <span class="brk-item"><span class="hi">NIKON D500</span> <span class="up">▲</span> +3.8%</span>
+            <span class="brk-item"><span class="hi">PORTRAITS</span> <span class="up">▲</span> +3.2%</span>
+            <span class="brk-item"><span class="hi">35MM FILM</span> <span class="up">▲</span> +4.0%</span>
+            <span class="brk-item"><span class="hi">THE FRAME</span> <span class="up">▲</span> +4.7%</span>
+            <span class="brk-item"><span class="hi">SONY A6100</span> <span class="up">▲</span> +2.9%</span>
+            <span class="brk-item"><span class="hi">THE SNAPSHOT</span> <span class="down">▼</span> -2.4%</span>
+            <span class="brk-item"><span class="hi">LANDSCAPE</span> <span class="up">▲</span> +2.6%</span>
+            <span class="brk-item"><span class="hi">EVERY FRAME A DECISION</span> <span class="up">▲</span> +5.0%</span>
+            <span class="brk-item"><span class="hi">FASHION</span> <span class="up">▲</span> +3.0%</span>
+            <span class="brk-item"><span class="hi">PHOTOGRAPHY</span> <span class="up">▲</span> +4.6%</span>
+            <span class="brk-item"><span class="hi">THE LIGHT</span> <span class="up">▲</span> +5.1%</span>
+            <span class="brk-item"><span class="hi">NIKON D500</span> <span class="up">▲</span> +3.8%</span>
+            <span class="brk-item"><span class="hi">PORTRAITS</span> <span class="up">▲</span> +3.2%</span>
+            <span class="brk-item"><span class="hi">35MM FILM</span> <span class="up">▲</span> +4.0%</span>
+            <span class="brk-item"><span class="hi">THE FRAME</span> <span class="up">▲</span> +4.7%</span>
+            <span class="brk-item"><span class="hi">SONY A6100</span> <span class="up">▲</span> +2.9%</span>
+            <span class="brk-item"><span class="hi">THE SNAPSHOT</span> <span class="down">▼</span> -2.4%</span>
+            <span class="brk-item"><span class="hi">LANDSCAPE</span> <span class="up">▲</span> +2.6%</span>
+            <span class="brk-item"><span class="hi">EVERY FRAME A DECISION</span> <span class="up">▲</span> +5.0%</span>
+            <span class="brk-item"><span class="hi">FASHION</span> <span class="up">▲</span> +3.0%</span>
         </div>
     </div>
 
@@ -2305,18 +2344,26 @@
     <!-- Breaker: on the record -->
     <div class="brk" aria-hidden="true">
         <div class="brk-track">
-            <span class="brk-item"><span class="hi">On the Record</span>&nbsp;— Interviews</span>
-            <span class="brk-item"><span class="hi">Creators</span>&nbsp;— Athletes — Executives</span>
-            <span class="brk-item"><span class="hi">The Questions</span>&nbsp;— That Reveal</span>
-            <span class="brk-item"><span class="hi">Listening</span>&nbsp;— As Strategy</span>
-            <span class="brk-item"><span class="hi">Curiosity</span>&nbsp;— On Tape</span>
-            <span class="brk-item"><span class="hi">Storytelling</span>&nbsp;— First</span>
-            <span class="brk-item"><span class="hi">On the Record</span>&nbsp;— Interviews</span>
-            <span class="brk-item"><span class="hi">Creators</span>&nbsp;— Athletes — Executives</span>
-            <span class="brk-item"><span class="hi">The Questions</span>&nbsp;— That Reveal</span>
-            <span class="brk-item"><span class="hi">Listening</span>&nbsp;— As Strategy</span>
-            <span class="brk-item"><span class="hi">Curiosity</span>&nbsp;— On Tape</span>
-            <span class="brk-item"><span class="hi">Storytelling</span>&nbsp;— First</span>
+            <span class="brk-item"><span class="hi">ON THE RECORD</span> <span class="up">▲</span> +3.9%</span>
+            <span class="brk-item"><span class="hi">THE QUESTION</span> <span class="up">▲</span> +4.5%</span>
+            <span class="brk-item"><span class="hi">LISTENING</span> <span class="up">▲</span> +5.0%</span>
+            <span class="brk-item"><span class="hi">CREATORS</span> <span class="up">▲</span> +3.1%</span>
+            <span class="brk-item"><span class="hi">ATHLETES</span> <span class="up">▲</span> +2.8%</span>
+            <span class="brk-item"><span class="hi">THE PAUSE</span> <span class="up">▲</span> +4.2%</span>
+            <span class="brk-item"><span class="hi">SMALL TALK</span> <span class="down">▼</span> -3.0%</span>
+            <span class="brk-item"><span class="hi">CULTURAL VOICES</span> <span class="up">▲</span> +3.6%</span>
+            <span class="brk-item"><span class="hi">CURIOSITY</span> <span class="up">▲</span> +∞</span>
+            <span class="brk-item"><span class="hi">STORYTELLING</span> <span class="up">▲</span> +4.8%</span>
+            <span class="brk-item"><span class="hi">ON THE RECORD</span> <span class="up">▲</span> +3.9%</span>
+            <span class="brk-item"><span class="hi">THE QUESTION</span> <span class="up">▲</span> +4.5%</span>
+            <span class="brk-item"><span class="hi">LISTENING</span> <span class="up">▲</span> +5.0%</span>
+            <span class="brk-item"><span class="hi">CREATORS</span> <span class="up">▲</span> +3.1%</span>
+            <span class="brk-item"><span class="hi">ATHLETES</span> <span class="up">▲</span> +2.8%</span>
+            <span class="brk-item"><span class="hi">THE PAUSE</span> <span class="up">▲</span> +4.2%</span>
+            <span class="brk-item"><span class="hi">SMALL TALK</span> <span class="down">▼</span> -3.0%</span>
+            <span class="brk-item"><span class="hi">CULTURAL VOICES</span> <span class="up">▲</span> +3.6%</span>
+            <span class="brk-item"><span class="hi">CURIOSITY</span> <span class="up">▲</span> +∞</span>
+            <span class="brk-item"><span class="hi">STORYTELLING</span> <span class="up">▲</span> +4.8%</span>
         </div>
     </div>
 
@@ -2399,18 +2446,28 @@
     <!-- Breaker: contact (blue) -->
     <div class="brk brk-blue" aria-hidden="true">
         <div class="brk-track">
-            <span class="brk-item"><span class="hi">Available</span>&nbsp;— For Select Projects</span>
-            <span class="brk-item"><span class="hi">Brand Strategy</span>&nbsp;— Creative Direction</span>
-            <span class="brk-item"><span class="hi">AI-Driven Marketing</span>&nbsp;— Workflows</span>
-            <span class="brk-item"><span class="hi">Entertainment</span>&nbsp;— Film — IP</span>
-            <span class="brk-item"><span class="hi">Los Angeles</span>&nbsp;— Worldwide</span>
-            <span class="brk-item"><span class="hi">Say Hello</span>&nbsp;— Jgerms20@gmail.com</span>
-            <span class="brk-item"><span class="hi">Available</span>&nbsp;— For Select Projects</span>
-            <span class="brk-item"><span class="hi">Brand Strategy</span>&nbsp;— Creative Direction</span>
-            <span class="brk-item"><span class="hi">AI-Driven Marketing</span>&nbsp;— Workflows</span>
-            <span class="brk-item"><span class="hi">Entertainment</span>&nbsp;— Film — IP</span>
-            <span class="brk-item"><span class="hi">Los Angeles</span>&nbsp;— Worldwide</span>
-            <span class="brk-item"><span class="hi">Say Hello</span>&nbsp;— Jgerms20@gmail.com</span>
+            <span class="brk-item"><span class="hi">AVAILABLE</span> <span class="up">▲</span> +7.0%</span>
+            <span class="brk-item"><span class="hi">AI-ENHANCED STRATEGY</span> <span class="up">▲</span> +8.2%</span>
+            <span class="brk-item"><span class="hi">BRAND STRATEGY</span> <span class="up">▲</span> +4.6%</span>
+            <span class="brk-item"><span class="hi">CREATIVE DIRECTION</span> <span class="up">▲</span> +4.1%</span>
+            <span class="brk-item"><span class="hi">LOS ANGELES</span> <span class="up">▲</span> +3.3%</span>
+            <span class="brk-item"><span class="hi">ENTERTAINMENT</span> <span class="up">▲</span> +3.8%</span>
+            <span class="brk-item"><span class="hi">THE NEXT THING</span> <span class="up">▲</span> +6.4%</span>
+            <span class="brk-item"><span class="hi">HESITATION</span> <span class="down">▼</span> -5.0%</span>
+            <span class="brk-item"><span class="hi">PARTNERSHIPS</span> <span class="up">▲</span> +3.0%</span>
+            <span class="brk-item"><span class="hi">SAY HELLO</span> <span class="up">▲</span> +9.9%</span>
+            <span class="brk-item"><span class="hi">NEW VENTURES</span> <span class="up">▲</span> +4.7%</span>
+            <span class="brk-item"><span class="hi">AVAILABLE</span> <span class="up">▲</span> +7.0%</span>
+            <span class="brk-item"><span class="hi">AI-ENHANCED STRATEGY</span> <span class="up">▲</span> +8.2%</span>
+            <span class="brk-item"><span class="hi">BRAND STRATEGY</span> <span class="up">▲</span> +4.6%</span>
+            <span class="brk-item"><span class="hi">CREATIVE DIRECTION</span> <span class="up">▲</span> +4.1%</span>
+            <span class="brk-item"><span class="hi">LOS ANGELES</span> <span class="up">▲</span> +3.3%</span>
+            <span class="brk-item"><span class="hi">ENTERTAINMENT</span> <span class="up">▲</span> +3.8%</span>
+            <span class="brk-item"><span class="hi">THE NEXT THING</span> <span class="up">▲</span> +6.4%</span>
+            <span class="brk-item"><span class="hi">HESITATION</span> <span class="down">▼</span> -5.0%</span>
+            <span class="brk-item"><span class="hi">PARTNERSHIPS</span> <span class="up">▲</span> +3.0%</span>
+            <span class="brk-item"><span class="hi">SAY HELLO</span> <span class="up">▲</span> +9.9%</span>
+            <span class="brk-item"><span class="hi">NEW VENTURES</span> <span class="up">▲</span> +4.7%</span>
         </div>
     </div>
 
@@ -2442,6 +2499,7 @@
                 </div>
                 <div>
                     <span class="t-mono" style="color:var(--blue); display:block; padding-bottom:12px; border-bottom:1.5px solid var(--ink); margin-bottom:6px;">Available For</span>
+                    <div class="diet-note" style="padding:10px 0; border-bottom:1px solid var(--rule-soft);">AI-enhanced creative strategy</div>
                     <div class="diet-note" style="padding:10px 0; border-bottom:1px solid var(--rule-soft);">Freelance &amp; consulting — strategy, AI, creative direction</div>
                     <div class="diet-note" style="padding:10px 0; border-bottom:1px solid var(--rule-soft);">Full-time at the intersection of brand, entertainment &amp; tech</div>
                     <div class="diet-note" style="padding:10px 0; border-bottom:1px solid var(--rule-soft);">Photography — commissions &amp; collaborations</div>
@@ -2648,14 +2706,71 @@
         (function () {
             const slides = document.querySelectorAll('#heroRotator .rot-slide');
             if (slides.length < 2) return;
+            const captions = [
+                ['35mm Film', 'Lab Scan'],
+                ['Jul 2025', 'Sony a6100'],
+                ['Jul 2024', 'iPhone'],
+                ['Self', 'Archive'],
+                ['Nov 2022', 'Nikon D500'],
+                ['Jan 2023', 'Nikon D500'],
+                ['Apr 2025', 'Sony a6100'],
+                ['Mar 2024', 'Nikon D500'],
+                ['Aug 2024', 'Nikon D500']
+            ];
+            const capLeft = document.getElementById('heroCapLeft');
+            const capRight = document.getElementById('heroCapRight');
             let i = 0;
             setTimeout(() => {
                 setInterval(() => {
                     slides[i].style.opacity = '0';
                     i = (i + 1) % slides.length;
                     slides[i].style.opacity = '1';
+                    const cap = captions[i];
+                    if (cap && capLeft && capRight) {
+                        capLeft.textContent = cap[0];
+                        capRight.textContent = cap[1];
+                    }
                 }, 4000);
             }, 500);
+        })();
+
+        // ---- Campaign agency filter ----
+        (function () {
+            const filterBtns = document.querySelectorAll('.camp-filter');
+            const grid = document.querySelector('#work .plates');
+            if (!filterBtns.length || !grid) return;
+            const allPlates = Array.from(grid.querySelectorAll(':scope > .plate'));
+            const seeLessBtn = document.getElementById('see-less-btn');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const agency = btn.dataset.agency;
+
+                    if (agency === 'all') {
+                        const collapsed = seeLessBtn && seeLessBtn.dataset.collapsed === 'true';
+                        allPlates.forEach(p => {
+                            const shouldHide = collapsed && p.classList.contains('hidden-card');
+                            p.style.opacity = shouldHide ? '0' : '1';
+                            p.style.display = shouldHide ? 'none' : '';
+                        });
+                        if (seeLessBtn) seeLessBtn.parentElement.style.display = '';
+                    } else {
+                        if (seeLessBtn) seeLessBtn.parentElement.style.display = 'none';
+                        allPlates.forEach(p => {
+                            const match = p.dataset.agency === agency;
+                            if (match) {
+                                p.style.display = '';
+                                requestAnimationFrame(() => { p.style.opacity = '1'; });
+                            } else {
+                                p.style.opacity = '0';
+                                setTimeout(() => { p.style.display = 'none'; }, 250);
+                            }
+                        });
+                    }
+                });
+            });
         })();
 
         // ---- See More / See Less (work) ----
