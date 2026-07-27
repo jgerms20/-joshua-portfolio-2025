@@ -390,24 +390,32 @@
         // Campaign Toggle Functionality
         const toggleBtns = document.querySelectorAll('.toggle-btn');
         const campaignPanels = document.querySelectorAll('.campaign-panel');
+        const validCampaigns = Array.from(toggleBtns).map(b => b.dataset.campaign);
+
+        function selectCampaign(campaign) {
+            const btn = Array.from(toggleBtns).find(b => b.dataset.campaign === campaign);
+            if (!btn) return;
+
+            toggleBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            campaignPanels.forEach(panel => {
+                panel.classList.remove('active');
+                if (panel.id === campaign) {
+                    panel.classList.add('active');
+                }
+            });
+        }
 
         toggleBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const campaign = btn.dataset.campaign;
-                
-                // Update active button
-                toggleBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                // Show corresponding panel
-                campaignPanels.forEach(panel => {
-                    panel.classList.remove('active');
-                    if (panel.id === campaign) {
-                        panel.classList.add('active');
-                    }
-                });
-            });
+            btn.addEventListener('click', () => selectCampaign(btn.dataset.campaign));
         });
+
+        // Deep-link support: #holiday, #skincare
+        const initialCampaign = window.location.hash.replace('#', '');
+        if (validCampaigns.includes(initialCampaign)) {
+            selectCampaign(initialCampaign);
+        }
     </script>
 
 </body>
