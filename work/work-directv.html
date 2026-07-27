@@ -900,16 +900,69 @@
                     if (on) p.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
                 });
             }
+            // Per-campaign hero treatment for direct/deep links.
+            const campaignMeta = {
+                'emmys-hijack': {
+                    name: 'The Emmys Hijack',
+                    sub: 'Real-time OOH across Hollywood that updated within minutes of each Emmy win.',
+                    plate: 'PLATE 01 — EMMYS HIJACK',
+                    img: '../brand/directv/ooh-hijack/IMG_8899 2.jpg'
+                },
+                'like-never-seen': {
+                    name: "Like You've Never Seen It",
+                    sub: 'Introducing a streaming-first DIRECTV to an audience who still pictured a satellite dish.',
+                    plate: 'PLATE 01 — LIKE YOU’VE NEVER SEEN IT',
+                    img: 'https://img.youtube.com/vi/TfOH2h2mt1U/maxresdefault.jpg'
+                },
+                'nothing-on-roof': {
+                    name: 'Nothing On Your Roof 2.0',
+                    sub: 'The sequel to the campaign built on one idea: no dish required.',
+                    plate: 'PLATE 01 — NOTHING ON YOUR ROOF',
+                    img: 'https://img.youtube.com/vi/9PhxP53igb4/maxresdefault.jpg'
+                }
+            };
+
+            function focusCampaign(id) {
+                const m = campaignMeta[id];
+                if (!m) return;
+
+                const title = document.querySelector('.ch-title');
+                if (title) title.innerHTML = 'DIRECTV <em>' + m.name + '</em>';
+
+                const sub = document.querySelector('.case-subtitle');
+                if (sub) sub.textContent = m.sub;
+
+                const plateIdx = document.querySelector('.plate-index');
+                if (plateIdx) plateIdx.textContent = m.plate;
+
+                const plateImg = document.querySelector('.plate-media img');
+                if (plateImg) { plateImg.src = m.img; plateImg.alt = 'DIRECTV — ' + m.name; }
+
+                document.title = 'DIRECTV: ' + m.name + ' | Joshua McKenzie German';
+
+                const tabStrip = document.querySelector('.tabs');
+                if (tabStrip) {
+                    tabStrip.innerHTML = '';
+                    const back = document.createElement('a');
+                    back.className = 'tab';
+                    back.href = 'work-directv.html';
+                    back.textContent = '← All DIRECTV campaigns';
+                    tabStrip.appendChild(back);
+                }
+            }
+
             tabs.forEach(t => {
                 t.addEventListener('click', () => {
                     activate(t.dataset.campaign);
                     history.replaceState(null, '', '#' + t.dataset.campaign);
                 });
             });
+
+            // Deep link: show only that campaign.
             const h = location.hash.slice(1);
             if (h && document.getElementById(h)) {
                 activate(h);
-                setTimeout(() => document.getElementById(h).scrollIntoView({ behavior: 'smooth' }), 300);
+                focusCampaign(h);
             }
         })();
     </script>

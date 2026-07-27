@@ -1824,11 +1824,85 @@
                 'football': 'Global Football Campaign — Is It In You? 2026'
             };
 
+            // Per-campaign hero treatment, used when the page is opened
+            // directly on one campaign (deep link from the homepage).
+            const campaignMeta = {
+                'stranger-things': {
+                    name: 'No Ordinary Athlete',
+                    kicker: 'Case Study — Global Entertainment Partnership',
+                    sub: "Gatorade's 1987 jingle, rebuilt for the Upside Down. A Stranger Things partnership that put the brand inside the story instead of beside it.",
+                    plate: 'PLATE 01 — STRANGER THINGS',
+                    img: 'https://digitalassets.pepsico.com/transform/7d988afb-9e59-47f1-93ac-f396b7c63c63/gatorade-stranger-01?w=1920&q=75'
+                },
+                'nfl': {
+                    name: 'All The Reasons Not to Quit',
+                    kicker: 'Case Study — NFL Films Documentary Partnership',
+                    sub: 'A documentary series with NFL Films following a high school team through the longest losing streak in the country.',
+                    plate: 'PLATE 01 — NFL FILMS',
+                    img: 'https://digitalassets.pepsico.com/transform/4ef9a524-7317-45ff-98a3-b9a321351eeb/G-ST_KV_V2_Logos?w=1920&q=75'
+                },
+                'lower-sugar': {
+                    name: 'Lower Sugar',
+                    kicker: 'Case Study — Product Launch',
+                    sub: 'Launching a lower-sugar Gatorade to an audience trained to read "lower sugar" as "watered down."',
+                    plate: 'PLATE 01 — LOWER SUGAR',
+                    img: 'https://digitalassets.pepsico.com/transform/2e4e68a6-7edf-45d3-9211-5af269317d69/gatorade-lower-sugar-hero?w=1920&q=75'
+                },
+                'body-of-science': {
+                    name: 'Body of Science',
+                    kicker: 'Case Study — Sports Science Platform',
+                    sub: 'Only 6% of sports science research focuses on women. A platform built to close that gap, taken on the road for WNBA All-Star Weekend.',
+                    plate: 'PLATE 01 — BODY OF SCIENCE',
+                    img: 'https://www.datocms-assets.com/101859/1777666166-venus_bos_desktop.jpg'
+                },
+                'football': {
+                    name: "Trust What's Inside",
+                    kicker: 'Case Study — Global Football Campaign',
+                    sub: "Gatorade's global football platform, built to travel across markets without losing its edge.",
+                    plate: 'PLATE 01 — GLOBAL FOOTBALL',
+                    img: 'https://digitalassets.pepsico.com/transform/f4614c66-fc71-4228-a376-ab0eb41d0467/gatorade-global-football-camp?w=1920&q=75'
+                }
+            };
+
             function activate(id) {
                 if (!document.getElementById(id)) return;
                 tabs.forEach(t => t.classList.toggle('active', t.dataset.campaign === id));
                 panels.forEach(p => p.classList.toggle('active', p.id === id));
                 if (scopeValue) scopeValue.textContent = scopeTexts[id] || 'Global Partnership';
+            }
+
+            // Rewrite the hero so the page reads as being about ONE campaign.
+            function focusCampaign(id) {
+                const m = campaignMeta[id];
+                if (!m) return;
+
+                const title = document.querySelector('.ch-title');
+                if (title) title.innerHTML = 'Gatorade<br><span class="it accent">' + m.name + '</span>';
+
+                const sub = document.querySelector('.case-subtitle');
+                if (sub) sub.textContent = m.sub;
+
+                const kick = document.querySelector('.case-kicker span:first-child');
+                if (kick) kick.innerHTML = '<span class="mark">Case Study</span> — ' + m.kicker.replace(/^Case Study — /, '');
+
+                const plateIdx = document.querySelector('.plate-index');
+                if (plateIdx) plateIdx.textContent = m.plate;
+
+                const plateImg = document.querySelector('.plate-media img');
+                if (plateImg) { plateImg.src = m.img; plateImg.alt = 'Gatorade — ' + m.name; }
+
+                document.title = 'Gatorade: ' + m.name + ' | Joshua McKenzie German';
+
+                // Single-campaign view: swap the tab strip for a way back to all campaigns.
+                const tabStrip = document.querySelector('.tabs');
+                if (tabStrip) {
+                    tabStrip.innerHTML = '';
+                    const back = document.createElement('a');
+                    back.className = 'tab';
+                    back.href = 'work-gatorade.html';
+                    back.textContent = '← All Gatorade campaigns';
+                    tabStrip.appendChild(back);
+                }
             }
 
             tabs.forEach(btn => {
@@ -1839,11 +1913,11 @@
                 });
             });
 
-            // On load: activate panel matching location.hash, and scroll to it
+            // Deep link (e.g. #stranger-things): show only that campaign.
             const h = location.hash.slice(1);
             if (h && document.getElementById(h)) {
                 activate(h);
-                setTimeout(() => document.getElementById(h).scrollIntoView({ behavior: 'smooth' }), 300);
+                focusCampaign(h);
             }
         })();
     </script>

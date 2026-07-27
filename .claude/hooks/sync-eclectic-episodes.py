@@ -23,6 +23,7 @@ from pathlib import Path
 
 PROJECT_DIR = Path(os.environ.get("CLAUDE_PROJECT_DIR", Path(__file__).parent.parent.parent))
 PODCAST_HTML = PROJECT_DIR / "podcasts" / "podcast-eclectic-polymath.html"
+INDEX_HTML = PROJECT_DIR / "index.html"
 TRACKER_FILE = PROJECT_DIR / ".claude" / "eclectic-podcast-tracker.json"
 SHOW_ID = "3dlagzJ0jiWLTB9mF3y069"
 SPOTIFY_SHOW_URL = f"https://open.spotify.com/show/{SHOW_ID}"
@@ -43,6 +44,29 @@ def portfolio_count() -> int:
         return 0
     m = re.findall(r'id="ep-count">(\d+)', PODCAST_HTML.read_text())
     return int(m[0]) if m else 0
+
+
+def set_episode_count(total: int) -> None:
+    """Write the episode total everywhere it is displayed.
+
+    The show page embeds Spotify's live show feed, so new episodes appear
+    there on their own — but the count is static text. It lives in two
+    places (the show page badge and the homepage ticker), and only the
+    show page was ever being updated, so the homepage silently drifted.
+    """
+    if PODCAST_HTML.exists():
+        c = PODCAST_HTML.read_text()
+        c, n = re.subn(r'(id="ep-count">)\d+', rf'\g<1>{total}', c)
+        if n:
+            PODCAST_HTML.write_text(c)
+            print(f"  [sync] show page count -> {total}")
+
+    if INDEX_HTML.exists():
+        c = INDEX_HTML.read_text()
+        c, n = re.subn(r'(<span class="hi">)\d+( EPISODES</span>)', rf'\g<1>{total}\g<2>', c)
+        if n:
+            INDEX_HTML.write_text(c)
+            print(f"  [sync] homepage ticker ({n}x) -> {total}")
 
 
 # ── Tracker ──────────────────────────────────────────────────────────────────
@@ -129,8 +153,9 @@ def insert_episode(ep_id: str, ep_number: int) -> bool:
         return False
 
     content = content[:pos] + new_card + content[pos:]
-    content = re.sub(r'id="ep-count">\d+', f'id="ep-count">{ep_number}', content)
     PODCAST_HTML.write_text(content)
+    # Keep every displayed count in sync (show page + homepage ticker).
+    set_episode_count(ep_number)
     return True
 
 

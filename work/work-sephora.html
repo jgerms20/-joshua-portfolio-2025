@@ -1011,6 +1011,51 @@
                 });
             }
 
+            // Per-campaign hero treatment for direct/deep links.
+            const campaignMeta = {
+                'holiday': {
+                    name: "Don't Overthink It",
+                    sub: 'Two Taika Waititi–directed holiday spots that made gift shopping feel less like a test you could fail.',
+                    plate: "PLATE 01 — DON'T OVERTHINK IT",
+                    img: 'https://img.youtube.com/vi/8xsxYoCI4uc/maxresdefault.jpg'
+                },
+                'skincare': {
+                    name: 'Skin Obsessed',
+                    sub: 'A campaign that treated skincare obsessives as the researchers and evangelists they actually are.',
+                    plate: 'PLATE 01 — SKIN OBSESSED',
+                    img: 'https://img.youtube.com/vi/dMD94-fjyAQ/maxresdefault.jpg'
+                }
+            };
+
+            function focusCampaign(id) {
+                const m = campaignMeta[id];
+                if (!m) return;
+
+                const title = document.querySelector('.ch-title');
+                if (title) title.innerHTML = 'Sephora <span class="it accent">' + m.name + '</span>';
+
+                const sub = document.querySelector('.case-subtitle');
+                if (sub) sub.textContent = m.sub;
+
+                const plateIdx = document.querySelector('.plate-index');
+                if (plateIdx) plateIdx.textContent = m.plate;
+
+                const plateImg = document.querySelector('.plate-media img');
+                if (plateImg) { plateImg.src = m.img; plateImg.alt = 'Sephora — ' + m.name; }
+
+                document.title = 'Sephora: ' + m.name + ' | Joshua McKenzie German';
+
+                const tabStrip = document.querySelector('.tabs');
+                if (tabStrip) {
+                    tabStrip.innerHTML = '';
+                    const back = document.createElement('a');
+                    back.className = 'tab';
+                    back.href = 'work-sephora.html';
+                    back.textContent = '← All Sephora campaigns';
+                    tabStrip.appendChild(back);
+                }
+            }
+
             tabs.forEach(t => {
                 t.addEventListener('click', () => {
                     activate(t.dataset.campaign);
@@ -1018,11 +1063,11 @@
                 });
             });
 
-            // on load: activate panel matching location.hash, and scroll to it
+            // Deep link: show only that campaign.
             const h = location.hash.slice(1);
             if (h && document.getElementById(h)) {
                 activate(h);
-                setTimeout(() => document.getElementById(h).scrollIntoView({ behavior: 'smooth' }), 300);
+                focusCampaign(h);
             }
         })();
     </script>

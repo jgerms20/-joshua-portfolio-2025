@@ -737,6 +737,59 @@
            AI PROJECTS — lab index
            ===================================================== */
         .lab-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(16px, 2.2vw, 28px); }
+
+        /* ---- Sites I Build — horizontal swipe rail ---- */
+        .sites-rail {
+            display: flex;
+            gap: clamp(14px, 1.8vw, 22px);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            padding: var(--s1) 0 var(--s3);
+            margin-inline: calc(-1 * var(--edge));
+            padding-inline: var(--edge);
+        }
+        .sites-rail::-webkit-scrollbar { height: 3px; }
+        .sites-rail::-webkit-scrollbar-track { background: var(--rule-soft); }
+        .sites-rail::-webkit-scrollbar-thumb { background: var(--ink-faint); }
+        .site-card {
+            position: relative;
+            flex: 0 0 clamp(268px, 30vw, 380px);
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            padding: var(--s4) var(--s3) var(--s3);
+            background: var(--paper-raised);
+            border: 1px solid var(--rule);
+            transition: transform 0.4s var(--exp), border-color 0.3s ease, background 0.3s ease;
+        }
+        .site-card:not(.is-soon):hover { transform: translateY(-5px); border-color: var(--ink-faint); }
+        .site-num {
+            font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
+            color: var(--ink-faint); margin-bottom: var(--s2);
+        }
+        .site-kicker {
+            font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--blue); margin-bottom: var(--s0);
+        }
+        .site-name {
+            font-family: var(--serif); font-size: clamp(1.15rem, 2vw, 1.45rem);
+            font-weight: 500; line-height: 1.12; margin-bottom: var(--s1);
+        }
+        .site-desc {
+            font-size: 0.86rem; line-height: 1.62; color: var(--ink-soft);
+            flex: 1; margin-bottom: var(--s3);
+        }
+        .site-cta {
+            font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--ink);
+        }
+        .site-card.is-soon { opacity: 0.62; }
+        .site-card.is-soon .site-cta { color: var(--ink-faint); }
+        @media (max-width: 640px) {
+            .site-card { flex-basis: 82vw; }
+        }
         .lab-card {
             grid-column: span 4;
             display: flex; flex-direction: column;
@@ -1143,7 +1196,7 @@
                 <a href="#about">About</a>
                 <a href="#work">Work</a>
                 <a href="#podcasts">Podcasts</a>
-                <a href="#ai">AI Lab</a>
+                <a href="#ai">AI</a>
                 <a href="#projects">Culture</a>
                 <a href="#photography">Photography</a>
             </div>
@@ -1162,7 +1215,7 @@
         <a href="#about"><span class="idx">01</span> About</a>
         <a href="#work"><span class="idx">02</span> Work</a>
         <a href="#podcasts"><span class="idx">03</span> Podcasts</a>
-        <a href="#ai"><span class="idx">04</span> AI Lab</a>
+        <a href="#ai"><span class="idx">04</span> AI</a>
         <a href="#projects"><span class="idx">05</span> Culture</a>
         <a href="#photography"><span class="idx">06</span> Photography</a>
         <a href="#interviews"><span class="idx">08</span> Interviews</a>
@@ -1671,7 +1724,7 @@
             <span class="brk-item"><span class="hi">CURIOUS & CREATIVE</span> <span class="up">▲</span> +2.6%</span>
             <span class="brk-item"><span class="hi">THE ARCHIVE</span> <span class="up">▲</span> +1.4%</span>
             <span class="brk-item"><span class="hi">SMALL TALK</span> <span class="down">▼</span> -3.2%</span>
-            <span class="brk-item"><span class="hi">56 EPISODES</span> <span class="up">▲</span> +5.6%</span>
+            <span class="brk-item"><span class="hi">99 EPISODES</span> <span class="up">▲</span> +5.6%</span>
             <span class="brk-item"><span class="hi">POWER & CULTURE</span> <span class="up">▲</span> +4.0%</span>
             <span class="brk-item"><span class="hi">HISTORY</span> <span class="up">▲</span> +3.9%</span>
             <span class="brk-item"><span class="hi">THE ECLECTIC POLYMATH</span> <span class="up">▲</span> +5.6%</span>
@@ -1682,7 +1735,7 @@
             <span class="brk-item"><span class="hi">CURIOUS & CREATIVE</span> <span class="up">▲</span> +2.6%</span>
             <span class="brk-item"><span class="hi">THE ARCHIVE</span> <span class="up">▲</span> +1.4%</span>
             <span class="brk-item"><span class="hi">SMALL TALK</span> <span class="down">▼</span> -3.2%</span>
-            <span class="brk-item"><span class="hi">56 EPISODES</span> <span class="up">▲</span> +5.6%</span>
+            <span class="brk-item"><span class="hi">99 EPISODES</span> <span class="up">▲</span> +5.6%</span>
             <span class="brk-item"><span class="hi">POWER & CULTURE</span> <span class="up">▲</span> +4.0%</span>
             <span class="brk-item"><span class="hi">HISTORY</span> <span class="up">▲</span> +3.9%</span>
         </div>
@@ -1810,6 +1863,71 @@
             </div>
 
             <div class="lab-grid">
+                <!-- Gen Alpha Intelligence Lab -->
+                <a href="https://agencythings-gen-alpha.vercel.app" target="_blank" rel="noopener" class="lab-card lab-feat rv">
+                    <div class="lab-art" style="background: linear-gradient(135deg, #0b0618 0%, #1d0f36 45%, #05030d 100%); display:flex; align-items:center; justify-content:center;">
+                        <span class="lab-badge-live"><span class="dot"></span> Live</span>
+                        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%, rgba(168,85,247,0.18) 0%, transparent 65%);"></div>
+                        <svg width="260" height="120" viewBox="0 0 260 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;opacity:0.45;">
+                            <path d="M10 96 L52 64 L94 76 L136 38 L178 52 L220 18 L250 30" stroke="rgba(200,150,255,0.75)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="52" cy="64" r="3.5" fill="rgba(200,150,255,0.8)"/>
+                            <circle cx="136" cy="38" r="3.5" fill="rgba(200,150,255,0.65)"/>
+                            <circle cx="220" cy="18" r="5" fill="rgba(220,180,255,0.95)"/>
+                        </svg>
+                        <span style="position:relative;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(220,190,255,0.95);">Gen α</span>
+                    </div>
+                    <div class="lab-body">
+                        <span class="lab-tag">Cultural Intelligence</span>
+                        <h3 class="lab-title">Gen Alpha Intelligence Lab <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></h3>
+                        <p class="lab-desc">A living research lab on the forces shaping Gen Alpha culture — insights, findings, creators, and the spaces they actually occupy, with an ingest pipeline for reports, interviews, and field notes. Built with Next.js 16 and Supabase.</p>
+                        <div class="lab-foot">
+                            <span class="lab-platform claude"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</span>
+                            <span class="lab-cta">View Live →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Dreamcatcher -->
+                <a href="https://jgerms20.github.io/Dreamcatcher/" target="_blank" rel="noopener" class="lab-card rv">
+                    <div class="lab-art" style="background: linear-gradient(135deg, #0d0620 0%, #1a1038 45%, #050310 100%); display:flex; align-items:center; justify-content:center;">
+                        <span class="lab-badge-live"><span class="dot"></span> Live</span>
+                        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 55% 45%, rgba(150,110,255,0.16) 0%, transparent 65%);"></div>
+                        <div style="position:absolute;top:20%;left:16%;width:3px;height:3px;background:rgba(255,255,255,0.85);border-radius:50%;box-shadow:44px 26px 0 rgba(255,255,255,0.5), 98px 10px 0 rgba(255,255,255,0.65), 134px 46px 0 rgba(255,255,255,0.4), 26px 64px 0 rgba(255,255,255,0.45), 120px 76px 0 rgba(255,255,255,0.3);"></div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(190,160,255,0.95)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="position:relative;filter:drop-shadow(0 0 16px rgba(150,110,255,0.55));"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </div>
+                    <div class="lab-body">
+                        <span class="lab-tag">Dream Journal · Voice</span>
+                        <h3 class="lab-title">Dreamcatcher <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></h3>
+                        <p class="lab-desc">Speak your dream the second you wake up, before it's gone. An adaptive AI interview deepens the recall, then reads it back through four lenses — Jungian, Freudian, cognitive, and cultural — and correlates it against your sleep data.</p>
+                        <div class="lab-foot">
+                            <span class="lab-platform claude"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</span>
+                            <span class="lab-cta">View Live →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Meme Library -->
+                <a href="https://meme-atlas.vercel.app/" target="_blank" rel="noopener" class="lab-card rv">
+                    <div class="lab-art" style="background: linear-gradient(135deg, #101006 0%, #23200a 45%, #080703 100%); display:flex; align-items:center; justify-content:center;">
+                        <span class="lab-badge-live"><span class="dot"></span> Live</span>
+                        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 45% 50%, rgba(255,200,60,0.14) 0%, transparent 65%);"></div>
+                        <div style="position:relative;display:flex;gap:7px;align-items:flex-end;">
+                            <div style="width:30px;height:38px;border:1.5px solid rgba(255,210,90,0.75);border-radius:3px;"></div>
+                            <div style="width:30px;height:52px;border:1.5px solid rgba(255,210,90,0.95);border-radius:3px;background:rgba(255,210,90,0.12);"></div>
+                            <div style="width:30px;height:44px;border:1.5px solid rgba(255,210,90,0.6);border-radius:3px;"></div>
+                        </div>
+                    </div>
+                    <div class="lab-body">
+                        <span class="lab-tag">Cultural Search</span>
+                        <h3 class="lab-title">Meme Library <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></h3>
+                        <p class="lab-desc">Describe the meme you half remember and it finds it. Natural-language recall across 1,000+ source-linked clips, reactions, and GIFs — each with provenance and a spread timeline showing how it travelled.</p>
+                        <div class="lab-foot">
+                            <span class="lab-platform claude"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</span>
+                            <span class="lab-cta">View Live →</span>
+                        </div>
+                    </div>
+                </a>
+
                 <!-- Grandmaster -->
                 <a href="https://jgerms20.github.io/Grandmaster/" target="_blank" rel="noopener" class="lab-card rv">
                     <div class="lab-art" style="background: linear-gradient(135deg, #0a0a06 0%, #1a1a0a 40%, #0f0d00 100%); display:flex; align-items:center; justify-content:center;">
@@ -1837,7 +1955,7 @@
                 </a>
 
                 <!-- Life Gamified — featured -->
-                <a href="https://github.com/jgerms20/Life_Gamified" target="_blank" rel="noopener" class="lab-card lab-feat rv rv-d1">
+                <a href="https://jgerms20.github.io/Life_Gamified/" target="_blank" rel="noopener" class="lab-card lab-feat rv rv-d1">
                     <div class="lab-art" style="background: linear-gradient(135deg, #1a0f00 0%, #2d1b0e 50%, #0a0d06 100%); display:flex; align-items:center; justify-content:center;">
                         <span class="lab-badge-live"><span class="dot" style="background:var(--gold);"></span> Quest Active</span>
                         <div style="position:absolute;width:280px;height:280px;background:radial-gradient(circle,rgba(212,175,55,0.14) 0%,transparent 70%);top:50%;left:35%;transform:translate(-50%,-50%);"></div>
@@ -1860,7 +1978,7 @@
                         <p class="lab-desc">A fully-gamified RPG quest journal for real life. Track tasks as quests, earn XP, level up your character, unlock achievements, and build a talent tree. Because life should feel like an epic adventure. Built with React 19 and Claude Code.</p>
                         <div class="lab-foot">
                             <span class="lab-platform claude"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</span>
-                            <span class="lab-cta">View on GitHub →</span>
+                            <span class="lab-cta">View Live →</span>
                         </div>
                     </div>
                 </a>
@@ -2004,6 +2122,54 @@
                         </div>
                     </div>
                 </a>
+            </div>
+
+            <!-- ===== Sites I Build — swipeable client work ===== -->
+            <div class="ch-head rv" style="margin-top: var(--s8);">
+                <div class="ch-head-left">
+                    <span class="ch-num">CH. 04B</span>
+                    <h2 class="ch-title">Sites I <span class="it">Build</span></h2>
+                </div>
+                <div class="ch-meta">For real people<br>Shipped &amp; running</div>
+            </div>
+            <p class="ch-intro rv">Full websites built end-to-end for family and small businesses — booking flows, menus, galleries, contact pipelines. Not templates. Swipe through.</p>
+
+            <div class="sites-rail rv" role="list" aria-label="Client websites">
+                <a href="https://milton-german.vercel.app" target="_blank" rel="noopener" class="site-card" role="listitem">
+                    <span class="site-num">01</span>
+                    <span class="site-kicker">Bookkeeping · Walterboro, SC</span>
+                    <h3 class="site-name">Milton German Bookkeeping</h3>
+                    <p class="site-desc">My dad. Thirty years of South Carolina state government accounting, now doing the books for small businesses. "Your books, done right."</p>
+                    <span class="site-cta">Visit site →</span>
+                </a>
+                <a href="https://dg-creations.vercel.app" target="_blank" rel="noopener" class="site-card" role="listitem">
+                    <span class="site-num">02</span>
+                    <span class="site-kicker">Private Chef · Dining</span>
+                    <h3 class="site-name">DG Creations</h3>
+                    <p class="site-desc">Daniel German — Johnson &amp; Wales trained, dual degrees in Culinary Arts and Culinary Nutrition. Private dining, bespoke catering, meal prep. "Every plate, a creation."</p>
+                    <span class="site-cta">Visit site →</span>
+                </a>
+                <a href="https://janie-bells-alterations.vercel.app" target="_blank" rel="noopener" class="site-card" role="listitem">
+                    <span class="site-num">03</span>
+                    <span class="site-kicker">Alterations · Walterboro, SC</span>
+                    <h3 class="site-name">Janie Bell's Alterations</h3>
+                    <p class="site-desc">A master seamstress who'd been doing professional-grade alterations for decades and charging almost nothing for it. Drop-off and mail-in, with a real booking flow. "Fifty years of perfect fit."</p>
+                    <span class="site-cta">Visit site →</span>
+                </a>
+                <div class="site-card is-soon" role="listitem">
+                    <span class="site-num">04</span>
+                    <span class="site-kicker">BBQ &amp; Soul Food · Columbia, SC</span>
+                    <h3 class="site-name">The Comeback Truck</h3>
+                    <p class="site-desc">My brother Brig's food truck. Slow-smoked ribs, pulled pork, chili cheese fries, and the Carolina mustard sauce that brings you back. Menus, QR menu board, schedule, ordering.</p>
+                    <span class="site-cta">Link coming soon</span>
+                </div>
+                <div class="site-card is-soon" role="listitem">
+                    <span class="site-num">05</span>
+                    <span class="site-kicker">Percussion · Columbia, SC</span>
+                    <h3 class="site-name">Nicholas German</h3>
+                    <p class="site-desc">Nick — working drummer and percussionist. Jazz gigs, gospel worship, weddings, corporate dates. Media reel and a booking pipeline.</p>
+                    <span class="site-cta">Link coming soon</span>
+                </div>
             </div>
         </div>
     </section>
