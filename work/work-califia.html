@@ -3,243 +3,681 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Califia Farms Calilujah! - Case Study by Joshua McKenzie German">
+    <meta name="description" content="Califia Farms Calilujah Campaign - Case Study by Joshua McKenzie German">
     <title>Califia Farms: Calilujah! | Joshua McKenzie German</title>
+    <script>(function(){try{if(localStorage.getItem('jmg-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
-    
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
     <style>
+        /* =====================================================
+           THE PAPER EDITION — Case Study
+           "Ink & Paper" — An Editorial Catalogue Language
+           ===================================================== */
+
         :root {
-            --void: #030304;
-            --abyss: #0a0a0c;
-            --obsidian: #111114;
-            --surface: #18181c;
-            --glass-border: rgba(255, 255, 255, 0.06);
-            --glass-hover: rgba(255, 255, 255, 0.1);
-            --neon: #D4FF4F;
-            --neon-glow: rgba(212, 255, 79, 0.15);
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.7);
-            --text-muted: rgba(255, 255, 255, 0.35);
-            --font-display: 'Playfair Display', Georgia, serif;
-            --font-sans: 'Inter', -apple-system, sans-serif;
-            --edge: clamp(24px, 6vw, 80px);
-            --radius-lg: 20px;
-            --radius-xl: 32px;
-            --radius-pill: 9999px;
-            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-            --max-width: 1400px;
-            --content-width: 900px;
+            /* Paper Stock */
+            --paper: #F5F1E8;
+            --paper-warm: #EFEADF;
+            --paper-raised: #FBF8F1;
+            --paper-dim: #E9E3D5;
+
+            /* Ink */
+            --ink: #171512;
+            --ink-soft: rgba(23, 21, 18, 0.72);
+            --ink-mid: rgba(23, 21, 18, 0.52);
+            --ink-faint: rgba(23, 21, 18, 0.34);
+            --ink-ghost: rgba(23, 21, 18, 0.14);
+            --rule: rgba(23, 21, 18, 0.16);
+            --rule-soft: rgba(23, 21, 18, 0.09);
+
+            /* The Accent — International Klein Blue */
+            --blue: #1F1DDB;
+            --blue-deep: #14129E;
+            --blue-wash: rgba(31, 29, 219, 0.07);
+            --blue-glow: rgba(31, 29, 219, 0.22);
+
+            /* Supporting marks */
+            --vermilion: #E8380D;
+            --gold: #9A7B23;
+            --leaf: #2F6B33;
+
+            /* The Darkroom */
+            --dark: #12100C;
+            --dark-raised: #1B1813;
+            --dark-rule: rgba(245, 241, 232, 0.14);
+            --dark-rule-soft: rgba(245, 241, 232, 0.08);
+            --paper-on-dark: #F5F1E8;
+            --paper-on-dark-soft: rgba(245, 241, 232, 0.68);
+            --paper-on-dark-mid: rgba(245, 241, 232, 0.46);
+            --paper-on-dark-faint: rgba(245, 241, 232, 0.30);
+
+            /* Type */
+            --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+            --sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            --mono: 'Space Mono', 'SF Mono', Menlo, monospace;
+
+            /* Space */
+            --s-1: 4px; --s0: 8px; --s1: 12px; --s2: 16px; --s3: 24px;
+            --s4: 32px; --s5: 48px; --s6: 64px; --s7: 96px; --s8: 144px;
+            --edge: clamp(20px, 5vw, 72px);
+            --max: 1560px;
+
+            /* Motion */
+            --exp: cubic-bezier(0.16, 1, 0.3, 1);
+            --quint: cubic-bezier(0.22, 1, 0.36, 1);
+            --spring: cubic-bezier(0.34, 1.4, 0.64, 1);
         }
+
+        /* ---- Night Edition (dark mode) ---- */
+        :root[data-theme="dark"] {
+            --paper: #14110D;
+            --paper-warm: #191511;
+            --paper-raised: #1C1813;
+            --paper-dim: #0E0C09;
+            --ink: #F0EAE0;
+            --ink-soft: rgba(240, 234, 224, 0.74);
+            --ink-mid: rgba(240, 234, 224, 0.52);
+            --ink-faint: rgba(240, 234, 224, 0.34);
+            --ink-ghost: rgba(240, 234, 224, 0.13);
+            --rule: rgba(240, 234, 224, 0.17);
+            --rule-soft: rgba(240, 234, 224, 0.09);
+            --blue: #7B79FF;
+            --blue-deep: #9D9BFF;
+            --blue-wash: rgba(123, 121, 255, 0.10);
+            --blue-glow: rgba(123, 121, 255, 0.28);
+            --vermilion: #FF5C33;
+            --gold: #C9A84C;
+            --leaf: #7DC982;
+        }
+        :root[data-theme="dark"] .grain { opacity: 0.22; }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-        body { font-family: var(--font-sans); background: var(--void); color: var(--text-primary); line-height: 1.6; }
-        ::selection { background: var(--neon); color: var(--void); }
-        img { max-width: 100%; display: block; }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        ::selection { background: var(--blue); color: var(--paper); }
+
+        img { max-width: 100%; display: block; object-fit: cover; }
         a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 
-        .back-nav {
-            position: fixed; top: 32px; left: 32px; z-index: 1000;
-            display: flex; align-items: center; gap: 12px; padding: 14px 24px;
-            background: rgba(10, 10, 12, 0.9); backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border); border-radius: var(--radius-pill);
-            font-size: 0.9rem; font-weight: 500; color: var(--text-secondary);
-            transition: all 0.3s var(--ease-out-expo);
+        /* Paper grain */
+        .grain {
+            position: fixed; inset: -50%;
+            width: 200%; height: 200%;
+            pointer-events: none;
+            z-index: 2000;
+            opacity: 0.30;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.24'/%3E%3C/svg%3E");
+            animation: grainShift 9s steps(6) infinite;
         }
-        .back-nav:hover { color: var(--text-primary); background: var(--glass-hover); transform: translateX(-4px); }
-        .back-nav svg { width: 18px; height: 18px; }
+        @keyframes grainShift {
+            0%,100% { transform: translate(0,0); } 20% { transform: translate(-2%,1%); }
+            40% { transform: translate(1%,-2%); } 60% { transform: translate(-1%,2%); } 80% { transform: translate(2%,-1%); }
+        }
 
-        .case-hero {
-            position: relative; min-height: 90vh;
-            display: flex; align-items: flex-end;
-            padding: var(--edge); padding-bottom: 80px; overflow: hidden;
+        /* ---- Typography ---- */
+        .t-display {
+            font-family: var(--serif);
+            font-optical-sizing: auto;
+            font-size: clamp(2.6rem, 7vw, 6rem);
+            font-weight: 400;
+            line-height: 0.95;
+            letter-spacing: -0.015em;
         }
-        .case-hero-bg { position: absolute; inset: 0; z-index: 0; }
-        .case-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
-        .case-hero-bg::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to top, var(--void) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%);
+        .t-title {
+            font-family: var(--serif);
+            font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.01em;
         }
-        .case-hero-content { position: relative; z-index: 1; max-width: var(--max-width); width: 100%; }
-        .case-tag {
-            display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border); border-radius: var(--radius-pill);
-            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 0.12em; color: var(--text-primary); margin-bottom: 24px;
-        }
-        .case-title {
-            font-family: var(--font-display); font-size: clamp(3rem, 10vw, 7rem);
-            font-weight: 400; line-height: 0.9; letter-spacing: -0.03em; margin-bottom: 24px;
-        }
-        .case-title .accent {
+        .t-lede {
+            font-family: var(--serif);
             font-style: italic;
-            background: linear-gradient(135deg, var(--neon), #a8e063);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            font-weight: 300;
+            font-size: clamp(1.35rem, 2.6vw, 2rem);
+            line-height: 1.4;
+            letter-spacing: 0;
         }
-        .case-subtitle { font-size: 1.35rem; color: var(--text-secondary); max-width: 600px; line-height: 1.6; }
-
-        .case-meta {
-            display: flex; flex-wrap: wrap; gap: 48px; padding: 48px var(--edge);
-            border-bottom: 1px solid var(--glass-border); max-width: var(--max-width); margin: 0 auto;
+        .t-mono {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
         }
-        .meta-item { display: flex; flex-direction: column; gap: 6px; }
-        .meta-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
-        .meta-value { font-size: 1.1rem; font-weight: 500; color: var(--text-primary); }
-
-        .case-content { max-width: var(--content-width); margin: 0 auto; padding: 80px var(--edge); }
-        .case-section { margin-bottom: 64px; }
-        .case-section-title { font-family: var(--font-display); font-size: 2rem; font-weight: 400; margin-bottom: 24px; }
-        .case-section p { font-size: 1.15rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
-
-        .video-container { position: relative; padding-top: 56.25%; height: 0; border-radius: var(--radius-lg); overflow: hidden; background: var(--surface); }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-
-        .case-gallery { display: grid; gap: 24px; margin: 64px 0; }
-        .case-gallery img { aspect-ratio: 1; object-fit: cover; width: 100%; border-radius: var(--radius-lg); }
-
-        .case-quote {
-        .case-quote.visible { opacity: 1; transform: translateX(0); }
-        .case-quote.right { margin-left: auto; transform: translateX(50px); }
-        .case-quote.right.visible { transform: translateX(0); }
-        .case-quote::before { content: ''; position: absolute; width: 60px; height: 60px; background: var(--neon); border-radius: 50%; top: -20px; left: -20px; opacity: 0.2; z-index: -1; }
-        .case-quote.right::before { left: auto; right: -20px; }
-        .case-quote blockquote::before { content: '"'; position: absolute; top: -20px; left: -15px; font-size: 4rem; color: var(--neon); opacity: 0.3; font-family: var(--font-display); line-height: 1; }
-            position: relative; padding: 32px; background: var(--surface); border: 1px solid var(--glass-border); border-radius: var(--radius-xl); margin: 48px 0; max-width: 500px; opacity: 0; transform: translateX(-50px); transition: all 0.6s var(--ease-out-expo);
-            border-left: 4px solid var(--neon);
-            border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: 48px 0;
+        .t-mono-sm {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            font-weight: 400;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
         }
-        .case-quote blockquote {
-            font-family: var(--font-display); font-size: 1.75rem;
-            font-style: italic; line-height: 1.5; color: var(--text-primary); margin-bottom: 20px;
+        .accent { color: var(--blue); }
+        .it { font-style: italic; }
+
+        /* ---- Layout ---- */
+        .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--edge); padding-right: var(--edge); }
+        .chapter { padding: var(--s8) 0; position: relative; }
+
+        .ch-head {
+            display: flex; align-items: flex-end; justify-content: space-between;
+            gap: var(--s3); flex-wrap: wrap;
+            padding-bottom: var(--s3);
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: var(--s6);
         }
-        .case-quote cite { font-size: 0.9rem; font-style: normal; color: var(--text-muted); }
+        .ch-head-left { display: flex; align-items: flex-end; gap: clamp(16px, 3vw, 40px); }
+        .ch-num {
+            font-family: var(--mono);
+            font-size: 0.8rem; font-weight: 700;
+            color: var(--blue);
+            letter-spacing: 0.1em;
+            padding-bottom: clamp(6px, 1.2vw, 18px);
+            white-space: nowrap;
+        }
+        .ch-title {
+            font-family: var(--serif);
+            font-size: clamp(2.8rem, 7.5vw, 6.4rem);
+            font-weight: 400; line-height: 0.92; letter-spacing: -0.015em;
+        }
+        .ch-title .it { font-weight: 300; }
+        .ch-title em { font-style: italic; font-weight: 300; color: var(--blue); }
+        .ch-meta {
+            font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em;
+            text-transform: uppercase; color: var(--ink-mid);
+            text-align: right; line-height: 2; padding-bottom: clamp(6px, 1.2vw, 18px);
+        }
+        .ch-intro {
+            max-width: 620px;
+            font-size: 1.02rem; line-height: 1.75; color: var(--ink-soft);
+            margin: calc(-1 * var(--s4)) 0 var(--s6);
+        }
 
-        .next-project { padding: 80px var(--edge); border-top: 1px solid var(--glass-border); text-align: center; }
-        .next-project-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 16px; }
-        .next-project-link { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 4rem); font-weight: 400; color: var(--text-primary); transition: color 0.3s ease; }
-        .next-project-link:hover { color: var(--neon); }
+        /* Ruled arrow link */
+        .rule-link {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-family: var(--mono); font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--ink); padding-bottom: 6px;
+            border-bottom: 1.5px solid var(--ink);
+            transition: color 0.3s var(--exp), border-color 0.3s var(--exp), gap 0.3s var(--exp);
+        }
+        .rule-link:hover { color: var(--blue); border-color: var(--blue); gap: 16px; }
+        .rule-link svg { width: 13px; height: 13px; }
 
-        @media (max-width: 768px) {
-            .case-meta { gap: 32px; }
-            .back-nav { top: 16px; left: 16px; padding: 12px 18px; }
+        /* Buttons */
+        .btn {
+            display: inline-flex; align-items: center; gap: 12px;
+            font-family: var(--mono); font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            padding: 18px 34px;
+            border-radius: 999px;
+            transition: all 0.35s var(--exp);
+            position: relative; overflow: hidden;
+        }
+        .btn-ink { background: var(--ink); color: var(--paper); border: 1.5px solid var(--ink); }
+        .btn-ink:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 14px 34px -12px var(--blue-glow); }
+        .btn-line { background: transparent; color: var(--ink); border: 1.5px solid var(--rule); }
+        .btn-line:hover { border-color: var(--ink); transform: translateY(-2px); }
+        .btn svg { width: 13px; height: 13px; }
+
+        /* ---- Reveal system ---- */
+        .rv {
+            opacity: 0;
+            transform: translateY(34px);
+            transition: opacity 0.9s var(--exp), transform 0.9s var(--exp);
+        }
+        .rv.in { opacity: 1; transform: translateY(0); }
+        .rv-d1 { transition-delay: 0.08s; }
+        .rv-d2 { transition-delay: 0.16s; }
+        .rv-d3 { transition-delay: 0.24s; }
+
+        /* ---- Navigation ---- */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1400;
+            background: color-mix(in srgb, var(--paper) 86%, transparent);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--rule-soft);
+            transition: transform 0.5s var(--exp);
+        }
+        .nav.hidden-up { transform: translateY(-100%); }
+        .nav-row {
+            max-width: var(--max); margin: 0 auto;
+            padding: 0 var(--edge);
+            height: 62px;
+            display: flex; align-items: center; justify-content: space-between; gap: var(--s3);
+        }
+        .nav-brand {
+            font-family: var(--serif); font-weight: 500; font-size: 1.05rem; letter-spacing: -0.01em;
+            display: flex; align-items: center; gap: 10px; white-space: nowrap;
+        }
+        .nav-brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); display: inline-block; }
+        .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.2vw, 30px); }
+        .nav-links a {
+            font-family: var(--mono); font-size: 0.6rem; font-weight: 700;
+            letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mid);
+            transition: color 0.25s;
+            position: relative; padding: 4px 0;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; left: 0; bottom: 0; height: 1.5px; width: 0%;
+            background: var(--blue); transition: width 0.3s var(--exp);
+        }
+        .nav-links a:hover { color: var(--ink); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-right { display: flex; align-items: center; gap: 18px; }
+        .nav-cta {
+            font-family: var(--mono); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+            background: var(--ink); color: var(--paper);
+            padding: 10px 20px; border-radius: 999px;
+            transition: background 0.3s var(--exp), transform 0.3s var(--exp);
+            white-space: nowrap;
+        }
+        .nav-cta:hover { background: var(--blue); transform: translateY(-1px); }
+        @media (max-width: 640px) { .nav-brand span.name { display: none; } .nav-cta { display: none; } }
+
+        /* Theme toggle */
+        .theme-toggle {
+            width: 36px; height: 36px; border-radius: 50%;
+            border: 1px solid var(--rule);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--ink-soft);
+            transition: border-color 0.3s var(--exp), color 0.3s, transform 0.3s var(--exp);
+            flex-shrink: 0;
+        }
+        .theme-toggle:hover { border-color: var(--ink); color: var(--ink); transform: rotate(15deg); }
+        .theme-toggle svg { width: 15px; height: 15px; }
+        .theme-toggle .sun { display: none; }
+        :root[data-theme="dark"] .theme-toggle .sun { display: block; }
+        :root[data-theme="dark"] .theme-toggle .moon { display: none; }
+
+        /* ---- Plates ---- */
+        .plate-media {
+            position: relative; overflow: hidden;
+            background: var(--paper-dim);
+            border: 1px solid var(--rule-soft);
+        }
+        .plate-media::after {
+            content: ''; position: absolute; inset: 0;
+            box-shadow: inset 0 0 0 1px rgba(23,21,18,0.05);
+            pointer-events: none;
+        }
+        .plate-media img {
+            width: 100%; aspect-ratio: 16/10; object-fit: cover;
+            transition: transform 1s var(--exp), filter 0.7s var(--exp);
+            filter: saturate(0.94);
+        }
+        .plate-media:hover img { transform: scale(1.035); filter: saturate(1.05); }
+        .plate-index {
+            position: absolute; top: 14px; left: 14px; z-index: 3;
+            font-family: var(--mono); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+            background: var(--paper); color: var(--ink);
+            padding: 6px 10px; border: 1px solid var(--rule);
+        }
+        .hero-plate img { aspect-ratio: 21/9; }
+        @media (max-width: 700px) { .hero-plate img { aspect-ratio: 16/10; } }
+
+        /* Award chips */
+        .award-chip {
+            font-family: var(--mono); font-size: 0.56rem; font-weight: 700; letter-spacing: 0.08em;
+            padding: 5px 11px; border-radius: 999px;
+            border: 1px solid var(--rule); color: var(--ink-soft); background: var(--paper-raised);
+        }
+        .award-chip.grand { border-color: var(--gold); color: var(--gold); background: rgba(154,123,35,0.06); }
+        .award-chip.gold { border-color: rgba(154,123,35,0.5); color: var(--gold); }
+
+        /* ---- Film frame ---- */
+        .film-frame {
+            position: relative; aspect-ratio: 16/9; overflow: hidden;
+            border: 1px solid var(--rule); background: var(--dark);
+            box-shadow: 0 24px 54px -26px rgba(23,21,18,0.4);
+        }
+        .film-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .film-caption {
+            display: flex; justify-content: space-between; gap: var(--s3); flex-wrap: wrap;
+            font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--ink-mid);
+            padding: 12px 2px 0;
+        }
+
+        /* ---- Stats ---- */
+        .stat-row {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+            margin: var(--s5) 0;
+        }
+        .stat-row.cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .stat-cell {
+            padding: var(--s3) var(--s3) var(--s3) 0;
+            border-right: 1px solid var(--rule-soft);
+        }
+        .stat-cell:last-child { border-right: none; }
+        .stat-num {
+            font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400; line-height: 1; letter-spacing: -0.02em;
+            display: flex; align-items: baseline;
+        }
+        .stat-num .suffix { color: var(--blue); font-size: 0.6em; margin-left: 2px; }
+        .stat-label {
+            font-family: var(--mono); font-size: 0.56rem; font-weight: 400;
+            letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mid);
+            margin-top: 10px; line-height: 1.6;
+        }
+        @media (max-width: 900px) {
+            .stat-row, .stat-row.cols-3 { grid-template-columns: repeat(2, 1fr); }
+            .stat-cell:nth-child(2) { border-right: none; }
+            .stat-cell { border-bottom: 1px solid var(--rule-soft); }
+        }
+
+        /* ---- Case-study editorial blocks ---- */
+        .cs-hero { padding: calc(62px + clamp(48px, 8vw, 96px)) 0 var(--s6); }
+        .cs-sub { max-width: 680px; color: var(--ink-soft); margin-bottom: var(--s6); }
+
+        .cs-sec {
+            display: grid;
+            grid-template-columns: minmax(170px, 240px) 1fr;
+            gap: clamp(24px, 4vw, 72px);
+            padding: var(--s6) 0;
+            border-top: 1px solid var(--rule);
+        }
+        .cs-label {
+            font-family: var(--mono); font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 0.22em; text-transform: uppercase; color: var(--blue);
+            line-height: 1.9;
+        }
+        .cs-h {
+            font-family: var(--serif);
+            font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+            font-weight: 500; line-height: 1.05; letter-spacing: -0.01em;
+            margin-bottom: var(--s3);
+        }
+        .cs-body p {
+            font-size: 1.02rem; line-height: 1.75; color: var(--ink-soft);
+            margin-bottom: var(--s3); max-width: 680px;
+        }
+        .cs-body p:last-child { margin-bottom: 0; }
+        @media (max-width: 820px) { .cs-sec { grid-template-columns: 1fr; gap: var(--s2); } }
+
+        /* Pull quotes */
+        .cs-quote {
+            border-left: 2px solid var(--blue);
+            padding: 6px 0 6px 28px;
+            margin: var(--s6) 0;
+            max-width: 720px;
+        }
+        .cs-quote blockquote {
+            font-family: var(--serif); font-style: italic; font-weight: 300;
+            font-size: clamp(1.25rem, 2.4vw, 1.7rem); line-height: 1.45;
+        }
+        .cs-quote cite {
+            display: block; margin-top: 14px;
+            font-family: var(--mono); font-size: 0.6rem; font-weight: 400;
+            letter-spacing: 0.16em; text-transform: uppercase; font-style: normal;
+            color: var(--ink-mid);
+        }
+        .cs-quote.right { margin-left: auto; border-left: none; border-right: 2px solid var(--blue); padding: 6px 28px 6px 0; text-align: right; }
+
+        /* Credits / meta grid */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+        }
+        .meta-cell { padding: var(--s3) var(--s3) var(--s3) 0; border-right: 1px solid var(--rule-soft); }
+        .meta-cell:last-child { border-right: none; }
+        .meta-label {
+            font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.16em;
+            text-transform: uppercase; color: var(--ink-mid);
+        }
+        .meta-value { font-family: var(--sans); font-size: 0.95rem; font-weight: 500; margin-top: 8px; line-height: 1.45; }
+        @media (max-width: 700px) { .meta-cell { border-right: none; border-bottom: 1px solid var(--rule-soft); } .meta-cell:last-child { border-bottom: none; } }
+
+        /* Press / link pills */
+        .press-links { display: flex; flex-wrap: wrap; gap: 10px; }
+        .press-pill {
+            font-family: var(--mono); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.06em;
+            padding: 9px 16px; border-radius: 999px;
+            border: 1px solid var(--rule); color: var(--ink-soft);
+            transition: all 0.25s var(--exp);
+        }
+        .press-pill:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-wash); }
+
+        /* Gallery */
+        .gallery {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: clamp(12px, 2vw, 24px);
+            margin-top: var(--s4);
+        }
+        .gallery .plate-media img { aspect-ratio: 4/3; }
+        @media (max-width: 700px) { .gallery { grid-template-columns: 1fr 1fr; } }
+
+        /* Next case */
+        .next-case { border-top: 1px solid var(--rule); padding: var(--s7) 0; text-align: center; }
+        .next-case .kicker { font-family: var(--mono); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mid); display: block; margin-bottom: var(--s3); }
+        .next-case a {
+            font-family: var(--serif); font-size: clamp(1.8rem, 4.6vw, 3.4rem); font-weight: 400;
+            line-height: 1.05; letter-spacing: -0.015em;
+            transition: color 0.3s var(--exp);
+        }
+        .next-case a:hover { color: var(--blue); }
+
+        /* Footer */
+        .footer { border-top: 1px solid var(--rule); padding: var(--s4) 0 var(--s5); }
+        .footer-row {
+            display: flex; justify-content: space-between; align-items: center; gap: var(--s3); flex-wrap: wrap;
+            font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mid);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .grain { animation: none; }
+            .rv { transition: none; opacity: 1; transform: none; }
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const quotes = document.querySelectorAll('.case-quote');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.2 });
-            quotes.forEach(quote => observer.observe(quote));
-        });
-    </script>
 </head>
 <body>
 
-    <a href="../index.html#work" class="back-nav">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Back to Work
-    </a>
+    <div class="grain" aria-hidden="true"></div>
 
-    <section class="case-hero">
-        <div class="case-hero-bg">
-            <img loading="lazy" src="https://goodbysilverstein.com/public/upload/work/images/desktop/6125b3d544db1.jpg" alt="Califia Farms Calilujah Campaign">
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-row">
+            <a href="../index.html" class="nav-brand" aria-label="Joshua McKenzie German – Home">
+                <span class="dot"></span> <span class="name">Joshua McKenzie German</span>
+            </a>
+            <div class="nav-links">
+                <a href="../index.html#work">← All Work</a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+                    <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+                <a href="../index.html#contact" class="nav-cta">Let's Talk</a>
+            </div>
         </div>
-        <div class="case-hero-content">
-            <span class="case-tag">Plant-Based Movement</span>
-            <h1 class="case-title">
-                Califia Farms:<br>
-                <span class="accent">Calilujah!</span>
-            </h1>
-            <p class="case-subtitle">
-                A joyful celebration of plant-based living. Every sip is a hallelujah moment.
-            </p>
-        </div>
-    </section>
+    </nav>
 
-    <div class="case-meta">
-        <div class="meta-item">
-            <span class="meta-label">Client</span>
-            <span class="meta-value">Califia Farms</span>
-        </div>
-        <div class="meta-item">
-            <span class="meta-label">Agency</span>
-            <span class="meta-value">Goodby, Silverstein & Partners</span>
-        </div>
-        <div class="meta-item">
-            <span class="meta-label">Role</span>
-            <span class="meta-value">Communications Strategist</span>
-        </div>
-        <div class="meta-item">
-            <span class="meta-label">Year</span>
-            <span class="meta-value">2023</span>
-        </div>
-        <div class="meta-item">
-            <span class="meta-label">Scope</span>
-            <span class="meta-value">National Campaign</span>
-        </div>
-    </div>
-
-    <div class="case-content">
-        <section class="case-section">
-            <h2 class="case-section-title">The Challenge</h2>
-            <p>Plant-based has gone mainstream, but the category sounds like a nutritional label. Health benefits. Sustainability. Functional claims. Califia needed something that actually made people feel something.</p>
-            <p>How do you make plant-based feel joyful instead of virtuous?</p>
-        </section>
-
-        <section class="case-section">
-            <h2 class="case-section-title">The Insight</h2>
-            <p>Switching to plant-based isn't a sacrifice—it's a discovery. That first sip of creamy oat milk in your morning coffee. The rich foam that actually holds. The taste that makes you wonder why you ever needed dairy.</p>
-            <p>These are hallelujah moments. Moments of pure, unexpected joy.</p>
-        </section>
-
-        <section class="case-section">
-            <h2 class="case-section-title">The Work</h2>
-            <p>"Calilujah!" was the shift from "here's why this is good for you" to "holy cow, this is actually delicious." We built a visual and verbal identity around that feeling—joyful, a little irreverent, and completely sincere.</p>
-            
-            <div class="video-container" style="margin-top: 32px;">
-                <div style="position:relative; width:100%; padding-top:56.25%; padding-bottom:40px;">
-                    <iframe src="https://www.ispot.tv/share/OUR8" style="position:absolute; top:0; right:0; left:0; bottom:0; width:100%; height:100%;" frameborder="0" scrolling="no" allowfullscreen></iframe>
+    <!-- =====================================================
+         HERO — CASE STUDY
+         ===================================================== -->
+    <header class="cs-hero">
+        <div class="wrap">
+            <div class="ch-head rv">
+                <div class="ch-head-left">
+                    <span class="ch-num">CASE STUDY</span>
+                    <h1 class="ch-title">Califia Farms: <em>Calilujah!</em></h1>
                 </div>
+                <div class="ch-meta">
+                    National Campaign · 2023<br>Communications Strategist · Goodby, Silverstein &amp; Partners
+                </div>
+            </div>
+            <p class="t-lede cs-sub rv rv-d1">A joyful celebration of plant-based living. Every sip is a hallelujah moment.</p>
+
+            <figure class="plate-media hero-plate rv rv-d2">
+                <span class="plate-index">PLATE 01</span>
+                <img loading="lazy" src="https://goodbysilverstein.com/public/upload/work/images/desktop/6125b3d544db1.jpg" alt="Califia Farms Calilujah Campaign">
+            </figure>
+
+            <div class="meta-grid rv" style="margin-top: var(--s5);">
+                <div class="meta-cell">
+                    <span class="meta-label">Client</span>
+                    <div class="meta-value">Califia Farms</div>
+                </div>
+                <div class="meta-cell">
+                    <span class="meta-label">Agency</span>
+                    <div class="meta-value">Goodby, Silverstein &amp; Partners</div>
+                </div>
+                <div class="meta-cell">
+                    <span class="meta-label">Role</span>
+                    <div class="meta-value">Communications Strategist</div>
+                </div>
+                <div class="meta-cell">
+                    <span class="meta-label">Year</span>
+                    <div class="meta-value">2023</div>
+                </div>
+                <div class="meta-cell">
+                    <span class="meta-label">Scope</span>
+                    <div class="meta-value">National Campaign</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrap">
+
+        <section class="cs-sec rv">
+            <div class="cs-label">01 — Challenge</div>
+            <div class="cs-body">
+                <h2 class="cs-h">The Challenge</h2>
+                <p>Plant-based has gone mainstream, but the category sounds like a nutritional label. Health benefits. Sustainability. Functional claims. Califia needed something that actually made people feel something.</p>
+                <p>How do you make plant-based feel joyful instead of virtuous?</p>
             </div>
         </section>
 
-        <div class="case-quote">
-            <blockquote>
-                "Calilujah! It's that moment when plant-based doesn't just work—it transcends."
-            </blockquote>
+        <section class="cs-sec rv">
+            <div class="cs-label">02 — Insight</div>
+            <div class="cs-body">
+                <h2 class="cs-h">The Insight</h2>
+                <p>Switching to plant-based isn't a sacrifice—it's a discovery. That first sip of creamy oat milk in your morning coffee. The rich foam that actually holds. The taste that makes you wonder why you ever needed dairy.</p>
+                <p>These are hallelujah moments. Moments of pure, unexpected joy.</p>
+            </div>
+        </section>
+
+        <section class="cs-sec rv">
+            <div class="cs-label">03 — The Work</div>
+            <div class="cs-body">
+                <h2 class="cs-h">The Work</h2>
+                <p>"Calilujah!" was the shift from "here's why this is good for you" to "holy cow, this is actually delicious." We built a visual and verbal identity around that feeling—joyful, a little irreverent, and completely sincere.</p>
+                <figure style="margin-top: var(--s4);">
+                    <div class="film-frame">
+                        <iframe src="https://www.ispot.tv/share/OUR8" title="Califia Farms — Calilujah!" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <figcaption class="film-caption">
+                        <span>Calilujah! · National Spot</span>
+                        <span>16:9 — Reel A</span>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <div class="cs-quote rv">
+            <blockquote>"Calilujah! It&rsquo;s that moment when plant-based doesn&rsquo;t just work—it transcends."</blockquote>
             <cite>— Campaign Manifesto</cite>
         </div>
 
-        <div class="case-gallery">
-            <img loading="lazy" src="https://goodbysilverstein.com/public/upload/work/images/desktop/6125b3d544db1.jpg" alt="Califia Farms Calilujah Campaign">
+        <section class="cs-sec rv">
+            <div class="cs-label">04 — My Role</div>
+            <div class="cs-body">
+                <h2 class="cs-h">My Role</h2>
+                <p>As Communications Strategist at Goodby, Silverstein &amp; Partners, I built the audience strategy that got "Calilujah!" in front of the people most likely to love it. I dug into research on eco-conscious consumers—not just demographics, but what actually drives someone to grab oat milk over dairy, where they spend their time online, and what messages land once you get past the functional stuff.</p>
+                <p>I identified the platforms and content environments where our tone would feel at home rather than out of place—a mix of streaming, social, and digital placements chosen for their energy match, not just their reach. I also built influencer recommendations focused on lifestyle creators who genuinely live plant-based, not just ones with large followings. The goal was to make Califia feel like a first choice, not a substitute.</p>
+            </div>
+        </section>
+
+        <section class="cs-sec rv">
+            <div class="cs-label">05 — Impact</div>
+            <div class="cs-body">
+                <h2 class="cs-h">The Impact</h2>
+                <p>The campaign shifted how people thought about Califia—from "the healthy option" to something they actually wanted. It drove awareness and consideration in a crowded category by giving the brand a distinct emotional register that functional competitors couldn&rsquo;t match.</p>
+            </div>
+        </section>
+
+        <section class="next-case rv">
+            <span class="kicker">Next Project</span>
+            <a href="work-levis.html">Levi's: REIIMAGINE →</a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="wrap">
+            <div class="footer-row">
+                <span>© 2026 Joshua McKenzie German</span>
+                <a href="../index.html#work" class="rule-link">← Back to All Work</a>
+            </div>
         </div>
+    </footer>
 
-        <section class="case-section">
-            <h2 class="case-section-title">My Role</h2>
-            <p>As Communications Strategist at Goodby, Silverstein & Partners, I built the audience strategy that got "Calilujah!" in front of the people most likely to love it. I dug into research on eco-conscious consumers—not just demographics, but what actually drives someone to grab oat milk over dairy, where they spend their time online, and what messages land once you get past the functional stuff.</p>
-            <p>I identified the platforms and content environments where our tone would feel at home rather than out of place—a mix of streaming, social, and digital placements chosen for their energy match, not just their reach. I also built influencer recommendations focused on lifestyle creators who genuinely live plant-based, not just ones with large followings. The goal was to make Califia feel like a first choice, not a substitute.</p>
-        </section>
+    <script>
+        // ---- Theme toggle ----
+        (function () {
+            const btn = document.getElementById('themeToggle');
+            if (!btn) return;
+            btn.addEventListener('click', () => {
+                const root = document.documentElement;
+                const dark = root.getAttribute('data-theme') === 'dark';
+                if (dark) { root.removeAttribute('data-theme'); }
+                else { root.setAttribute('data-theme', 'dark'); }
+                try { localStorage.setItem('jmg-theme', dark ? 'light' : 'dark'); } catch (e) {}
+            });
+        })();
 
-        <section class="case-section">
-            <h2 class="case-section-title">The Impact</h2>
-            <p>The campaign shifted how people thought about Califia — from "the healthy option" to something they actually wanted, giving the brand a tone none of its functional competitors could copy.</p>
-        </section>
-    </div>
+        // ---- Nav: hide on scroll down, show on scroll up ----
+        (function () {
+            const nav = document.getElementById('nav');
+            let lastY = 0;
+            window.addEventListener('scroll', () => {
+                const y = window.scrollY;
+                if (y > 300 && y > lastY) nav.classList.add('hidden-up');
+                else nav.classList.remove('hidden-up');
+                lastY = y;
+            }, { passive: true });
+        })();
 
-    <div class="next-project">
-        <p class="next-project-label">Next Project</p>
-        <a href="work-levis.html" class="next-project-link">Levi's: REIIMAGINE →</a>
-    </div>
+        // ---- Reveal on scroll ----
+        (function () {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+        })();
+    </script>
 
 </body>
 </html>
-
-
