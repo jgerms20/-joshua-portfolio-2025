@@ -207,6 +207,23 @@
             letter-spacing: 0.08em;
             text-transform: uppercase;
         }
+        .video-placeholder {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: rgba(255,255,255,0.04);
+            border: 1px dashed rgba(255,255,255,0.12);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -240,7 +257,7 @@
                 <span class="accent">Campaigns</span>
             </h1>
             <p class="case-subtitle">
-                Two campaigns directed by Taika Waititi that brought joy, authenticity, and self-expression to beauty shopping.
+                Two campaigns directed by Taika Waititi that made beauty shopping feel less stressful and more like you.
             </p>
             
             <!-- Campaign Toggle -->
@@ -290,7 +307,7 @@
 
             <section class="case-section">
                 <h2 class="case-section-title">The Execution</h2>
-                <p>Taika Waititi made four holiday spots that leaned into the chaos—the last-minute panic, the awkward gift exchanges, the overthinking—and turned all of it into something warm and funny. The point wasn't to pretend gifting is easy. It was to say: Sephora makes it easier.</p>
+                <p>Taika Waititi made four holiday spots that leaned into the chaos—the last-minute panic, the awkward gift exchanges, the overthinking—and turned all of it into something warm and funny. The point wasn't pretending gifting is easy — it was saying Sephora makes it easier.</p>
                 <p>The campaign ran across TV, digital, social, and in-store, keeping the same message consistent no matter where shoppers ran into it.</p>
             </section>
 
@@ -376,13 +393,13 @@
 
             <section class="case-section">
                 <h2 class="case-section-title">The Insight</h2>
-                <p>Skincare enthusiasts aren't just consumers—they're researchers, experimenters, and evangelists. They read ingredient lists like wine labels, track their progress with clinical precision, and spread the gospel of their holy grail products with religious fervor.</p>
+                <p>Skincare enthusiasts research like scientists and evangelize like true believers. They read ingredient lists like wine labels, track their progress with clinical precision, and spread the gospel of their holy grail products with religious fervor.</p>
                 <p>They're obsessed. And that obsession is beautiful.</p>
             </section>
 
             <section class="case-section">
                 <h2 class="case-section-title">The Execution</h2>
-                <p>Back with Taika Waititi, we made spots that celebrated the obsession without making fun of it—the twelve-step routines, the 2am ingredient rabbit holes, the very particular way skincare people think about their faces. The message: this isn't vanity. This is a lifestyle, and Sephora gets it.</p>
+                <p>Back with Taika Waititi, we made spots that celebrated the obsession without making fun of it—the twelve-step routines, the 2am ingredient rabbit holes, the very particular way skincare people think about their faces. The message: skincare obsession is a lifestyle, and Sephora gets it.</p>
                 <p>Hero spots anchored the campaign, which then extended into social, influencer partnerships, and in-store activations that gave skincare fans a reason to connect with the brand on their own turf.</p>
             </section>
 
@@ -467,24 +484,32 @@
         // Campaign Toggle Functionality
         const toggleBtns = document.querySelectorAll('.toggle-btn');
         const campaignPanels = document.querySelectorAll('.campaign-panel');
+        const validCampaigns = Array.from(toggleBtns).map(b => b.dataset.campaign);
+
+        function selectCampaign(campaign) {
+            const btn = Array.from(toggleBtns).find(b => b.dataset.campaign === campaign);
+            if (!btn) return;
+
+            toggleBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            campaignPanels.forEach(panel => {
+                panel.classList.remove('active');
+                if (panel.id === campaign) {
+                    panel.classList.add('active');
+                }
+            });
+        }
 
         toggleBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const campaign = btn.dataset.campaign;
-                
-                // Update active button
-                toggleBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                // Show corresponding panel
-                campaignPanels.forEach(panel => {
-                    panel.classList.remove('active');
-                    if (panel.id === campaign) {
-                        panel.classList.add('active');
-                    }
-                });
-            });
+            btn.addEventListener('click', () => selectCampaign(btn.dataset.campaign));
         });
+
+        // Deep-link support: #holiday, #skincare
+        const initialCampaign = window.location.hash.replace('#', '');
+        if (validCampaigns.includes(initialCampaign)) {
+            selectCampaign(initialCampaign);
+        }
     </script>
 
 </body>

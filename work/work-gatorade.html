@@ -672,7 +672,7 @@
                             Radio :15s Teaser<br>
                             Bolt Gate :15<br>
                             80's Retro Ads<br>
-                            <a href="https://www.youtube.com/watch?v=S8FHZ6Gtu94" target="_blank">No Ordinary Athlete :30 →</a>
+                            No Ordinary Athlete :30
                         </div>
                     </div>
                     <div class="ecosystem-item">
@@ -919,7 +919,7 @@
 
             <section class="case-section">
                 <h2 class="case-section-title">The Impact</h2>
-                <p>The bottles sold out within days. The campaign drove more conversation among Gen Z consumers than any previous Gatorade partnership—and it shifted how that audience thinks about the brand. Not just a sports drink. A cultural artifact.</p>
+                <p>The bottles sold out within days. The campaign drove more conversation among Gen Z consumers than any previous Gatorade partnership, and it shifted how that audience thinks about the brand — less a sports drink now, more a cultural artifact.</p>
                 <p>The nostalgia storytelling and athlete interviews reached across sports and entertainment simultaneously. The exclusive drops and glass bottle return kept momentum going week over week instead of flaring out after the launch announcement.</p>
                 <p>Gatorade posts showed up organically on the Stranger Things and Myles Garrett accounts, bringing in millions of additional views from fans the paid media never reached. The "El's Battery" video alone hit almost 6 million views on Instagram, with nearly 10K shares on TikTok.</p>
             </section>
@@ -999,7 +999,7 @@
 
             <section class="case-section">
                 <h2 class="case-section-title">The Impact</h2>
-                <p>The campaign reinforced what Gatorade has always been at its best—not just a drink, but a symbol of the will to keep going. NFL Films brought the storytelling credibility that makes sports fans actually pay attention.</p>
+                <p>The campaign reinforced Gatorade's oldest idea: it's fuel for the will to keep going. NFL Films brought the storytelling credibility that makes sports fans actually pay attention.</p>
                 <p>The emotional response was real, and the campaign earned recognition for it.</p>
             </section>
         </div>
@@ -1497,10 +1497,9 @@
             'nfl': 'linear-gradient(135deg, #06080f 0%, #0d1222 25%, #0a1408 50%, #12100a 75%, #06080f 100%)'
         };
         
-        // Set initial hero background to Stranger Things image
-        if (heroBgImage) {
-            heroBgImage.src = heroBgImages['stranger-things'];
-        }
+        function selectCampaign(campaign, animateHero) {
+            const btn = Array.from(toggleBtns).find(b => b.dataset.campaign === campaign);
+            if (!btn) return;
 
         toggleBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1534,12 +1533,24 @@
                     heroBgImage.style.opacity = '0';
                     if (heroBg) heroBg.style.background = heroBgOverrides[campaign];
                 }
-            });
+            }
+        }
+
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => selectCampaign(btn.dataset.campaign, true));
         });
-        
+
         // Add transition to hero background
         if (heroBgImage) {
             heroBgImage.style.transition = 'opacity 0.5s ease';
+        }
+
+        // Deep-link support: #stranger-things, #nfl, #lower-sugar, #body-of-science
+        const initialCampaign = window.location.hash.replace('#', '');
+        if (initialCampaign && scopeTexts[initialCampaign]) {
+            selectCampaign(initialCampaign, false);
+        } else {
+            selectCampaign('stranger-things', false);
         }
     </script>
 
