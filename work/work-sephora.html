@@ -118,6 +118,34 @@
         .video-card iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         .video-card .video-label { padding: 16px; font-size: 0.9rem; color: var(--text-secondary); }
 
+        /* Video poster — replaces iframes that can't embed */
+        .video-poster {
+            position: relative; display: block; aspect-ratio: 16/9;
+            background: #111; overflow: hidden; text-decoration: none;
+        }
+        .video-poster img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform 0.4s ease, opacity 0.3s ease;
+        }
+        .video-poster:hover img { transform: scale(1.04); opacity: 0.75; }
+        .video-poster-overlay {
+            position: absolute; inset: 0; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 12px;
+            background: rgba(0,0,0,0.35); transition: background 0.3s ease;
+        }
+        .video-poster:hover .video-poster-overlay { background: rgba(0,0,0,0.55); }
+        .video-poster-play {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: rgba(212,255,79,0.9); display: flex; align-items: center; justify-content: center;
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+        .video-poster:hover .video-poster-play { transform: scale(1.12); background: #D4FF4F; }
+        .video-poster-play svg { margin-left: 4px; }
+        .video-poster-label {
+            font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.85);
+            letter-spacing: 0.04em; text-transform: uppercase;
+        }
+
         .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin: 48px auto; max-width: var(--max-width); padding: 0 var(--edge); justify-items: center; }
         .result-card {
             background: var(--surface); border: 1px solid var(--glass-border);
@@ -132,13 +160,52 @@
         .next-project-link:hover { color: var(--neon); }
 
         @media (max-width: 768px) {
-            .case-meta { gap: 32px; }
+            .case-meta {
+                gap: 32px;
+                flex-direction: column;
+                text-align: center;
+            }
+            .meta-item {
+                align-items: center;
+                justify-content: center;
+            }
             .results-grid { grid-template-columns: 1fr; }
+            .result-card {
+                text-align: center;
+                align-items: center;
+            }
             .case-gallery.two-col { grid-template-columns: 1fr; }
             .video-grid { grid-template-columns: 1fr; }
+            .case-section-title { text-align: center; }
+            .case-section p { text-align: center; }
+            .case-quote { text-align: center; }
+            .case-hero-content {
+                text-align: center;
+                align-items: center;
+            }
+            .case-title { text-align: center; }
+            .case-subtitle { text-align: center; }
             .back-nav { top: 16px; left: 16px; padding: 12px 18px; }
             .campaign-toggle { flex-direction: column; width: 100%; }
             .toggle-btn { text-align: center; }
+            .next-project-link { text-align: center; }
+        }
+        .video-placeholder {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: rgba(255,255,255,0.04);
+            border: 1px dashed rgba(255,255,255,0.12);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
         .video-placeholder {
             position: relative;
@@ -181,7 +248,7 @@
 
     <section class="case-hero">
         <div class="case-hero-bg">
-            <img src="Brand Imagery/Sephora/Holiday Campaign 2024/hqdefault.jpg" alt="Sephora Campaign">
+            <img src="../brand/sephora/holiday-2024/hqdefault.jpg" alt="Sephora Campaign">
         </div>
         <div class="case-hero-content">
             <span class="case-tag">Holiday & Skincare Campaigns</span>
@@ -255,8 +322,14 @@
                 <h2 class="case-section-title">Holiday Spots</h2>
                 <div class="video-grid">
                     <div class="video-card">
-                        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/8xsxYoCI4uc" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Don't Overthink It - Main"></iframe></div>
-                        <div class="video-label">Don't Overthink It - Main</div>
+                        <a href="https://www.youtube.com/watch?v=8xsxYoCI4uc" target="_blank" class="video-poster">
+                            <img src="https://img.youtube.com/vi/8xsxYoCI4uc/hqdefault.jpg" alt="Don't Overthink It - Main" loading="lazy" onerror="this.src='../brand/sephora/holiday-2024/hqdefault.jpg'">
+                            <div class="video-poster-overlay">
+                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
+                                <span class="video-poster-label">Watch on YouTube</span>
+                            </div>
+                        </a>
+                        <div class="video-label">Aunt Aya</div>
                     </div>
                     <div class="video-card">
                         <div class="video-wrapper video-placeholder">
@@ -286,7 +359,7 @@
             <section class="case-section">
                 <h2 class="case-section-title">Campaign Imagery</h2>
                 <div class="case-gallery">
-                    <img src="Brand Imagery/Sephora/Holiday Campaign 2024/hqdefault.jpg" alt="Sephora Holiday Campaign" loading="lazy">
+                    <img src="../brand/sephora/holiday-2024/hqdefault.jpg" alt="Sephora Holiday Campaign" loading="lazy">
                 </div>
             </section>
 
@@ -341,11 +414,23 @@
                 <h2 class="case-section-title">Skincare Spots</h2>
                 <div class="video-grid">
                     <div class="video-card">
-                        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/dMD94-fjyAQ" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Skin Obsessed - Security"></iframe></div>
+                        <a href="https://www.youtube.com/watch?v=dMD94-fjyAQ" target="_blank" class="video-poster">
+                            <img src="https://img.youtube.com/vi/dMD94-fjyAQ/hqdefault.jpg" alt="Skin Obsessed - Security" loading="lazy" onerror="this.src='../brand/sephora/skincare-2025/Sephora-Skincare.NhwUe2HM.png'">
+                            <div class="video-poster-overlay">
+                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
+                                <span class="video-poster-label">Watch on YouTube</span>
+                            </div>
+                        </a>
                         <div class="video-label">Skin Obsessed - Security</div>
                     </div>
                     <div class="video-card">
-                        <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/l8RRLQiTEks" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Skin Obsessed - The Hunt"></iframe></div>
+                        <a href="https://www.youtube.com/watch?v=l8RRLQiTEks" target="_blank" class="video-poster">
+                            <img src="https://img.youtube.com/vi/l8RRLQiTEks/hqdefault.jpg" alt="Skin Obsessed - The Hunt" loading="lazy" onerror="this.src='../brand/sephora/skincare-2025/Sephora-Skincare.NhwUe2HM.png'">
+                            <div class="video-poster-overlay">
+                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
+                                <span class="video-poster-label">Watch on YouTube</span>
+                            </div>
+                        </a>
                         <div class="video-label">Skin Obsessed - The Hunt</div>
                     </div>
                 </div>
@@ -355,7 +440,7 @@
             <section class="case-section">
                 <h2 class="case-section-title">Campaign Imagery</h2>
                 <div class="case-gallery">
-                    <img src="Brand Imagery/Sephora/Skincare Campaign 2025/Sephora-Skincare.NhwUe2HM.png" alt="Sephora Skin Obsessed Campaign" loading="lazy">
+                    <img src="../brand/sephora/skincare-2025/Sephora-Skincare.NhwUe2HM.png" alt="Sephora Skin Obsessed Campaign" loading="lazy">
                 </div>
             </section>
 
@@ -377,6 +462,15 @@
             <section class="case-section">
                 <h2 class="case-section-title">The Impact</h2>
                 <p>"Skin Obsessed" landed because it took skincare people seriously. No winking at the camera, no gentle mockery of the obsession—just an honest celebration of the way these consumers approach their routines. That respect translated into real affinity and category growth across price points.</p>
+            </section>
+
+            <section class="case-section">
+                <h2 class="case-section-title">In The Press</h2>
+                <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
+                    <a href="https://www.adweek.com/agencies/sephora-tbwa-chiat-day-la-holiday-creative/" target="_blank" rel="noopener" style="padding:8px 16px;background:var(--glass);border:1px solid var(--glass-border);border-radius:9999px;font-size:0.85rem;color:var(--neon);text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--neon)'" onmouseout="this.style.borderColor='var(--glass-border)'">Adweek →</a>
+                    <a href="https://www.thestable.com.au/tbwachiat-day-la-taika-waititi-humour-gives-sephora-a-friendly-funny-chic/" target="_blank" rel="noopener" style="padding:8px 16px;background:var(--glass);border:1px solid var(--glass-border);border-radius:9999px;font-size:0.85rem;color:var(--neon);text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--neon)'" onmouseout="this.style.borderColor='var(--glass-border)'">The Stable →</a>
+                    <a href="https://www.mauddeitch.com/home-1/sephora-dont-overthink-it" target="_blank" rel="noopener" style="padding:8px 16px;background:var(--glass);border:1px solid var(--glass-border);border-radius:9999px;font-size:0.85rem;color:var(--neon);text-decoration:none;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--neon)'" onmouseout="this.style.borderColor='var(--glass-border)'">Creative Team Portfolio →</a>
+                </div>
             </section>
         </div>
     </div>

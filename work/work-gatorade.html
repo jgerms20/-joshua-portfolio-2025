@@ -222,6 +222,34 @@
         .video-card.featured .video-wrapper { padding-bottom: 50%; }
         .video-card iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         .video-card .video-label { padding: 16px; font-size: 0.9rem; color: var(--text-secondary); }
+
+        /* Video poster — replaces iframes that can't embed */
+        .video-poster {
+            position: relative; display: block; aspect-ratio: 16/9;
+            background: #111; overflow: hidden; text-decoration: none;
+        }
+        .video-poster img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform 0.4s ease, opacity 0.3s ease;
+        }
+        .video-poster:hover img { transform: scale(1.04); opacity: 0.75; }
+        .video-poster-overlay {
+            position: absolute; inset: 0; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 12px;
+            background: rgba(0,0,0,0.35); transition: background 0.3s ease;
+        }
+        .video-poster:hover .video-poster-overlay { background: rgba(0,0,0,0.55); }
+        .video-poster-play {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: rgba(212,255,79,0.9); display: flex; align-items: center; justify-content: center;
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+        .video-poster:hover .video-poster-play { transform: scale(1.12); background: #D4FF4F; }
+        .video-poster-play svg { margin-left: 4px; }
+        .video-poster-label {
+            font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.85);
+            letter-spacing: 0.04em; text-transform: uppercase;
+        }
         .video-grid-small {
             display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
         }
@@ -392,16 +420,51 @@
         .next-project-link:hover { color: var(--neon); }
 
         @media (max-width: 768px) {
-            .case-meta { gap: 32px; } 
+            .case-meta {
+                gap: 32px;
+                flex-direction: column;
+                text-align: center;
+            }
+            .meta-item {
+                align-items: center;
+                justify-content: center;
+            }
             .results-grid { grid-template-columns: 1fr; }
+            .result-card {
+                text-align: center;
+                align-items: center;
+            }
             .video-grid { grid-template-columns: 1fr; }
             .video-grid-small { grid-template-columns: 1fr; }
+            .case-section-title { text-align: center; }
+            .case-section p { text-align: center; }
+            .case-quote { text-align: center; }
+            .timeline-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .timeline-content {
+                padding-left: 0;
+                border-left: none;
+                border-top: 2px solid var(--glass-border);
+                padding-top: 16px;
+            }
+            .timeline-date { text-align: center; }
+            .case-hero-content {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+                align-items: center;
+            }
+            .case-title { text-align: center; }
+            .case-subtitle { text-align: center; }
+            .case-hero-visual { display: none; }
+            .case-hero-text { width: 100%; }
             .back-nav { top: 16px; left: 16px; padding: 12px 18px; }
             .campaign-toggle { flex-direction: column; width: 100%; }
             .toggle-btn { text-align: center; }
-            .case-hero-content { flex-direction: column; gap: 40px; }
-            .case-hero-visual { display: none; }
-            .case-hero-text { width: 100%; }
+            .next-project-link { text-align: center; }
         }
             .video-placeholder {
             position: relative;
@@ -444,7 +507,7 @@
 
     <section class="case-hero">
         <div class="case-hero-bg">
-            <img id="heroBgImage" src="../Brand Imagery/Gatorade/Stranger Things/Gatorade Stranger Things Hero.jpg" alt="Gatorade Stranger Things Campaign" onerror="this.src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&q=80'">
+            <img id="heroBgImage" src="https://digitalassets.pepsico.com/transform/4ef9a524-7317-45ff-98a3-b9a321351eeb/G-ST_KV_V2_Logos?w=1920&q=75" alt="Gatorade x Stranger Things Campaign" onerror="this.src='../brand/gatorade/stranger-things/Gatorade Stranger Things Hero.jpg'">
         </div>
         <div class="case-hero-content">
             <div class="case-hero-text">
@@ -463,6 +526,7 @@
                     <button class="toggle-btn" data-campaign="nfl">NFL</button>
                     <button class="toggle-btn" data-campaign="lower-sugar">Lower Sugar</button>
                     <button class="toggle-btn" data-campaign="body-of-science">Body of Science</button>
+                    <button class="toggle-btn" data-campaign="football">Football</button>
                 </div>
             </div>
             
@@ -484,7 +548,7 @@
         </div>
         <div class="meta-item">
             <span class="meta-label">Year</span>
-            <span class="meta-value">2024-2025</span>
+            <span class="meta-value">2025-2026</span>
         </div>
         <div class="meta-item">
             <span class="meta-label">Scope</span>
@@ -499,14 +563,49 @@
                 <h2 class="case-section-title">No Ordinary Athlete</h2>
                 
                 <!-- Campaign Videos -->
-                <div class="video-grid featured-layout" style="margin-bottom: 48px;">
-                    <!-- Featured Video: Stranger Things Campaign -->
+                <div class="video-grid featured-layout" style="margin-bottom: 32px;">
+                    <!-- Featured Video: No Ordinary Athlete -->
                     <div class="video-card featured">
-                        <div class="video-placeholder" style="aspect-ratio: 16/9;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="rgba(255,255,255,0.25)" stroke="none"/></svg>
-                            <span>Video Coming Soon</span>
+                        <div class="video-wrapper">
+                            <iframe
+                                src="https://www.youtube.com/embed/at9irMNtI2g?rel=0&modestbranding=1"
+                                title="Gatorade x Stranger Things — No Ordinary Athlete"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
                         </div>
-                        <div class="video-label">No Ordinary Athlete — Stranger Things Campaign</div>
+                        <div class="video-label">No Ordinary Athlete — Official Campaign Spot</div>
+                    </div>
+                    <div class="video-card featured">
+                        <div class="video-wrapper">
+                            <iframe
+                                src="https://www.youtube.com/embed/S8FHZ6Gtu94?rel=0&modestbranding=1"
+                                title="Gatorade x Stranger Things — Campaign"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="video-label">Behind the Campaign</div>
+                    </div>
+                </div>
+
+                <!-- Campaign Photography -->
+                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:48px;">
+                    <div style="overflow:hidden;border-radius:16px;aspect-ratio:16/10;">
+                        <img src="https://digitalassets.pepsico.com/transform/7d988afb-9e59-47f1-93ac-f396b7c63c63/gatorade-stranger-01?w=1080&q=75"
+                             alt="Gatorade x Stranger Things — Campaign"
+                             style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;"
+                             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                    </div>
+                    <div style="overflow:hidden;border-radius:16px;aspect-ratio:16/10;">
+                        <img src="https://digitalassets.pepsico.com/transform/738aa676-4f9b-4cd4-8b2a-82710be65f2c/gatorade-stranger-02?w=1080&q=75"
+                             alt="Gatorade x Stranger Things — Activation"
+                             style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;"
+                             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
                     </div>
                 </div>
                 
@@ -863,15 +962,22 @@
                 <h2 class="case-section-title">Campaign Spots</h2>
                 <div class="video-grid">
                     <div class="video-card">
-                        <div class="video-wrapper" style="position:relative;aspect-ratio:16/9;"><iframe src="https://www.youtube.com/embed/S8FHZ6Gtu94" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-                        <div class="video-label">All The Reasons Not to Quit — Episode 1</div>
+                        <a href="https://www.youtube.com/results?search_query=Gatorade+All+The+Reasons+Not+To+Quit+NFL+Films" target="_blank" class="video-poster" style="background: linear-gradient(135deg, #0a0f1a, #1a1025);">
+                            <div class="video-poster-overlay" style="background: rgba(0,0,0,0.6);">
+                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
+                                <span class="video-poster-label">Search on YouTube</span>
+                            </div>
+                        </a>
+                        <div class="video-label">All The Reasons Not to Quit</div>
                     </div>
                     <div class="video-card">
-                        <div class="video-placeholder">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="rgba(255,255,255,0.25)" stroke="none"/></svg>
-                                <span>Video Coming Soon</span>
+                        <a href="https://www.youtube.com/results?search_query=Gatorade+NFL+Films+Columbia+High+School+comeback" target="_blank" class="video-poster" style="background: linear-gradient(135deg, #0a0f1a, #1a1025);">
+                            <div class="video-poster-overlay" style="background: rgba(0,0,0,0.6);">
+                                <div class="video-poster-play"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#030304"><polygon points="5,3 19,12 5,21"/></svg></div>
+                                <span class="video-poster-label">Search on YouTube</span>
                             </div>
-                        <div class="video-label">The Comeback</div>
+                        </a>
+                        <div class="video-label">The Comeback — Columbia HS</div>
                     </div>
                 </div>
             </section>
@@ -900,6 +1006,27 @@
 
         <!-- Lower Sugar Campaign -->
         <div class="campaign-panel" id="lower-sugar">
+
+            <!-- Campaign Hero — Lower Sugar -->
+            <div style="position:relative;border-radius:20px;overflow:hidden;margin-bottom:48px;">
+                <img src="https://digitalassets.pepsico.com/transform/2e4e68a6-7edf-45d3-9211-5af269317d69/gatorade-lower-sugar-hero?w=1920&q=75"
+                     alt="Gatorade Lower Sugar — Campaign"
+                     style="width:100%;height:560px;object-fit:cover;object-position:center;display:block;"
+                     onerror="this.style.display='none'">
+                <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.25) 55%,rgba(3,3,4,0.92) 100%);pointer-events:none;"></div>
+                <div style="position:absolute;bottom:0;left:0;right:0;padding:40px 48px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+                    <div>
+                        <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:rgba(255,107,0,0.8);margin-bottom:6px;">Nationwide Launch · March 4, 2026</div>
+                        <div style="font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff;line-height:1.1;letter-spacing:-0.02em;">Gatorade Lower Sugar</div>
+                        <div style="font-size:0.9rem;color:rgba(255,255,255,0.5);margin-top:6px;">Fruit Punch · Lemonade · Glacier Cherry · Rain Berry</div>
+                    </div>
+                    <div style="text-align:right;flex-shrink:0;">
+                        <div style="font-size:clamp(3.5rem,9vw,7rem);font-weight:900;line-height:1;color:rgba(255,107,0,0.95);letter-spacing:-0.04em;">75<span style="font-size:0.45em;vertical-align:super;">%</span></div>
+                        <div style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-top:4px;">less sugar than<br>Thirst Quencher</div>
+                    </div>
+                </div>
+            </div>
+
             <section class="case-section">
                 <h2 class="case-section-title">Lower Sugar — Launch Week</h2>
                 <p>Launching a lower-sugar Gatorade is tricky. Serious athletes have strong opinions about what they put in their bodies, and "lower sugar" has historically meant "watered down." This wasn't a flavor extension—it was an actual repositioning: all the fuel, none of the compromise.</p>
@@ -925,10 +1052,72 @@
             </div>
 
             <section class="case-section">
+                <h2 class="case-section-title">Campaign Film</h2>
+                <div class="video-card featured">
+                    <div class="video-wrapper">
+                        <iframe
+                            src="https://www.youtube-nocookie.com/embed/iZjpjBxSHg4?rel=0&modestbranding=1"
+                            title="Gatorade Lower Sugar — Campaign Film"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="video-label">Gatorade Lower Sugar — Official Campaign Film</div>
+                </div>
+            </section>
+
+            <section class="case-section">
+                <h2 class="case-section-title">The Campaign</h2>
+                <p>The campaign centered on a striking visual concept: a black-and-white world where Gatorade's brand colors—and the energy of movement—were the only things in color. Narrated by WNBA legend Candace Parker, it featured dancers Witney Carson and Charly Barby, choreographer Roland Pollard, TV host Tayshia Adams, and Caitlin Clark, each embodying the "no compromise" platform through movement and performance.</p>
+                <p>The visual language made an argument without saying it: a colorless world is a world of trade-offs. Gatorade breaks through in color. So does your performance.</p>
+            </section>
+
+            <!-- Campaign Photography -->
+            <section class="case-section">
+                <h2 class="case-section-title">Campaign Visuals</h2>
+
+                <!-- Six Individuals — full width landscape -->
+                <div style="overflow:hidden;border-radius:16px;margin-bottom:16px;">
+                    <img src="https://digitalassets.pepsico.com/transform/82f384e5-a698-4dfd-99a4-ec56773e2c4e/gatorade-lower-sugar-six-individuals?w=1920&q=75"
+                         alt="Gatorade Lower Sugar — Campaign Cast"
+                         style="width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform 0.4s ease;"
+                         onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"
+                         onerror="this.parentElement.style.display='none'">
+                </div>
+
+                <!-- Creators Group Shot (portrait) + RTD bottle side by side -->
+                <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:16px;">
+                    <div style="overflow:hidden;border-radius:16px;">
+                        <img src="https://digitalassets.pepsico.com/transform/5077c572-b1b0-4d17-aa7a-76b1057cbcdc/Gatorade-Lower-Sugar_Creators-Group-Shot?w=1080&q=75"
+                             alt="Gatorade Lower Sugar — Creators"
+                             style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s ease;"
+                             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"
+                             onerror="this.parentElement.style.display='none'">
+                    </div>
+                    <div style="overflow:hidden;border-radius:16px;background:var(--surface);">
+                        <img src="https://www.datocms-assets.com/101859/1772046571-gatorade_lowersugar-rtd_desktop_p1_5600x2800_v2.png"
+                             alt="Gatorade Lower Sugar — RTD Product"
+                             style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 0.4s ease;"
+                             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"
+                             onerror="this.parentElement.style.display='none'">
+                    </div>
+                </div>
+            </section>
+
+            <section class="case-section">
                 <h2 class="case-section-title">Launch Week Execution</h2>
                 <p>Launch week ran across in-app placements timed to pre-workout, post-game browsing, and health app usage. Creative rotated between proof-point messaging (electrolytes, hydration performance) and lifestyle content that made the lower-sugar choice feel like a natural part of a serious athlete's routine.</p>
                 <p>We tracked brand lift, purchase intent, and message recall—the metrics that actually tell you whether the positioning is landing with a skeptical audience, not just getting views.</p>
             </section>
+
+            <div class="case-quote right">
+                <blockquote>
+                    "Gatorade Lower Sugar gives fans all the fuel they need without compromise, and we're thrilled to bring this to life in a way that's as dynamic and bold as the athletes who inspire us."
+                </blockquote>
+                <cite>— Anuj Bhasin, SVP of Marketing, Gatorade</cite>
+            </div>
 
             <section class="case-section">
                 <h2 class="case-section-title">My Role</h2>
@@ -963,34 +1152,318 @@
 
         <!-- Body of Science Campaign -->
         <div class="campaign-panel" id="body-of-science">
+
+            <!-- Campaign Hero — Venus Williams -->
+            <div style="position:relative;border-radius:20px;overflow:hidden;margin-bottom:48px;" id="bos-hero-wrap">
+                <img src="https://www.datocms-assets.com/101859/1777666166-venus_bos_desktop.jpg"
+                     alt="Venus Williams — Gatorade Body of Science"
+                     id="bos-hero-img"
+                     style="width:100%;height:600px;object-fit:cover;object-position:top center;display:block;"
+                     onerror="document.getElementById('bos-hero-fallback').style.display='flex';this.parentElement.style.display='none';">
+                <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.25) 55%,rgba(3,3,4,0.92) 100%);pointer-events:none;"></div>
+                <div style="position:absolute;bottom:0;left:0;right:0;padding:40px 48px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+                    <div>
+                        <img src="https://www.datocms-assets.com/101859/1777678209-boslogo_desktopdarklogo.png"
+                             alt="Body of Science"
+                             style="height:38px;width:auto;filter:brightness(0) invert(1);display:block;margin-bottom:14px;"
+                             onerror="this.style.display='none'">
+                        <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:rgba(255,107,0,0.8);margin-bottom:6px;">MET Gala · May 4, 2026</div>
+                        <div style="font-size:0.9rem;color:rgba(255,255,255,0.5);">Venus Williams · Sydney McLaughlin-Levrone · A'ja Wilson</div>
+                    </div>
+                    <div style="text-align:right;flex-shrink:0;">
+                        <div style="font-size:clamp(3.5rem,9vw,7rem);font-weight:900;line-height:1;color:rgba(255,107,0,0.95);letter-spacing:-0.04em;">6<span style="font-size:0.45em;vertical-align:super;">%</span></div>
+                        <div style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-top:4px;">of sports science research<br>focuses on women</div>
+                    </div>
+                </div>
+            </div>
+            <!-- CSS fallback banner (shown only if image fails to load) -->
+            <div id="bos-hero-fallback" style="background:linear-gradient(135deg,#0a0a0a 0%,#1a0800 40%,#000d00 100%);border-radius:20px;padding:60px 48px;margin-bottom:48px;display:none;align-items:center;justify-content:space-between;gap:32px;overflow:hidden;position:relative;">
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(255,107,0,0.12) 0%,transparent 60%);pointer-events:none;"></div>
+                <div style="position:relative;z-index:1;">
+                    <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.35em;text-transform:uppercase;color:rgba(255,107,0,0.7);margin-bottom:16px;">MET Gala · May 4, 2026</div>
+                    <div style="font-size:clamp(2.4rem,5vw,4rem);font-weight:700;color:#fff;line-height:1.05;">Body of<br>Science</div>
+                    <div style="font-size:0.9rem;color:rgba(255,255,255,0.5);margin-top:12px;">Venus Williams · Sydney McLaughlin-Levrone · A'ja Wilson</div>
+                </div>
+                <div style="position:relative;z-index:1;text-align:center;flex-shrink:0;">
+                    <div style="font-size:clamp(5rem,12vw,9rem);font-weight:900;line-height:1;color:rgba(255,107,0,0.9);">6<span style="font-size:0.45em;vertical-align:super;">%</span></div>
+                    <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:4px;">of sports science research<br>focuses on women</div>
+                </div>
+            </div>
+
             <section class="case-section">
-                <h2 class="case-section-title">Body of Science</h2>
-                <p>Only 6% of sports science research focuses on women. Gatorade built the Body of Science platform to help close that gap, and during WNBA All-Star Weekend in Chicago, we took the stat out of the app and put it on the street.</p>
+                <h2 class="case-section-title">The Insight</h2>
+                <p>Only 6% of sports science research focuses exclusively on women. Not 40%. Not 20%. Six. That number is the whole campaign. It tells you everything about how female athletes have been treated by the institutions designed to help them perform — and it gives Gatorade, a brand built on science, something real to stand behind.</p>
+                <p>For decades, Gatorade's research, its product development, its ambassador roster — all of it was built in a world that defaulted to male athletes. Body of Science is the brand's commitment to close the gap. Not a marketing pivot. A scientific one.</p>
+            </section>
+
+            <div class="case-quote">
+                <blockquote>"We arrived as tourists. We left as part of her world."</blockquote>
+                <cite>— Body of Science, MET Gala Monday, May 4, 2026</cite>
+            </div>
+
+            <section class="case-section">
+                <h2 class="case-section-title">The Idea</h2>
+                <p>To win with women, Gatorade couldn't just run ads at female athletes. It had to earn its way into spaces those athletes actually cared about — on their terms, in their cultural moments, with voices they trusted.</p>
+                <p>The strategy: make the 6% research gap undeniable by anchoring it to a figure who had lived it. Venus Williams — 7 Grand Slam titles, two Olympic golds, 24 years at the top of a sport where the science had never been built for her. She became Body of Science's first ambassador, not as a spokesperson, but as proof. And the MET Gala — fashion's biggest night, with 86% female viewership — was the launch platform. Not a sports event. Not a press conference. Her world.</p>
+                <p>The insight was a cultural one: if Gatorade wanted female consumers to feel seen, it had to show up where they were already paying attention, with a message rooted in something that was actually true about them.</p>
             </section>
 
             <section class="case-section">
-                <h2 class="case-section-title">The Activation</h2>
-                <p>A fleet of mobile LED billboard trucks circled the United Center throughout WNBA All-Star Weekend, running the headline stat — "Only 6% of sports science research focuses on women" — next to portraits of real athletes and a QR code linking straight to the Body of Science app.</p>
-                <p>Trucks staged at the highest-traffic entry points: the North Atrium approach, the main street frontage, wherever All-Star crowds were funneling in. The message was built to travel — simple enough to read from a moving car, sharp enough to make people stop and scan the code.</p>
+                <h2 class="case-section-title">Campaign Film</h2>
+                <div class="video-card featured">
+                    <div class="video-wrapper">
+                        <iframe
+                            src="https://www.youtube-nocookie.com/embed/ox2S_cwqQiY?rel=0&modestbranding=1"
+                            title="Gatorade Body of Science — Campaign Film"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="video-label">Body of Science — Official Campaign Film</div>
+                </div>
+            </section>
+
+            <section class="case-section">
+                <h2 class="case-section-title">The Athletes</h2>
+                <p>Three generational athletes who spent their careers performing at the highest level — in a world where the science was never built for them.</p>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0;">
+                    <div style="position:relative;overflow:hidden;border-radius:16px;aspect-ratio:2/3;">
+                        <img src="https://www.datocms-assets.com/101859/1777674380-ajay_beautyasset_safespace.jpg"
+                             alt="A'ja Wilson — Body of Science"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.4s ease;"
+                             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,0.8));pointer-events:none;">
+                            <div style="font-weight:700;font-size:0.9rem;color:#fff;">A'ja Wilson</div>
+                            <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">3× WNBA Champion</div>
+                        </div>
+                    </div>
+                    <div style="position:relative;overflow:hidden;border-radius:16px;aspect-ratio:2/3;">
+                        <img src="https://www.datocms-assets.com/101859/1777674071-liza_beautyasset.jpg"
+                             alt="Lisa Billard — Body of Science"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.4s ease;"
+                             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,0.8));pointer-events:none;">
+                            <div style="font-weight:700;font-size:0.9rem;color:#fff;">Lisa Billard</div>
+                            <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">F1 Academy Driver</div>
+                        </div>
+                    </div>
+                    <div style="position:relative;overflow:hidden;border-radius:16px;aspect-ratio:2/3;">
+                        <img src="https://www.datocms-assets.com/101859/1777854197-website_sidney_crop.jpg"
+                             alt="Sydney McLaughlin-Levrone — Body of Science"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.4s ease;"
+                             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,0.8));pointer-events:none;">
+                            <div style="font-weight:700;font-size:0.9rem;color:#fff;">Sydney McLaughlin-Levrone</div>
+                            <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">400M World Record Holder</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="case-section">
+                <h2 class="case-section-title">The MET Gala Execution</h2>
+                <p>On May 4, 2026 — MET Gala Monday — Venus Williams walked the carpet wearing custom Swarovski accessories designed to make the 6% research gap visible. Not a branded lanyard. Not a logo on a dress. Jewelry that asked a question and made people look it up. Every camera on that carpet became a distribution channel for the statistic.</p>
+                <p>The red carpet wasn't the only play. Venus carried the campaign into GMA, PEOPLE, WWD, E!, and TheSkimm — each placement a different angle on the same truth. Fashion press picked up the Swarovski design story. Sports media picked up the science. Culture media picked up Venus. The message stayed consistent; the editorial frame shifted to match each audience.</p>
+                <p>On-platform, the campaign activated simultaneously: a launch film, a G.com homepage takeover, an email campaign, and collab posts from Venus, Sydney McLaughlin-Levrone, A'ja Wilson, and Lisa. Fashion influencers — outside Gatorade's usual rotation — extended the campaign into spaces the brand had never occupied, making the story feel native rather than sponsored. Mariah Rose alone delivered 6.1M+ views and 31K engagements from a single post.</p>
+                <p>The sequencing was deliberate: earned media from Venus's interviews set the cultural context, owned channels delivered the science, and influencers translated both into communities Gatorade's paid media couldn't reach on its own.</p>
             </section>
 
             <section class="case-section">
                 <h2 class="case-section-title">My Role</h2>
-                <p>More detail on this leg of the campaign coming soon.</p>
+                <p>As Senior Connections Strategist, I built the connections plan that held this campaign together across earned, owned, and influencer channels. That meant mapping how the story would travel — from Venus on the MET carpet to someone encountering it for the first time in their feed days later — and making sure every touchpoint reinforced the same message without duplicating the same content.</p>
+                <p>The influencer strategy was central. Body of Science required going outside Gatorade's traditional sports-first roster and bringing in fashion and lifestyle voices who had never touched the brand. I developed the framework for identifying and onboarding those partners — what profile types could credibly carry a science-meets-fashion narrative, how to brief creators who don't operate in the sports category, and how to sequence posts so fashion press and sports press picked up the story on different days rather than competing for the same news cycle.</p>
+                <p>I coordinated the ambassador activation cadence — ensuring Venus's PR push, Sydney's and A'ja's collab posts, and the broader influencer wave built on each other rather than cannibalizing attention. I worked with the team to build the G.com homepage takeover and email strategy around peak traffic windows tied to Venus's media appearances, translating earned reach into owned conversion. The 1.9% homepage CTR and 62K profile visits in seven days were the direct output of that timing.</p>
+                <p>The 86% female viewership figure was the north star the whole plan was built around. Every channel decision, every sequencing call, every influencer choice came back to that: are we actually reaching the women we said we were going to reach?</p>
             </section>
 
-            <!-- Photo gallery -->
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-value">2.6B</div>
+                    <div class="result-label">Potential Earned Reach</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">86%</div>
+                    <div class="result-label">Female Viewership<br><span style="font-size:0.7rem;opacity:0.6;">vs. 45% Super Bowl / 49% Lower Sugar</span></div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">61.8M</div>
+                    <div class="result-label">Total Impressions (Organic + Paid)</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">41.7M+</div>
+                    <div class="result-label">Influencer Impressions — 28 Posts</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">+1,036%</div>
+                    <div class="result-label">Venus Collab vs. Benchmark — 2.8M Impressions</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">+557%</div>
+                    <div class="result-label">Sydney Collab vs. Benchmark — 1.6M Impressions</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">100%</div>
+                    <div class="result-label">Positive / Neutral Earned Sentiment</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">97%</div>
+                    <div class="result-label">Positive / Neutral Owned Sentiment</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">6.1M+</div>
+                    <div class="result-label">Top Influencer Views — Mariah Rose (31K Engagements)</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">62K</div>
+                    <div class="result-label">Profile Visits in 7 Days = 22% of 30-Day Activity</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">1.9%</div>
+                    <div class="result-label">G.com Homepage CTR</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">78</div>
+                    <div class="result-label">Earned Mentions — 84% With 2+ Key Messages</div>
+                </div>
+            </div>
+
             <section class="case-section">
-                <h2 class="case-section-title">On the Ground — WNBA All-Star Weekend, Chicago</h2>
-                <div class="case-gallery">
-                    <img src="../Brand Imagery/Gatorade/Body of Science/body-of-science-01.jpg" alt="Gatorade Body of Science mobile billboard truck outside United Center" loading="lazy" onerror="this.style.display='none'">
-                    <img src="../Brand Imagery/Gatorade/Body of Science/body-of-science-02.jpg" alt="Gatorade Body of Science mobile billboard truck, United Center street view" loading="lazy" onerror="this.style.display='none'">
-                    <img src="../Brand Imagery/Gatorade/Body of Science/body-of-science-03.jpg" alt="Gatorade Body of Science truck parked beneath WNBA All-Star Chicago signage" loading="lazy" onerror="this.style.display='none'">
-                    <img src="../Brand Imagery/Gatorade/Body of Science/body-of-science-04.jpg" alt="Gatorade Body of Science truck outside United Center entrance" loading="lazy" onerror="this.style.display='none'">
-                    <img src="../Brand Imagery/Gatorade/Body of Science/body-of-science-05.jpg" alt="Two Gatorade Body of Science trucks parked side by side at United Center" loading="lazy" onerror="this.style.display='none'">
+                <h2 class="case-section-title">The Science</h2>
+                <p>Body of Science wasn't just a marketing campaign — it was built on real research from Gatorade Sports Science Institute scientists who had spent careers studying what the data was missing.</p>
+                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:32px 0;">
+                    <div style="position:relative;overflow:hidden;border-radius:16px;aspect-ratio:4/3;">
+                        <img src="https://www.datocms-assets.com/101859/1777675256-lindsay_beautyasset.jpg"
+                             alt="Dr. Lindsay Baker — GSSI Director"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.4s ease;"
+                             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,0.82));pointer-events:none;">
+                            <div style="font-weight:700;font-size:0.9rem;color:#fff;">Dr. Lindsay Baker</div>
+                            <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Director, Gatorade Sports Science Institute</div>
+                        </div>
+                    </div>
+                    <div style="position:relative;overflow:hidden;border-radius:16px;aspect-ratio:4/3;">
+                        <img src="https://www.datocms-assets.com/101859/1777675275-kim_beautyasset.jpg"
+                             alt="Kim Stein — GSSI Scientist"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.4s ease;"
+                             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,0.82));pointer-events:none;">
+                            <div style="font-weight:700;font-size:0.9rem;color:#fff;">Kim Stein</div>
+                            <div style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Scientist, Gatorade Sports Science Institute</div>
+                        </div>
+                    </div>
                 </div>
             </section>
+
         </div>
+
+        <!-- Football / Is It In You? Campaign -->
+        <div class="campaign-panel" id="football">
+
+            <!-- Campaign Hero -->
+            <div style="position:relative;border-radius:20px;overflow:hidden;margin-bottom:48px;">
+                <img src="https://digitalassets.pepsico.com/transform/f4614c66-fc71-4228-a376-ab0eb41d0467/gatorade-global-football-campaign-header?w=1920&q=75"
+                     alt="Gatorade — Is It In You? Global Football Campaign"
+                     style="width:100%;height:560px;object-fit:cover;object-position:center top;display:block;"
+                     onerror="this.parentElement.style.background='linear-gradient(135deg,#0a1500 0%,#1a2a00 50%,#0d0a00 100%)';this.style.display='none';">
+                <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.05) 0%,rgba(0,0,0,0.2) 55%,rgba(3,3,4,0.9) 100%);pointer-events:none;"></div>
+                <div style="position:absolute;bottom:0;left:0;right:0;padding:40px 48px;">
+                    <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:rgba(255,107,0,0.8);margin-bottom:8px;">April 23, 2026 · Global Launch</div>
+                    <div style="font-size:clamp(2rem,5vw,3.2rem);font-weight:800;color:#fff;line-height:1.05;margin-bottom:8px;">Is It In You?</div>
+                    <div style="font-size:0.9rem;color:rgba(255,255,255,0.55);">Pulisic · Vinícius Júnior · Álvarez · Mora · Díaz · Buchanan</div>
+                </div>
+            </div>
+
+            <section class="case-section">
+                <h2 class="case-section-title">Trust What's Inside</h2>
+                <p>Football — the global kind — is the world's sport. And for decades, Gatorade had been in the background of it: on the sidelines, in the coolers, but not in the story. This campaign changed that. "Is It In You?" is Gatorade's original question from 1965, but turned outward at a new generation of global footballers who earn everything through relentless, unglamorous preparation.</p>
+                <p>The brief was simple but hard: make Gatorade mean something in football culture. Not just as a hydration brand, but as the brand that understands what it actually takes to compete at the top of the sport. No luck. No shortcuts. No cheat codes. Just preparation, science, and sweat.</p>
+            </section>
+
+            <section class="case-section">
+                <h2 class="case-section-title">Campaign Film</h2>
+                <div class="video-card featured">
+                    <div class="video-wrapper">
+                        <iframe
+                            src="https://www.youtube-nocookie.com/embed/665gg3fGj9U?rel=0&modestbranding=1"
+                            title="Gatorade — Is It In You? Global Football Campaign"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="video-label">Is It In You? — Official Campaign Film · Narrated by Clint Dempsey</div>
+                </div>
+            </section>
+
+            <div class="case-quote">
+                <blockquote>"Gatorade has been there for footballers for decades... this campaign is a celebration of the unrelenting sweat they put in. No shortcuts, luck or cheat codes involved."</blockquote>
+                <cite>— Mark Kirkham, Chief Marketing Officer, Gatorade</cite>
+            </div>
+
+            <section class="case-section">
+                <h2 class="case-section-title">The Athletes</h2>
+                <p>Six players from six nations — all at the peak of the global game. Each selected not for their marketability but for what they represent: total commitment to the process.</p>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0;">
+                    <div style="padding:24px;background:var(--surface);border-radius:16px;border:1px solid var(--glass-border);">
+                        <div style="font-weight:700;font-size:1rem;color:#fff;margin-bottom:4px;">Christian Pulisic</div>
+                        <div style="font-size:0.8rem;color:rgba(255,255,255,0.5);">USMNT · AC Milan</div>
+                    </div>
+                    <div style="padding:24px;background:var(--surface);border-radius:16px;border:1px solid var(--glass-border);">
+                        <div style="font-weight:700;font-size:1rem;color:#fff;margin-bottom:4px;">Vinícius Júnior</div>
+                        <div style="font-size:0.8rem;color:rgba(255,255,255,0.5);">Brazil · Real Madrid</div>
+                    </div>
+                    <div style="padding:24px;background:var(--surface);border-radius:16px;border:1px solid var(--glass-border);">
+                        <div style="font-weight:700;font-size:1rem;color:#fff;margin-bottom:4px;">Julián Álvarez</div>
+                        <div style="font-size:0.8rem;color:rgba(255,255,255,0.5);">Argentina · Atlético Madrid</div>
+                    </div>
+                    <div style="padding:24px;background:var(--surface);border-radius:16px;border:1px solid var(--glass-border);">
+                        <div style="font-weight:700;font-size:1rem;color:#fff;margin-bottom:4px;">Gilberto Mora</div>
+                        <div style="font-size:0.8rem;color:rgba(255,255,255,0.5);">Mexico · Liga MX</div>
+                    </div>
+                    <div style="padding:24px;background:var(--surface);border-radius:16px;border:1px solid var(--glass-border);">
+                        <div style="font-weight:700;font-size:1rem;color:#fff;margin-bottom:4px;">Luis Díaz</div>
+                        <div style="font-size:0.8rem;color:rgba(255,255,255,0.5);">Colombia · Liverpool FC</div>
+                    </div>
+                    <div style="padding:24px;background:var(--surface);border-radius:16px;border:1px solid var(--glass-border);">
+                        <div style="font-weight:700;font-size:1rem;color:#fff;margin-bottom:4px;">Tajon Buchanan</div>
+                        <div style="font-size:0.8rem;color:rgba(255,255,255,0.5);">Canada · Villarreal CF</div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="case-quote right">
+                <blockquote>"Gatorade has been with me for my entire career... There's no luck involved. I trust in the process, my preparation, and the brand that's fueled me every step of the way."</blockquote>
+                <cite>— Christian Pulisic</cite>
+            </div>
+
+            <section class="case-section">
+                <h2 class="case-section-title">The Science</h2>
+                <p>The campaign isn't just a brand statement — it's backed by 41 years of Gatorade Sports Science Institute research applied specifically to football. During a standard 90-minute match, footballers can lose between 1 and 2 liters of fluid through sweat. That loss, if unmanaged, directly compromises speed, decision-making, and endurance in the final minutes when matches are often decided.</p>
+                <div class="stat-highlight">
+                    <div class="stat-highlight-title">GSSI Football Research</div>
+                    <div class="stat-highlight-grid">
+                        <div class="stat-highlight-item">
+                            <div class="stat-highlight-value">41</div>
+                            <div class="stat-highlight-label">Years of GSSI Sports Science</div>
+                        </div>
+                        <div class="stat-highlight-item">
+                            <div class="stat-highlight-value">1–2L</div>
+                            <div class="stat-highlight-label">Fluid Lost Per 90-Min Match</div>
+                        </div>
+                        <div class="stat-highlight-item">
+                            <div class="stat-highlight-value">Brazil NT</div>
+                            <div class="stat-highlight-label">Sweat Testing Partnership</div>
+                        </div>
+                    </div>
+                </div>
+                <p>Gatorade worked directly with the Brazilian national team on sweat testing protocols — real-world data collection from elite players in match conditions. The science isn't hypothetical. It's built on the same athletes the campaign features.</p>
+            </section>
+
+        </div>
+
     </div>
 
     <div class="next-project">
@@ -1009,45 +1482,56 @@
             'stranger-things': 'Global Entertainment Partnership',
             'nfl': 'NFL Films Documentary Partnership',
             'lower-sugar': 'Lower Sugar Product Launch — 2026',
-            'body-of-science': 'WNBA All-Star Weekend Activation — Chicago'
+            'body-of-science': 'Body of Science — MET Gala Launch 2026',
+            'football': 'Global Football Campaign — Is It In You? 2026'
         };
 
         const heroBgImages = {
-            'stranger-things': '../Brand Imagery/Gatorade/Stranger Things/Gatorade Stranger Things Hero.jpg',
-            'nfl': '../Brand Imagery/Gatorade/NFL Campaign Hero.jpg',
-            'lower-sugar': '../Brand Imagery/Gatorade/Stranger Things/Gatorade Stranger Things Hero.jpg',
-            'body-of-science': '../Brand Imagery/Gatorade/Body of Science/Gatorade Body of Science Hero.jpg'
+            'stranger-things': 'https://digitalassets.pepsico.com/transform/4ef9a524-7317-45ff-98a3-b9a321351eeb/G-ST_KV_V2_Logos?w=1920&q=75',
+            'lower-sugar': 'https://digitalassets.pepsico.com/transform/2e4e68a6-7edf-45d3-9211-5af269317d69/gatorade-lower-sugar-hero?w=1920&q=75',
+            'body-of-science': 'https://www.datocms-assets.com/101859/1777666166-venus_bos_desktop.jpg',
+            'football': 'https://digitalassets.pepsico.com/transform/f4614c66-fc71-4228-a376-ab0eb41d0467/gatorade-global-football-campaign-header?w=1920&q=75'
+        };
+
+        const heroBgOverrides = {
+            'nfl': 'linear-gradient(135deg, #06080f 0%, #0d1222 25%, #0a1408 50%, #12100a 75%, #06080f 100%)'
         };
         
         function selectCampaign(campaign, animateHero) {
             const btn = Array.from(toggleBtns).find(b => b.dataset.campaign === campaign);
             if (!btn) return;
 
-            // Update active button
-            toggleBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            // Show corresponding panel
-            campaignPanels.forEach(panel => {
-                panel.classList.remove('active');
-                if (panel.id === campaign) {
-                    panel.classList.add('active');
-                }
-            });
-
-            // Update scope
-            scopeValue.textContent = scopeTexts[campaign] || 'Global Partnership';
-
-            // Update hero background image
-            if (heroBgImage && heroBgImages[campaign]) {
-                if (animateHero) {
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const campaign = btn.dataset.campaign;
+                
+                // Update active button
+                toggleBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Show corresponding panel
+                campaignPanels.forEach(panel => {
+                    panel.classList.remove('active');
+                    if (panel.id === campaign) {
+                        panel.classList.add('active');
+                    }
+                });
+                
+                // Update scope
+                scopeValue.textContent = scopeTexts[campaign] || 'Global Partnership';
+                
+                // Update hero background image
+                const heroBg = document.querySelector('.case-hero-bg');
+                if (heroBgImages[campaign]) {
                     heroBgImage.style.opacity = '0';
+                    if (heroBg) heroBg.style.background = '';
                     setTimeout(() => {
                         heroBgImage.src = heroBgImages[campaign];
                         heroBgImage.style.opacity = '1';
                     }, 250);
-                } else {
-                    heroBgImage.src = heroBgImages[campaign];
+                } else if (heroBgOverrides[campaign]) {
+                    heroBgImage.style.opacity = '0';
+                    if (heroBg) heroBg.style.background = heroBgOverrides[campaign];
                 }
             }
         }
