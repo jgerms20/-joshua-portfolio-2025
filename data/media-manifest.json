@@ -32,14 +32,14 @@
       "evidence_url": ""
     },
     {
-      "id": "xfinity-campaign-youtube",
+      "id": "xfinity-greatest-gift-ispot",
       "page": "work/work-xfinity.html",
-      "kind": "youtube",
-      "url": "https://www.youtube.com/watch?v=R4MkK-9fJ9M",
+      "kind": "embed",
+      "url": "https://www.ispot.tv/share/tBI3",
       "fallback": "",
       "critical": true,
       "last_verified": "2026-08-04",
-      "evidence_url": ""
+      "evidence_url": "https://www.ispot.tv/ad/tBI3/xfinity-the-greatest-gift-featuring-steve-carell"
     }
   ]
 }
