@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "eclectic-polymath-spotify",
+      "page": "podcasts/podcast-eclectic-polymath.html",
+      "kind": "spotify-show",
+      "url": "https://open.spotify.com/show/3dlagzJ0jiWLTB9mF3y069",
+      "fallback": "",
+      "critical": true,
+      "last_verified": "2026-08-04",
+      "evidence_url": "https://open.spotify.com/show/3dlagzJ0jiWLTB9mF3y069",
+      "minimum_episode": 106,
+      "max_age_days": 14
+    },
+    {
+      "id": "gatorade-no-ordinary-athlete-clio",
+      "page": "work/work-gatorade.html",
+      "kind": "award-evidence",
+      "url": "https://clios.com/winners-gallery/details/220718",
+      "fallback": "",
+      "critical": true,
+      "last_verified": "2026-08-04",
+      "evidence_url": "https://clios.com/winners-gallery/details/220718"
+    },
+    {
+      "id": "directv-emmys-owned-video",
+      "page": "work/work-directv.html",
+      "kind": "local-video",
+      "url": "brand/directv/ooh-hijack/directv-emmys-ooh-hijack.mp4",
+      "fallback": "brand/directv/ooh-hijack/directv-emmys-ooh-hijack.mp4",
+      "critical": true,
+      "last_verified": "2026-08-04",
+      "evidence_url": ""
+    },
+    {
+      "id": "xfinity-greatest-gift-ispot",
+      "page": "work/work-xfinity.html",
+      "kind": "embed",
+      "url": "https://www.ispot.tv/share/tBI3",
+      "fallback": "",
+      "critical": true,
+      "last_verified": "2026-08-04",
+      "evidence_url": "https://www.ispot.tv/ad/tBI3/xfinity-the-greatest-gift-featuring-steve-carell"
+    }
+  ]
+}
