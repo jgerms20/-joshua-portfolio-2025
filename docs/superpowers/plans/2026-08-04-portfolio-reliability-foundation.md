@@ -33,7 +33,7 @@
 - Produces: `Finding(severity: str, code: str, page: str, target: str, message: str)`
 - Produces: `HealthReport(findings: list[Finding])` with `has_critical`, `to_dict()`, and `exit_code()`.
 
-- [ ] **Step 1: Write failing discovery and model tests**
+- [x] **Step 1: Write failing discovery and model tests**
 
 ```python
 from pathlib import Path
@@ -83,13 +83,13 @@ class PageDiscoveryTests(unittest.TestCase):
         self.assertEqual(HealthReport([warning, broken]).exit_code(), 1)
 ```
 
-- [ ] **Step 2: Run the tests and confirm the import failure**
+- [x] **Step 2: Run the tests and confirm the import failure**
 
 Run: `python3 -m unittest tests.test_pages -v`
 
 Expected: `ModuleNotFoundError: No module named 'portfolio_quality'`.
 
-- [ ] **Step 3: Implement the minimal registry and data model**
+- [x] **Step 3: Implement the minimal registry and data model**
 
 ```python
 @dataclass(frozen=True, slots=True)
@@ -116,15 +116,15 @@ class HealthReport:
         return {"ok": not self.has_critical, "findings": [asdict(item) for item in self.findings]}
 ```
 
-`discover_production_pages()` must build its result from the four explicit production globs and return resolved files sorted by repository-relative POSIX path.
+`discover_production_pages()` must build its result from the four explicit production globs, preserve the caller's root path, and return files sorted by repository-relative POSIX path.
 
-- [ ] **Step 4: Run the focused test module**
+- [x] **Step 4: Run the focused test module**
 
 Run: `python3 -m unittest tests.test_pages -v`
 
 Expected: 2 tests pass.
 
-- [ ] **Step 5: Commit the registry and model**
+- [x] **Step 5: Commit the registry and model**
 
 ```bash
 git add portfolio_quality/__init__.py portfolio_quality/model.py portfolio_quality/pages.py tests/test_pages.py
@@ -138,7 +138,6 @@ git commit -m "test: define production portfolio pages"
 **Files:**
 - Create: `portfolio_quality/html_checks.py`
 - Create: `tests/test_html_checks.py`
-- Create: `tests/fixtures/site/index.html`
 - Modify: `requirements.txt`
 
 **Interfaces:**
@@ -146,7 +145,7 @@ git commit -m "test: define production portfolio pages"
 - Produces: `check_page(root: Path, page: Path) -> list[Finding]`
 - Produces finding codes: `blank-source`, `placeholder-media`, `missing-local-file`, `unreadable-image`, `missing-alt`, `missing-iframe-title`, `duplicate-id`, and `missing-fragment`.
 
-- [ ] **Step 1: Write failing tests for visitor-impacting defects**
+- [x] **Step 1: Write failing tests for visitor-impacting defects**
 
 ```python
 from pathlib import Path
@@ -211,13 +210,13 @@ class HtmlCheckTests(unittest.TestCase):
         self.assertEqual([finding.code for finding in findings], ["unreadable-image"])
 ```
 
-- [ ] **Step 2: Run the tests and confirm `check_page` is missing**
+- [x] **Step 2: Run the tests and confirm `check_page` is missing**
 
 Run: `python3 -m unittest tests.test_html_checks -v`
 
 Expected: import failure for `portfolio_quality.html_checks`.
 
-- [ ] **Step 3: Implement Beautiful Soup checks**
+- [x] **Step 3: Implement Beautiful Soup checks**
 
 Use `BeautifulSoup(page.read_text(encoding="utf-8"), "lxml")`. Resolve local `src`, `poster`, and non-fragment `href` values against the page directory after removing query strings and fragments. Treat protocol-relative and `http`, `https`, `mailto`, `tel`, `data`, and `javascript` targets as non-local. Preserve filesystem case by checking the exact resolved path. For local `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`, and `.avif` sources, call `PIL.Image.open(path).verify()` and report `unreadable-image` if Pillow cannot decode the file or reports zero width or height. Add `Pillow>=10.0.0` to `requirements.txt`.
 
@@ -237,19 +236,19 @@ DEGRADED_CODES = {"missing-alt", "missing-iframe-title"}
 
 The literal phrases `Video Coming Soon`, `PLACEHOLDER`, and a media URL containing `placeholder` produce `placeholder-media` findings.
 
-- [ ] **Step 4: Run focused tests**
+- [x] **Step 4: Run focused tests**
 
 Run: `python3 -m unittest tests.test_html_checks -v`
 
 Expected: 3 tests pass.
 
-- [ ] **Step 5: Run checks against the real production pages and save the baseline**
+- [x] **Step 5: Run checks against the real production pages and save the baseline**
 
 Run: `python3 -m unittest tests.test_pages tests.test_html_checks -v`
 
 Expected: 5 tests pass. The real-site CLI does not exist yet, so no claim is made about current portfolio health.
 
-- [ ] **Step 6: Commit static checks**
+- [x] **Step 6: Commit static checks**
 
 ```bash
 git add requirements.txt portfolio_quality/html_checks.py tests/test_html_checks.py tests/fixtures/site
@@ -263,7 +262,6 @@ git commit -m "feat: detect broken production markup"
 **Files:**
 - Create: `data/media-manifest.json`
 - Create: `portfolio_quality/network_checks.py`
-- Create: `tests/fixtures/spotify-show.html`
 - Create: `tests/test_network_checks.py`
 
 **Interfaces:**
@@ -271,7 +269,7 @@ git commit -m "feat: detect broken production markup"
 - Produces: `probe_manifest(root: Path, entries: list[dict[str, object]], fetch: Callable[..., ResponseLike]) -> list[Finding]`
 - Media entry fields: `id`, `page`, `kind`, `url`, `fallback`, `critical`, `last_verified`, and `evidence_url`.
 
-- [ ] **Step 1: Write failing tests around status classification**
+- [x] **Step 1: Write failing tests around status classification**
 
 ```python
 from dataclasses import dataclass
@@ -325,13 +323,13 @@ class NetworkCheckTests(unittest.TestCase):
         self.assertEqual(findings[0].severity, "unverifiable")
 ```
 
-- [ ] **Step 2: Run the tests and confirm the network module is missing**
+- [x] **Step 2: Run the tests and confirm the network module is missing**
 
 Run: `python3 -m unittest tests.test_network_checks -v`
 
 Expected: import failure for `portfolio_quality.network_checks`.
 
-- [ ] **Step 3: Implement dependency-injected probes**
+- [x] **Step 3: Implement dependency-injected probes**
 
 Generic URLs use GET with a 10-second timeout and at most one retry for timeouts and 5xx responses. YouTube entries convert their watch URL to the public oEmbed endpoint. Status rules are:
 
@@ -396,16 +394,16 @@ The initial manifest contains the verified Spotify show URL and Clio evidence UR
 }
 ```
 
-- [ ] **Step 4: Run focused network tests without live internet**
+- [x] **Step 4: Run focused network tests without live internet**
 
 Run: `python3 -m unittest tests.test_network_checks -v`
 
 Expected: all fixture-driven tests pass with no network access.
 
-- [ ] **Step 5: Commit the external probe layer**
+- [x] **Step 5: Commit the external probe layer**
 
 ```bash
-git add data/media-manifest.json portfolio_quality/network_checks.py tests/fixtures/spotify-show.html tests/test_network_checks.py
+git add data/media-manifest.json portfolio_quality/network_checks.py tests/test_network_checks.py
 git commit -m "feat: classify external portfolio media"
 ```
 
@@ -423,7 +421,7 @@ git commit -m "feat: classify external portfolio media"
 - CLI: `python3 scripts/check-site.py --root PATH [--live] [--json-out PATH]`
 - Exit code: `0` when no `broken` finding exists; `1` when at least one `broken` finding exists; `2` for invalid configuration or unreadable input.
 
-- [ ] **Step 1: Write failing subprocess tests**
+- [x] **Step 1: Write failing subprocess tests**
 
 ```python
 import json
@@ -458,13 +456,13 @@ class CheckSiteCliTests(unittest.TestCase):
         self.assertGreater(payload["summary"]["broken"], 0)
 ```
 
-- [ ] **Step 2: Run the CLI tests and confirm the script is absent**
+- [x] **Step 2: Run the CLI tests and confirm the script is absent**
 
 Run: `python3 -m unittest tests.test_check_site_cli -v`
 
 Expected: failure because `scripts/check-site.py` does not exist.
 
-- [ ] **Step 3: Implement the thin CLI**
+- [x] **Step 3: Implement the thin CLI**
 
 The CLI must add the repository root to `sys.path`, discover pages, collect static findings, optionally run manifest probes only with `--live`, print findings grouped by severity, and write JSON with this stable shape:
 
@@ -480,19 +478,19 @@ The CLI must add the repository root to `sys.path`, discover pages, collect stat
 
 Add `reports/*.json` to `.gitignore` while retaining `reports/.gitkeep` if the directory is committed later.
 
-- [ ] **Step 4: Run CLI tests**
+- [x] **Step 4: Run CLI tests**
 
 Run: `python3 -m unittest tests.test_check_site_cli -v`
 
 Expected: subprocess exit and JSON assertions pass.
 
-- [ ] **Step 5: Run the CLI against the current portfolio baseline**
+- [x] **Step 5: Run the CLI against the current portfolio baseline**
 
 Run: `python3 scripts/check-site.py --root . --json-out reports/site-health.json || test $? -eq 1`
 
 Expected: a JSON report is created. Existing production defects may produce exit 1; the command records that baseline without weakening severity rules.
 
-- [ ] **Step 6: Commit the CLI**
+- [x] **Step 6: Commit the CLI**
 
 ```bash
 git add .gitignore scripts/check-site.py tests/test_check_site_cli.py
@@ -513,7 +511,7 @@ git commit -m "feat: add portfolio health CLI"
 - Scheduled/manual runs: tests, offline checks, then `--live` probes.
 - Artifact: `site-health-report` containing `reports/site-health.json`.
 
-- [ ] **Step 1: Write failing workflow contract tests**
+- [x] **Step 1: Write failing workflow contract tests**
 
 ```python
 class WorkflowContractTests(unittest.TestCase):
@@ -527,25 +525,25 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertNotIn("git push", workflow)
 ```
 
-- [ ] **Step 2: Run the contract test and confirm it fails on the old workflow**
+- [x] **Step 2: Run the contract test and confirm it fails on the old workflow**
 
 Run: `python3 -m unittest tests.test_workflow_contract -v`
 
 Expected: failure because the current workflow calls `scripts/update-portfolio.py` and commits changes.
 
-- [ ] **Step 3: Rewrite the workflow as a checker**
+- [x] **Step 3: Rewrite the workflow as a checker**
 
 Retain both cron expressions and `workflow_dispatch`. Add `pull_request` and `push` triggers for relevant Python, JSON, HTML, and workflow paths. Install `requirements.txt`, run the full unittest suite, run offline CLI checks on every trigger, run live checks only for `schedule` and `workflow_dispatch`, and upload the JSON report with `if: always()`.
 
 Do not configure write permissions, Git identity, commit commands, or push commands.
 
-- [ ] **Step 4: Run the workflow contract and full unit suite**
+- [x] **Step 4: Run the workflow contract and full unit suite**
 
 Run: `python3 -m unittest discover -s tests -v`
 
 Expected: all test modules pass.
 
-- [ ] **Step 5: Validate workflow YAML and the current baseline report**
+- [x] **Step 5: Validate workflow YAML and the current baseline report**
 
 Run: `python3 -c 'import pathlib, yaml; yaml.safe_load(pathlib.Path(".github/workflows/weekly-update.yml").read_text())'`
 
@@ -555,7 +553,7 @@ Run: `python3 scripts/check-site.py --root . --json-out reports/site-health.json
 
 Expected: report generation succeeds even if existing site defects correctly produce exit 1.
 
-- [ ] **Step 6: Commit the workflow replacement**
+- [x] **Step 6: Commit the workflow replacement**
 
 ```bash
 git add .github/workflows/weekly-update.yml tests/test_workflow_contract.py requirements.txt
@@ -572,31 +570,31 @@ git commit -m "ci: replace portfolio date updates with health checks"
 **Interfaces:**
 - Produces a clean branch with a reproducible test suite and an explicit baseline defect report for Phase 2.
 
-- [ ] **Step 1: Run the complete test suite**
+- [x] **Step 1: Run the complete test suite**
 
 Run: `python3 -m unittest discover -s tests -v`
 
 Expected: zero failures and zero errors.
 
-- [ ] **Step 2: Run static health against the repository**
+- [x] **Step 2: Run static health against the repository**
 
 Run: `python3 scripts/check-site.py --root . --json-out reports/site-health.json || test $? -eq 1`
 
 Expected: the report file parses as JSON; existing broken findings are enumerated with page, target, and code.
 
-- [ ] **Step 3: Run a bounded live probe**
+- [x] **Step 3: Run a bounded live probe**
 
 Run: `python3 scripts/check-site.py --root . --live --json-out reports/site-health-live.json || test $? -eq 1`
 
 Expected: the command completes within configured timeouts and records external results without modifying portfolio content.
 
-- [ ] **Step 4: Inspect repository scope**
+- [x] **Step 4: Inspect repository scope**
 
 Run: `git status --short && git diff origin/main...HEAD --stat && git log --oneline origin/main..HEAD`
 
 Expected: only the committed spec, plan, reliability package, manifests, tests, CLI, ignore rule, requirements, and workflow are changed.
 
-- [ ] **Step 5: Commit completed checklist state**
+- [x] **Step 5: Commit completed checklist state**
 
 ```bash
 git add docs/superpowers/plans/2026-08-04-portfolio-reliability-foundation.md
