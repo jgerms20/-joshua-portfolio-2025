@@ -123,6 +123,40 @@ class NetworkCheckTests(unittest.TestCase):
 
         self.assertEqual(findings, [])
 
+    def test_local_video_is_verified_without_an_external_request(self):
+        local_video = self.root / "brand/sample/campaign.mp4"
+        local_video.parent.mkdir(parents=True)
+        local_video.write_bytes(b"video")
+        entry = media_entry(
+            id="campaign-video",
+            kind="local-video",
+            url="brand/sample/campaign.mp4",
+            fallback="brand/sample/campaign.mp4",
+        )
+        fetch = FakeFetch({})
+
+        findings = probe_manifest(self.root, [entry], fetch=fetch)
+
+        self.assertEqual(findings, [])
+        self.assertEqual(fetch.urls, [])
+
+    def test_missing_local_video_is_broken_without_an_external_request(self):
+        entry = media_entry(
+            id="campaign-video",
+            page="work/work-sample.html",
+            kind="local-video",
+            url="brand/sample/missing.mp4",
+            fallback="brand/sample/missing.mp4",
+        )
+        fetch = FakeFetch({})
+
+        findings = probe_manifest(self.root, [entry], fetch=fetch)
+
+        self.assertEqual(len(findings), 1)
+        self.assertEqual(findings[0].severity, "broken")
+        self.assertEqual(findings[0].code, "missing-local-media")
+        self.assertEqual(fetch.urls, [])
+
     def test_server_error_retries_once_before_succeeding(self):
         entry = media_entry()
         fetch = FakeFetch({entry["url"]: [503, 200]})

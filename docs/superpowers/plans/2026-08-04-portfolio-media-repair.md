@@ -81,7 +81,8 @@ No test-only commit is made because `main` currently contains known visitor-faci
 **Interfaces:**
 - The lightbox image has no `src` until existing JavaScript assigns it.
 - Spotify iframe titles are `Spotify playlist: Joshua German's rotation`, `Spotify show: Dominate The Decade`, and `Spotify show: The Eclectic Polymath Podcast`.
-- DIRECTV's broken Emmys iframe and "Video Coming Soon" block use the owned MP4 with native controls and fallback links.
+- DIRECTV's broken Emmys iframe uses the owned MP4 with native controls and a fallback link.
+- The separate "Nothing On Your Roof 2.0" placeholder becomes an honest campaign still rather than reusing unrelated footage.
 
 - [ ] **Step 1: Convert the owned DIRECTV MOV without re-encoding**
 
@@ -97,7 +98,7 @@ Expected: FFprobe reports H.264 video, AAC audio, 720×1280 dimensions, and a du
 
 - [ ] **Step 2: Apply the minimal HTML repairs**
 
-Remove `src=""` from `#lightboxImg`. Add the three exact iframe titles. Replace both broken DIRECTV media blocks with:
+Remove `src=""` from `#lightboxImg`. Add the three exact iframe titles. Replace the broken DIRECTV Emmys iframe with:
 
 ```html
 <video controls playsinline preload="metadata" aria-label="DIRECTV Emmys OOH Hijack campaign video">
@@ -107,6 +108,7 @@ Remove `src=""` from `#lightboxImg`. Add the three exact iframe titles. Replace 
 ```
 
 Add `.film-frame video` to the existing absolute-fill rule used by `.film-frame iframe`.
+Replace the unrelated "Video Coming Soon" block with a local DIRECTV campaign still and a caption that identifies it as a still.
 
 - [ ] **Step 3: Update the DIRECTV manifest record**
 
@@ -143,7 +145,7 @@ git commit -m "fix: repair production media fallbacks"
 - Create: `tests/test_verified_content.py`
 
 **Interfaces:**
-- Xfinity uses YouTube video ID `63o9tgPK9r8`, independently corroborated by Adobe's 2020 roundup; the caption and page design remain unchanged.
+- Xfinity uses the campaign-specific iSpot embed at `https://www.ispot.tv/share/tBI3`; the caption and page design remain unchanged.
 - Gatorade displays `2026 Clio Awards · Bronze` with a direct official-source link.
 
 - [ ] **Step 1: Write failing content-evidence tests**
@@ -152,7 +154,7 @@ git commit -m "fix: repair production media fallbacks"
 class VerifiedContentTests(unittest.TestCase):
     def test_xfinity_uses_replacement_video(self):
         page = (ROOT / "work/work-xfinity.html").read_text(encoding="utf-8")
-        self.assertIn("https://www.youtube.com/embed/63o9tgPK9r8", page)
+        self.assertIn("https://www.ispot.tv/share/tBI3", page)
         self.assertNotIn("R4MkK-9fJ9M", page)
 
     def test_gatorade_clio_bronze_links_official_evidence(self):
@@ -170,7 +172,7 @@ Expected: two assertion failures because the replacement ID and Clio copy are ab
 
 - [ ] **Step 3: Apply the minimal page and manifest changes**
 
-Replace only the Xfinity iframe ID and add a direct fallback link beneath its existing caption. Add the Gatorade award chip beside the Stranger Things campaign evidence, linking the official Clio record with `target="_blank"` and `rel="noopener noreferrer"`. Update the manifest Xfinity URL to the replacement video and retain the Clio evidence entry.
+Replace only the Xfinity iframe source and add a direct fallback link beneath its existing caption. Add the Gatorade award chip beside the Stranger Things campaign evidence, linking the official Clio record with `target="_blank"` and `rel="noopener noreferrer"`. Update the manifest Xfinity URL to the iSpot campaign page and retain the Clio evidence entry.
 
 - [ ] **Step 4: Run focused and full tests**
 

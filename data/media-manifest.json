@@ -22,11 +22,11 @@
       "evidence_url": "https://clios.com/winners-gallery/details/220718"
     },
     {
-      "id": "directv-emmys-youtube",
+      "id": "directv-emmys-owned-video",
       "page": "work/work-directv.html",
-      "kind": "youtube",
-      "url": "https://www.youtube.com/watch?v=gxJNsUCJ1qk",
-      "fallback": "brand/directv/ooh-hijack/DIRECTV Emmy's OOH Hijack.MOV",
+      "kind": "local-video",
+      "url": "brand/directv/ooh-hijack/directv-emmys-ooh-hijack.mp4",
+      "fallback": "brand/directv/ooh-hijack/directv-emmys-ooh-hijack.mp4",
       "critical": true,
       "last_verified": "2026-08-04",
       "evidence_url": ""

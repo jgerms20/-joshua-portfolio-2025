@@ -97,6 +97,20 @@ def probe_manifest(
     root = Path(root)
     findings: list[Finding] = []
     for entry in entries:
+        if str(entry["kind"]).startswith("local-"):
+            local_target = root / str(entry["url"])
+            if not local_target.is_file():
+                findings.append(
+                    Finding(
+                        severity="broken",
+                        code="missing-local-media",
+                        page=str(entry["page"]),
+                        target=str(entry["url"]),
+                        message="local media file does not exist",
+                    )
+                )
+            continue
+
         target = _probe_url(entry)
         status = _fetch_status(target, fetch)
         if status is not None and 200 <= status < 400:
