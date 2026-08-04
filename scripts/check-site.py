@@ -15,6 +15,7 @@ from portfolio_quality.html_checks import check_page
 from portfolio_quality.model import HealthReport
 from portfolio_quality.network_checks import load_media_manifest, probe_manifest
 from portfolio_quality.pages import discover_production_pages
+from portfolio_quality.podcast_checks import probe_podcast_entries
 
 
 def parse_args(argv=None):
@@ -68,7 +69,9 @@ def main(argv=None) -> int:
         findings = [finding for page in pages for finding in check_page(root, page)]
         manifest = root / "data/media-manifest.json"
         if args.live and manifest.is_file():
-            findings.extend(probe_manifest(root, load_media_manifest(manifest)))
+            entries = load_media_manifest(manifest)
+            findings.extend(probe_manifest(root, entries))
+            findings.extend(probe_podcast_entries(entries))
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2

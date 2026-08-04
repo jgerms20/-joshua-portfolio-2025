@@ -4,12 +4,14 @@
     {
       "id": "eclectic-polymath-spotify",
       "page": "podcasts/podcast-eclectic-polymath.html",
-      "kind": "spotify",
+      "kind": "spotify-show",
       "url": "https://open.spotify.com/show/3dlagzJ0jiWLTB9mF3y069",
       "fallback": "",
       "critical": true,
       "last_verified": "2026-08-04",
-      "evidence_url": "https://open.spotify.com/show/3dlagzJ0jiWLTB9mF3y069"
+      "evidence_url": "https://open.spotify.com/show/3dlagzJ0jiWLTB9mF3y069",
+      "minimum_episode": 106,
+      "max_age_days": 14
     },
     {
       "id": "gatorade-no-ordinary-athlete-clio",
