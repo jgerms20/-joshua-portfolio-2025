@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "eclectic-polymath-spotify",
+      "page": "podcasts/podcast-eclectic-polymath.html",
+      "kind": "spotify",
+      "url": "https://open.spotify.com/show/3dlagzJ0jiWLTB9mF3y069",
+      "fallback": "",
+      "critical": true,
+      "last_verified": "2026-08-04",
+      "evidence_url": "https://open.spotify.com/show/3dlagzJ0jiWLTB9mF3y069"
+    },
+    {
+      "id": "gatorade-no-ordinary-athlete-clio",
+      "page": "work/work-gatorade.html",
+      "kind": "award-evidence",
+      "url": "https://clios.com/winners-gallery/details/220718",
+      "fallback": "",
+      "critical": true,
+      "last_verified": "2026-08-04",
+      "evidence_url": "https://clios.com/winners-gallery/details/220718"
+    },
+    {
+      "id": "directv-emmys-youtube",
+      "page": "work/work-directv.html",
+      "kind": "youtube",
+      "url": "https://www.youtube.com/watch?v=gxJNsUCJ1qk",
+      "fallback": "brand/directv/ooh-hijack/DIRECTV Emmy's OOH Hijack.MOV",
+      "critical": true,
+      "last_verified": "2026-08-04",
+      "evidence_url": ""
+    },
+    {
+      "id": "xfinity-campaign-youtube",
+      "page": "work/work-xfinity.html",
+      "kind": "youtube",
+      "url": "https://www.youtube.com/watch?v=R4MkK-9fJ9M",
+      "fallback": "",
+      "critical": true,
+      "last_verified": "2026-08-04",
+      "evidence_url": ""
+    }
+  ]
+}
