@@ -80,6 +80,8 @@ def _status_code(status: int | None) -> str:
         return "external-request-failed"
     if status == 404:
         return "external-not-found"
+    if status == 403:
+        return "external-access-denied"
     if status == 429:
         return "external-rate-limit"
     if status >= 500:
@@ -100,7 +102,12 @@ def probe_manifest(
         if status is not None and 200 <= status < 400:
             continue
 
-        if status is None or status in {408, 425, 429} or status >= 500:
+        if (
+            status is None
+            or status in {408, 425, 429}
+            or status >= 500
+            or (status == 403 and entry["kind"] == "award-evidence")
+        ):
             severity = "unverifiable"
         elif _fallback_exists(root, entry) or not bool(entry["critical"]):
             severity = "degraded"

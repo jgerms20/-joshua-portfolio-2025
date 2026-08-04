@@ -95,6 +95,23 @@ class NetworkCheckTests(unittest.TestCase):
         self.assertEqual(findings[0].severity, "unverifiable")
         self.assertEqual(fetch.urls, [endpoint])
 
+    def test_award_evidence_forbidden_to_automated_client_is_unverifiable(self):
+        entry = media_entry(
+            id="award",
+            page="work/work-gatorade.html",
+            kind="award-evidence",
+            url="https://clios.com/winners-gallery/details/220718",
+        )
+
+        findings = probe_manifest(
+            self.root,
+            [entry],
+            fetch=FakeFetch({entry["url"]: 403}),
+        )
+
+        self.assertEqual(findings[0].severity, "unverifiable")
+        self.assertEqual(findings[0].code, "external-access-denied")
+
     def test_successful_probe_returns_no_findings(self):
         entry = media_entry()
 
