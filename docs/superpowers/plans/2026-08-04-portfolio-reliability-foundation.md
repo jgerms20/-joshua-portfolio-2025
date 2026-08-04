@@ -85,7 +85,7 @@ class PageDiscoveryTests(unittest.TestCase):
 
 - [ ] **Step 2: Run the tests and confirm the import failure**
 
-Run: `python -m unittest tests.test_pages -v`
+Run: `python3 -m unittest tests.test_pages -v`
 
 Expected: `ModuleNotFoundError: No module named 'portfolio_quality'`.
 
@@ -120,7 +120,7 @@ class HealthReport:
 
 - [ ] **Step 4: Run the focused test module**
 
-Run: `python -m unittest tests.test_pages -v`
+Run: `python3 -m unittest tests.test_pages -v`
 
 Expected: 2 tests pass.
 
@@ -213,7 +213,7 @@ class HtmlCheckTests(unittest.TestCase):
 
 - [ ] **Step 2: Run the tests and confirm `check_page` is missing**
 
-Run: `python -m unittest tests.test_html_checks -v`
+Run: `python3 -m unittest tests.test_html_checks -v`
 
 Expected: import failure for `portfolio_quality.html_checks`.
 
@@ -239,13 +239,13 @@ The literal phrases `Video Coming Soon`, `PLACEHOLDER`, and a media URL containi
 
 - [ ] **Step 4: Run focused tests**
 
-Run: `python -m unittest tests.test_html_checks -v`
+Run: `python3 -m unittest tests.test_html_checks -v`
 
 Expected: 3 tests pass.
 
 - [ ] **Step 5: Run checks against the real production pages and save the baseline**
 
-Run: `python -m unittest tests.test_pages tests.test_html_checks -v`
+Run: `python3 -m unittest tests.test_pages tests.test_html_checks -v`
 
 Expected: 5 tests pass. The real-site CLI does not exist yet, so no claim is made about current portfolio health.
 
@@ -327,7 +327,7 @@ class NetworkCheckTests(unittest.TestCase):
 
 - [ ] **Step 2: Run the tests and confirm the network module is missing**
 
-Run: `python -m unittest tests.test_network_checks -v`
+Run: `python3 -m unittest tests.test_network_checks -v`
 
 Expected: import failure for `portfolio_quality.network_checks`.
 
@@ -398,7 +398,7 @@ The initial manifest contains the verified Spotify show URL and Clio evidence UR
 
 - [ ] **Step 4: Run focused network tests without live internet**
 
-Run: `python -m unittest tests.test_network_checks -v`
+Run: `python3 -m unittest tests.test_network_checks -v`
 
 Expected: all fixture-driven tests pass with no network access.
 
@@ -420,7 +420,7 @@ git commit -m "feat: classify external portfolio media"
 
 **Interfaces:**
 - Consumes: page discovery, HTML checks, media manifest probes, and `HealthReport`.
-- CLI: `python scripts/check-site.py --root PATH [--live] [--json-out PATH]`
+- CLI: `python3 scripts/check-site.py --root PATH [--live] [--json-out PATH]`
 - Exit code: `0` when no `broken` finding exists; `1` when at least one `broken` finding exists; `2` for invalid configuration or unreadable input.
 
 - [ ] **Step 1: Write failing subprocess tests**
@@ -460,7 +460,7 @@ class CheckSiteCliTests(unittest.TestCase):
 
 - [ ] **Step 2: Run the CLI tests and confirm the script is absent**
 
-Run: `python -m unittest tests.test_check_site_cli -v`
+Run: `python3 -m unittest tests.test_check_site_cli -v`
 
 Expected: failure because `scripts/check-site.py` does not exist.
 
@@ -482,13 +482,13 @@ Add `reports/*.json` to `.gitignore` while retaining `reports/.gitkeep` if the d
 
 - [ ] **Step 4: Run CLI tests**
 
-Run: `python -m unittest tests.test_check_site_cli -v`
+Run: `python3 -m unittest tests.test_check_site_cli -v`
 
 Expected: subprocess exit and JSON assertions pass.
 
 - [ ] **Step 5: Run the CLI against the current portfolio baseline**
 
-Run: `python scripts/check-site.py --root . --json-out reports/site-health.json || test $? -eq 1`
+Run: `python3 scripts/check-site.py --root . --json-out reports/site-health.json || test $? -eq 1`
 
 Expected: a JSON report is created. Existing production defects may produce exit 1; the command records that baseline without weakening severity rules.
 
@@ -519,8 +519,8 @@ git commit -m "feat: add portfolio health CLI"
 class WorkflowContractTests(unittest.TestCase):
     def test_workflow_runs_tests_and_never_commits_date_only_updates(self):
         workflow = (ROOT / ".github/workflows/weekly-update.yml").read_text()
-        self.assertIn("python -m unittest discover -s tests -v", workflow)
-        self.assertIn("python scripts/check-site.py --root .", workflow)
+        self.assertIn("python3 -m unittest discover -s tests -v", workflow)
+        self.assertIn("python3 scripts/check-site.py --root .", workflow)
         self.assertIn("actions/upload-artifact@v4", workflow)
         self.assertNotIn("scripts/update-portfolio.py", workflow)
         self.assertNotIn("git commit", workflow)
@@ -529,7 +529,7 @@ class WorkflowContractTests(unittest.TestCase):
 
 - [ ] **Step 2: Run the contract test and confirm it fails on the old workflow**
 
-Run: `python -m unittest tests.test_workflow_contract -v`
+Run: `python3 -m unittest tests.test_workflow_contract -v`
 
 Expected: failure because the current workflow calls `scripts/update-portfolio.py` and commits changes.
 
@@ -541,17 +541,17 @@ Do not configure write permissions, Git identity, commit commands, or push comma
 
 - [ ] **Step 4: Run the workflow contract and full unit suite**
 
-Run: `python -m unittest discover -s tests -v`
+Run: `python3 -m unittest discover -s tests -v`
 
 Expected: all test modules pass.
 
 - [ ] **Step 5: Validate workflow YAML and the current baseline report**
 
-Run: `python -c 'import pathlib, yaml; yaml.safe_load(pathlib.Path(".github/workflows/weekly-update.yml").read_text())'`
+Run: `python3 -c 'import pathlib, yaml; yaml.safe_load(pathlib.Path(".github/workflows/weekly-update.yml").read_text())'`
 
 Expected: exit 0. Add `PyYAML>=6.0` to `requirements.txt` so this validation command is reproducible locally and in CI.
 
-Run: `python scripts/check-site.py --root . --json-out reports/site-health.json || test $? -eq 1`
+Run: `python3 scripts/check-site.py --root . --json-out reports/site-health.json || test $? -eq 1`
 
 Expected: report generation succeeds even if existing site defects correctly produce exit 1.
 
@@ -574,19 +574,19 @@ git commit -m "ci: replace portfolio date updates with health checks"
 
 - [ ] **Step 1: Run the complete test suite**
 
-Run: `python -m unittest discover -s tests -v`
+Run: `python3 -m unittest discover -s tests -v`
 
 Expected: zero failures and zero errors.
 
 - [ ] **Step 2: Run static health against the repository**
 
-Run: `python scripts/check-site.py --root . --json-out reports/site-health.json || test $? -eq 1`
+Run: `python3 scripts/check-site.py --root . --json-out reports/site-health.json || test $? -eq 1`
 
 Expected: the report file parses as JSON; existing broken findings are enumerated with page, target, and code.
 
 - [ ] **Step 3: Run a bounded live probe**
 
-Run: `python scripts/check-site.py --root . --live --json-out reports/site-health-live.json || test $? -eq 1`
+Run: `python3 scripts/check-site.py --root . --live --json-out reports/site-health-live.json || test $? -eq 1`
 
 Expected: the command completes within configured timeouts and records external results without modifying portfolio content.
 
