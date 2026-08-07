@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MLB: Baseball Is Something Else — Wieden+Kennedy. Brand strategy that brought a new generation to the ballpark. Case Study by Joshua McKenzie German.">
+    <title>MLB: Where Major Is Made | Joshua McKenzie German</title>
+    <script>(function(){try{if(localStorage.getItem('jmg-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* =====================================================
+           THE PAPER EDITION — Case Study
+           "Ink & Paper" — An Editorial Catalogue Language
+           ===================================================== */
+
+        :root {
+            /* Paper Stock */
+            --paper: #F5F1E8;
+            --paper-warm: #EFEADF;
+            --paper-raised: #FBF8F1;
+            --paper-dim: #E9E3D5;
+
+            /* Ink */
+            --ink: #171512;
+            --ink-soft: rgba(23, 21, 18, 0.72);
+            --ink-mid: rgba(23, 21, 18, 0.52);
+            --ink-faint: rgba(23, 21, 18, 0.34);
+            --ink-ghost: rgba(23, 21, 18, 0.14);
+            --rule: rgba(23, 21, 18, 0.16);
+            --rule-soft: rgba(23, 21, 18, 0.09);
+
+            /* The Accent — International Klein Blue */
+            --blue: #1F1DDB;
+            --blue-deep: #14129E;
+            --blue-wash: rgba(31, 29, 219, 0.07);
+            --blue-glow: rgba(31, 29, 219, 0.22);
+
+            /* Supporting marks */
+            --vermilion: #E8380D;
+            --gold: #9A7B23;
+            --leaf: #2F6B33;
+
+            /* Type */
+            --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+            --sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            --mono: 'Space Mono', 'SF Mono', Menlo, monospace;
+
+            /* Space */
+            --s-1: 4px; --s0: 8px; --s1: 12px; --s2: 16px; --s3: 24px;
+            --s4: 32px; --s5: 48px; --s6: 64px; --s7: 96px; --s8: 144px;
+            --edge: clamp(20px, 5vw, 72px);
+            --max: 1560px;
+
+            /* Motion */
+            --exp: cubic-bezier(0.16, 1, 0.3, 1);
+            --quint: cubic-bezier(0.22, 1, 0.36, 1);
+            --spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+        }
+
+        /* ---- Night Edition (dark mode) ---- */
+        :root[data-theme="dark"] {
+            --paper: #14110D;
+            --paper-warm: #191511;
+            --paper-raised: #1C1813;
+            --paper-dim: #0E0C09;
+            --ink: #F0EAE0;
+            --ink-soft: rgba(240, 234, 224, 0.74);
+            --ink-mid: rgba(240, 234, 224, 0.52);
+            --ink-faint: rgba(240, 234, 224, 0.34);
+            --ink-ghost: rgba(240, 234, 224, 0.13);
+            --rule: rgba(240, 234, 224, 0.17);
+            --rule-soft: rgba(240, 234, 224, 0.09);
+            --blue: #7B79FF;
+            --blue-deep: #9D9BFF;
+            --blue-wash: rgba(123, 121, 255, 0.10);
+            --blue-glow: rgba(123, 121, 255, 0.28);
+            --vermilion: #FF5C33;
+            --gold: #C9A84C;
+            --leaf: #7DC982;
+        }
+        :root[data-theme="dark"] .grain { opacity: 0.22; }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        ::selection { background: var(--blue); color: var(--paper); }
+
+        img { max-width: 100%; display: block; object-fit: cover; }
+        a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+        /* Paper grain */
+        .grain {
+            position: fixed; inset: -50%;
+            width: 200%; height: 200%;
+            pointer-events: none;
+            z-index: 2000;
+            opacity: 0.30;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.24'/%3E%3C/svg%3E");
+            animation: grainShift 9s steps(6) infinite;
+        }
+        @keyframes grainShift {
+            0%,100% { transform: translate(0,0); } 20% { transform: translate(-2%,1%); }
+            40% { transform: translate(1%,-2%); } 60% { transform: translate(-1%,2%); } 80% { transform: translate(2%,-1%); }
+        }
+
+        /* =====================================================
+           TYPOGRAPHY
+           ===================================================== */
+        .t-display {
+            font-family: var(--serif);
+            font-optical-sizing: auto;
+            font-size: clamp(2.6rem, 7vw, 6rem);
+            font-weight: 400;
+            line-height: 0.95;
+            letter-spacing: -0.015em;
+        }
+        .t-title {
+            font-family: var(--serif);
+            font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+        }
+        .t-lede {
+            font-family: var(--serif);
+            font-style: italic;
+            font-weight: 300;
+            font-size: clamp(1.35rem, 2.6vw, 2rem);
+            line-height: 1.4;
+            letter-spacing: 0;
+        }
+        .t-mono {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+        .t-mono-sm {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            font-weight: 400;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+        .accent { color: var(--blue); }
+        .it { font-style: italic; }
+
+        /* =====================================================
+           LAYOUT PRIMITIVES
+           ===================================================== */
+        .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--edge); padding-right: var(--edge); }
+        .chapter { padding: var(--s8) 0; position: relative; }
+
+        .ch-head {
+            display: flex; align-items: flex-end; justify-content: space-between;
+            gap: var(--s3); flex-wrap: wrap;
+            padding-bottom: var(--s3);
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: var(--s6);
+        }
+        .ch-head-left { display: flex; align-items: flex-end; gap: clamp(16px, 3vw, 40px); }
+        .ch-num {
+            font-family: var(--mono);
+            font-size: 0.8rem; font-weight: 700;
+            color: var(--blue);
+            letter-spacing: 0.1em;
+            padding-bottom: clamp(6px, 1.2vw, 18px);
+            white-space: nowrap;
+        }
+        .ch-title {
+            font-family: var(--serif);
+            font-size: clamp(2.8rem, 7.5vw, 6.4rem);
+            font-weight: 400; line-height: 0.92; letter-spacing: -0.015em;
+        }
+        .ch-title .it { font-weight: 300; }
+        .ch-meta {
+            font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em;
+            text-transform: uppercase; color: var(--ink-mid);
+            text-align: right; line-height: 2; padding-bottom: clamp(6px, 1.2vw, 18px);
+        }
+        .ch-intro {
+            max-width: 620px;
+            font-size: 1.02rem; line-height: 1.75; color: var(--ink-soft);
+            margin: calc(-1 * var(--s4)) 0 var(--s6);
+        }
+
+        /* Ruled arrow link */
+        .rule-link {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-family: var(--mono); font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--ink); padding-bottom: 6px;
+            border-bottom: 1.5px solid var(--ink);
+            transition: color 0.3s var(--exp), border-color 0.3s var(--exp), gap 0.3s var(--exp);
+        }
+        .rule-link:hover { color: var(--blue); border-color: var(--blue); gap: 16px; }
+        .rule-link svg { width: 13px; height: 13px; }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex; align-items: center; gap: 12px;
+            font-family: var(--mono); font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.18em; text-transform: uppercase;
+            padding: 18px 34px;
+            border-radius: 999px;
+            transition: all 0.35s var(--exp);
+            position: relative; overflow: hidden;
+        }
+        .btn-ink { background: var(--ink); color: var(--paper); border: 1.5px solid var(--ink); }
+        .btn-ink:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 14px 34px -12px var(--blue-glow); }
+        .btn-line { background: transparent; color: var(--ink); border: 1.5px solid var(--rule); }
+        .btn-line:hover { border-color: var(--ink); transform: translateY(-2px); }
+        .btn svg { width: 13px; height: 13px; }
+
+        /* =====================================================
+           REVEAL SYSTEM
+           ===================================================== */
+        .rv {
+            opacity: 0;
+            transform: translateY(34px);
+            transition: opacity 0.9s var(--exp), transform 0.9s var(--exp);
+        }
+        .rv.in { opacity: 1; transform: translateY(0); }
+        .rv-d1 { transition-delay: 0.08s; }
+        .rv-d2 { transition-delay: 0.16s; }
+        .rv-d3 { transition-delay: 0.24s; }
+        .rv-d4 { transition-delay: 0.32s; }
+
+        /* =====================================================
+           NAVIGATION
+           ===================================================== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1400;
+            background: color-mix(in srgb, var(--paper) 86%, transparent);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--rule-soft);
+            transition: transform 0.5s var(--exp);
+        }
+        .nav.hidden-up { transform: translateY(-100%); }
+        .nav-row {
+            max-width: var(--max); margin: 0 auto;
+            padding: 0 var(--edge);
+            height: 62px;
+            display: flex; align-items: center; justify-content: space-between; gap: var(--s3);
+        }
+        .nav-brand {
+            font-family: var(--serif); font-weight: 500; font-size: 1.05rem; letter-spacing: -0.01em;
+            display: flex; align-items: center; gap: 10px; white-space: nowrap;
+        }
+        .nav-brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); display: inline-block; }
+        .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.2vw, 30px); }
+        .nav-links a {
+            font-family: var(--mono); font-size: 0.6rem; font-weight: 700;
+            letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mid);
+            transition: color 0.25s;
+            position: relative; padding: 4px 0;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; left: 0; bottom: 0; height: 1.5px; width: 0%;
+            background: var(--blue); transition: width 0.3s var(--exp);
+        }
+        .nav-links a:hover { color: var(--ink); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-right { display: flex; align-items: center; gap: 18px; }
+        .nav-cta {
+            font-family: var(--mono); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+            background: var(--ink); color: var(--paper);
+            padding: 10px 20px; border-radius: 999px;
+            transition: background 0.3s var(--exp), transform 0.3s var(--exp);
+            white-space: nowrap;
+        }
+        .nav-cta:hover { background: var(--blue); transform: translateY(-1px); }
+        @media (max-width: 640px) {
+            .nav-brand { font-size: 0.9rem; }
+            .nav-cta { display: none; }
+        }
+
+        /* Theme toggle */
+        .theme-toggle {
+            width: 36px; height: 36px; border-radius: 50%;
+            border: 1px solid var(--rule);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--ink-soft);
+            transition: border-color 0.3s var(--exp), color 0.3s, transform 0.3s var(--exp);
+            flex-shrink: 0;
+        }
+        .theme-toggle:hover { border-color: var(--ink); color: var(--ink); transform: rotate(15deg); }
+        .theme-toggle svg { width: 15px; height: 15px; }
+        .theme-toggle .sun { display: none; }
+        :root[data-theme="dark"] .theme-toggle .sun { display: block; }
+        :root[data-theme="dark"] .theme-toggle .moon { display: none; }
+
+        /* =====================================================
+           MARQUEE BREAKER
+           ===================================================== */
+        .brk {
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 15px 0;
+            background: var(--paper-raised);
+        }
+        .brk-track {
+            display: flex; gap: 0; width: max-content;
+            animation: brkSlide 30s linear infinite;
+            will-change: transform;
+        }
+        .brk:hover .brk-track { animation-play-state: paused; }
+        .brk-item {
+            font-family: var(--mono); font-size: 0.66rem; font-weight: 700;
+            letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--ink-mid); white-space: nowrap;
+            display: inline-flex; align-items: center;
+        }
+        .brk-item::after { content: '✳'; color: var(--blue); margin: 0 26px; font-size: 0.72rem; }
+        .brk-item .hi { color: var(--ink); }
+        @keyframes brkSlide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* =====================================================
+           PLATE (hero image frame)
+           ===================================================== */
+        .plate-media {
+            position: relative; overflow: hidden;
+            background: var(--paper-dim);
+            border: 1px solid var(--rule-soft);
+        }
+        .plate-media::after {
+            content: ''; position: absolute; inset: 0;
+            box-shadow: inset 0 0 0 1px rgba(23,21,18,0.05);
+            pointer-events: none;
+        }
+        .plate-media img {
+            width: 100%; aspect-ratio: 16/10; object-fit: cover;
+            transition: transform 1s var(--exp), filter 0.7s var(--exp);
+            filter: saturate(0.94);
+        }
+        .plate-media:hover img { transform: scale(1.035); filter: saturate(1.05); }
+        .plate-index {
+            position: absolute; top: 14px; left: 14px; z-index: 3;
+            font-family: var(--mono); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+            background: var(--paper); color: var(--ink);
+            padding: 6px 10px; border: 1px solid var(--rule);
+        }
+        .plate-hero img { aspect-ratio: 21/9; object-position: center 30%; }
+        @media (max-width: 700px) { .plate-hero img { aspect-ratio: 16/10; } }
+
+        /* =====================================================
+           STATS (ruled rows)
+           ===================================================== */
+        .stat-row {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+            margin: var(--s5) 0;
+        }
+        .stat-cell {
+            padding: var(--s3) var(--s3) var(--s3) 0;
+            border-right: 1px solid var(--rule-soft);
+        }
+        .stat-cell:last-child { border-right: none; }
+        .stat-num {
+            font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400; line-height: 1; letter-spacing: -0.02em;
+            display: flex; align-items: baseline;
+        }
+        .stat-num .suffix { color: var(--blue); font-size: 0.6em; margin-left: 2px; }
+        .stat-label {
+            font-family: var(--mono); font-size: 0.56rem; font-weight: 400;
+            letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mid);
+            margin-top: 10px; line-height: 1.6;
+        }
+        .stat-3 { grid-template-columns: repeat(3, 1fr); }
+        @media (max-width: 900px) {
+            .stat-row { grid-template-columns: repeat(2, 1fr); }
+            .stat-cell:nth-child(2) { border-right: none; }
+            .stat-cell { border-bottom: 1px solid var(--rule-soft); }
+        }
+        @media (max-width: 520px) { .stat-row { grid-template-columns: 1fr; } .stat-cell { border-right: none; } }
+
+        /* Award chips */
+        .award-chip {
+            font-family: var(--mono); font-size: 0.56rem; font-weight: 700; letter-spacing: 0.08em;
+            padding: 5px 11px; border-radius: 999px;
+            border: 1px solid var(--rule); color: var(--ink-soft); background: var(--paper-raised);
+        }
+        .award-chip.grand { border-color: var(--gold); color: var(--gold); background: rgba(154,123,35,0.06); }
+        .award-chip.gold { border-color: rgba(154,123,35,0.5); color: var(--gold); }
+
+        /* Film frame (video embeds) */
+        .film-frame {
+            position: relative; aspect-ratio: 16/9; overflow: hidden;
+            border: 1px solid var(--rule); background: var(--paper-dim);
+            box-shadow: 0 24px 54px -26px rgba(23,21,18,0.4);
+        }
+        .film-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+        /* =====================================================
+           CASE-STUDY BLOCKS
+           ===================================================== */
+        .case-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+        .fact-cell { padding: var(--s3) var(--s3) var(--s3) 0; border-right: 1px solid var(--rule-soft); }
+        .fact-cell:last-child { border-right: none; }
+        .fact-label { font-family: var(--mono); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mid); display: block; margin-bottom: 8px; }
+        .fact-value { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; line-height: 1.3; }
+        @media (max-width: 700px) {
+            .case-facts { grid-template-columns: 1fr 1fr; }
+            .fact-cell { border-bottom: 1px solid var(--rule-soft); }
+        }
+
+        .cs-block { padding: var(--s6) 0; border-top: 1px solid var(--rule); }
+        .cs-block:first-of-type { border-top: none; padding-top: 0; }
+        .cs-kicker { font-family: var(--mono); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 14px; }
+        .cs-title {
+            font-family: var(--serif); font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+            font-weight: 500; line-height: 1.05; letter-spacing: -0.01em;
+            margin-bottom: var(--s3);
+        }
+        .cs-block p { font-size: 1.02rem; line-height: 1.78; color: var(--ink-soft); margin-bottom: 18px; max-width: 720px; }
+        .cs-block p:last-child { margin-bottom: 0; }
+        .cs-block p em { font-family: var(--serif); font-style: italic; color: var(--ink); }
+
+        /* Pull quote */
+        .cs-quote {
+            margin: var(--s6) 0;
+            padding: 6px 0 6px clamp(20px, 4vw, 40px);
+            border-left: 2px solid var(--blue);
+        }
+        .cs-quote blockquote {
+            font-family: var(--serif); font-style: italic; font-weight: 300;
+            font-size: clamp(1.3rem, 2.6vw, 1.9rem); line-height: 1.45; color: var(--ink);
+            margin-bottom: 14px; max-width: 800px;
+        }
+        .cs-quote cite { font-family: var(--mono); font-size: 0.62rem; font-style: normal; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mid); }
+
+        /* Catalogue cells (pillars / rules) */
+        .cs-grid2 {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 1px; background: var(--rule);
+            border: 1px solid var(--rule);
+            margin: var(--s4) 0;
+        }
+        .cs-cell { background: var(--paper-raised); padding: clamp(22px, 3vw, 34px); }
+        .cell-num { font-family: var(--mono); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 10px; }
+        .cell-word { font-family: var(--serif); font-style: italic; font-size: 1.45rem; font-weight: 400; line-height: 1.15; margin-bottom: 8px; }
+        .cell-desc { font-size: 0.88rem; line-height: 1.65; color: var(--ink-soft); }
+        .cell-note { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.06em; line-height: 1.7; color: var(--ink-mid); margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--rule-soft); }
+        @media (max-width: 700px) { .cs-grid2 { grid-template-columns: 1fr; } }
+
+        /* Channel list */
+        .cs-list {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 0 clamp(24px, 4vw, 56px);
+            margin: var(--s4) 0;
+            max-width: 860px;
+        }
+        .cs-li {
+            display: flex; align-items: center; gap: 12px;
+            padding: 13px 0; border-bottom: 1px solid var(--rule-soft);
+            font-size: 0.92rem; color: var(--ink-soft);
+        }
+        .cs-li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+        @media (max-width: 640px) { .cs-list { grid-template-columns: 1fr; } }
+
+        /* Awards */
+        .award-row {
+            display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+            padding: 18px 0; border-bottom: 1px solid var(--rule-soft);
+        }
+        .award-row:first-of-type { border-top: 1px solid var(--rule); }
+        .award-ico { font-size: 1rem; }
+        .award-sub { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); }
+
+        /* Press pills */
+        .press-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: var(--s3); }
+        .press-pill {
+            font-family: var(--mono); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+            padding: 11px 20px; border-radius: 999px;
+            border: 1px solid var(--rule); color: var(--ink-soft); background: var(--paper-raised);
+            transition: all 0.25s var(--exp);
+        }
+        .press-pill:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-wash); }
+
+        /* Next project */
+        .cs-next { border-top: 1px solid var(--rule); padding: var(--s7) 0; text-align: center; }
+        .cs-next .label { font-family: var(--mono); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-mid); display: block; margin-bottom: 18px; }
+        .cs-next a {
+            font-family: var(--serif); font-size: clamp(1.8rem, 5vw, 3.4rem); font-weight: 400; line-height: 1.05;
+            transition: color 0.3s var(--exp);
+        }
+        .cs-next a:hover { color: var(--blue); }
+
+        /* Footer */
+        .footer { border-top: 1px solid var(--rule); padding: var(--s4) 0 var(--s5); }
+        .footer-row {
+            display: flex; justify-content: space-between; align-items: center; gap: var(--s3); flex-wrap: wrap;
+            font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mid);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .grain { animation: none; }
+            .brk-track { animation: none; }
+            .rv { transition: none; opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<nav class="nav" id="nav">
+        <div class="nav-row">
+            <a href="../index.html" class="nav-brand" aria-label="Joshua McKenzie German – Home">
+                <span class="dot"></span> Joshua McKenzie German
+            </a>
+            <div class="nav-links">
+                <a href="../index.html#work">← All Work</a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+                    <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                </button>
+                <a href="../index.html#contact" class="nav-cta">Let's Talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="case-hero">
+        <div class="wrap">
+            <div class="case-kicker rv in">
+                <span><span class="mark">Case Study</span> — Postseason Brand Campaign</span>
+                <span>MLB × Wieden+Kennedy Portland</span>
+                <span>2023</span>
+            </div>
+            <div class="case-title-block rv in">
+                <h1 class="ch-title">Where Major<br><span class="it accent">Is Made.</span></h1>
+                <p class="case-subtitle">
+                    October doesn't care what you did in June. The 2023 postseason campaign built on the one thing every baseball fan already believes: the games that make careers happen when the leaves turn.
+                </p>
+            </div>
+            <figure class="plate-media rv">
+                <img src="../brand/mlb/where-major-is-made.jpg" alt="MLB — Where Major Is Made" loading="lazy">
+            </figure>
+
+            <div class="meta-index rv">
+                <div class="meta-cell"><span class="meta-label">Client</span><span class="meta-value">Major League Baseball</span></div>
+                <div class="meta-cell"><span class="meta-label">Agency</span><span class="meta-value">Wieden+Kennedy Portland</span></div>
+                <div class="meta-cell"><span class="meta-label">Role</span><span class="meta-value">Brand Strategist</span></div>
+                <div class="meta-cell"><span class="meta-label">Year</span><span class="meta-value">2023</span></div>
+                <div class="meta-cell"><span class="meta-label">Scope</span><span class="meta-value">Postseason Campaign</span></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section class="cs-section">
+            <div class="cs-label">01 — The Setup</div>
+            <h2 class="cs-heading">A Different Season</h2>
+            <div class="cs-body">
+                <p>"Baseball Is Something Else" ran all summer. It was built to make the regular season feel worth your Tuesday night — quirky, warm, a little strange.</p>
+                <p>The postseason needed a different register. October baseball isn't charming. It's where a career turns on one at-bat, and where players nobody outside their city could name become household names in a week.</p>
+            </div>
+        </section>
+
+        <section class="cs-section">
+            <div class="cs-label">02 — The Idea</div>
+            <h2 class="cs-heading">Where Major Is Made</h2>
+            <div class="cs-body">
+                <p>The name says it. "Major" sits inside Major League Baseball, and October is when the word earns itself.</p>
+                <p>The campaign framed the postseason as the proving ground — the stage that separates a good season from a permanent piece of baseball history.</p>
+            </div>
+        </section>
+
+        <section class="cs-section">
+            <div class="cs-label">03 — My Role</div>
+            <h2 class="cs-heading">My Role</h2>
+            <div class="cs-body">
+                <p>As Brand Strategist at Wieden+Kennedy Portland, I worked on the strategic foundation for the postseason platform and how it carried across the run — from Wild Card through the World Series.</p>
+                <p>The strategic problem was continuity without repetition: the postseason had to feel like the same brand as the summer campaign while carrying completely different stakes.</p>
+            </div>
+        </section>
+
+        <!-- TODO: campaign film embed. The spot exists but the video ID could not be
+             verified from this environment (YouTube unreachable, Ads of the World 403). -->
+
+        <section class="cs-section">
+            <div class="cs-label">04 — Notes</div>
+            <h2 class="cs-heading">Still Being Written</h2>
+            <div class="cs-body">
+                <p>This page is a stub. The campaign film, the spots, and the results still need to go in — and I'd rather leave the gap visible than fill it with something invented.</p>
+            </div>
+        </section>
+    </main>
+
+    <div class="next-project">
+        <p class="next-project-label">Next Project</p>
+        <a href="work-mlb.html" class="next-project-link">MLB: Baseball Is Something Else →</a>
+    </div>
+
+</body>
+</html>
