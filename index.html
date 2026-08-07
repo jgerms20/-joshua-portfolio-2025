@@ -791,7 +791,17 @@
             text-transform: uppercase; color: var(--ink);
         }
         .site-card.is-hidden { display: none; }
-        .sites-rail.is-open .site-card.is-hidden { display: flex; }
+        /* Expanded: drop the horizontal scroller and lay all five out in a
+           grid, so nothing hides off-screen to the right. */
+        .sites-rail.is-open {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(clamp(240px, 26vw, 300px), 1fr));
+            overflow: visible;
+            scroll-snap-type: none;
+            margin-inline: 0;
+            padding-inline: 0;
+        }
+        .sites-rail.is-open .site-card { flex-basis: auto; display: flex; }
         .sites-toggle {
             margin-top: var(--s2); padding: var(--s1) 0;
             font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em;

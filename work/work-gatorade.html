@@ -424,30 +424,35 @@
         /* ---- Body of Science chapter switcher ---- */
         .bos-chapters {
             display: grid; grid-template-columns: repeat(2, 1fr);
-            gap: 0; margin-bottom: var(--s5);
-            border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+            gap: var(--s2); margin-bottom: var(--s6);
         }
         .bos-ch {
-            display: flex; flex-direction: column; gap: 4px; align-items: flex-start;
-            padding: var(--s3) var(--s3) var(--s3) 0; text-align: left;
-            border-right: 1px solid var(--rule-soft);
-            opacity: 0.45; transition: opacity 0.3s ease;
+            display: flex; flex-direction: column; gap: 6px; align-items: flex-start;
+            padding: var(--s3);
+            text-align: left;
+            background: var(--paper-warm);
+            border: 1px solid var(--rule);
+            transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s var(--exp);
         }
-        .bos-ch:last-child { border-right: none; padding-left: var(--s3); }
-        .bos-ch.active { opacity: 1; }
-        .bos-ch:hover { opacity: 0.8; }
-        .bos-ch.active:hover { opacity: 1; }
+        .bos-ch:hover { transform: translateY(-2px); border-color: var(--ink-faint); }
+        .bos-ch.active {
+            background: var(--ink);
+            border-color: var(--ink);
+        }
+        .bos-ch.active .bos-ch-name { color: var(--paper); }
+        .bos-ch.active .bos-ch-num { color: var(--paper); opacity: 0.75; }
+        .bos-ch.active .bos-ch-date { color: var(--paper); opacity: 0.55; }
         .bos-ch-num {
-            font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.2em;
-            text-transform: uppercase; color: var(--blue);
+            font-family: var(--mono); font-size: 0.66rem; font-weight: 700;
+            letter-spacing: 0.22em; text-transform: uppercase; color: var(--blue);
         }
         .bos-ch-name {
-            font-family: var(--serif); font-size: clamp(1.05rem, 2vw, 1.5rem);
-            font-weight: 500; line-height: 1.1; color: var(--ink);
+            font-family: var(--serif); font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+            font-weight: 500; line-height: 1.05; color: var(--ink);
         }
         .bos-ch-date {
-            font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em;
-            text-transform: uppercase; color: var(--ink-faint);
+            font-family: var(--mono); font-size: 0.66rem;
+            letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mid);
         }
         .bos-chapter { display: none; }
         .bos-chapter.active { display: block; animation: panelIn 0.4s var(--exp); }
@@ -467,8 +472,6 @@
         }
         @media (max-width: 640px) {
             .bos-chapters { grid-template-columns: 1fr; }
-            .bos-ch { border-right: none; border-bottom: 1px solid var(--rule-soft); padding-left: 0 !important; }
-            .bos-ch:last-child { border-bottom: none; }
         }
 
         .campaign-panel { display: none; }
@@ -1704,7 +1707,11 @@
 
                 <figure class="plate-media" style="margin-bottom:0;">
                     <span class="plate-index">PLATE — WNBA ALL-STAR WEEK</span>
-                    <div class="bos-wnba-art">
+                    <img src="../brand/gatorade/body-of-science/asw-trucks-united-center.jpg"
+                         alt="Body of Science mobile billboards outside the United Center during WNBA All-Star Week"
+                         loading="lazy"
+                         onerror="this.closest('figure').querySelector('.bos-wnba-art').style.display='flex';this.style.display='none';">
+                    <div class="bos-wnba-art" style="display:none;">
                         <span class="bos-wnba-stat">6%</span>
                         <span class="bos-wnba-line">of sports science research studies women</span>
                     </div>
@@ -1712,7 +1719,7 @@
                 <div class="plate-caption" style="border-bottom:1px solid var(--rule); padding-bottom:var(--s3); margin-bottom:var(--s6);">
                     <div>
                         <span class="cap-kicker">WNBA All-Star Week · Chicago · July 2026</span>
-                        <div class="cap-sub">Caitlin Clark · Paige Bueckers · A'ja Wilson · Candace Parker</div>
+                        <div class="cap-sub">A'ja Wilson · Caitlin Clark · Paige Bueckers · Candace Parker</div>
                     </div>
                     <div class="cap-stat">
                         <span class="big">26.4<span class="suffix">M</span></span>
@@ -1737,6 +1744,37 @@
                         <p>Every piece pointed to the same place: GSSI Labs, where people could actually join the research. The stat told you the problem. The link gave you a job.</p>
                     </div>
                 </section>
+
+                <div class="fig-grid cols-2">
+                    <figure class="fig">
+                        <img src="../brand/gatorade/body-of-science/asw-trucks-allstar-mural.jpg"
+                             alt="Two Body of Science billboard trucks parked beneath the WNBA All-Star mural" loading="lazy"
+                             style="aspect-ratio:4/3;">
+                        <figcaption class="fig-cap">
+                            <div class="fig-name">The 6% on wheels</div>
+                            <div class="fig-role">Mobile billboards circling the United Center</div>
+                        </figcaption>
+                    </figure>
+                    <figure class="fig">
+                        <img src="../brand/gatorade/body-of-science/asw-6-percent-tee-activation.jpg"
+                             alt="The 6% Tee worn at the Gatorade media activation" loading="lazy"
+                             style="aspect-ratio:4/3;">
+                        <figcaption class="fig-cap">
+                            <div class="fig-name">The 6% Tee</div>
+                            <div class="fig-role">Media hosting across All-Star Week</div>
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <figure class="fig" style="margin-top:var(--s4);">
+                    <img src="../brand/gatorade/body-of-science/asw-media-innovation-summit.jpg"
+                         alt="Gatorade panel at the WNBA All-Star Media and Innovation Summit" loading="lazy"
+                         style="aspect-ratio:16/10;object-position:center 60%;">
+                    <figcaption class="fig-cap">
+                        <div class="fig-name">Media &amp; Innovation Summit</div>
+                        <div class="fig-role">Candace Parker, Dr. Kimberly Stein and Carolyn Braff on the research</div>
+                    </figcaption>
+                </figure>
 
                 <section class="cs-section">
                     <div class="cs-label">All-Star Week — 03</div>
@@ -1785,7 +1823,7 @@
 
                 <section class="cs-section">
                     <div class="cs-label">All-Star Week — 05</div>
-                    <h2 class="cs-heading">What Didn't Work</h2>
+                    <h2 class="cs-heading">What We'd Do Differently</h2>
                     <div class="cs-body">
                         <p>Sign-ups missed. Organic impressions came in under goal. The All-Star tentpole never quite absorbed the story — the narrative didn't align with the W's own, so our coverage stood beside the moment instead of inside it.</p>
                         <p>The creator work underdelivered too. The HoopBus and OT Emma content hit their impression targets and little else, and the athlete collaboration posts were accepted late — Paige's more than a day after it went live, straight through the window where it mattered most.</p>

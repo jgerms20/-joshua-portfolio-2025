@@ -40,10 +40,22 @@ def portfolio_episode_ids() -> list:
 
 
 def portfolio_count() -> int:
-    if not PODCAST_HTML.exists():
-        return 0
-    m = re.findall(r'id="ep-count">(\d+)', PODCAST_HTML.read_text())
-    return int(m[0]) if m else 0
+    """Current episode total as displayed on the site.
+
+    The show page now says "Live Spotify feed" instead of a number (the
+    embed is the live feed, so a hardcoded count there was just drift
+    waiting to happen). The homepage ticker is the remaining hardcoded
+    figure, so read that first and fall back to the show page badge.
+    """
+    if INDEX_HTML.exists():
+        m = re.findall(r'<span class="hi">(\d+) EPISODES</span>', INDEX_HTML.read_text())
+        if m:
+            return int(m[0])
+    if PODCAST_HTML.exists():
+        m = re.findall(r'id="ep-count">(\d+)', PODCAST_HTML.read_text())
+        if m:
+            return int(m[0])
+    return 0
 
 
 def set_episode_count(total: int) -> None:
