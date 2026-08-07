@@ -421,6 +421,56 @@
         }
 
         /* Campaign panels */
+        /* ---- Body of Science chapter switcher ---- */
+        .bos-chapters {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 0; margin-bottom: var(--s5);
+            border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+        }
+        .bos-ch {
+            display: flex; flex-direction: column; gap: 4px; align-items: flex-start;
+            padding: var(--s3) var(--s3) var(--s3) 0; text-align: left;
+            border-right: 1px solid var(--rule-soft);
+            opacity: 0.45; transition: opacity 0.3s ease;
+        }
+        .bos-ch:last-child { border-right: none; padding-left: var(--s3); }
+        .bos-ch.active { opacity: 1; }
+        .bos-ch:hover { opacity: 0.8; }
+        .bos-ch.active:hover { opacity: 1; }
+        .bos-ch-num {
+            font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--blue);
+        }
+        .bos-ch-name {
+            font-family: var(--serif); font-size: clamp(1.05rem, 2vw, 1.5rem);
+            font-weight: 500; line-height: 1.1; color: var(--ink);
+        }
+        .bos-ch-date {
+            font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--ink-faint);
+        }
+        .bos-chapter { display: none; }
+        .bos-chapter.active { display: block; animation: panelIn 0.4s var(--exp); }
+        .bos-wnba-art {
+            width: 100%; aspect-ratio: 16/7; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 10px;
+            background: linear-gradient(135deg, #14110d 0%, #241d14 45%, #0c0a07 100%);
+        }
+        .bos-wnba-stat {
+            font-family: var(--serif); font-size: clamp(4rem, 14vw, 10rem);
+            font-weight: 400; line-height: 0.9; color: #E8380D;
+        }
+        .bos-wnba-line {
+            font-family: var(--mono); font-size: clamp(0.6rem, 1.4vw, 0.78rem);
+            letter-spacing: 0.16em; text-transform: uppercase;
+            color: rgba(245,241,232,0.72); text-align: center; padding: 0 var(--s3);
+        }
+        @media (max-width: 640px) {
+            .bos-chapters { grid-template-columns: 1fr; }
+            .bos-ch { border-right: none; border-bottom: 1px solid var(--rule-soft); padding-left: 0 !important; }
+            .bos-ch:last-child { border-bottom: none; }
+        }
+
         .campaign-panel { display: none; }
         .campaign-panel.active { display: block; animation: panelIn 0.4s var(--exp); }
         @keyframes panelIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -1412,6 +1462,22 @@
         <!-- Body of Science Campaign -->
         <div class="campaign-panel" id="body-of-science">
 
+            <!-- Chapter switcher -->
+            <div class="bos-chapters" role="tablist" aria-label="Body of Science chapters">
+                <button class="bos-ch active" data-ch="bos-met">
+                    <span class="bos-ch-num">Ch. 01</span>
+                    <span class="bos-ch-name">MET Gala</span>
+                    <span class="bos-ch-date">May 2026</span>
+                </button>
+                <button class="bos-ch" data-ch="bos-wnba">
+                    <span class="bos-ch-num">Ch. 02</span>
+                    <span class="bos-ch-name">WNBA All-Star Week</span>
+                    <span class="bos-ch-date">July 2026</span>
+                </button>
+            </div>
+
+            <div class="bos-chapter active" id="bos-met">
+
             <!-- Campaign Hero — Venus Williams -->
             <div id="bos-hero-wrap">
                 <figure class="plate-media" style="margin-bottom:0;">
@@ -1629,6 +1695,111 @@
                     </figure>
                 </div>
             </section>
+            </div><!-- /bos-met -->
+
+            <div class="bos-chapter" id="bos-wnba">
+
+                <figure class="plate-media" style="margin-bottom:0;">
+                    <span class="plate-index">PLATE — WNBA ALL-STAR WEEK</span>
+                    <div class="bos-wnba-art">
+                        <span class="bos-wnba-stat">6%</span>
+                        <span class="bos-wnba-line">of sports science research studies women</span>
+                    </div>
+                </figure>
+                <div class="plate-caption" style="border-bottom:1px solid var(--rule); padding-bottom:var(--s3); margin-bottom:var(--s6);">
+                    <div>
+                        <span class="cap-kicker">WNBA All-Star Week · Chicago · July 2026</span>
+                        <div class="cap-sub">Caitlin Clark · Paige Bueckers · A'ja Wilson · Candace Parker</div>
+                    </div>
+                    <div class="cap-stat">
+                        <span class="big">26.4<span class="suffix">M</span></span>
+                        <span class="small">Impressions</span>
+                    </div>
+                </div>
+
+                <section class="cs-section">
+                    <div class="cs-label">All-Star Week — 01</div>
+                    <h2 class="cs-heading">The Second Drop</h2>
+                    <div class="cs-body">
+                        <p>The MET Gala put Body of Science on the map. All-Star Week had to prove it was a platform, not a stunt.</p>
+                        <p>We had the first study results in hand. Chicago had the whole of women's basketball in one city for four days. The job was to take a statistic — only 6% of sports science research studies women — and make it impossible to walk past.</p>
+                    </div>
+                </section>
+
+                <section class="cs-section">
+                    <div class="cs-label">All-Star Week — 02</div>
+                    <h2 class="cs-heading">Make the Gap Visible</h2>
+                    <div class="cs-body">
+                        <p>One number, everywhere. Bus shelters across Chicago. A HoopBus running the city. A "6% Tee" that turned the stat into something you could wear. Athlete posts. A panel at Gatorade's Media &amp; Innovation Summit with Candace Parker and Dr. Kimberly Stein.</p>
+                        <p>Every piece pointed to the same place: GSSI Labs, where people could actually join the research. The stat told you the problem. The link gave you a job.</p>
+                    </div>
+                </section>
+
+                <section class="cs-section">
+                    <div class="cs-label">All-Star Week — 03</div>
+                    <h2 class="cs-heading">Athletes Carried It</h2>
+                    <div class="cs-body">
+                        <p>We ran one marquee athlete per day instead of stacking the feed. Each post teased a sliver of a face you already knew and made you swipe to get the rest.</p>
+                        <p>Paige Bueckers' collaboration did the heavy lifting — 1.1M impressions and 33.3K engagements on its own, more than half the campaign's total. Caitlin Clark's post drew over a hundred comments, the most either Body of Science campaign has produced. A science post, and people argued about it in the replies.</p>
+                    </div>
+                </section>
+
+                <div class="stat-row cols-3">
+                    <div class="stat">
+                        <div class="stat-num">26.4M</div>
+                        <div class="stat-label">Total Impressions — Paid + Organic</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">92K</div>
+                        <div class="stat-label">Earned Engagement Across 85 Mentions</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">44%</div>
+                        <div class="stat-label">Of Coverage Named Gatorade or the Research in the Headline</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">66.7K</div>
+                        <div class="stat-label">Total Social Engagements</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">+37%</div>
+                        <div class="stat-label">Organic Engagement Over Goal</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num">96%</div>
+                        <div class="stat-label">Positive or Neutral Sentiment</div>
+                    </div>
+                </div>
+
+                <section class="cs-section">
+                    <div class="cs-label">All-Star Week — 04</div>
+                    <h2 class="cs-heading">The Credible Voice</h2>
+                    <div class="cs-body">
+                        <p>The breakthrough wasn't the sports press. It was health and wellness.</p>
+                        <p>We put Dr. Kim Stein in front of reporters and let her translate the study into things a person could use that afternoon. EatingWell. Nutrition Insight. Ciara Lucas' <em>What the Hell is Well?</em> Nearly half of all coverage named Gatorade, Body of Science, or Stein in the headline — the research led the story instead of trailing an All-Star recap.</p>
+                    </div>
+                </section>
+
+                <section class="cs-section">
+                    <div class="cs-label">All-Star Week — 05</div>
+                    <h2 class="cs-heading">What Didn't Work</h2>
+                    <div class="cs-body">
+                        <p>Sign-ups missed. Organic impressions came in under goal. The All-Star tentpole never quite absorbed the story — the narrative didn't align with the W's own, so our coverage stood beside the moment instead of inside it.</p>
+                        <p>The creator work underdelivered too. The HoopBus and OT Emma content hit their impression targets and little else, and the athlete collaboration posts were accepted late — Paige's more than a day after it went live, straight through the window where it mattered most.</p>
+                        <p>The fix is unglamorous: lock athlete acceptance before launch, pair the bus with marquee names, and let creators work in the format their audience already follows.</p>
+                    </div>
+                </section>
+
+                <section class="cs-section">
+                    <div class="cs-label">All-Star Week — 06</div>
+                    <h2 class="cs-heading">My Role</h2>
+                    <div class="cs-body">
+                        <p>I built the connections plan for the week — where the message ran, in what order, and how the OOH, the bus, the athlete posts, and the press hits fed each other rather than competing.</p>
+                        <p>I also pushed for spacing the athlete drops one per day instead of clustering them. Per-post engagement landed around 8K, a 1.72% rate, well above where the MET Gala run sat.</p>
+                    </div>
+                </section>
+
+            </div><!-- /bos-wnba -->
 
         </div>
 
@@ -1912,6 +2083,20 @@
                     history.replaceState(null, '', '#' + id);
                 });
             });
+
+            // Body of Science chapter switcher
+            (function () {
+                const chBtns = document.querySelectorAll('.bos-ch');
+                const chapters = document.querySelectorAll('.bos-chapter');
+                if (!chBtns.length) return;
+                chBtns.forEach(b => {
+                    b.addEventListener('click', () => {
+                        const id = b.dataset.ch;
+                        chBtns.forEach(x => x.classList.toggle('active', x === b));
+                        chapters.forEach(ch => ch.classList.toggle('active', ch.id === id));
+                    });
+                });
+            })();
 
             // Deep link (e.g. #stranger-things): show only that campaign.
             const h = location.hash.slice(1);

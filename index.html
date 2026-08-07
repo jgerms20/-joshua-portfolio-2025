@@ -785,6 +785,35 @@
             font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em;
             text-transform: uppercase; color: var(--ink);
         }
+        .site-card.is-hidden { display: none; }
+        .sites-rail.is-open .site-card.is-hidden { display: flex; }
+        .sites-toggle {
+            margin-top: var(--s2); padding: var(--s1) 0;
+            font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em;
+            text-transform: uppercase; color: var(--ink-mid);
+            border-bottom: 1px solid var(--rule); transition: color 0.25s ease;
+        }
+        .sites-toggle:hover { color: var(--ink); }
+        .sites-toggle .ar { display: inline-block; transition: transform 0.3s var(--exp); }
+        .sites-toggle.is-open .ar { transform: rotate(180deg); }
+        .site-lock { background: none; padding: 0; text-align: left; color: var(--ink); }
+        .site-lock:hover { color: var(--blue); }
+        .site-gate { display: none; gap: 6px; margin-top: var(--s1); }
+        .site-card.gate-open .site-gate { display: flex; }
+        .site-card.gate-open .site-lock { display: none; }
+        .site-gate-input {
+            flex: 1; min-width: 0; padding: 7px 10px;
+            font-family: var(--mono); font-size: 0.68rem;
+            background: var(--paper); color: var(--ink);
+            border: 1px solid var(--rule); border-radius: 0;
+        }
+        .site-gate-input:focus { outline: none; border-color: var(--blue); }
+        .site-gate-input.is-wrong { border-color: var(--vermilion); }
+        .site-gate-go {
+            padding: 7px 12px; font-family: var(--mono); font-size: 0.6rem;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            background: var(--ink); color: var(--paper);
+        }
         .site-card.is-soon { opacity: 0.62; }
         .site-card.is-soon .site-cta { color: var(--ink-faint); }
         @media (max-width: 640px) {
@@ -823,6 +852,7 @@
         }
         .lab-platform.claude { color: var(--blue); }
         .lab-platform.google { color: var(--ink-soft); }
+        .lab-platform.codex { color: var(--leaf); }
         .lab-platform svg { width: 11px; height: 11px; }
         .lab-cta { font-family: var(--mono); font-size: 0.54rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); }
         @media (max-width: 1080px) { .lab-card, .lab-feat { grid-column: span 6; } }
@@ -1280,8 +1310,8 @@
                         <div class="stat-label">Campaigns</div>
                     </div>
                     <div class="hero-stat">
-                        <div class="stat-num"><span data-count="22">22</span></div>
-                        <div class="stat-label">One Show Results</div>
+                        <div class="stat-num"><span data-count="4">4</span><span class="suffix">+</span></div>
+                        <div class="stat-label">Years Building With AI</div>
                     </div>
                 </div>
                 <div class="hero-ctas">
@@ -1881,7 +1911,7 @@
                         <h3 class="lab-title">Gen Alpha Intelligence Lab <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></h3>
                         <p class="lab-desc">A living research lab on the forces shaping Gen Alpha culture — insights, findings, creators, and the spaces they actually occupy, with an ingest pipeline for reports, interviews, and field notes. Built with Next.js 16 and Supabase.</p>
                         <div class="lab-foot">
-                            <span class="lab-platform claude"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</span>
+                            <span class="lab-platform codex"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17l-5-5 5-5M16 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Codex</span>
                             <span class="lab-cta">View Live →</span>
                         </div>
                     </div>
@@ -1900,7 +1930,7 @@
                         <h3 class="lab-title">Dreamcatcher <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></h3>
                         <p class="lab-desc">Speak your dream the second you wake up, before it's gone. An adaptive AI interview deepens the recall, then reads it back through four lenses — Jungian, Freudian, cognitive, and cultural — and correlates it against your sleep data.</p>
                         <div class="lab-foot">
-                            <span class="lab-platform claude"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</span>
+                            <span class="lab-platform codex"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17l-5-5 5-5M16 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Codex</span>
                             <span class="lab-cta">View Live →</span>
                         </div>
                     </div>
@@ -1922,7 +1952,7 @@
                         <h3 class="lab-title">Meme Library <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></h3>
                         <p class="lab-desc">Describe the meme you half remember and it finds it. Natural-language recall across 1,000+ source-linked clips, reactions, and GIFs — each with provenance and a spread timeline showing how it travelled.</p>
                         <div class="lab-foot">
-                            <span class="lab-platform claude"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Claude Code</span>
+                            <span class="lab-platform codex"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 17l-5-5 5-5M16 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Codex</span>
                             <span class="lab-cta">View Live →</span>
                         </div>
                     </div>
@@ -2132,44 +2162,59 @@
                 </div>
                 <div class="ch-meta">For real people<br>Shipped &amp; running</div>
             </div>
-            <p class="ch-intro rv">Full websites built end-to-end for family and small businesses — booking flows, menus, galleries, contact pipelines. Not templates. Swipe through.</p>
+            <p class="ch-intro rv">Full websites built end-to-end for family and small businesses — booking flows, menus, QR menu boards, contact pipelines. Not templates.</p>
 
-            <div class="sites-rail rv" role="list" aria-label="Client websites">
-                <a href="https://milton-german.vercel.app" target="_blank" rel="noopener" class="site-card" role="listitem">
-                    <span class="site-num">01</span>
-                    <span class="site-kicker">Bookkeeping · Walterboro, SC</span>
-                    <h3 class="site-name">Milton German Bookkeeping</h3>
-                    <p class="site-desc">My dad. Thirty years of South Carolina state government accounting, now doing the books for small businesses. "Your books, done right."</p>
-                    <span class="site-cta">Visit site →</span>
-                </a>
-                <a href="https://dg-creations.vercel.app" target="_blank" rel="noopener" class="site-card" role="listitem">
-                    <span class="site-num">02</span>
-                    <span class="site-kicker">Private Chef · Dining</span>
-                    <h3 class="site-name">DG Creations</h3>
-                    <p class="site-desc">Daniel German — Johnson &amp; Wales trained, dual degrees in Culinary Arts and Culinary Nutrition. Private dining, bespoke catering, meal prep. "Every plate, a creation."</p>
-                    <span class="site-cta">Visit site →</span>
-                </a>
-                <a href="https://janie-bells-alterations.vercel.app" target="_blank" rel="noopener" class="site-card" role="listitem">
-                    <span class="site-num">03</span>
-                    <span class="site-kicker">Alterations · Walterboro, SC</span>
-                    <h3 class="site-name">Janie Bell's Alterations</h3>
-                    <p class="site-desc">A master seamstress who'd been doing professional-grade alterations for decades and charging almost nothing for it. Drop-off and mail-in, with a real booking flow. "Fifty years of perfect fit."</p>
-                    <span class="site-cta">Visit site →</span>
-                </a>
-                <div class="site-card is-soon" role="listitem">
-                    <span class="site-num">04</span>
-                    <span class="site-kicker">BBQ &amp; Soul Food · Columbia, SC</span>
-                    <h3 class="site-name">The Comeback Truck</h3>
-                    <p class="site-desc">My brother Brig's food truck. Slow-smoked ribs, pulled pork, chili cheese fries, and the Carolina mustard sauce that brings you back. Menus, QR menu board, schedule, ordering.</p>
-                    <span class="site-cta">Link coming soon</span>
+            <div class="sites-wrap rv">
+                <div class="sites-rail" id="sitesRail" role="list" aria-label="Client websites">
+                    <div class="site-card" role="listitem" data-gate="milton" data-url="https://milton-german.vercel.app">
+                        <span class="site-num">01</span>
+                        <span class="site-kicker">Bookkeeping · Walterboro, SC</span>
+                        <h3 class="site-name">Milton German Bookkeeping</h3>
+                        <p class="site-desc">My dad. Thirty years of South Carolina state government accounting, now keeping the books for small businesses.</p>
+                        <button class="site-cta site-lock" type="button">🔒 Enter password</button>
+                        <form class="site-gate" autocomplete="off">
+                            <input type="password" class="site-gate-input" placeholder="Password" aria-label="Password for Milton German Bookkeeping">
+                            <button type="submit" class="site-gate-go">Open</button>
+                        </form>
+                    </div>
+                    <div class="site-card" role="listitem" data-gate="daniel" data-url="https://dg-creations.vercel.app">
+                        <span class="site-num">02</span>
+                        <span class="site-kicker">Private Chef · Dining</span>
+                        <h3 class="site-name">DG Creations</h3>
+                        <p class="site-desc">Daniel German, Johnson &amp; Wales trained. Private dining, catering, meal prep. "Every plate, a creation."</p>
+                        <button class="site-cta site-lock" type="button">🔒 Enter password</button>
+                        <form class="site-gate" autocomplete="off">
+                            <input type="password" class="site-gate-input" placeholder="Password" aria-label="Password for DG Creations">
+                            <button type="submit" class="site-gate-go">Open</button>
+                        </form>
+                    </div>
+                    <div class="site-card is-hidden" role="listitem" data-gate="gma" data-url="https://janie-bells-alterations.vercel.app">
+                        <span class="site-num">03</span>
+                        <span class="site-kicker">Alterations · Walterboro, SC</span>
+                        <h3 class="site-name">Janie Bell's Alterations</h3>
+                        <p class="site-desc">A seamstress who'd done professional-grade alterations for fifty years and charged almost nothing for it. Drop-off, mail-in, real booking flow.</p>
+                        <button class="site-cta site-lock" type="button">🔒 Enter password</button>
+                        <form class="site-gate" autocomplete="off">
+                            <input type="password" class="site-gate-input" placeholder="Password" aria-label="Password for Janie Bell's Alterations">
+                            <button type="submit" class="site-gate-go">Open</button>
+                        </form>
+                    </div>
+                    <div class="site-card is-hidden is-soon" role="listitem">
+                        <span class="site-num">04</span>
+                        <span class="site-kicker">BBQ &amp; Soul Food · Columbia, SC</span>
+                        <h3 class="site-name">The Comeback Truck</h3>
+                        <p class="site-desc">My brother Brig's truck. Slow-smoked ribs, pulled pork, chili cheese fries, and the Carolina mustard sauce that brings you back.</p>
+                        <span class="site-cta">Link coming soon</span>
+                    </div>
+                    <div class="site-card is-hidden is-soon" role="listitem">
+                        <span class="site-num">05</span>
+                        <span class="site-kicker">Percussion · Columbia, SC</span>
+                        <h3 class="site-name">Nicholas German</h3>
+                        <p class="site-desc">Nick — working drummer. Jazz gigs, gospel worship, weddings, corporate dates. Media reel and a booking pipeline.</p>
+                        <span class="site-cta">Link coming soon</span>
+                    </div>
                 </div>
-                <div class="site-card is-soon" role="listitem">
-                    <span class="site-num">05</span>
-                    <span class="site-kicker">Percussion · Columbia, SC</span>
-                    <h3 class="site-name">Nicholas German</h3>
-                    <p class="site-desc">Nick — working drummer and percussionist. Jazz gigs, gospel worship, weddings, corporate dates. Media reel and a booking pipeline.</p>
-                    <span class="site-cta">Link coming soon</span>
-                </div>
+                <button class="sites-toggle" id="sitesToggle" type="button" aria-expanded="false">Show all 5 sites <span class="ar">↓</span></button>
             </div>
         </div>
     </section>
@@ -2772,6 +2817,46 @@
             window.addEventListener('load', finish);
             setTimeout(step, 60);
             setTimeout(finish, 1500);
+        })();
+
+        // ---- Sites I Build: expand + per-site password gates ----
+        (function () {
+            const rail = document.getElementById('sitesRail');
+            const toggle = document.getElementById('sitesToggle');
+            if (rail && toggle) {
+                toggle.addEventListener('click', () => {
+                    const open = rail.classList.toggle('is-open');
+                    toggle.classList.toggle('is-open', open);
+                    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                    toggle.innerHTML = open
+                        ? 'Show fewer <span class="ar">↓</span>'
+                        : 'Show all 5 sites <span class="ar">↓</span>';
+                    if (!open) rail.scrollLeft = 0;
+                });
+            }
+            // Light client-side gate: keeps these out of casual browsing, not a security boundary.
+            document.querySelectorAll('.site-card[data-gate]').forEach(card => {
+                const lock = card.querySelector('.site-lock');
+                const form = card.querySelector('.site-gate');
+                const input = card.querySelector('.site-gate-input');
+                if (!lock || !form || !input) return;
+                lock.addEventListener('click', () => {
+                    card.classList.add('gate-open');
+                    input.focus();
+                });
+                form.addEventListener('submit', e => {
+                    e.preventDefault();
+                    const ok = input.value.trim().toLowerCase() === card.dataset.gate;
+                    if (ok) {
+                        input.classList.remove('is-wrong');
+                        window.open(card.dataset.url, '_blank', 'noopener');
+                    } else {
+                        input.classList.add('is-wrong');
+                        input.value = '';
+                        input.placeholder = 'Try again';
+                    }
+                });
+            });
         })();
 
         // ---- Theme toggle ----
