@@ -388,6 +388,10 @@
             .nav-links, .nav-clock { display: none; }
             .nav-burger { display: flex; }
         }
+        @media (max-width: 520px) {
+            .nav-cta { display: none; }
+            .nav-brand { font-size: 0.95rem; }
+        }
         .mobile-menu {
             position: fixed; inset: 0; z-index: 1390;
             background: var(--paper);
@@ -446,6 +450,7 @@
             .grain { animation: none; }
             .brk-track { animation: none; }
             .rv, .mask-line > span { transition: none; opacity: 1; transform: none; }
+            .photo-chapter, .archive-frame img { transition: none; }
         }
     </style>
 
@@ -928,54 +933,83 @@
         /* =====================================================
            DARKROOM — Photography
            ===================================================== */
-        .photo-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: var(--s5); }
-        .photo-filter {
-            font-family: var(--mono); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
-            padding: 10px 20px; border-radius: 999px;
-            border: 1px solid var(--dark-rule); color: var(--paper-on-dark-mid);
-            transition: all 0.3s var(--exp);
-        }
-        .photo-filter:hover { color: var(--paper-on-dark); border-color: var(--paper-on-dark-mid); }
-        .photo-filter.active { background: var(--paper-on-dark); color: var(--dark); border-color: var(--paper-on-dark); }
-        .photo-masonry { columns: 3; column-gap: 18px; }
-        .photo-item {
-            break-inside: avoid; margin-bottom: 18px;
-            position: relative; overflow: hidden; cursor: zoom-in;
-            background: var(--dark-raised);
-        }
-        .photo-item img {
-            width: 100%;
-            transition: transform 0.8s var(--exp), opacity 0.5s;
-            display: block;
-        }
-        .photo-item:hover img { transform: scale(1.04); }
-        .photo-item::after {
-            content: attr(data-cat);
-            position: absolute; left: 12px; bottom: 10px;
-            font-family: var(--mono); font-size: 0.52rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
-            color: var(--paper-on-dark);
-            opacity: 0; transform: translateY(6px);
-            transition: opacity 0.35s var(--exp), transform 0.35s var(--exp);
-            pointer-events: none;
-            text-shadow: 0 1px 8px rgba(0,0,0,0.8);
-        }
-        .photo-item:hover::after { opacity: 1; transform: translateY(0); }
-        .photo-item.hide { display: none; }
-        @media (max-width: 1000px) { .photo-masonry { columns: 2; } }
-        @media (max-width: 560px) { .photo-masonry { columns: 1; } }
-
-        .photo-stats {
-            display: flex; flex-wrap: wrap; gap: 0;
+        .darkroom-note {
+            display: grid; grid-template-columns: 120px minmax(260px, 1fr) auto;
+            gap: var(--s4); align-items: start;
+            padding: var(--s3) 0; margin: 0 0 var(--s7);
             border-top: 1px solid var(--dark-rule); border-bottom: 1px solid var(--dark-rule);
-            margin-bottom: var(--s6);
         }
-        .photo-stat {
-            flex: 1; min-width: 140px; padding: var(--s3);
-            border-right: 1px solid var(--dark-rule-soft); text-align: center;
+        .darkroom-note__label,
+        .darkroom-note__count,
+        .sequence-heading,
+        .archive-kicker {
+            font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--paper-on-dark-mid);
         }
-        .photo-stat:last-child { border-right: none; }
-        .photo-stat .n { font-family: var(--serif); font-size: clamp(1.7rem, 3.4vw, 2.6rem); line-height: 1; }
-        .photo-stat .l { font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--paper-on-dark-mid); margin-top: 8px; }
+        .darkroom-note__label { color: var(--vermilion); }
+        .darkroom-note p { max-width: 620px; font-family: var(--serif); font-size: clamp(1.15rem, 2vw, 1.55rem); line-height: 1.45; }
+        .darkroom-note__count { text-align: right; }
+        .sequence-heading {
+            display: flex; justify-content: space-between; gap: var(--s3);
+            padding-bottom: var(--s2); margin-bottom: var(--s5);
+            border-bottom: 1px solid var(--dark-rule-soft);
+        }
+        .photo-sequence { display: grid; gap: clamp(72px, 11vw, 168px); }
+        .photo-item { position: relative; cursor: zoom-in; outline: none; }
+        .photo-item:focus-visible { outline: 2px solid var(--vermilion); outline-offset: 8px; }
+        .photo-item img { width: 100%; height: auto; display: block; background: var(--dark-raised); }
+        .sequence-frame { margin: 0; }
+        .sequence-frame--hero { width: 100%; }
+        .sequence-frame--wide { width: 88%; margin-left: auto; }
+        .sequence-frame--inset { width: 58%; margin-left: 12%; }
+        .sequence-pair {
+            display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+            gap: clamp(20px, 5vw, 82px); align-items: end;
+        }
+        .sequence-pair .sequence-frame--pair-left { margin-bottom: clamp(40px, 8vw, 120px); }
+        .sequence-frame figcaption {
+            display: flex; justify-content: space-between; gap: 16px;
+            padding-top: 10px; border-top: 1px solid var(--dark-rule-soft);
+            font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--paper-on-dark-mid);
+        }
+        .sequence-frame figcaption span:first-child { color: var(--vermilion); }
+        .archive-heading {
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: var(--s5); align-items: end;
+            margin: clamp(140px, 20vw, 280px) 0 var(--s5); padding-top: var(--s5);
+            border-top: 1px solid var(--dark-rule);
+        }
+        .archive-heading h3 { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 4.8rem); font-weight: 400; line-height: 1; margin-top: 12px; }
+        .archive-heading p { color: var(--paper-on-dark-soft); max-width: 440px; justify-self: end; }
+        .photo-chapters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: var(--s5); }
+        .photo-chapter {
+            font-family: var(--mono); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+            padding: 10px 18px; border: 1px solid var(--dark-rule); color: var(--paper-on-dark-mid);
+            transition: color 0.25s, border-color 0.25s, background 0.25s;
+        }
+        .photo-chapter:hover,
+        .photo-chapter:focus-visible { color: var(--paper-on-dark); border-color: var(--paper-on-dark-mid); }
+        .photo-chapter.active { background: var(--paper-on-dark); color: var(--dark); border-color: var(--paper-on-dark); }
+        .photo-archive { columns: 3; column-gap: 18px; }
+        .archive-frame { break-inside: avoid; margin: 0 0 18px; overflow: hidden; background: var(--dark-raised); }
+        .archive-frame img { transition: opacity 0.35s var(--exp); }
+        .archive-frame:hover img { opacity: 0.82; }
+        .photo-enhanced .photo-archive .photo-item.hide { display: none; }
+        @media (max-width: 900px) {
+            .darkroom-note { grid-template-columns: 1fr; }
+            .darkroom-note__count { text-align: left; }
+            .archive-heading { grid-template-columns: 1fr; }
+            .archive-heading p { justify-self: start; }
+            .photo-archive { columns: 2; }
+        }
+        @media (max-width: 620px) {
+            .photo-sequence { gap: 72px; }
+            .sequence-pair { grid-template-columns: 1fr; gap: 52px; }
+            .sequence-pair .sequence-frame--pair-left { margin-bottom: 0; }
+            .sequence-frame--wide,
+            .sequence-frame--inset { width: 100%; margin-left: 0; }
+            .photo-archive { columns: 1; }
+        }
 
         /* Lightbox */
         .lightbox {
@@ -2384,6 +2418,7 @@
     <!-- =====================================================
          06 — THE DARKROOM (Photography)
          ===================================================== -->
+    <!-- PHOTOGRAPHY:START -->
     <section id="photography" class="chapter chapter-dark">
         <div class="wrap">
             <div class="ch-head rv">
@@ -2391,131 +2426,109 @@
                     <span class="ch-num">CH. 06</span>
                     <h2 class="ch-title">The <span class="it">Darkroom</span></h2>
                 </div>
-                <div class="ch-meta">Through the Lens<br>Photography</div>
+                <div class="ch-meta">Selected Sequence<br>21 Frames</div>
             </div>
-            <p class="ch-intro rv" style="color: var(--paper-on-dark-soft);">Portraits with presence. Landscapes that breathe. Fashion as tension. Every frame is a decision — what stays in, what falls away, and what the light says when you stop moving.</p>
+            <p class="ch-intro rv" style="color: var(--paper-on-dark-soft);">I photograph the instant a person drops the pose, a crowd becomes one body, or a landscape makes time feel larger. This is an edit about presence—not a catalogue of everything I have shot.</p>
 
-            <div class="kit-row rv">
-                <div class="kit-cell">
-                    <div class="kit-label">Primary Bodies</div>
-                    <div class="kit-value">Nikon D500 · Sony A7</div>
-                    <div class="kit-sub">DSLR + Mirrorless</div>
-                </div>
-                <div class="kit-cell">
-                    <div class="kit-label">Glass</div>
-                    <div class="kit-value">Primes &amp; Telephoto Zooms</div>
-                    <div class="kit-sub">Full kit list on request</div>
-                </div>
-                <div class="kit-cell">
-                    <div class="kit-label">Formats</div>
-                    <div class="kit-value">Digital · 35mm Film</div>
-                    <div class="kit-sub">Every frame a decision</div>
-                </div>
+            <div class="darkroom-note rv">
+                <span class="darkroom-note__label">The edit</span>
+                <p>People lead. Places let the story breathe. Gatherings return the noise. The sequence moves between all three the way memory does.</p>
+                <span class="darkroom-note__count">33 photographs in the archive</span>
             </div>
 
-            <div class="photo-filters rv">
-                <button class="photo-filter active" data-filter="all">All</button>
-                <button class="photo-filter" data-filter="landscape">Landscape</button>
-                <button class="photo-filter" data-filter="portraits">Portraits</button>
-                <button class="photo-filter" data-filter="fashion">Fashion</button>
-                <button class="photo-filter" data-filter="events">Events</button>
-                <button class="photo-filter" data-filter="travel">Travel</button>
+            <div class="sequence-heading rv">
+                <span>Selected sequence</span>
+                <span>Scroll slowly</span>
+            </div>
+            <div class="photo-sequence rv">
+                <figure class="photo-item sequence-frame sequence-frame--hero" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph 01: Black-and-white portrait of a father holding a baby outdoors."><img loading="eager" src="photos/portraits/JMG_1520.jpg" alt="Black-and-white portrait of a father holding a baby outdoors."><figcaption><span>01</span><span>people</span></figcaption></figure>
+                <div class="sequence-pair">
+                    <figure class="photo-item sequence-frame sequence-frame--pair-left" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph 02: Fashion portrait of a model in a red coat and knit hat against a pale studio wall."><img loading="lazy" src="photos/fashion/JMG_1601.jpg" alt="Fashion portrait of a model in a red coat and knit hat against a pale studio wall."><figcaption><span>02</span><span>people</span></figcaption></figure>
+                    <figure class="photo-item sequence-frame sequence-frame--pair-right" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph 03: A red sun hangs over a hazy landscape lined with palm trees."><img loading="lazy" src="photos/landscape/DSC00659.jpg" alt="A red sun hangs over a hazy landscape lined with palm trees."><figcaption><span>03</span><span>places</span></figcaption></figure>
+                </div>
+                <figure class="photo-item sequence-frame sequence-frame--wide" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph 04: Two people stand in red and blue light against a wall covered in newspaper pages."><img loading="lazy" src="photos/portraits/JMG_1763.jpg" alt="Two people stand in red and blue light against a wall covered in newspaper pages."><figcaption><span>04</span><span>people</span></figcaption></figure>
+                <div class="sequence-pair">
+                    <figure class="photo-item sequence-frame sequence-frame--pair-left" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph 05: Mist moves through a pine forest and mountain valley."><img loading="lazy" src="photos/landscape/JMG_5693.jpg" alt="Mist moves through a pine forest and mountain valley."><figcaption><span>05</span><span>places</span></figcaption></figure>
+                    <figure class="photo-item sequence-frame sequence-frame--pair-right" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph 06: Fashion portrait of a model seated in a patterned green look and white trousers."><img loading="lazy" src="photos/fashion/JMG_3641.jpg" alt="Fashion portrait of a model seated in a patterned green look and white trousers."><figcaption><span>06</span><span>people</span></figcaption></figure>
+                </div>
+                <figure class="photo-item sequence-frame sequence-frame--inset" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph 07: Two visitors share a quiet conversation inside an art museum."><img loading="lazy" src="photos/travel/JMG_7419.jpg" alt="Two visitors share a quiet conversation inside an art museum."><figcaption><span>07</span><span>places</span></figcaption></figure>
+                <div class="sequence-pair">
+                    <figure class="photo-item sequence-frame sequence-frame--pair-left" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph 08: Portrait of a man in dark glasses and a leather jacket against vivid graffiti."><img loading="lazy" src="photos/portraits/JMG_8929.jpg" alt="Portrait of a man in dark glasses and a leather jacket against vivid graffiti."><figcaption><span>08</span><span>people</span></figcaption></figure>
+                    <figure class="photo-item sequence-frame sequence-frame--pair-right" data-cat="gatherings" data-chapter="gatherings" tabindex="0" role="button" aria-label="Open photograph 09: A concert crowd faces intersecting beams of white and blue stage light."><img loading="lazy" src="photos/events/JMG_2254.jpg" alt="A concert crowd faces intersecting beams of white and blue stage light."><figcaption><span>09</span><span>gatherings</span></figcaption></figure>
+                </div>
+                <figure class="photo-item sequence-frame sequence-frame--wide" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph 10: A lone walker crosses a mountain overlook as sunlight breaks through cloud."><img loading="lazy" src="photos/landscape/JMG_6799.jpg" alt="A lone walker crosses a mountain overlook as sunlight breaks through cloud."><figcaption><span>10</span><span>places</span></figcaption></figure>
+                <div class="sequence-pair">
+                    <figure class="photo-item sequence-frame sequence-frame--pair-left" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph 11: Fashion portrait of a woman with copper hair seated against a rough concrete wall."><img loading="lazy" src="photos/fashion/JMG_4379.jpg" alt="Fashion portrait of a woman with copper hair seated against a rough concrete wall."><figcaption><span>11</span><span>people</span></figcaption></figure>
+                    <figure class="photo-item sequence-frame sequence-frame--pair-right" data-cat="gatherings" data-chapter="gatherings" tabindex="0" role="button" aria-label="Open photograph 12: A small production crew gathers around a plated dish on a culinary set."><img loading="lazy" src="photos/events/JMG_7895.jpg" alt="A small production crew gathers around a plated dish on a culinary set."><figcaption><span>12</span><span>gatherings</span></figcaption></figure>
+                </div>
+                <figure class="photo-item sequence-frame sequence-frame--inset" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph 13: Rock formations sit offshore beneath a pale band of ocean haze."><img loading="lazy" src="photos/landscape/JMG_6109.jpg" alt="Rock formations sit offshore beneath a pale band of ocean haze."><figcaption><span>13</span><span>places</span></figcaption></figure>
+                <div class="sequence-pair">
+                    <figure class="photo-item sequence-frame sequence-frame--pair-left" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph 14: Portrait of a woman standing beside railway tracks in warm evening light."><img loading="lazy" src="photos/portraits/JMG_8750.jpg" alt="Portrait of a woman standing beside railway tracks in warm evening light."><figcaption><span>14</span><span>people</span></figcaption></figure>
+                    <figure class="photo-item sequence-frame sequence-frame--pair-right" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph 15: Fashion portrait of a man with red-tipped hair, red boots, and a painted black denim look."><img loading="lazy" src="photos/fashion/JMG_8075.jpg" alt="Fashion portrait of a man with red-tipped hair, red boots, and a painted black denim look."><figcaption><span>15</span><span>people</span></figcaption></figure>
+                </div>
+                <figure class="photo-item sequence-frame sequence-frame--wide" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph 16: Palm trees and beach umbrellas form silhouettes against a blue-orange dusk sky."><img loading="lazy" src="photos/travel/JMG_3086.jpg" alt="Palm trees and beach umbrellas form silhouettes against a blue-orange dusk sky."><figcaption><span>16</span><span>places</span></figcaption></figure>
+                <div class="sequence-pair">
+                    <figure class="photo-item sequence-frame sequence-frame--pair-left" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph 17: Swimmers appear as small figures in a calm sea beneath a pastel sky."><img loading="lazy" src="photos/travel/DSC00870.jpg" alt="Swimmers appear as small figures in a calm sea beneath a pastel sky."><figcaption><span>17</span><span>places</span></figcaption></figure>
+                    <figure class="photo-item sequence-frame sequence-frame--pair-right" data-cat="gatherings" data-chapter="gatherings" tabindex="0" role="button" aria-label="Open photograph 18: A crowd gathers beneath the glowing sign of a night market."><img loading="lazy" src="photos/events/DSC00021.jpg" alt="A crowd gathers beneath the glowing sign of a night market."><figcaption><span>18</span><span>gatherings</span></figcaption></figure>
+                </div>
+                <figure class="photo-item sequence-frame sequence-frame--wide" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph 19: Sailboats fill a marina with a city skyline rising beyond them."><img loading="lazy" src="photos/landscape/JMG_6986.jpg" alt="Sailboats fill a marina with a city skyline rising beyond them."><figcaption><span>19</span><span>places</span></figcaption></figure>
+                <div class="sequence-pair">
+                    <figure class="photo-item sequence-frame sequence-frame--pair-left" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph 20: Portrait of a woman in warm window light beside a chrome pole."><img loading="lazy" src="photos/portraits/JMG_8386.jpg" alt="Portrait of a woman in warm window light beside a chrome pole."><figcaption><span>20</span><span>people</span></figcaption></figure>
+                    <figure class="photo-item sequence-frame sequence-frame--pair-right" data-cat="gatherings" data-chapter="gatherings" tabindex="0" role="button" aria-label="Open photograph 21: Hands finish a row of carefully plated dishes at an event."><img loading="lazy" src="photos/events/JMG_7787.jpg" alt="Hands finish a row of carefully plated dishes at an event."><figcaption><span>21</span><span>gatherings</span></figcaption></figure>
+                </div>
             </div>
 
-            <div class="photo-masonry rv" id="photoGallery">
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_1520.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_1430.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_1371.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_8929.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_8044.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_9553.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_6968.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_6994.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_0879.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_1723.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_2744.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_0436.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_1547.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_1742.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_1759.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_1763.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_1787.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_1789.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_1790.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_1820.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_1835.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_2914.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_5476.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_8011.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_8074.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_8078.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_8318.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_8386.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_8611.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_8714.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="portraits"><img loading="lazy" src="photos/portraits/JMG_8750.jpg" alt="Portrait"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_1601.jpg" alt="Fashion"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_4379.jpg" alt="Fashion"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_2938.jpg" alt="Fashion"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_2971-3.jpg" alt="Fashion"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_2986.jpg" alt="Fashion"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_3729.jpg" alt="Fashion"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_3641.jpg" alt="Fashion"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_3984.jpg" alt="Fashion"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_7818.jpg" alt="Fashion"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_8075.jpg" alt="Fashion"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_8083.jpg" alt="Fashion"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_8986.jpg" alt="Fashion"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/JMG_6629.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/JMG_5784.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/JMG_7943.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/JMG_6986.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/DSC00659.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/JMG_7654.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/JMG_6496.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/IMG_5646_jpg.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/DSC00317.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/DSC00488.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/DSC00543.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/JMG_5559.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/JMG_5665.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/JMG_6769.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/JMG_7083.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/JMG_7100.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/JMG_5742.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="landscape"><img loading="lazy" src="photos/landscape/JMG_5693.jpg" alt="Landscape"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_2990.jpg" alt="Fashion"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_8149.jpg" alt="Fashion"></div>
-                <div class="photo-item" data-cat="events"><img loading="lazy" src="photos/events/JMG_1939.jpg" alt="Event"></div>
-                <div class="photo-item" data-cat="events"><img loading="lazy" src="photos/events/JMG_2254.jpg" alt="Event"></div>
-                <div class="photo-item" data-cat="events"><img loading="lazy" src="photos/events/JMG_2854.jpg" alt="Event"></div>
-                <div class="photo-item" data-cat="events"><img loading="lazy" src="photos/events/JMG_7787.jpg" alt="Event"></div>
-                <div class="photo-item" data-cat="events"><img loading="lazy" src="photos/events/IMG_6986_jpg.jpg" alt="Event"></div>
-                <div class="photo-item" data-cat="events"><img loading="lazy" src="photos/events/DSC00006.jpg" alt="Event"></div>
-                <div class="photo-item" data-cat="events"><img loading="lazy" src="photos/events/DSC00007.jpg" alt="Event"></div>
-                <div class="photo-item" data-cat="events"><img loading="lazy" src="photos/events/DSC00021.jpg" alt="Event"></div>
-                <div class="photo-item" data-cat="events"><img loading="lazy" src="photos/events/DSC00028.jpg" alt="Event"></div>
-                <div class="photo-item" data-cat="events"><img loading="lazy" src="photos/events/DSC01053.jpg" alt="Event"></div>
-                <div class="photo-item" data-cat="events"><img loading="lazy" src="photos/events/JMG_2228.jpg" alt="Event"></div>
-                <div class="photo-item" data-cat="events"><img loading="lazy" src="photos/events/JMG_2437.jpg" alt="Event"></div>
-                <div class="photo-item" data-cat="events"><img loading="lazy" src="photos/events/JMG_2560.jpg" alt="Event"></div>
-                <div class="photo-item" data-cat="events"><img loading="lazy" src="photos/events/JMG_7895.jpg" alt="Event"></div>
-                <div class="photo-item" data-cat="travel"><img loading="lazy" src="photos/travel/JMG_7419.jpg" alt="Travel"></div>
-                <div class="photo-item" data-cat="travel"><img loading="lazy" src="photos/travel/JMG_7445.jpg" alt="Travel"></div>
-                <div class="photo-item" data-cat="travel"><img loading="lazy" src="photos/travel/JMG_7535.jpg" alt="Travel"></div>
-                <div class="photo-item" data-cat="travel"><img loading="lazy" src="photos/travel/JMG_3086.jpg" alt="Travel"></div>
-                <div class="photo-item" data-cat="travel"><img loading="lazy" src="photos/travel/JMG_5784.jpg" alt="Travel"></div>
-                <div class="photo-item" data-cat="travel"><img loading="lazy" src="photos/travel/JMG_6742.jpg" alt="Travel"></div>
-                <div class="photo-item" data-cat="travel"><img loading="lazy" src="photos/travel/DSC00870.jpg" alt="Travel"></div>
-                <div class="photo-item" data-cat="travel"><img loading="lazy" src="photos/travel/DSC00873.jpg" alt="Travel"></div>
-                <div class="photo-item" data-cat="travel"><img loading="lazy" src="photos/travel/JMG_5570.jpg" alt="Travel"></div>
-                <div class="photo-item" data-cat="fashion"><img loading="lazy" src="photos/fashion/JMG_3029.jpg" alt="Fashion"></div>
+            <div class="archive-heading rv">
+                <div>
+                    <span class="archive-kicker">The archive</span>
+                    <h3>People, places, gatherings.</h3>
+                </div>
+                <p>Browse the edit by subject. Every frame remains visible below if scripts are unavailable.</p>
             </div>
-            <div style="display:flex; justify-content:center; margin-top: var(--s5);">
-                <button id="showMorePhotos" class="btn btn-line" style="border-color: var(--dark-rule); color: var(--paper-on-dark);">See More Photos</button>
+            <div class="photo-chapters rv" aria-label="Filter photography archive">
+                <button class="photo-chapter active" data-filter="all" aria-pressed="true">All work</button>
+                <button class="photo-chapter" data-filter="people" aria-pressed="false">People</button>
+                <button class="photo-chapter" data-filter="places" aria-pressed="false">Places</button>
+                <button class="photo-chapter" data-filter="gatherings" aria-pressed="false">Gatherings</button>
+            </div>
+            <div class="photo-archive rv" id="photoGallery">
+                <figure class="photo-item archive-frame" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph: Black-and-white portrait of a father holding a baby outdoors."><img loading="lazy" src="photos/portraits/JMG_1520.jpg" alt="Black-and-white portrait of a father holding a baby outdoors."></figure>
+                <figure class="photo-item archive-frame" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph: Fashion portrait of a model in a red coat and knit hat against a pale studio wall."><img loading="lazy" src="photos/fashion/JMG_1601.jpg" alt="Fashion portrait of a model in a red coat and knit hat against a pale studio wall."></figure>
+                <figure class="photo-item archive-frame" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph: A red sun hangs over a hazy landscape lined with palm trees."><img loading="lazy" src="photos/landscape/DSC00659.jpg" alt="A red sun hangs over a hazy landscape lined with palm trees."></figure>
+                <figure class="photo-item archive-frame" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph: Two people stand in red and blue light against a wall covered in newspaper pages."><img loading="lazy" src="photos/portraits/JMG_1763.jpg" alt="Two people stand in red and blue light against a wall covered in newspaper pages."></figure>
+                <figure class="photo-item archive-frame" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph: Mist moves through a pine forest and mountain valley."><img loading="lazy" src="photos/landscape/JMG_5693.jpg" alt="Mist moves through a pine forest and mountain valley."></figure>
+                <figure class="photo-item archive-frame" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph: Fashion portrait of a model seated in a patterned green look and white trousers."><img loading="lazy" src="photos/fashion/JMG_3641.jpg" alt="Fashion portrait of a model seated in a patterned green look and white trousers."></figure>
+                <figure class="photo-item archive-frame" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph: Two visitors share a quiet conversation inside an art museum."><img loading="lazy" src="photos/travel/JMG_7419.jpg" alt="Two visitors share a quiet conversation inside an art museum."></figure>
+                <figure class="photo-item archive-frame" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph: Portrait of a man in dark glasses and a leather jacket against vivid graffiti."><img loading="lazy" src="photos/portraits/JMG_8929.jpg" alt="Portrait of a man in dark glasses and a leather jacket against vivid graffiti."></figure>
+                <figure class="photo-item archive-frame" data-cat="gatherings" data-chapter="gatherings" tabindex="0" role="button" aria-label="Open photograph: A concert crowd faces intersecting beams of white and blue stage light."><img loading="lazy" src="photos/events/JMG_2254.jpg" alt="A concert crowd faces intersecting beams of white and blue stage light."></figure>
+                <figure class="photo-item archive-frame" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph: A lone walker crosses a mountain overlook as sunlight breaks through cloud."><img loading="lazy" src="photos/landscape/JMG_6799.jpg" alt="A lone walker crosses a mountain overlook as sunlight breaks through cloud."></figure>
+                <figure class="photo-item archive-frame" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph: Fashion portrait of a woman with copper hair seated against a rough concrete wall."><img loading="lazy" src="photos/fashion/JMG_4379.jpg" alt="Fashion portrait of a woman with copper hair seated against a rough concrete wall."></figure>
+                <figure class="photo-item archive-frame" data-cat="gatherings" data-chapter="gatherings" tabindex="0" role="button" aria-label="Open photograph: A small production crew gathers around a plated dish on a culinary set."><img loading="lazy" src="photos/events/JMG_7895.jpg" alt="A small production crew gathers around a plated dish on a culinary set."></figure>
+                <figure class="photo-item archive-frame" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph: Rock formations sit offshore beneath a pale band of ocean haze."><img loading="lazy" src="photos/landscape/JMG_6109.jpg" alt="Rock formations sit offshore beneath a pale band of ocean haze."></figure>
+                <figure class="photo-item archive-frame" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph: Portrait of a woman standing beside railway tracks in warm evening light."><img loading="lazy" src="photos/portraits/JMG_8750.jpg" alt="Portrait of a woman standing beside railway tracks in warm evening light."></figure>
+                <figure class="photo-item archive-frame" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph: Fashion portrait of a man with red-tipped hair, red boots, and a painted black denim look."><img loading="lazy" src="photos/fashion/JMG_8075.jpg" alt="Fashion portrait of a man with red-tipped hair, red boots, and a painted black denim look."></figure>
+                <figure class="photo-item archive-frame" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph: Palm trees and beach umbrellas form silhouettes against a blue-orange dusk sky."><img loading="lazy" src="photos/travel/JMG_3086.jpg" alt="Palm trees and beach umbrellas form silhouettes against a blue-orange dusk sky."></figure>
+                <figure class="photo-item archive-frame" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph: Swimmers appear as small figures in a calm sea beneath a pastel sky."><img loading="lazy" src="photos/travel/DSC00870.jpg" alt="Swimmers appear as small figures in a calm sea beneath a pastel sky."></figure>
+                <figure class="photo-item archive-frame" data-cat="gatherings" data-chapter="gatherings" tabindex="0" role="button" aria-label="Open photograph: A crowd gathers beneath the glowing sign of a night market."><img loading="lazy" src="photos/events/DSC00021.jpg" alt="A crowd gathers beneath the glowing sign of a night market."></figure>
+                <figure class="photo-item archive-frame" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph: Sailboats fill a marina with a city skyline rising beyond them."><img loading="lazy" src="photos/landscape/JMG_6986.jpg" alt="Sailboats fill a marina with a city skyline rising beyond them."></figure>
+                <figure class="photo-item archive-frame" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph: Portrait of a woman in warm window light beside a chrome pole."><img loading="lazy" src="photos/portraits/JMG_8386.jpg" alt="Portrait of a woman in warm window light beside a chrome pole."></figure>
+                <figure class="photo-item archive-frame" data-cat="gatherings" data-chapter="gatherings" tabindex="0" role="button" aria-label="Open photograph: Hands finish a row of carefully plated dishes at an event."><img loading="lazy" src="photos/events/JMG_7787.jpg" alt="Hands finish a row of carefully plated dishes at an event."></figure>
+                <figure class="photo-item archive-frame" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph: Portrait of an artist seated in a colorful studio surrounded by his work."><img loading="lazy" src="photos/portraits/JMG_6968.jpg" alt="Portrait of an artist seated in a colorful studio surrounded by his work."></figure>
+                <figure class="photo-item archive-frame" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph: A woman holds a red rose in a brightly colored portrait setting."><img loading="lazy" src="photos/portraits/JMG_9553.jpg" alt="A woman holds a red rose in a brightly colored portrait setting."></figure>
+                <figure class="photo-item archive-frame" data-cat="people" data-chapter="people" tabindex="0" role="button" aria-label="Open photograph: A couple in dark clothing stands close together before a graffiti-covered wall."><img loading="lazy" src="photos/fashion/JMG_8986.jpg" alt="A couple in dark clothing stands close together before a graffiti-covered wall."></figure>
+                <figure class="photo-item archive-frame" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph: A tall waterfall drops through a granite valley framed by green trees."><img loading="lazy" src="photos/landscape/JMG_5742.jpg" alt="A tall waterfall drops through a granite valley framed by green trees."></figure>
+                <figure class="photo-item archive-frame" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph: A snow-covered mountain rises behind dark trees at blue hour."><img loading="lazy" src="photos/landscape/DSC00488.jpg" alt="A snow-covered mountain rises behind dark trees at blue hour."></figure>
+                <figure class="photo-item archive-frame" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph: A lifeguard house and palm trees sit on a quiet beach beneath a pink sky."><img loading="lazy" src="photos/landscape/JMG_7535.jpg" alt="A lifeguard house and palm trees sit on a quiet beach beneath a pink sky."></figure>
+                <figure class="photo-item archive-frame" data-cat="places" data-chapter="places" tabindex="0" role="button" aria-label="Open photograph: Two rock formations rise from bright blue water along the coast."><img loading="lazy" src="photos/landscape/JMG_5559.jpg" alt="Two rock formations rise from bright blue water along the coast."></figure>
+                <figure class="photo-item archive-frame" data-cat="gatherings" data-chapter="gatherings" tabindex="0" role="button" aria-label="Open photograph: A performer in a quilted jacket stands beneath intense blue stage light."><img loading="lazy" src="photos/events/JMG_2228.jpg" alt="A performer in a quilted jacket stands beneath intense blue stage light."></figure>
+                <figure class="photo-item archive-frame" data-cat="gatherings" data-chapter="gatherings" tabindex="0" role="button" aria-label="Open photograph: A DJ works behind a booth in a club lit with purple and green light."><img loading="lazy" src="photos/events/JMG_2854.jpg" alt="A DJ works behind a booth in a club lit with purple and green light."></figure>
+                <figure class="photo-item archive-frame" data-cat="gatherings" data-chapter="gatherings" tabindex="0" role="button" aria-label="Open photograph: A graduate smiles in cap and gown outdoors after commencement."><img loading="lazy" src="photos/events/JMG_2437.jpg" alt="A graduate smiles in cap and gown outdoors after commencement."></figure>
+                <figure class="photo-item archive-frame" data-cat="gatherings" data-chapter="gatherings" tabindex="0" role="button" aria-label="Open photograph: A graduate celebrates on the steps of an engineering building."><img loading="lazy" src="photos/events/JMG_2560.jpg" alt="A graduate celebrates on the steps of an engineering building."></figure>
+                <figure class="photo-item archive-frame" data-cat="gatherings" data-chapter="gatherings" tabindex="0" role="button" aria-label="Open photograph: Friends pose together during a crowded evening market event."><img loading="lazy" src="photos/events/DSC00028.jpg" alt="Friends pose together during a crowded evening market event."></figure>
             </div>
         </div>
     </section>
+    <!-- PHOTOGRAPHY:END -->
 
     <!-- =====================================================
          07 — THE COLLECTION (dark)
@@ -2767,11 +2780,11 @@
     </button>
 
     <!-- Lightbox -->
-    <div id="lightbox" class="lightbox">
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photography lightbox" tabindex="-1">
         <button class="lightbox-close" aria-label="Close">✕</button>
         <button class="lightbox-nav lightbox-prev" aria-label="Previous">‹</button>
         <button class="lightbox-nav lightbox-next" aria-label="Next">›</button>
-        <img id="lightboxImg" src="" alt="">
+        <img id="lightboxImg" alt="">
         <span class="lightbox-count" id="lightboxCount"></span>
     </div>
 
@@ -3050,64 +3063,38 @@
             }
         };
 
-        // ---- Photography: shuffle, filter, show more, lightbox ----
+        // ---- Photography: chapters + keyboard lightbox ----
         (function () {
+            const section = document.getElementById('photography');
             const gallery = document.getElementById('photoGallery');
-            if (!gallery) return;
-            const INITIAL_PHOTOS = 9;
-            let showingAll = false;
+            if (!section || !gallery) return;
+            section.classList.add('photo-enhanced');
             let visiblePhotos = [];
             let lbIndex = 0;
+            let returnFocus = null;
 
-            // Shuffle once on load for freshness
-            const shuffle = (arr) => {
-                for (let i = arr.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [arr[i], arr[j]] = [arr[j], arr[i]];
-                }
-                return arr;
-            };
-            shuffle(Array.from(gallery.querySelectorAll('.photo-item'))).forEach(t => gallery.appendChild(t));
-
-            const tiles = () => Array.from(gallery.querySelectorAll('.photo-item'));
-            const activeFilter = () => document.querySelector('.photo-filter.active')?.dataset.filter || 'all';
-
-            const showMoreBtn = document.getElementById('showMorePhotos');
-            function update() {
-                const filter = activeFilter();
-                const matching = tiles().filter(t => filter === 'all' || t.dataset.cat === filter);
-                tiles().forEach(t => t.classList.add('hide'));
-                matching.forEach((t, i) => {
-                    if (showingAll || i < INITIAL_PHOTOS) t.classList.remove('hide');
+            function applyChapter(button) {
+                const filter = button.dataset.filter;
+                section.querySelectorAll('.photo-chapter').forEach(control => {
+                    const active = control === button;
+                    control.classList.toggle('active', active);
+                    control.setAttribute('aria-pressed', String(active));
                 });
-                if (showMoreBtn) {
-                    showMoreBtn.style.display = matching.length <= INITIAL_PHOTOS ? 'none' : '';
-                    showMoreBtn.textContent = showingAll ? 'Show Less' : 'See More Photos';
-                }
+                gallery.querySelectorAll('.photo-item').forEach(tile => {
+                    tile.classList.toggle('hide', filter !== 'all' && tile.dataset.cat !== filter);
+                });
             }
 
-            document.querySelectorAll('.photo-filter').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.photo-filter').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    showingAll = false;
-                    update();
-                });
-            });
-            if (showMoreBtn) showMoreBtn.addEventListener('click', () => {
-                showingAll = !showingAll;
-                update();
-                if (!showingAll) document.getElementById('photography').scrollIntoView({ behavior: 'smooth' });
+            section.querySelectorAll('.photo-chapter').forEach(button => {
+                button.addEventListener('click', () => applyChapter(button));
             });
 
             // Nav entry point (kept for compatibility)
             window.filterPhotos = function (category) {
-                const btn = document.querySelector(`.photo-filter[data-filter="${category}"]`);
-                if (!btn) return;
-                document.querySelectorAll('.photo-filter').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                showingAll = false;
-                update();
+                const chapterMap = { portraits: 'people', fashion: 'people', landscape: 'places', travel: 'places', events: 'gatherings' };
+                const filter = chapterMap[category] || category || 'all';
+                const button = section.querySelector(`.photo-chapter[data-filter="${filter}"]`);
+                if (button) applyChapter(button);
             };
 
             // Lightbox
@@ -3117,19 +3104,37 @@
             const setLb = () => {
                 const tile = visiblePhotos[lbIndex];
                 if (!tile) return;
-                lbImg.src = tile.querySelector('img').src;
+                const image = tile.querySelector('img');
+                lbImg.src = image.src;
+                lbImg.alt = image.alt;
                 lbCount.textContent = (lbIndex + 1) + ' / ' + visiblePhotos.length;
             };
-            gallery.addEventListener('click', (e) => {
-                const tile = e.target.closest('.photo-item');
-                if (!tile) return;
-                visiblePhotos = tiles().filter(t => !t.classList.contains('hide'));
+
+            const openTile = (tile) => {
+                const collection = tile.closest('.photo-sequence') || gallery;
+                visiblePhotos = Array.from(collection.querySelectorAll('.photo-item')).filter(t => !t.classList.contains('hide'));
                 lbIndex = visiblePhotos.indexOf(tile);
+                returnFocus = tile;
                 setLb();
                 lightbox.classList.add('open');
                 document.body.style.overflow = 'hidden';
+                lightbox.focus();
+            };
+            section.addEventListener('click', (event) => {
+                const tile = event.target.closest('.photo-item');
+                if (tile) openTile(tile);
             });
-            const closeLb = () => { lightbox.classList.remove('open'); document.body.style.overflow = ''; };
+            section.addEventListener('keydown', (event) => {
+                const tile = event.target.closest('.photo-item');
+                if (!tile || (event.key !== 'Enter' && event.key !== ' ')) return;
+                event.preventDefault();
+                openTile(tile);
+            });
+            const closeLb = () => {
+                lightbox.classList.remove('open');
+                document.body.style.overflow = '';
+                if (returnFocus) returnFocus.focus();
+            };
             lightbox.querySelector('.lightbox-close').addEventListener('click', closeLb);
             lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLb(); });
             lightbox.querySelector('.lightbox-prev').addEventListener('click', () => { lbIndex = (lbIndex - 1 + visiblePhotos.length) % visiblePhotos.length; setLb(); });
@@ -3140,8 +3145,6 @@
                 if (e.key === 'ArrowLeft') lightbox.querySelector('.lightbox-prev').click();
                 if (e.key === 'ArrowRight') lightbox.querySelector('.lightbox-next').click();
             });
-
-            update();
         })();
 
         // ---- Back to top ----

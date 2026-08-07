@@ -1,178 +1,115 @@
-name: Twice-Weekly Portfolio Health Check
+name: Portfolio Health Check
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**.html"
+      - "data/**"
+      - "portfolio_quality/**"
+      - "scripts/**"
+      - "tests/**"
+      - "requirements.txt"
+      - ".github/workflows/weekly-update.yml"
+  pull_request:
+    paths:
+      - "**.html"
+      - "data/**"
+      - "portfolio_quality/**"
+      - "scripts/**"
+      - "tests/**"
+      - "requirements.txt"
+      - ".github/workflows/weekly-update.yml"
   schedule:
-    # Every Monday at 9:00am PT (17:00 UTC)
-    - cron: '0 17 * * 1'
-    # Every Friday at 9:00am PT (17:00 UTC)
-    - cron: '0 17 * * 5'
+    - cron: "0 17 * * 1"
+    - cron: "0 17 * * 5"
   workflow_dispatch:
-    # Allow manual trigger from the Actions tab in GitHub
+
+permissions:
+  contents: read
 
 jobs:
-  update:
-    name: Portfolio Update Script
+  health:
+    name: Test repository and deployed media
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Run portfolio update script
-        run: python scripts/update-portfolio.py
-
-      - name: Commit and push if anything changed
-        run: |
-          git config user.name "Portfolio Bot"
-          git config user.email "portfolio-bot@jgerms20.github.io"
-          WEEK=$(date +%Y-W%V)
-          if git diff --quiet; then
-            echo "No changes to commit this week."
-          else
-            git add index.html portfolio-memory.json
-            git commit -m "Portfolio update - ${WEEK} ($(date +%A))"
-            git push
-            echo "Pushed weekly update for ${WEEK}"
-          fi
-
-      - name: Generate weekly summary report
-        run: python scripts/weekly-summary.py >> $GITHUB_STEP_SUMMARY
-
-  health-check:
-    name: Portfolio Health Checks
-    runs-on: ubuntu-latest
-    needs: update
-
-    steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install requests beautifulsoup4
+        run: python3 -m pip install -r requirements.txt
 
-      - name: Check for broken internal links
-        run: |
-          python3 - <<'EOF'
-          import re, os, sys
+      - name: Run quality tests
+        run: python3 -m unittest discover -s tests -v
 
-          html_files = []
-          for root, dirs, files in os.walk('.'):
-              dirs[:] = [d for d in dirs if d not in ['.git', 'node_modules']]
-              for f in files:
-                  if f.endswith('.html'):
-                      html_files.append(os.path.join(root, f))
+      - name: Check production files
+        id: static
+        continue-on-error: true
+        run: python3 scripts/check-site.py --root . --json-out reports/site-health-static.json
 
-          broken = []
-          for path in html_files:
-              content = open(path).read()
-              # Check for src attributes referencing local files
-              srcs = re.findall(r'src=["\']([^"\'http][^"\']*)["\']', content)
-              base = os.path.dirname(path)
-              for src in srcs:
-                  resolved = os.path.normpath(os.path.join(base, src))
-                  if not os.path.exists(resolved):
-                      broken.append(f"{path}: missing src={src}")
+      - name: Probe external media
+        id: live
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        run: python3 scripts/check-site.py --root . --live --json-out reports/site-health-live.json
 
-          if broken:
-              print("## ⚠️ Broken local file references found")
-              for b in broken:
-                  print(f"- {b}")
-              # Don't fail the build — just report
-          else:
-              print("## ✅ All local file references resolved")
-          EOF
+      - name: Upload health reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-health-report
+          path: reports/site-health-*.json
+          if-no-files-found: error
+          retention-days: 30
 
-      - name: Check for placeholder YouTube embeds
-        run: |
-          python3 - <<'EOF'
-          import re, os
-
-          html_files = []
-          for root, dirs, files in os.walk('.'):
-              dirs[:] = [d for d in dirs if d not in ['.git', 'node_modules']]
-              for f in files:
-                  if f.endswith('.html'):
-                      html_files.append(os.path.join(root, f))
-
-          placeholders = []
-          for path in html_files:
-              content = open(path).read()
-              iframes = re.findall(r'<iframe[^>]*src=["\']([^"\']*)["\']', content)
-              for src in iframes:
-                  if 'placeholder' in src.lower() or 'PLACEHOLDER' in src:
-                      placeholders.append(f"{path}: {src}")
-
-          if placeholders:
-              print("## 🔴 Placeholder YouTube embeds found")
-              for p in placeholders:
-                  print(f"- {p}")
-          else:
-              print("## ✅ No placeholder YouTube embeds")
-          EOF
-
-      - name: Check HTML structure (tag balance)
-        run: |
-          python3 - <<'EOF'
-          import re, os
-
-          content = open('index.html').read()
-          tags = ['div', 'section', 'header', 'nav', 'footer']
-          issues = []
-          for tag in tags:
-              opens = len(re.findall(f'<{tag}[\\s>]', content))
-              closes = len(re.findall(f'</{tag}>', content))
-              if opens != closes:
-                  issues.append(f"{tag}: {opens} opens, {closes} closes (balance: {opens-closes})")
-
-          if issues:
-              print("## 🔴 HTML tag imbalance in index.html")
-              for i in issues:
-                  print(f"- {i}")
-          else:
-              print("## ✅ HTML tag balance looks good")
-          EOF
-
-      - name: Check podcast pages for new episodes
-        run: |
-          python3 - <<'EOF'
-          import re, os
-
-          for path in ['podcasts/podcast-approachable-ai.html']:
-              if not os.path.exists(path):
-                  print(f"⚠️ {path} not found")
-                  continue
-              content = open(path).read()
-              episodes = re.findall(r'EP(\d+)', content)
-              if episodes:
-                  nums = sorted([int(e) for e in episodes], reverse=True)
-                  print(f"## 📻 {path}")
-                  print(f"Latest episode: EP{nums[0]}, Total episodes found: {len(nums)}")
-              else:
-                  print(f"⚠️ No episodes found in {path}")
-          EOF
-
-      - name: Post health check summary
+      - name: Publish health summary
         if: always()
         run: |
-          echo "## Portfolio Health Check — $(date '+%A %B %d, %Y')" >> $GITHUB_STEP_SUMMARY
-          echo "Run details above. Fix any 🔴 issues in the next Claude Code session." >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Slash commands to run:**" >> $GITHUB_STEP_SUMMARY
-          echo "- \`/video-check\` — fix broken YouTube embeds" >> $GITHUB_STEP_SUMMARY
-          echo "- \`/link-check\` — fix broken local file references" >> $GITHUB_STEP_SUMMARY
-          echo "- \`/portfolio-audit\` — full scan" >> $GITHUB_STEP_SUMMARY
-          echo "- \`/podcast-check\` — verify episode count" >> $GITHUB_STEP_SUMMARY
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          summary_path = Path(os.environ["GITHUB_STEP_SUMMARY"])
+          reports = sorted(Path("reports").glob("site-health-*.json"))
+          lines = ["## Portfolio health", ""]
+          if not reports:
+              lines.append("No health report was produced.")
+          for report_path in reports:
+              report = json.loads(report_path.read_text(encoding="utf-8"))
+              summary = report["summary"]
+              lines.extend([
+                  f"### {report_path.stem}",
+                  "",
+                  f"- Pages checked: {report['pages_checked']}",
+                  f"- Broken: {summary['broken']}",
+                  f"- Degraded: {summary['degraded']}",
+                  f"- Unverifiable: {summary['unverifiable']}",
+                  "",
+              ])
+              for finding in report["findings"][:25]:
+                  lines.append(
+                      f"- `{finding['severity']}` {finding['page']} — "
+                      f"{finding['code']}: {finding['target']}"
+                  )
+              lines.append("")
+          summary_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+          PY
+
+      - name: Enforce health result
+        if: always()
+        env:
+          STATIC_OUTCOME: ${{ steps.static.outcome }}
+          LIVE_OUTCOME: ${{ steps.live.outcome }}
+        run: |
+          if [ "$STATIC_OUTCOME" = "failure" ] || [ "$LIVE_OUTCOME" = "failure" ]; then
+            echo "Portfolio health checks found critical failures."
+            exit 1
+          fi

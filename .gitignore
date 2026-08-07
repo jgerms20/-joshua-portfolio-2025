@@ -47,3 +47,6 @@ __pycache__/
 *.py[cod]
 *.pyo
 .claude/settings.local.json
+
+# Generated health reports
+reports/*.json
